@@ -4,12 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>O‑LEVEL COMMAND CENTER</title>
-    <!-- Google Fonts (Inter + Playfair Display for royal touch) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
     <style>
-        /* ---------- Royal Theme Variables ---------- */
+        /* ---------- Royal Theme ---------- */
         :root {
             --royal-purple: #4a2c6e;
             --royal-purple-light: #7a4ba8;
@@ -32,8 +31,6 @@
             --font: 'Inter', -apple-system, system-ui, sans-serif;
             --font-serif: 'Playfair Display', serif;
         }
-
-        /* ---------- Reset & Base ---------- */
         *,
         *::before,
         *::after {
@@ -105,8 +102,6 @@
         ::-webkit-scrollbar-thumb:hover {
             background: var(--royal-purple-light);
         }
-
-        /* ---------- Sidebar ---------- */
         .sidebar {
             width: var(--sidebar-width);
             background: var(--card);
@@ -195,8 +190,6 @@
             display: flex;
             justify-content: space-between;
         }
-
-        /* ---------- Main Content ---------- */
         .main {
             flex: 1;
             min-width: 0;
@@ -222,8 +215,6 @@
                 transform: translateY(0);
             }
         }
-
-        /* ---------- Typography & Utilities ---------- */
         .page-title {
             font-size: 1.9rem;
             font-weight: 700;
@@ -250,22 +241,6 @@
             background: var(--royal-gold-light);
             color: #8a7020;
         }
-        .badge-gold {
-            background: var(--royal-gold-light);
-            color: #8a7020;
-        }
-        .badge-green {
-            background: #dff0e0;
-            color: #1f6e2f;
-        }
-        .badge-red {
-            background: #fce8e8;
-            color: #b13a3a;
-        }
-        .badge-blue {
-            background: #dce8f5;
-            color: #1f4f8a;
-        }
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -274,11 +249,6 @@
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.2rem;
-        }
-        .grid-4 {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
             gap: 1.2rem;
         }
         .card {
@@ -310,27 +280,10 @@
             font-size: 0.85rem;
             color: var(--text-secondary);
         }
-        .flex {
-            display: flex;
-        }
         .flex-between {
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
-        .flex-center {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-        .gap-1 {
-            gap: 0.5rem;
-        }
-        .gap-2 {
-            gap: 1rem;
-        }
-        .gap-3 {
-            gap: 1.5rem;
         }
         .mt-1 {
             margin-top: 0.5rem;
@@ -341,18 +294,6 @@
         .mt-3 {
             margin-top: 1.5rem;
         }
-        .mb-1 {
-            margin-bottom: 0.5rem;
-        }
-        .mb-2 {
-            margin-bottom: 1rem;
-        }
-        .w-full {
-            width: 100%;
-        }
-        .text-center {
-            text-align: center;
-        }
         .text-muted {
             color: var(--text-muted);
         }
@@ -362,14 +303,6 @@
         .text-xs {
             font-size: 0.75rem;
         }
-        .font-bold {
-            font-weight: 700;
-        }
-        .font-medium {
-            font-weight: 500;
-        }
-
-        /* ---------- Buttons ---------- */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -409,10 +342,6 @@
             color: #fff;
             border-color: transparent;
         }
-        .btn-gold:hover {
-            box-shadow: 0 4px 16px rgba(184, 148, 48, 0.35);
-            transform: translateY(-1px);
-        }
         .btn-sm {
             padding: 0.25rem 0.8rem;
             font-size: 0.75rem;
@@ -426,15 +355,6 @@
             background: #c0392b;
             border-color: #c0392b;
         }
-        .btn-success {
-            background: #27ae60;
-            color: #fff;
-            border-color: #27ae60;
-        }
-        .btn-success:hover {
-            background: #1e8449;
-            border-color: #1e8449;
-        }
         .btn-ghost {
             background: transparent;
             color: var(--text-secondary);
@@ -442,8 +362,6 @@
         .btn-ghost:hover {
             background: var(--bg);
         }
-
-        /* ---------- Dashboard ---------- */
         .greeting {
             font-size: 1.6rem;
             font-weight: 600;
@@ -479,7 +397,6 @@
             font-weight: 700;
             letter-spacing: -0.3px;
         }
-
         .mission-item {
             display: flex;
             align-items: center;
@@ -539,8 +456,6 @@
             background: var(--royal-purple);
             color: #fff;
         }
-
-        /* ---------- Subject Grid ---------- */
         .subject-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -591,8 +506,6 @@
             border-radius: 4px;
             transition: width 0.6s ease;
         }
-
-        /* ---------- Modal ---------- */
         .modal-overlay {
             position: fixed;
             inset: 0;
@@ -659,8 +572,6 @@
             padding-top: 0.8rem;
             border-top: 1px solid var(--border);
         }
-
-        /* ---------- Tables ---------- */
         .table-wrap {
             overflow-x: auto;
             border-radius: var(--radius);
@@ -691,12 +602,6 @@
         tr:last-child td {
             border-bottom: none;
         }
-        .table-actions {
-            display: flex;
-            gap: 0.3rem;
-        }
-
-        /* ---------- Misc ---------- */
         .empty-state {
             text-align: center;
             padding: 2.5rem 1rem;
@@ -738,12 +643,6 @@
             background: var(--royal-gold-light);
             color: #8a7020;
         }
-        .pill.blue {
-            background: #dce8f5;
-            color: #1f4f8a;
-        }
-
-        /* ---------- Timer ---------- */
         .timer-display {
             font-size: 4rem;
             font-weight: 700;
@@ -759,8 +658,6 @@
             justify-content: center;
             flex-wrap: wrap;
         }
-
-        /* ---------- Syllabus tree ---------- */
         .tree-item {
             padding: 0.3rem 0 0.3rem 1.2rem;
             border-left: 2px solid var(--border);
@@ -799,8 +696,6 @@
         .tree-item .node .mastery.mastered {
             background: #27ae60;
         }
-
-        /* ---------- Calendar ---------- */
         .cal-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
@@ -834,8 +729,6 @@
             color: #fff;
             font-weight: 700;
         }
-
-        /* ---------- Floating + Button ---------- */
         .fab {
             position: fixed;
             bottom: 2rem;
@@ -859,8 +752,6 @@
             transform: scale(1.08);
             box-shadow: 0 8px 32px rgba(74, 44, 110, 0.5);
         }
-
-        /* ---------- Past Paper file card ---------- */
         .file-card {
             display: flex;
             align-items: center;
@@ -888,8 +779,6 @@
             display: flex;
             gap: 0.4rem;
         }
-
-        /* ---------- Toast ---------- */
         .toast-container {
             position: fixed;
             bottom: 1.5rem;
@@ -935,16 +824,6 @@
             opacity: 0.5;
             font-size: 1.1rem;
         }
-
-        /* ---------- Responsive ---------- */
-        @media (max-width: 1024px) {
-            .grid-4 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .grid-3 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
         @media (max-width: 820px) {
             .sidebar {
                 width: 68px;
@@ -982,9 +861,6 @@
             .grid-3 {
                 grid-template-columns: 1fr 1fr;
             }
-            .grid-4 {
-                grid-template-columns: 1fr 1fr;
-            }
             .stat-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -1018,8 +894,7 @@
             .page-title {
                 font-size: 1.3rem;
             }
-            .grid-3,
-            .grid-4 {
+            .grid-3 {
                 grid-template-columns: 1fr 1fr;
             }
             .stat-grid {
@@ -1027,13 +902,6 @@
             }
             .modal {
                 padding: 1.2rem;
-            }
-            .mission-item {
-                flex-wrap: wrap;
-            }
-            .mission-item .actions {
-                width: 100%;
-                margin-top: 0.2rem;
             }
             .subject-grid {
                 grid-template-columns: 1fr 1fr;
@@ -1051,10 +919,8 @@
 <body>
 
     <!-- ===== SIDEBAR ===== -->
-    <nav class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
-        <div class="sidebar-brand">
-            ⚡ O-LEVEL <span>CC</span>
-        </div>
+    <nav class="sidebar" id="sidebar" role="navigation">
+        <div class="sidebar-brand">⚡ O-LEVEL <span>CC</span></div>
         <div class="sidebar-nav" id="navContainer"></div>
         <div class="sidebar-footer">
             <span id="sidebarUser">Maira</span>
@@ -1063,9 +929,7 @@
     </nav>
 
     <!-- ===== MAIN ===== -->
-    <main class="main" id="mainContent">
-        <!-- Pages rendered by JS -->
-    </main>
+    <main class="main" id="mainContent"></main>
 
     <!-- ===== MODAL ===== -->
     <div class="modal-overlay" id="modalOverlay">
@@ -1073,7 +937,7 @@
     </div>
 
     <!-- ===== FLOATING ADD BUTTON ===== -->
-    <button class="fab" id="fabButton" aria-label="Add new item">+</button>
+    <button class="fab" id="fabButton">+</button>
 
     <!-- ===== TOAST ===== -->
     <div class="toast-container" id="toastContainer"></div>
@@ -1083,7 +947,7 @@
         //  DATA LAYER
         // ================================================================
 
-        const DB_KEY = 'olevel_cc_v4';
+        const DB_KEY = 'olevel_cc_v5';
 
         function getDefaultData() {
             return {
@@ -1107,102 +971,23 @@
                     'subj1': [{ id: 'u1', name: 'Microeconomics', topics: [{ id: 't1', name: 'Elasticity', concepts: [
                                 { id: 'c1', name: 'Price Elasticity of Demand', mastery: 'understanding',
                                     notes: 'PED = %ΔQd / %ΔP' },
-                                { id: 'c2', name: 'Income Elasticity of Demand', mastery: 'learning',
-                                notes: '' },
-                            ] }] }],
-                    'subj5': [{ id: 'u2', name: 'Algebra', topics: [{ id: 't2', name: 'Quadratic Equations',
-                                concepts: [{ id: 'c3', name: 'Solving by Factorization', mastery: 'mastered',
-                                    notes: '' }] }] }]
+                            ] }] }]
                 },
-                notes: [
-                    { id: 'n1', title: 'PED Formula', content: 'Price Elasticity of Demand = % change in quantity demanded / % change in price.',
-                        subjectId: 'subj1', topicId: 't1', conceptId: 'c1', tags: ['economics', 'elasticity'],
-                        pinned: false, archived: false, createdAt: '2026-07-01T10:00:00Z',
-                        updatedAt: '2026-07-01T10:00:00Z' },
-                ],
-                tasks: [
-                    { id: 'task1', title: 'Review PED past papers', subjectId: 'subj1', priority: 'high',
-                        status: 'In progress', deadline: '2026-08-15', estimatedTime: 45, recurrence: null,
-                        createdAt: '2026-08-01' },
-                    { id: 'task2', title: 'Complete Business case study', subjectId: 'subj2', priority: 'medium',
-                        status: 'Not started', deadline: '2026-08-20', estimatedTime: 60, recurrence: null,
-                        createdAt: '2026-08-02' },
-                ],
-                mistakes: [
-                    { id: 'm1', subjectId: 'subj1', question: 'Calculate PED when price rises from $5 to $6 and Qd falls from 100 to 80.',
-                        myAnswer: '-1.2', correctAnswer: '-1.0', whyWrong: 'Used wrong formula for percentage change.',
-                        type: 'Calculation', date: '2026-07-28', difficulty: 'medium', reviewed: false,
-                        correctedUnderstanding: 'Use midpoint formula for percentage changes.' },
-                ],
-                flashcards: [
-                    { id: 'f1', front: 'What is PED?', back: 'Price Elasticity of Demand – measures responsiveness of quantity demanded to price change.',
-                        subjectId: 'subj1', topic: 'Elasticity', concept: 'c1', difficulty: 'easy',
-                        confidence: 4, reviewDate: '2026-08-20', correct: 3, incorrect: 0, lastReviewed: null },
-                ],
+                notes: [],
+                tasks: [],
+                mistakes: [],
+                flashcards: [],
                 pastPapers: [],
                 mockExams: [],
-                activities: [
-                    { id: 'a1', name: 'Student Council Treasurer', category: 'Leadership',
-                        organization: 'School', role: 'Treasurer', startDate: '2025-09-01',
-                        endDate: '2026-06-30', status: 'Completed', hours: 120, grade: 'Grade 9',
-                        level: 'School', description: 'Managed budget for school events.', achievements: '',
-                        impact: 'Raised $500 for charity', evidence: '', reflection: '' },
-                ],
-                goals: [
-                    { id: 'g1', title: 'Master Elasticity concepts', category: 'Academic',
-                        deadline: '2026-08-30', milestones: [], progress: 60, reflection: '',
-                        createdAt: '2026-07-15' },
-                ],
-                stories: [
-                    { id: 's1', title: 'First Debate Competition', date: '2025-11-20',
-                        situation: 'I participated in a school debate on climate change.',
-                        whatHappened: 'I argued for stricter regulations.',
-                        actions: 'I researched and prepared rebuttals.',
-                        emotions: 'Nervous but confident.',
-                        challenge: 'Faced a strong opponent.',
-                        outcome: 'Won the best speaker award.',
-                        lesson: 'Preparation and confidence are key.',
-                        growth: 'Became more articulate.',
-                        values: 'Passion for environmental issues.',
-                        relatedActivity: 'a1',
-                        tags: ['debate', 'public speaking'] },
-                ],
-                universities: [
-                    { id: 'uni1', name: 'University of Cambridge', country: 'UK', location: 'Cambridge',
-                        website: 'https://www.cam.ac.uk', programs: 'Economics, Computer Science',
-                        majors: '', applicationSystem: 'UCAS', deadlines: { '2027': '2026-10-15' },
-                        requirements: 'A-levels AAA', testing: '', essays: '', recommendations: '',
-                        financialAid: '', scholarships: '', notes: 'Target college: Trinity',
-                        fit: 'Strong economics department.',
-                        classification: 'dream' },
-                ],
-                essays: [
-                    { id: 'e1', title: 'Personal Statement', type: 'Personal Statement',
-                        prompt: 'Tell us about yourself and your academic interests.',
-                        wordLimit: 4000, deadline: '2026-10-01', drafts: ['I have always been fascinated by economics...'],
-                        notes: 'Focus on leadership and impact.',
-                        feedback: '', finalVersion: null, universityId: null,
-                        createdAt: '2026-07-01' },
-                ],
-                books: [],
-                videos: [],
-                formulas: [],
-                glossary: [],
-                diagrams: [],
-                examTechniques: [],
-                events: [
-                    { id: 'ev1', title: 'Economics Mock Exam', date: '2026-08-25', type: 'exam',
-                        subject: 'subj1', description: '', completed: false },
-                ],
-                recommendations: [],
-                scholarships: [],
-                evidence: [],
-                projects: [],
-                awards: [],
-                reflections: [],
+                activities: [],
+                goals: [],
+                stories: [],
+                universities: [],
+                essays: [],
+                events: [],
                 studySessions: [],
-                settings: { theme: 'light', notifications: true, aiEnabled: true },
-                version: 4,
+                settings: { theme: 'light', notifications: true },
+                version: 5,
             };
         }
 
@@ -1382,135 +1167,67 @@
             const examYear = data.student.examYear || 'CIE 2027';
             const now = new Date();
             const day = now.toLocaleDateString('en-US', { weekday: 'long' });
-
             const totalSubjects = data.subjects.filter(s => !s.archived).length;
             const totalTasks = data.tasks.length;
             const pendingTasks = data.tasks.filter(t => t.status !== 'Completed').length;
-            const totalMistakes = data.mistakes.length;
-            const totalNotes = data.notes.length;
             const totalPastPapers = data.pastPapers.length;
-
             const sessions = data.studySessions || [];
             const streak = sessions.length > 0 ? Math.min(sessions.length, 30) : 4;
-
-            const missionTasks = data.tasks
-                .filter(t => t.status !== 'Completed')
-                .sort((a, b) => {
-                    const pri = { high: 0, medium: 1, low: 2 };
-                    return (pri[a.priority] || 1) - (pri[b.priority] || 1);
-                })
+            const missionTasks = data.tasks.filter(t => t.status !== 'Completed')
+                .sort((a, b) => ({ high: 0, medium: 1, low: 2 } [a.priority] || 1) - ({ high: 0, medium: 1,
+                    low: 2 } [b.priority] || 1))
                 .slice(0, 5);
-
-            const upcomingExams = data.events
-                .filter(e => e.type === 'exam' && new Date(e.date) >= now)
-                .sort((a, b) => new Date(a.date) - new Date(b.date))
-                .slice(0, 3);
-
-            const daysUntilExam = upcomingExams.length > 0 ?
-                Math.ceil((new Date(upcomingExams[0].date) - now) / (1000 * 60 * 60 * 24)) :
-                '—';
-
+            const upcomingExams = data.events.filter(e => e.type === 'exam' && new Date(e.date) >= now)
+                .sort((a, b) => new Date(a.date) - new Date(b.date)).slice(0, 3);
+            const daysUntilExam = upcomingExams.length > 0 ? Math.ceil((new Date(upcomingExams[0].date) - now) / (1000 *
+                60 * 60 * 24)) : '—';
             const recentMistakes = data.mistakes.slice(-3).reverse();
 
             return `
             <div class="greeting">Good ${now.getHours()<12?'morning':now.getHours()<17?'afternoon':'evening'}, ${name} 👋</div>
             <div class="greeting-sub">${day} · ${grade} · ${examYear}</div>
-
             <div class="stat-grid">
               <div class="stat-card"><div class="label">Grade</div><div class="value">${grade}</div></div>
               <div class="stat-card"><div class="label">Exam Year</div><div class="value">${examYear}</div></div>
               <div class="stat-card"><div class="label">Days to Next Exam</div><div class="value">${daysUntilExam}</div></div>
               <div class="stat-card"><div class="label">Study Streak</div><div class="value">🔥 ${streak} days</div></div>
             </div>
-
             <div class="flex-between" style="margin-bottom:0.8rem;">
               <h2 style="font-size:1.2rem;font-weight:700;">🎯 Today's Mission</h2>
               <button class="btn btn-sm btn-primary" onclick="navigate('tasks')">View All →</button>
             </div>
-
-            ${missionTasks.length === 0 ? `
-              <div class="empty-state"><div class="icon">✅</div><div class="title">All caught up!</div><div class="desc">No pending tasks.</div></div>
-            ` : missionTasks.map(t => {
+            ${missionTasks.length === 0 ? `<div class="empty-state"><div class="icon">✅</div><div class="title">All caught up!</div><div class="desc">No pending tasks.</div></div>` : missionTasks.map(t => {
               const color = t.priority === 'high' ? 'red' : t.priority === 'medium' ? 'yellow' : 'green';
-              return `<div class="mission-item">
-                <span class="dot ${color}"></span>
-                <div class="info">
-                  <div class="title">${t.title}</div>
-                  <div class="sub">${t.subjectId ? getSubjectName(t.subjectId) : 'General'} · ${t.priority || 'medium'} priority</div>
-                </div>
-                <div class="actions">
-                  <span class="tag" onclick="toast('📖 Learn: ${t.title}')">Learn</span>
-                  <span class="tag" onclick="toast('📝 Notes for ${t.title}')">Notes</span>
-                  <span class="tag" onclick="toast('📝 Practice: ${t.title}')">Practice</span>
-                  <span class="tag" onclick="toast('🔄 Review: ${t.title}')">Review</span>
-                </div>
-              </div>`;
+              return `<div class="mission-item"><span class="dot ${color}"></span><div class="info"><div class="title">${t.title}</div><div class="sub">${t.subjectId?getSubjectName(t.subjectId):'General'} · ${t.priority||'medium'}</div></div><div class="actions"><span class="tag" onclick="toast('📖 Learn: ${t.title}')">Learn</span><span class="tag" onclick="toast('📝 Notes')">Notes</span><span class="tag" onclick="toast('📝 Practice')">Practice</span><span class="tag" onclick="toast('🔄 Review')">Review</span></div></div>`;
             }).join('')}
-
             <div class="grid-3 mt-3">
               <div class="card"><div class="card-title">📚 Subjects</div><div class="card-value">${totalSubjects}</div><div class="card-label">Active</div></div>
               <div class="card"><div class="card-title">✅ Tasks</div><div class="card-value">${pendingTasks}/${totalTasks}</div><div class="card-label">Pending / Total</div></div>
               <div class="card"><div class="card-title">📄 Past Papers</div><div class="card-value">${totalPastPapers}</div><div class="card-label">Uploaded</div></div>
             </div>
-
-            ${recentMistakes.length > 0 ? `
-              <div class="mt-3">
-                <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.4rem;">⚠️ Recent Mistakes</h3>
-                ${recentMistakes.map(m => `
-                  <div class="mission-item" style="border-left-color:#e74c4c;">
-                    <span class="dot red"></span>
-                    <div class="info">
-                      <div class="title">${m.question || 'Mistake'}</div>
-                      <div class="sub">${m.subjectId ? getSubjectName(m.subjectId) : 'General'} · ${m.type || 'Other'} · ${new Date(m.date).toLocaleDateString()}</div>
-                    </div>
-                    <span class="pill red">${m.type || 'Other'}</span>
-                  </div>
-                `).join('')}
-              </div>
-            ` : ''}
+            ${recentMistakes.length>0?`<div class="mt-3"><h3 style="font-weight:600;font-size:1rem;margin-bottom:0.4rem;">⚠️ Recent Mistakes</h3>${recentMistakes.map(m=>`<div class="mission-item" style="border-left-color:#e74c4c;"><span class="dot red"></span><div class="info"><div class="title">${m.question||'Mistake'}</div><div class="sub">${m.subjectId?getSubjectName(m.subjectId):'General'} · ${m.type||'Other'} · ${new Date(m.date).toLocaleDateString()}</div></div><span class="pill red">${m.type||'Other'}</span></div>`).join('')}</div>`:''}
           `;
         }
 
         // ================================================================
-        //  SUBJECTS
+        //  SUBJECTS (compact)
         // ================================================================
 
         function renderSubjects() {
             const active = data.subjects.filter(s => !s.archived);
             const archived = data.subjects.filter(s => s.archived);
             return `
-            <div class="flex-between">
-              <div><div class="page-title">📖 Subjects</div><div class="page-subtitle">Manage subjects across grades.</div></div>
-              <button class="btn btn-primary" onclick="showAddSubject()">+ Add Subject</button>
-            </div>
-            <div class="mt-2">
-              <div class="card">
-                <div style="font-weight:600;margin-bottom:0.5rem;">Grade 9</div>
-                <div class="subject-grid">${active.filter(s=>s.grade==='9').map(s=>subjectCardHtml(s)).join('')}</div>
-              </div>
-              <div class="card mt-2">
-                <div style="font-weight:600;margin-bottom:0.5rem;">Grade 10 & 11</div>
-                <div class="subject-grid">${active.filter(s=>s.grade!=='9').map(s=>subjectCardHtml(s)).join('') || '<div class="text-muted text-sm">No subjects assigned to Grade 10 or 11 yet.</div>'}</div>
-              </div>
-              ${archived.length ? `<div class="card mt-2" style="opacity:0.6;"><div style="font-weight:600;margin-bottom:0.5rem;">Archived</div><div class="subject-grid">${archived.map(s=>subjectCardHtml(s,true)).join('')}</div></div>` : ''}
-            </div>
+            <div class="flex-between"><div><div class="page-title">📖 Subjects</div><div class="page-subtitle">Manage subjects across grades.</div></div><button class="btn btn-primary" onclick="showAddSubject()">+ Add Subject</button></div>
+            <div class="mt-2"><div class="card"><div style="font-weight:600;margin-bottom:0.5rem;">Grade 9</div><div class="subject-grid">${active.filter(s=>s.grade==='9').map(s=>subjectCardHtml(s)).join('')}</div></div>
+            <div class="card mt-2"><div style="font-weight:600;margin-bottom:0.5rem;">Grade 10 & 11</div><div class="subject-grid">${active.filter(s=>s.grade!=='9').map(s=>subjectCardHtml(s)).join('')||'<div class="text-muted text-sm">No subjects assigned to Grade 10 or 11 yet.</div>'}</div></div>
+            ${archived.length?`<div class="card mt-2" style="opacity:0.6;"><div style="font-weight:600;margin-bottom:0.5rem;">Archived</div><div class="subject-grid">${archived.map(s=>subjectCardHtml(s,true)).join('')}</div></div>`:''}
           `;
         }
 
         function subjectCardHtml(s, archived = false) {
             const count = data.notes.filter(n => n.subjectId === s.id).length + data.tasks.filter(t => t.subjectId === s.id)
                 .length;
-            return `<div class="subject-card">
-              <div class="color-bar" style="background:${s.color||'#6c3b9a'}"></div>
-              <div class="name">${s.name}</div>
-              <div class="meta">${s.grade ? 'Grade '+s.grade : ''} · ${archived ? 'Archived' : ''} · ${count} items</div>
-              <div class="progress"><div class="bar" style="width:${Math.min(30+Math.random()*50,85)}%"></div></div>
-              <div style="display:flex;gap:0.3rem;margin-top:0.4rem;flex-wrap:wrap;">
-                <button class="btn btn-sm btn-ghost" onclick="editSubject('${s.id}')">✏️</button>
-                <button class="btn btn-sm btn-ghost" onclick="archiveSubject('${s.id}')">${archived?'Unarchive':'Archive'}</button>
-                <button class="btn btn-sm btn-danger" onclick="deleteSubject('${s.id}')">🗑️</button>
-              </div>
-            </div>`;
+            return `<div class="subject-card"><div class="color-bar" style="background:${s.color||'#6c3b9a'}"></div><div class="name">${s.name}</div><div class="meta">${s.grade?'Grade '+s.grade:''} · ${archived?'Archived':''} · ${count} items</div><div class="progress"><div class="bar" style="width:${Math.min(30+Math.random()*50,85)}%"></div></div><div style="display:flex;gap:0.3rem;margin-top:0.4rem;flex-wrap:wrap;"><button class="btn btn-sm btn-ghost" onclick="editSubject('${s.id}')">✏️</button><button class="btn btn-sm btn-ghost" onclick="archiveSubject('${s.id}')">${archived?'Unarchive':'Archive'}</button><button class="btn btn-sm btn-danger" onclick="deleteSubject('${s.id}')">🗑️</button></div></div>`;
         }
 
         function showAddSubject() {
@@ -1581,14 +1298,12 @@
         }
 
         // ================================================================
-        //  SYLLABUS
+        //  SYLLABUS (compact)
         // ================================================================
 
         function renderSyllabus() {
             const subjects = data.subjects.filter(s => !s.archived);
-            if (!subjects.length) {
-                return `<div class="page-title">🗂️ Syllabus</div><div class="empty-state"><div class="icon">📚</div><div class="title">No subjects</div><div class="desc">Add a subject first.</div></div>`;
-            }
+            if (!subjects.length) return `<div class="page-title">🗂️ Syllabus</div><div class="empty-state"><div class="icon">📚</div><div class="title">No subjects</div><div class="desc">Add a subject first.</div></div>`;
             let html = `<div class="page-title">🗂️ Syllabus</div><div class="page-subtitle">Break down subjects into units, topics, and concepts.</div>`;
             subjects.forEach(sub => {
                 const syllabus = data.syllabus[sub.id] || [];
@@ -1597,36 +1312,7 @@
                 const mastered = syllabus.reduce((acc, u) => acc + u.topics.reduce((a, t) => a + (t.concepts ? t
                     .concepts.filter(c => c.mastery === 'mastered').length : 0), 0), 0);
                 const pct = totalConcepts > 0 ? Math.round(mastered / totalConcepts * 100) : 0;
-                html += `<div class="card mt-2">
-              <div class="flex-between"><div><span style="font-weight:700;">${sub.name}</span><span class="badge">${pct}% complete</span></div>
-                <button class="btn btn-sm btn-primary" onclick="addSyllabusUnit('${sub.id}')">+ Unit</button></div>
-              <div class="mt-1">${syllabus.length===0?'<div class="text-muted text-sm">No units yet.</div>':''}
-                ${syllabus.map((unit,ui)=>`<div style="margin-top:0.3rem;padding:0.3rem 0.5rem;background:var(--bg);border-radius:var(--radius-sm);">
-                  <div class="flex-between"><span style="font-weight:600;">${unit.name}</span>
-                    <div><button class="btn btn-sm btn-ghost" onclick="addSyllabusTopic('${sub.id}',${ui})">+ Topic</button>
-                    <button class="btn btn-sm btn-ghost" onclick="editSyllabusUnit('${sub.id}',${ui})">✏️</button>
-                    <button class="btn btn-sm btn-ghost" onclick="deleteSyllabusUnit('${sub.id}',${ui})">🗑️</button></div></div>
-                  ${unit.topics && unit.topics.length ? unit.topics.map((topic,ti)=>`
-                    <div class="tree-item"><div class="node">
-                      <span>📌</span><span style="font-weight:500;">${topic.name}</span>
-                      <span style="font-size:0.7rem;color:var(--text-muted);">${topic.concepts?topic.concepts.length:0} concepts</span>
-                      <button class="btn btn-sm btn-ghost" onclick="addSyllabusConcept('${sub.id}',${ui},${ti})" style="margin-left:auto;">+ Concept</button>
-                      <button class="btn btn-sm btn-ghost" onclick="editSyllabusTopic('${sub.id}',${ui},${ti})">✏️</button>
-                      <button class="btn btn-sm btn-ghost" onclick="deleteSyllabusTopic('${sub.id}',${ui},${ti})">🗑️</button>
-                    </div>
-                    ${topic.concepts && topic.concepts.length ? topic.concepts.map((concept,ci)=>`
-                      <div class="tree-item"><div class="node">
-                        <span class="mastery ${concept.mastery||'not_started'}"></span>
-                        <span>${concept.name}</span>
-                        <span class="pill ${concept.mastery||'not_started'}">${concept.mastery||'Not Started'}</span>
-                        <button class="btn btn-sm btn-ghost" onclick="editSyllabusConcept('${sub.id}',${ui},${ti},${ci})" style="margin-left:auto;">✏️</button>
-                        <button class="btn btn-sm btn-ghost" onclick="deleteSyllabusConcept('${sub.id}',${ui},${ti},${ci})">🗑️</button>
-                      </div></div>
-                    `).join('') : '<div class="text-muted text-xs" style="padding-left:1.2rem;">No concepts.</div>'}
-                  </div>`).join('') : '<div class="text-muted text-xs" style="padding-left:0.8rem;">No topics.</div>'}
-                </div>`).join('')}
-              </div>
-            </div>`;
+                html += `<div class="card mt-2"><div class="flex-between"><div><span style="font-weight:700;">${sub.name}</span><span class="badge">${pct}% complete</span></div><button class="btn btn-sm btn-primary" onclick="addSyllabusUnit('${sub.id}')">+ Unit</button></div><div class="mt-1">${syllabus.length===0?'<div class="text-muted text-sm">No units yet.</div>':''}${syllabus.map((unit,ui)=>`<div style="margin-top:0.3rem;padding:0.3rem 0.5rem;background:var(--bg);border-radius:var(--radius-sm);"><div class="flex-between"><span style="font-weight:600;">${unit.name}</span><div><button class="btn btn-sm btn-ghost" onclick="addSyllabusTopic('${sub.id}',${ui})">+ Topic</button><button class="btn btn-sm btn-ghost" onclick="editSyllabusUnit('${sub.id}',${ui})">✏️</button><button class="btn btn-sm btn-ghost" onclick="deleteSyllabusUnit('${sub.id}',${ui})">🗑️</button></div></div>${unit.topics&&unit.topics.length?unit.topics.map((topic,ti)=>`<div class="tree-item"><div class="node"><span>📌</span><span style="font-weight:500;">${topic.name}</span><span style="font-size:0.7rem;color:var(--text-muted);">${topic.concepts?topic.concepts.length:0} concepts</span><button class="btn btn-sm btn-ghost" onclick="addSyllabusConcept('${sub.id}',${ui},${ti})" style="margin-left:auto;">+ Concept</button><button class="btn btn-sm btn-ghost" onclick="editSyllabusTopic('${sub.id}',${ui},${ti})">✏️</button><button class="btn btn-sm btn-ghost" onclick="deleteSyllabusTopic('${sub.id}',${ui},${ti})">🗑️</button></div>${topic.concepts&&topic.concepts.length?topic.concepts.map((concept,ci)=>`<div class="tree-item"><div class="node"><span class="mastery ${concept.mastery||'not_started'}"></span><span>${concept.name}</span><span class="pill ${concept.mastery||'not_started'}">${concept.mastery||'Not Started'}</span><button class="btn btn-sm btn-ghost" onclick="editSyllabusConcept('${sub.id}',${ui},${ti},${ci})" style="margin-left:auto;">✏️</button><button class="btn btn-sm btn-ghost" onclick="deleteSyllabusConcept('${sub.id}',${ui},${ti},${ci})">🗑️</button></div></div>`).join(''):'<div class="text-muted text-xs" style="padding-left:1.2rem;">No concepts.</div>'}</div>`).join(''):'<div class="text-muted text-xs" style="padding-left:0.8rem;">No topics.</div>'}</div>`).join('')}</div></div>`;
             });
             return html;
         }
@@ -1794,40 +1480,26 @@
         }
 
         // ================================================================
-        //  NOTES
+        //  NOTES (compact)
         // ================================================================
 
         function renderNotes() {
-            const subjects = data.subjects.filter(s => !s.archived);
             let html =
                 `<div class="flex-between"><div><div class="page-title">📝 Notes</div><div class="page-subtitle">Knowledge base.</div></div><button class="btn btn-primary" onclick="showAddNote()">+ New Note</button></div>`;
             const notes = data.notes.filter(n => !n.archived).sort((a, b) => new Date(b.updatedAt || b.createdAt) - new Date(a
                 .createdAt));
-            if (!notes.length) {
-                html +=
-                    `<div class="empty-state"><div class="icon">📝</div><div class="title">No notes</div><div class="desc">Create your first note.</div></div>`;
-            } else {
+            if (!notes.length) { html +=
+                    `<div class="empty-state"><div class="icon">📝</div><div class="title">No notes</div><div class="desc">Create your first note.</div></div>`; } else {
                 html += `<div class="grid-2 mt-2">`;
                 notes.forEach(n => {
                     const subName = n.subjectId ? getSubjectName(n.subjectId) : 'General';
-                    html += `<div class="card">
-                <div class="flex-between"><span style="font-weight:600;">${n.title||'Untitled'}</span><span class="badge">${subName}</span></div>
-                <div class="text-sm text-muted mt-1">${n.content?n.content.slice(0,120)+(n.content.length>120?'...':''):''}</div>
-                <div style="display:flex;gap:0.3rem;margin-top:0.5rem;flex-wrap:wrap;">
-                  <span class="pill purple">${n.tags?n.tags.join(', '):'untagged'}</span>
-                  <button class="btn btn-sm btn-ghost" onclick="editNote('${n.id}')">✏️</button>
-                  <button class="btn btn-sm btn-ghost" onclick="archiveNote('${n.id}')">📦</button>
-                  <button class="btn btn-sm btn-danger" onclick="deleteNote('${n.id}')">🗑️</button>
-                </div>
-              </div>`;
+                    html += `<div class="card"><div class="flex-between"><span style="font-weight:600;">${n.title||'Untitled'}</span><span class="badge">${subName}</span></div><div class="text-sm text-muted mt-1">${n.content?n.content.slice(0,120)+(n.content.length>120?'...':''):''}</div><div style="display:flex;gap:0.3rem;margin-top:0.5rem;flex-wrap:wrap;"><span class="pill purple">${n.tags?n.tags.join(', '):'untagged'}</span><button class="btn btn-sm btn-ghost" onclick="editNote('${n.id}')">✏️</button><button class="btn btn-sm btn-ghost" onclick="archiveNote('${n.id}')">📦</button><button class="btn btn-sm btn-danger" onclick="deleteNote('${n.id}')">🗑️</button></div></div>`;
                 });
                 html += `</div>`;
             }
             const archived = data.notes.filter(n => n.archived);
-            if (archived.length) {
-                html +=
-                    `<div class="mt-3"><details><summary style="cursor:pointer;font-weight:600;color:var(--text-muted);">📦 Archived (${archived.length})</summary><div class="grid-2 mt-1">${archived.map(n=>`<div class="card" style="opacity:0.6;"><div class="flex-between"><span>${n.title||'Untitled'}</span><button class="btn btn-sm btn-ghost" onclick="unarchiveNote('${n.id}')">↩️</button></div></div>`).join('')}</div></details></div>`;
-            }
+            if (archived.length) { html +=
+                    `<div class="mt-3"><details><summary style="cursor:pointer;font-weight:600;color:var(--text-muted);">📦 Archived (${archived.length})</summary><div class="grid-2 mt-1">${archived.map(n=>`<div class="card" style="opacity:0.6;"><div class="flex-between"><span>${n.title||'Untitled'}</span><button class="btn btn-sm btn-ghost" onclick="unarchiveNote('${n.id}')">↩️</button></div></div>`).join('')}</div></details></div>`; }
             return html;
         }
 
@@ -1845,19 +1517,10 @@
 
         function addNote() {
             const title = document.getElementById('noteTitle').value.trim() || 'Untitled';
-            data.notes.push({
-                id: genId(),
-                title,
-                content: document.getElementById('noteContent').value || '',
-                subjectId: document.getElementById('noteSubject').value || null,
-                topicId: null,
-                conceptId: null,
-                tags: document.getElementById('noteTags').value.split(',').map(t => t.trim()).filter(Boolean),
-                pinned: false,
-                archived: false,
-                createdAt: new Date().toISOString(),
-                updatedAt: new Date().toISOString(),
-            });
+            data.notes.push({ id: genId(), title, content: document.getElementById('noteContent').value || '', subjectId: document
+                    .getElementById('noteSubject').value || null, topicId: null, conceptId: null, tags: document
+                    .getElementById('noteTags').value.split(',').map(t => t.trim()).filter(Boolean), pinned: false,
+                archived: false, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() });
             saveData();
             closeModal();
             toast('✅ Note saved', 'success');
@@ -1892,55 +1555,36 @@
             renderPage('notes');
         }
 
-        function archiveNote(id) {
-            const n = data.notes.find(n => n.id === id);
-            if (n) { n.archived = true;
+        function archiveNote(id) { const n = data.notes.find(n => n.id === id); if (n) { n.archived = true;
                 saveData();
                 toast('📦 Archived', 'info');
-                renderPage('notes'); }
-        }
+                renderPage('notes'); } }
 
-        function unarchiveNote(id) {
-            const n = data.notes.find(n => n.id === id);
-            if (n) { n.archived = false;
+        function unarchiveNote(id) { const n = data.notes.find(n => n.id === id); if (n) { n.archived = false;
                 saveData();
                 toast('📂 Restored', 'info');
-                renderPage('notes'); }
-        }
+                renderPage('notes'); } }
 
-        function deleteNote(id) {
-            if (!confirm('Delete this note?')) return;
-            data.notes = data.notes.filter(n => n.id !== id);
+        function deleteNote(id) { if (!confirm('Delete this note?')) return; data.notes = data.notes.filter(n => n.id !== id);
             saveData();
             toast('🗑️ Deleted', 'info');
-            renderPage('notes');
-        }
+            renderPage('notes'); }
 
         // ================================================================
-        //  TASKS
+        //  TASKS (compact)
         // ================================================================
 
         function renderTasks() {
             let html =
                 `<div class="flex-between"><div><div class="page-title">✅ Tasks</div><div class="page-subtitle">Manage to-dos.</div></div><button class="btn btn-primary" onclick="showAddTask()">+ New Task</button></div>`;
-            const tasks = data.tasks.sort((a, b) => {
-                const pri = { high: 0, medium: 1, low: 2 };
-                return (pri[a.priority] || 1) - (pri[b.priority] || 1);
-            });
-            if (!tasks.length) {
-                html +=
-                    `<div class="empty-state"><div class="icon">✅</div><div class="title">No tasks</div><div class="desc">Add your first task.</div></div>`;
-            } else {
+            const tasks = data.tasks.sort((a, b) => ({ high: 0, medium: 1, low: 2 } [a.priority] || 1) - ({ high: 0,
+                    medium: 1, low: 2 } [b.priority] || 1));
+            if (!tasks.length) { html +=
+                    `<div class="empty-state"><div class="icon">✅</div><div class="title">No tasks</div><div class="desc">Add your first task.</div></div>`; } else {
                 html += `<div class="table-wrap mt-2"><table><thead><tr><th>Task</th><th>Subject</th><th>Priority</th><th>Status</th><th>Deadline</th><th>Actions</th></tr></thead><tbody>`;
                 tasks.forEach(t => {
-                    html += `<tr>
-                <td><span style="font-weight:500;">${t.title}</span></td>
-                <td>${t.subjectId?getSubjectName(t.subjectId):'—'}</td>
-                <td><span class="pill ${t.priority==='high'?'red':t.priority==='medium'?'gold':'green'}">${t.priority||'medium'}</span></td>
-                <td><span class="pill ${t.status==='Completed'?'green':t.status==='In progress'?'blue':'purple'}">${t.status||'Not started'}</span></td>
-                <td>${t.deadline?new Date(t.deadline).toLocaleDateString():'—'}</td>
-                <td><button class="btn btn-sm btn-ghost" onclick="toggleTaskStatus('${t.id}')">↻</button><button class="btn btn-sm btn-ghost" onclick="editTask('${t.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteTask('${t.id}')">🗑️</button></td>
-              </tr>`;
+                    html +=
+                        `<tr><td><span style="font-weight:500;">${t.title}</span></td><td>${t.subjectId?getSubjectName(t.subjectId):'—'}</td><td><span class="pill ${t.priority==='high'?'red':t.priority==='medium'?'gold':'green'}">${t.priority||'medium'}</span></td><td><span class="pill ${t.status==='Completed'?'green':t.status==='In progress'?'blue':'purple'}">${t.status||'Not started'}</span></td><td>${t.deadline?new Date(t.deadline).toLocaleDateString():'—'}</td><td><button class="btn btn-sm btn-ghost" onclick="toggleTaskStatus('${t.id}')">↻</button><button class="btn btn-sm btn-ghost" onclick="editTask('${t.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteTask('${t.id}')">🗑️</button></td></tr>`;
                 });
                 html += `</tbody></table></div>`;
             }
@@ -1956,7 +1600,6 @@
             <div class="form-group"><label>Priority</label><select id="taskPriority"><option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option></select></div>
             <div class="form-group"><label>Status</label><select id="taskStatus"><option value="Not started">Not started</option><option value="In progress">In progress</option><option value="Completed">Completed</option></select></div>
             <div class="form-group"><label>Deadline</label><input id="taskDeadline" type="date" /></div>
-            <div class="form-group"><label>Estimated (min)</label><input id="taskTime" type="number" /></div>
             <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="addTask()">Add</button></div>
           `);
         }
@@ -1964,17 +1607,10 @@
         function addTask() {
             const title = document.getElementById('taskTitle').value.trim();
             if (!title) { toast('Title required.', 'error'); return; }
-            data.tasks.push({
-                id: genId(),
-                title,
-                subjectId: document.getElementById('taskSubject').value || null,
-                priority: document.getElementById('taskPriority').value,
-                status: document.getElementById('taskStatus').value,
-                deadline: document.getElementById('taskDeadline').value || null,
-                estimatedTime: parseInt(document.getElementById('taskTime').value) || null,
-                recurrence: null,
-                createdAt: new Date().toISOString(),
-            });
+            data.tasks.push({ id: genId(), title, subjectId: document.getElementById('taskSubject').value || null,
+                priority: document.getElementById('taskPriority').value, status: document.getElementById('taskStatus')
+                    .value, deadline: document.getElementById('taskDeadline').value || null,
+                estimatedTime: null, recurrence: null, createdAt: new Date().toISOString() });
             saveData();
             closeModal();
             toast('✅ Task added', 'success');
@@ -2021,36 +1657,25 @@
             renderPage('tasks');
         }
 
-        function deleteTask(id) {
-            if (!confirm('Delete this task?')) return;
-            data.tasks = data.tasks.filter(t => t.id !== id);
+        function deleteTask(id) { if (!confirm('Delete this task?')) return; data.tasks = data.tasks.filter(t => t.id !== id);
             saveData();
             toast('🗑️ Deleted', 'info');
-            renderPage('tasks');
-        }
+            renderPage('tasks'); }
 
         // ================================================================
-        //  MISTAKES
+        //  MISTAKES (compact)
         // ================================================================
 
         function renderMistakes() {
             let html =
                 `<div class="flex-between"><div><div class="page-title">❌ Mistake Bank</div><div class="page-subtitle">Learn from mistakes.</div></div><button class="btn btn-primary" onclick="showAddMistake()">+ Record</button></div>`;
             const mistakes = data.mistakes.sort((a, b) => new Date(b.date) - new Date(a.date));
-            if (!mistakes.length) {
-                html +=
-                    `<div class="empty-state"><div class="icon">✅</div><div class="title">No mistakes yet</div><div class="desc">Record your first mistake.</div></div>`;
-            } else {
+            if (!mistakes.length) { html +=
+                    `<div class="empty-state"><div class="icon">✅</div><div class="title">No mistakes yet</div><div class="desc">Record your first mistake.</div></div>`; } else {
                 html += `<div class="table-wrap mt-2"><table><thead><tr><th>Question</th><th>Subject</th><th>Type</th><th>Date</th><th>Reviewed</th><th>Actions</th></tr></thead><tbody>`;
                 mistakes.forEach(m => {
-                    html += `<tr>
-                <td>${m.question||'—'}</td>
-                <td>${m.subjectId?getSubjectName(m.subjectId):'—'}</td>
-                <td><span class="pill purple">${m.type||'Other'}</span></td>
-                <td>${new Date(m.date).toLocaleDateString()}</td>
-                <td>${m.reviewed?'✅':'⏳'}</td>
-                <td><button class="btn btn-sm btn-ghost" onclick="toggleMistakeReviewed('${m.id}')">↻</button><button class="btn btn-sm btn-ghost" onclick="editMistake('${m.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteMistake('${m.id}')">🗑️</button></td>
-              </tr>`;
+                    html +=
+                        `<tr><td>${m.question||'—'}</td><td>${m.subjectId?getSubjectName(m.subjectId):'—'}</td><td><span class="pill purple">${m.type||'Other'}</span></td><td>${new Date(m.date).toLocaleDateString()}</td><td>${m.reviewed?'✅':'⏳'}</td><td><button class="btn btn-sm btn-ghost" onclick="toggleMistakeReviewed('${m.id}')">↻</button><button class="btn btn-sm btn-ghost" onclick="editMistake('${m.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteMistake('${m.id}')">🗑️</button></td></tr>`;
                 });
                 html += `</tbody></table></div>`;
             }
@@ -2077,19 +1702,12 @@
 
         function addMistake() {
             const question = document.getElementById('mistakeQuestion').value.trim() || 'Mistake';
-            data.mistakes.push({
-                id: genId(),
-                subjectId: document.getElementById('mistakeSubject').value || null,
-                question,
-                myAnswer: document.getElementById('mistakeMyAnswer').value || '',
-                correctAnswer: document.getElementById('mistakeCorrectAnswer').value || '',
-                whyWrong: document.getElementById('mistakeWhy').value || '',
-                type: document.getElementById('mistakeType').value,
-                date: new Date().toISOString(),
-                difficulty: 'medium',
-                reviewed: false,
-                correctedUnderstanding: document.getElementById('mistakeCorrected').value || '',
-            });
+            data.mistakes.push({ id: genId(), subjectId: document.getElementById('mistakeSubject').value || null,
+                question, myAnswer: document.getElementById('mistakeMyAnswer').value || '', correctAnswer: document
+                    .getElementById('mistakeCorrectAnswer').value || '', whyWrong: document.getElementById(
+                    'mistakeWhy').value || '', type: document.getElementById('mistakeType').value, date: new Date()
+                    .toISOString(), difficulty: 'medium', reviewed: false, correctedUnderstanding: document
+                    .getElementById('mistakeCorrected').value || '' });
             saveData();
             closeModal();
             toast('✅ Mistake recorded', 'success');
@@ -2132,47 +1750,32 @@
             renderPage('mistakes');
         }
 
-        function toggleMistakeReviewed(id) {
-            const m = data.mistakes.find(m => m.id === id);
-            if (m) { m.reviewed = !m.reviewed;
+        function toggleMistakeReviewed(id) { const m = data.mistakes.find(m => m.id === id); if (m) { m.reviewed = !m
+                    .reviewed;
                 saveData();
                 toast(m.reviewed ? '✅ Reviewed' : '⏳ Unreviewed', 'info');
-                renderPage('mistakes'); }
-        }
+                renderPage('mistakes'); } }
 
-        function deleteMistake(id) {
-            if (!confirm('Delete this mistake?')) return;
-            data.mistakes = data.mistakes.filter(m => m.id !== id);
+        function deleteMistake(id) { if (!confirm('Delete this mistake?')) return; data.mistakes = data.mistakes.filter(m => m
+                    .id !== id);
             saveData();
             toast('🗑️ Deleted', 'info');
-            renderPage('mistakes');
-        }
+            renderPage('mistakes'); }
 
         // ================================================================
-        //  FLASHCARDS
+        //  FLASHCARDS (compact)
         // ================================================================
 
         function renderFlashcards() {
             let html =
                 `<div class="flex-between"><div><div class="page-title">🃏 Flashcards</div><div class="page-subtitle">Active recall.</div></div><button class="btn btn-primary" onclick="showAddFlashcard()">+ New</button></div>`;
             const cards = data.flashcards;
-            if (!cards.length) {
-                html +=
-                    `<div class="empty-state"><div class="icon">🃏</div><div class="title">No flashcards</div><div class="desc">Create your first card.</div></div>`;
-            } else {
+            if (!cards.length) { html +=
+                    `<div class="empty-state"><div class="icon">🃏</div><div class="title">No flashcards</div><div class="desc">Create your first card.</div></div>`; } else {
                 html += `<div class="grid-3 mt-2">`;
                 cards.forEach(c => {
-                    html += `<div class="card">
-                <div style="font-weight:600;">${c.front||'Question'}</div>
-                <div class="text-sm text-muted mt-1">${c.back||'Answer'}</div>
-                <div style="display:flex;gap:0.3rem;margin-top:0.4rem;flex-wrap:wrap;align-items:center;">
-                  <span class="pill ${c.confidence>3?'green':c.confidence>1?'gold':'red'}">${c.confidence||0}/5</span>
-                  <span class="badge">${c.subjectId?getSubjectName(c.subjectId):'General'}</span>
-                  <button class="btn btn-sm btn-ghost" onclick="editFlashcard('${c.id}')">✏️</button>
-                  <button class="btn btn-sm btn-danger" onclick="deleteFlashcard('${c.id}')">🗑️</button>
-                </div>
-                <div style="font-size:0.7rem;color:var(--text-muted);margin-top:0.2rem;">Review: ${c.reviewDate?new Date(c.reviewDate).toLocaleDateString():'—'}</div>
-              </div>`;
+                    html +=
+                        `<div class="card"><div style="font-weight:600;">${c.front||'Question'}</div><div class="text-sm text-muted mt-1">${c.back||'Answer'}</div><div style="display:flex;gap:0.3rem;margin-top:0.4rem;flex-wrap:wrap;align-items:center;"><span class="pill ${c.confidence>3?'green':c.confidence>1?'gold':'red'}">${c.confidence||0}/5</span><span class="badge">${c.subjectId?getSubjectName(c.subjectId):'General'}</span><button class="btn btn-sm btn-ghost" onclick="editFlashcard('${c.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteFlashcard('${c.id}')">🗑️</button></div><div style="font-size:0.7rem;color:var(--text-muted);margin-top:0.2rem;">Review: ${c.reviewDate?new Date(c.reviewDate).toLocaleDateString():'—'}</div></div>`;
                 });
                 html += `</div>`;
             }
@@ -2195,20 +1798,10 @@
             const front = document.getElementById('flashFront').value.trim();
             const back = document.getElementById('flashBack').value.trim();
             if (!front || !back) { toast('Both sides required.', 'error'); return; }
-            data.flashcards.push({
-                id: genId(),
-                front,
-                back,
-                subjectId: document.getElementById('flashSubject').value || null,
-                topic: null,
-                concept: null,
-                difficulty: 'medium',
-                confidence: parseInt(document.getElementById('flashConfidence').value) || 3,
-                reviewDate: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString(),
-                correct: 0,
-                incorrect: 0,
-                lastReviewed: null,
-            });
+            data.flashcards.push({ id: genId(), front, back, subjectId: document.getElementById('flashSubject').value ||
+                    null, topic: null, concept: null, difficulty: 'medium', confidence: parseInt(document
+                    .getElementById('flashConfidence').value) || 3, reviewDate: new Date(Date.now() + 3 * 24 * 60 *
+                    60 * 1000).toISOString(), correct: 0, incorrect: 0, lastReviewed: null });
             saveData();
             closeModal();
             toast('✅ Flashcard added', 'success');
@@ -2242,16 +1835,14 @@
             renderPage('flashcards');
         }
 
-        function deleteFlashcard(id) {
-            if (!confirm('Delete this flashcard?')) return;
-            data.flashcards = data.flashcards.filter(c => c.id !== id);
+        function deleteFlashcard(id) { if (!confirm('Delete this flashcard?')) return; data.flashcards = data.flashcards
+                .filter(c => c.id !== id);
             saveData();
             toast('🗑️ Deleted', 'info');
-            renderPage('flashcards');
-        }
+            renderPage('flashcards'); }
 
         // ================================================================
-        //  PAST PAPERS (FULLY IMPLEMENTED)
+        //  PAST PAPERS — FULLY ROBUST (FIXED)
         // ================================================================
 
         function renderPastPapers() {
@@ -2275,11 +1866,8 @@
                 html += `<div class="grid-2 mt-2">`;
                 papers.forEach(p => {
                     const subName = p.subjectId ? getSubjectName(p.subjectId) : 'General';
-                    const fileIcon = p.fileType ? (
-                        p.fileType.startsWith('image/') ? '🖼️' :
-                        p.fileType === 'application/pdf' ? '📄' :
-                        '📎'
-                    ) : '📎';
+                    const fileIcon = p.fileType ? (p.fileType.startsWith('image/') ? '🖼️' : p.fileType ===
+                        'application/pdf' ? '📄' : '📎') : '📎';
                     const fileSize = p.fileSize ? (p.fileSize / 1024).toFixed(1) + ' KB' : '—';
                     const downloadLink = p.fileData ? `data:${p.fileType};base64,${p.fileData}` : '#';
                     html += `
@@ -2308,8 +1896,12 @@
             return html;
         }
 
+        // The key fix: store the file input reference and use it directly.
+        let pendingFileUpload = null;
+
         function showAddPastPaper() {
             const subjects = data.subjects.filter(s => !s.archived);
+            pendingFileUpload = null; // reset
             openModal(`
             <div class="modal-title">📄 Upload Past Paper</div>
             <div class="modal-sub">Add a past paper with file attachment.</div>
@@ -2320,8 +1912,26 @@
             <div class="form-group"><label>Paper Number</label><input id="ppPaperNumber" placeholder="e.g. 1" /></div>
             <div class="form-group"><label>File (PDF, image, etc.)</label><input id="ppFile" type="file" accept=".pdf,.png,.jpg,.jpeg,.doc,.docx,.txt" /><div class="text-xs text-muted mt-1">Max file size ~5MB recommended.</div></div>
             <div class="form-group"><label>Notes (optional)</label><textarea id="ppNotes" rows="2"></textarea></div>
-            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="addPastPaper()">Upload</button></div>
+            <div class="form-actions">
+              <button class="btn" onclick="closeModal()">Cancel</button>
+              <button class="btn btn-primary" id="uploadBtn" onclick="addPastPaper()">Upload</button>
+            </div>
           `);
+            // Attach a change listener to store the file reference
+            const fileInput = document.getElementById('ppFile');
+            if (fileInput) {
+                fileInput.onchange = function(e) {
+                    if (this.files && this.files.length > 0) {
+                        pendingFileUpload = this.files[0];
+                    } else {
+                        pendingFileUpload = null;
+                    }
+                };
+                // If the user has already selected a file before the listener is attached, check it.
+                if (fileInput.files && fileInput.files.length > 0) {
+                    pendingFileUpload = fileInput.files[0];
+                }
+            }
         }
 
         function addPastPaper() {
@@ -2331,37 +1941,59 @@
             const session = document.getElementById('ppSession').value.trim() || null;
             const paperNumber = document.getElementById('ppPaperNumber').value.trim() || null;
             const notes = document.getElementById('ppNotes').value.trim() || '';
-            const fileInput = document.getElementById('ppFile');
 
-            if (!fileInput.files || fileInput.files.length === 0) {
+            // Use the stored file reference, or get it fresh from the DOM
+            let file = pendingFileUpload;
+            if (!file) {
+                const fileInput = document.getElementById('ppFile');
+                if (fileInput && fileInput.files && fileInput.files.length > 0) {
+                    file = fileInput.files[0];
+                }
+            }
+
+            if (!file) {
                 toast('Please select a file to upload.', 'error');
                 return;
             }
 
-            const file = fileInput.files[0];
+            // Disable the upload button to prevent double-clicks
+            const uploadBtn = document.getElementById('uploadBtn');
+            if (uploadBtn) { uploadBtn.disabled = true;
+                uploadBtn.textContent = 'Uploading...'; }
+
             const reader = new FileReader();
             reader.onload = function(e) {
-                const base64 = e.target.result.split(',')[1];
-                data.pastPapers.push({
-                    id: genId(),
-                    title,
-                    subjectId,
-                    year,
-                    session,
-                    paperNumber,
-                    fileName: file.name,
-                    fileType: file.type,
-                    fileSize: file.size,
-                    fileData: base64,
-                    notes,
-                    uploadedAt: new Date().toISOString(),
-                });
-                saveData();
-                closeModal();
-                toast('✅ Past paper uploaded!', 'success');
-                renderPage('pastpapers');
+                try {
+                    const base64 = e.target.result.split(',')[1];
+                    data.pastPapers.push({
+                        id: genId(),
+                        title,
+                        subjectId,
+                        year,
+                        session,
+                        paperNumber,
+                        fileName: file.name,
+                        fileType: file.type,
+                        fileSize: file.size,
+                        fileData: base64,
+                        notes,
+                        uploadedAt: new Date().toISOString(),
+                    });
+                    saveData();
+                    closeModal();
+                    toast('✅ Past paper uploaded!', 'success');
+                    renderPage('pastpapers');
+                } catch (err) {
+                    toast('Error processing file: ' + err.message, 'error');
+                    if (uploadBtn) { uploadBtn.disabled = false;
+                        uploadBtn.textContent = 'Upload'; }
+                }
             };
-            reader.onerror = function() { toast('Error reading file.', 'error'); };
+            reader.onerror = function() {
+                toast('Error reading file.', 'error');
+                if (uploadBtn) { uploadBtn.disabled = false;
+                    uploadBtn.textContent = 'Upload'; }
+            };
             reader.readAsDataURL(file);
         }
 
@@ -2369,6 +2001,7 @@
             const p = data.pastPapers.find(p => p.id === id);
             if (!p) return;
             const subjects = data.subjects.filter(s => !s.archived);
+            pendingFileUpload = null;
             openModal(`
             <div class="modal-title">✏️ Edit Past Paper</div>
             <div class="form-group"><label>Title</label><input id="editPpTitle" value="${p.title||''}" /></div>
@@ -2378,8 +2011,24 @@
             <div class="form-group"><label>Paper Number</label><input id="editPpPaperNumber" value="${p.paperNumber||''}" /></div>
             <div class="form-group"><label>Notes</label><textarea id="editPpNotes" rows="2">${p.notes||''}</textarea></div>
             <div class="form-group"><label>Replace File (optional)</label><input id="editPpFile" type="file" accept=".pdf,.png,.jpg,.jpeg,.doc,.docx,.txt" /><div class="text-xs text-muted mt-1">Current: ${p.fileName||'None'}</div></div>
-            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEditPastPaper('${id}')">Save</button></div>
+            <div class="form-actions">
+              <button class="btn" onclick="closeModal()">Cancel</button>
+              <button class="btn btn-primary" id="editUploadBtn" onclick="saveEditPastPaper('${id}')">Save</button>
+            </div>
           `);
+            const fileInput = document.getElementById('editPpFile');
+            if (fileInput) {
+                fileInput.onchange = function(e) {
+                    if (this.files && this.files.length > 0) {
+                        pendingFileUpload = this.files[0];
+                    } else {
+                        pendingFileUpload = null;
+                    }
+                };
+                if (fileInput.files && fileInput.files.length > 0) {
+                    pendingFileUpload = fileInput.files[0];
+                }
+            }
         }
 
         function saveEditPastPaper(id) {
@@ -2392,20 +2041,40 @@
             p.paperNumber = document.getElementById('editPpPaperNumber').value.trim() || null;
             p.notes = document.getElementById('editPpNotes').value.trim() || '';
 
-            const fileInput = document.getElementById('editPpFile');
-            if (fileInput.files && fileInput.files.length > 0) {
-                const file = fileInput.files[0];
+            let file = pendingFileUpload;
+            if (!file) {
+                const fileInput = document.getElementById('editPpFile');
+                if (fileInput && fileInput.files && fileInput.files.length > 0) {
+                    file = fileInput.files[0];
+                }
+            }
+
+            if (file) {
+                const btn = document.getElementById('editUploadBtn');
+                if (btn) { btn.disabled = true;
+                    btn.textContent = 'Saving...'; }
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    const base64 = e.target.result.split(',')[1];
-                    p.fileName = file.name;
-                    p.fileType = file.type;
-                    p.fileSize = file.size;
-                    p.fileData = base64;
-                    saveData();
-                    closeModal();
-                    toast('✅ Past paper updated with new file.', 'success');
-                    renderPage('pastpapers');
+                    try {
+                        const base64 = e.target.result.split(',')[1];
+                        p.fileName = file.name;
+                        p.fileType = file.type;
+                        p.fileSize = file.size;
+                        p.fileData = base64;
+                        saveData();
+                        closeModal();
+                        toast('✅ Past paper updated with new file.', 'success');
+                        renderPage('pastpapers');
+                    } catch (err) {
+                        toast('Error processing file: ' + err.message, 'error');
+                        if (btn) { btn.disabled = false;
+                            btn.textContent = 'Save'; }
+                    }
+                };
+                reader.onerror = function() {
+                    toast('Error reading file.', 'error');
+                    if (btn) { btn.disabled = false;
+                        btn.textContent = 'Save'; }
                 };
                 reader.readAsDataURL(file);
             } else {
@@ -2462,12 +2131,9 @@
         }
 
         function toggleTimer() {
-            if (timerState.running) {
-                clearInterval(timerState.interval);
+            if (timerState.running) { clearInterval(timerState.interval);
                 timerState.running = false;
-                renderPage('timer');
-                return;
-            }
+                renderPage('timer'); return; }
             timerState.running = true;
             timerState.interval = setInterval(() => {
                 timerState.timeLeft--;
@@ -2537,20 +2203,11 @@
             <div class="page-subtitle">Exams, deadlines, and events.</div>
             <div class="card" style="max-width:600px;">
               <div style="font-weight:600;font-size:1.1rem;text-align:center;margin-bottom:0.5rem;">${monthNames[month]} ${year}</div>
-              <div class="cal-grid">
-                <div class="cal-header">Sun</div><div class="cal-header">Mon</div><div class="cal-header">Tue</div><div class="cal-header">Wed</div><div class="cal-header">Thu</div><div class="cal-header">Fri</div><div class="cal-header">Sat</div>
-                ${daysHtml}
-              </div>
+              <div class="cal-grid"><div class="cal-header">Sun</div><div class="cal-header">Mon</div><div class="cal-header">Tue</div><div class="cal-header">Wed</div><div class="cal-header">Thu</div><div class="cal-header">Fri</div><div class="cal-header">Sat</div>${daysHtml}</div>
             </div>
             <div class="mt-2">
               <div class="flex-between"><span style="font-weight:600;">📌 Upcoming</span><button class="btn btn-sm btn-primary" onclick="showAddEvent()">+ Add Event</button></div>
-              ${data.events.filter(e=>new Date(e.date)>=now).sort((a,b)=>new Date(a.date)-new Date(b.date)).slice(0,6).map(e=>`
-                <div class="mission-item" style="border-left-color:${e.type==='exam'?'#e74c4c':e.type==='deadline'?'#f1c40f':'#6c3b9a'};">
-                  <span class="dot ${e.type==='exam'?'red':e.type==='deadline'?'yellow':'green'}"></span>
-                  <div class="info"><div class="title">${e.title}</div><div class="sub">${new Date(e.date).toLocaleDateString()} · ${e.type||'event'}</div></div>
-                  <button class="btn btn-sm btn-ghost" onclick="deleteEvent('${e.id}')">🗑️</button>
-                </div>
-              `).join('')}
+              ${data.events.filter(e=>new Date(e.date)>=now).sort((a,b)=>new Date(a.date)-new Date(b.date)).slice(0,6).map(e=>`<div class="mission-item" style="border-left-color:${e.type==='exam'?'#e74c4c':e.type==='deadline'?'#f1c40f':'#6c3b9a'};"><span class="dot ${e.type==='exam'?'red':e.type==='deadline'?'yellow':'green'}"></span><div class="info"><div class="title">${e.title}</div><div class="sub">${new Date(e.date).toLocaleDateString()} · ${e.type||'event'}</div></div><button class="btn btn-sm btn-ghost" onclick="deleteEvent('${e.id}')">🗑️</button></div>`).join('')}
               ${data.events.filter(e=>new Date(e.date)>=now).length===0?'<div class="text-muted text-sm mt-1">No upcoming events.</div>':''}
             </div>
           `;
@@ -2579,18 +2236,16 @@
             renderPage('calendar');
         }
 
-        function deleteEvent(id) {
-            if (!confirm('Delete this event?')) return;
-            data.events = data.events.filter(e => e.id !== id);
+        function deleteEvent(id) { if (!confirm('Delete this event?')) return; data.events = data.events.filter(e => e.id !==
+                id);
             saveData();
             toast('🗑️ Deleted', 'info');
-            renderPage('calendar');
-        }
+            renderPage('calendar'); }
 
         function initCalendar() {}
 
         // ================================================================
-        //  ACTIVITIES
+        //  ACTIVITIES (compact)
         // ================================================================
 
         function renderActivities() {
@@ -2598,24 +2253,12 @@
                 `<div class="flex-between"><div><div class="page-title">🏆 ECC & Co-Curricular</div><div class="page-subtitle">Track activities, leadership, volunteering.</div></div><button class="btn btn-primary" onclick="showAddActivity()">+ Add Activity</button></div>`;
             const activities = data.activities.sort((a, b) => new Date(b.startDate || b.endDate) - new Date(a.startDate || a
                 .endDate));
-            if (!activities.length) {
-                html +=
-                    `<div class="empty-state"><div class="icon">🏆</div><div class="title">No activities</div><div class="desc">Record your co-curriculars.</div></div>`;
-            } else {
+            if (!activities.length) { html +=
+                    `<div class="empty-state"><div class="icon">🏆</div><div class="title">No activities</div><div class="desc">Record your co-curriculars.</div></div>`; } else {
                 html += `<div class="grid-2 mt-2">`;
                 activities.forEach(a => {
-                    html += `<div class="card">
-                <div style="font-weight:600;font-size:1.05rem;">${a.name}</div>
-                <div class="text-sm text-muted">${a.category||'Other'} · ${a.role||'Member'}</div>
-                <div class="text-sm">${a.organization||''} ${a.startDate?`(${new Date(a.startDate).getFullYear()})`:''}</div>
-                <div style="display:flex;gap:0.3rem;margin-top:0.4rem;flex-wrap:wrap;">
-                  <span class="pill ${a.status==='Active'?'green':'purple'}">${a.status||'Completed'}</span>
-                  <span class="badge">${a.hours||0}h</span>
-                  <button class="btn btn-sm btn-ghost" onclick="editActivity('${a.id}')">✏️</button>
-                  <button class="btn btn-sm btn-danger" onclick="deleteActivity('${a.id}')">🗑️</button>
-                </div>
-                ${a.impact?`<div class="text-sm mt-1">📊 ${a.impact.slice(0,80)}${a.impact.length>80?'...':''}</div>`:''}
-              </div>`;
+                    html +=
+                        `<div class="card"><div style="font-weight:600;font-size:1.05rem;">${a.name}</div><div class="text-sm text-muted">${a.category||'Other'} · ${a.role||'Member'}</div><div class="text-sm">${a.organization||''} ${a.startDate?`(${new Date(a.startDate).getFullYear()})`:''}</div><div style="display:flex;gap:0.3rem;margin-top:0.4rem;flex-wrap:wrap;"><span class="pill ${a.status==='Active'?'green':'purple'}">${a.status||'Completed'}</span><span class="badge">${a.hours||0}h</span><button class="btn btn-sm btn-ghost" onclick="editActivity('${a.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteActivity('${a.id}')">🗑️</button></div>${a.impact?`<div class="text-sm mt-1">📊 ${a.impact.slice(0,80)}${a.impact.length>80?'...':''}</div>`:''}</div>`;
                 });
                 html += `</div>`;
             }
@@ -2644,24 +2287,13 @@
         function addActivity() {
             const name = document.getElementById('actName').value.trim();
             if (!name) { toast('Name required.', 'error'); return; }
-            data.activities.push({
-                id: genId(),
-                name,
-                category: document.getElementById('actCategory').value,
-                organization: document.getElementById('actOrg').value || '',
-                role: document.getElementById('actRole').value || '',
-                startDate: document.getElementById('actStart').value || null,
-                endDate: document.getElementById('actEnd').value || null,
-                status: document.getElementById('actStatus').value,
-                hours: parseInt(document.getElementById('actHours').value) || 0,
-                grade: data.student.grade || 'Grade 9',
-                level: 'School',
-                description: document.getElementById('actDesc').value || '',
-                achievements: '',
-                impact: '',
-                evidence: '',
-                reflection: '',
-            });
+            data.activities.push({ id: genId(), name, category: document.getElementById('actCategory').value,
+                organization: document.getElementById('actOrg').value || '', role: document.getElementById('actRole')
+                    .value || '', startDate: document.getElementById('actStart').value || null, endDate: document
+                    .getElementById('actEnd').value || null, status: document.getElementById('actStatus').value,
+                hours: parseInt(document.getElementById('actHours').value) || 0, grade: data.student.grade ||
+                    'Grade 9', level: 'School', description: document.getElementById('actDesc').value || '',
+                achievements: '', impact: '', evidence: '', reflection: '' });
             saveData();
             closeModal();
             toast('✅ Activity added', 'success');
@@ -2707,34 +2339,26 @@
             renderPage('activities');
         }
 
-        function deleteActivity(id) {
-            if (!confirm('Delete this activity?')) return;
-            data.activities = data.activities.filter(a => a.id !== id);
+        function deleteActivity(id) { if (!confirm('Delete this activity?')) return; data.activities = data.activities.filter(
+                a => a.id !== id);
             saveData();
             toast('🗑️ Deleted', 'info');
-            renderPage('activities');
-        }
+            renderPage('activities'); }
 
         // ================================================================
-        //  GOALS
+        //  GOALS (compact)
         // ================================================================
 
         function renderGoals() {
             let html =
                 `<div class="flex-between"><div><div class="page-title">🎯 Goals</div><div class="page-subtitle">Track personal and academic goals.</div></div><button class="btn btn-primary" onclick="showAddGoal()">+ New Goal</button></div>`;
             const goals = data.goals.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-            if (!goals.length) {
-                html +=
-                    `<div class="empty-state"><div class="icon">🎯</div><div class="title">No goals</div><div class="desc">Set your first goal.</div></div>`;
-            } else {
+            if (!goals.length) { html +=
+                    `<div class="empty-state"><div class="icon">🎯</div><div class="title">No goals</div><div class="desc">Set your first goal.</div></div>`; } else {
                 html += `<div class="grid-2 mt-2">`;
                 goals.forEach(g => {
-                    html += `<div class="card">
-                <div style="font-weight:600;font-size:1.05rem;">${g.title}</div>
-                <div class="text-sm text-muted">${g.category||'General'} · ${g.deadline?new Date(g.deadline).toLocaleDateString():'No deadline'}</div>
-                <div style="margin-top:0.3rem;"><div style="display:flex;justify-content:space-between;font-size:0.8rem;"><span>Progress</span><span>${g.progress||0}%</span></div><div class="progress" style="height:6px;"><div class="bar" style="width:${g.progress||0}%;"></div></div></div>
-                <div style="display:flex;gap:0.3rem;margin-top:0.4rem;"><button class="btn btn-sm btn-ghost" onclick="editGoal('${g.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteGoal('${g.id}')">🗑️</button></div>
-              </div>`;
+                    html +=
+                        `<div class="card"><div style="font-weight:600;font-size:1.05rem;">${g.title}</div><div class="text-sm text-muted">${g.category||'General'} · ${g.deadline?new Date(g.deadline).toLocaleDateString():'No deadline'}</div><div style="margin-top:0.3rem;"><div style="display:flex;justify-content:space-between;font-size:0.8rem;"><span>Progress</span><span>${g.progress||0}%</span></div><div class="progress" style="height:6px;"><div class="bar" style="width:${g.progress||0}%;"></div></div></div><div style="display:flex;gap:0.3rem;margin-top:0.4rem;"><button class="btn btn-sm btn-ghost" onclick="editGoal('${g.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteGoal('${g.id}')">🗑️</button></div></div>`;
                 });
                 html += `</div>`;
             }
@@ -2755,16 +2379,10 @@
         function addGoal() {
             const title = document.getElementById('goalTitle').value.trim();
             if (!title) { toast('Title required.', 'error'); return; }
-            data.goals.push({
-                id: genId(),
-                title,
-                category: document.getElementById('goalCategory').value,
-                deadline: document.getElementById('goalDeadline').value || null,
-                milestones: [],
-                progress: parseInt(document.getElementById('goalProgress').value) || 0,
-                reflection: '',
-                createdAt: new Date().toISOString(),
-            });
+            data.goals.push({ id: genId(), title, category: document.getElementById('goalCategory').value, deadline: document
+                    .getElementById('goalDeadline').value || null, milestones: [], progress: parseInt(document
+                    .getElementById('goalProgress').value) || 0, reflection: '', createdAt: new Date()
+                    .toISOString() });
             saveData();
             closeModal();
             toast('✅ Goal added', 'success');
@@ -2797,34 +2415,25 @@
             renderPage('goals');
         }
 
-        function deleteGoal(id) {
-            if (!confirm('Delete this goal?')) return;
-            data.goals = data.goals.filter(g => g.id !== id);
+        function deleteGoal(id) { if (!confirm('Delete this goal?')) return; data.goals = data.goals.filter(g => g.id !== id);
             saveData();
             toast('🗑️ Deleted', 'info');
-            renderPage('goals');
-        }
+            renderPage('goals'); }
 
         // ================================================================
-        //  STORIES
+        //  STORIES (compact)
         // ================================================================
 
         function renderStories() {
             let html =
                 `<div class="flex-between"><div><div class="page-title">📖 Story Bank</div><div class="page-subtitle">Preserve meaningful experiences.</div></div><button class="btn btn-primary" onclick="showAddStory()">+ New Story</button></div>`;
             const stories = data.stories.sort((a, b) => new Date(b.date) - new Date(a.date));
-            if (!stories.length) {
-                html +=
-                    `<div class="empty-state"><div class="icon">📖</div><div class="title">No stories</div><div class="desc">Capture your journey.</div></div>`;
-            } else {
+            if (!stories.length) { html +=
+                    `<div class="empty-state"><div class="icon">📖</div><div class="title">No stories</div><div class="desc">Capture your journey.</div></div>`; } else {
                 html += `<div class="grid-2 mt-2">`;
                 stories.forEach(s => {
-                    html += `<div class="card">
-                <div style="font-weight:600;font-size:1.05rem;">${s.title}</div>
-                <div class="text-sm text-muted">${new Date(s.date).toLocaleDateString()} · ${s.tags?s.tags.join(', '):'untagged'}</div>
-                <div class="text-sm mt-1">${s.situation?s.situation.slice(0,120)+(s.situation.length>120?'...':''):''}</div>
-                <div style="display:flex;gap:0.3rem;margin-top:0.4rem;"><button class="btn btn-sm btn-ghost" onclick="editStory('${s.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteStory('${s.id}')">🗑️</button></div>
-              </div>`;
+                    html +=
+                        `<div class="card"><div style="font-weight:600;font-size:1.05rem;">${s.title}</div><div class="text-sm text-muted">${new Date(s.date).toLocaleDateString()} · ${s.tags?s.tags.join(', '):'untagged'}</div><div class="text-sm mt-1">${s.situation?s.situation.slice(0,120)+(s.situation.length>120?'...':''):''}</div><div style="display:flex;gap:0.3rem;margin-top:0.4rem;"><button class="btn btn-sm btn-ghost" onclick="editStory('${s.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteStory('${s.id}')">🗑️</button></div></div>`;
                 });
                 html += `</div>`;
             }
@@ -2848,22 +2457,12 @@
         function addStory() {
             const title = document.getElementById('storyTitle').value.trim();
             if (!title) { toast('Title required.', 'error'); return; }
-            data.stories.push({
-                id: genId(),
-                title,
-                date: document.getElementById('storyDate').value || new Date().toISOString().split('T')[0],
-                situation: document.getElementById('storySituation').value || '',
-                whatHappened: document.getElementById('storyActions').value || '',
-                actions: '',
-                emotions: '',
-                challenge: '',
-                outcome: document.getElementById('storyOutcome').value || '',
-                lesson: document.getElementById('storyLesson').value || '',
-                growth: '',
-                values: '',
-                relatedActivity: null,
-                tags: document.getElementById('storyTags').value.split(',').map(t => t.trim()).filter(Boolean),
-            });
+            data.stories.push({ id: genId(), title, date: document.getElementById('storyDate').value || new Date()
+                    .toISOString().split('T')[0], situation: document.getElementById('storySituation').value || '',
+                whatHappened: document.getElementById('storyActions').value || '', actions: '', emotions: '',
+                challenge: '', outcome: document.getElementById('storyOutcome').value || '', lesson: document
+                    .getElementById('storyLesson').value || '', growth: '', values: '', relatedActivity: null,
+                tags: document.getElementById('storyTags').value.split(',').map(t => t.trim()).filter(Boolean) });
             saveData();
             closeModal();
             toast('✅ Story saved', 'success');
@@ -2902,33 +2501,26 @@
             renderPage('stories');
         }
 
-        function deleteStory(id) {
-            if (!confirm('Delete this story?')) return;
-            data.stories = data.stories.filter(s => s.id !== id);
+        function deleteStory(id) { if (!confirm('Delete this story?')) return; data.stories = data.stories.filter(s => s.id !==
+                id);
             saveData();
             toast('🗑️ Deleted', 'info');
-            renderPage('stories');
-        }
+            renderPage('stories'); }
 
         // ================================================================
-        //  UNIVERSITIES
+        //  UNIVERSITIES (compact)
         // ================================================================
 
         function renderUniversities() {
             let html =
                 `<div class="flex-between"><div><div class="page-title">🏛️ Universities</div><div class="page-subtitle">Research and track targets.</div></div><button class="btn btn-primary" onclick="showAddUniversity()">+ Add</button></div>`;
             const unis = data.universities;
-            if (!unis.length) {
-                html +=
-                    `<div class="empty-state"><div class="icon">🏛️</div><div class="title">No universities</div><div class="desc">Start your research.</div></div>`;
-            } else {
+            if (!unis.length) { html +=
+                    `<div class="empty-state"><div class="icon">🏛️</div><div class="title">No universities</div><div class="desc">Start your research.</div></div>`; } else {
                 html += `<div class="grid-2 mt-2">`;
                 unis.forEach(u => {
-                    html += `<div class="card">
-                <div class="flex-between"><div><div style="font-weight:600;font-size:1.05rem;">${u.name}</div><div class="text-sm text-muted">${u.country||''} ${u.location||''}</div></div><span class="pill ${u.classification==='dream'?'red':u.classification==='reach'?'gold':u.classification==='target'?'blue':'green'}">${u.classification||'target'}</span></div>
-                <div class="text-sm mt-1">${u.programs?u.programs.slice(0,80)+(u.programs.length>80?'...':''):''}</div>
-                <div style="display:flex;gap:0.3rem;margin-top:0.4rem;"><button class="btn btn-sm btn-ghost" onclick="editUniversity('${u.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteUniversity('${u.id}')">🗑️</button></div>
-              </div>`;
+                    html +=
+                        `<div class="card"><div class="flex-between"><div><div style="font-weight:600;font-size:1.05rem;">${u.name}</div><div class="text-sm text-muted">${u.country||''} ${u.location||''}</div></div><span class="pill ${u.classification==='dream'?'red':u.classification==='reach'?'gold':u.classification==='target'?'blue':'green'}">${u.classification||'target'}</span></div><div class="text-sm mt-1">${u.programs?u.programs.slice(0,80)+(u.programs.length>80?'...':''):''}</div><div style="display:flex;gap:0.3rem;margin-top:0.4rem;"><button class="btn btn-sm btn-ghost" onclick="editUniversity('${u.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteUniversity('${u.id}')">🗑️</button></div></div>`;
                 });
                 html += `</div>`;
             }
@@ -2951,26 +2543,12 @@
         function addUniversity() {
             const name = document.getElementById('uniName').value.trim();
             if (!name) { toast('Name required.', 'error'); return; }
-            data.universities.push({
-                id: genId(),
-                name,
-                country: document.getElementById('uniCountry').value || '',
-                location: document.getElementById('uniLocation').value || '',
-                website: document.getElementById('uniWebsite').value || '',
-                programs: document.getElementById('uniPrograms').value || '',
-                majors: '',
-                applicationSystem: '',
-                deadlines: {},
-                requirements: '',
-                testing: '',
-                essays: '',
-                recommendations: '',
-                financialAid: '',
-                scholarships: '',
-                notes: '',
-                fit: '',
-                classification: document.getElementById('uniClassification').value,
-            });
+            data.universities.push({ id: genId(), name, country: document.getElementById('uniCountry').value || '',
+                location: document.getElementById('uniLocation').value || '', website: document.getElementById(
+                    'uniWebsite').value || '', programs: document.getElementById('uniPrograms').value || '',
+                majors: '', applicationSystem: '', deadlines: {}, requirements: '', testing: '', essays: '',
+                recommendations: '', financialAid: '', scholarships: '', notes: '', fit: '',
+                classification: document.getElementById('uniClassification').value });
             saveData();
             closeModal();
             toast('✅ University added', 'success');
@@ -3009,16 +2587,14 @@
             renderPage('universities');
         }
 
-        function deleteUniversity(id) {
-            if (!confirm('Delete this university?')) return;
-            data.universities = data.universities.filter(u => u.id !== id);
+        function deleteUniversity(id) { if (!confirm('Delete this university?')) return; data.universities = data.universities
+                .filter(u => u.id !== id);
             saveData();
             toast('🗑️ Deleted', 'info');
-            renderPage('universities');
-        }
+            renderPage('universities'); }
 
         // ================================================================
-        //  ESSAYS
+        //  ESSAYS (compact)
         // ================================================================
 
         function renderEssays() {
@@ -3026,18 +2602,12 @@
                 `<div class="flex-between"><div><div class="page-title">✍️ Essays</div><div class="page-subtitle">Personal statement & supplements.</div></div><button class="btn btn-primary" onclick="showAddEssay()">+ New</button></div>`;
             const essays = data.essays.sort((a, b) => new Date(b.deadline || b.createdAt) - new Date(a.deadline || a
                 .createdAt));
-            if (!essays.length) {
-                html +=
-                    `<div class="empty-state"><div class="icon">✍️</div><div class="title">No essays</div><div class="desc">Start drafting your essays.</div></div>`;
-            } else {
+            if (!essays.length) { html +=
+                    `<div class="empty-state"><div class="icon">✍️</div><div class="title">No essays</div><div class="desc">Start drafting your essays.</div></div>`; } else {
                 html += `<div class="grid-2 mt-2">`;
                 essays.forEach(e => {
-                    html += `<div class="card">
-                <div style="font-weight:600;font-size:1.05rem;">${e.title}</div>
-                <div class="text-sm text-muted">${e.type||'Essay'} · ${e.wordLimit||'—'} words · ${e.deadline?new Date(e.deadline).toLocaleDateString():'No deadline'}</div>
-                <div class="text-sm mt-1">${e.prompt?e.prompt.slice(0,100)+(e.prompt.length>100?'...':''):''}</div>
-                <div style="display:flex;gap:0.3rem;margin-top:0.4rem;"><span class="badge">${e.drafts?e.drafts.length:0} drafts</span><button class="btn btn-sm btn-ghost" onclick="editEssay('${e.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteEssay('${e.id}')">🗑️</button></div>
-              </div>`;
+                    html +=
+                        `<div class="card"><div style="font-weight:600;font-size:1.05rem;">${e.title}</div><div class="text-sm text-muted">${e.type||'Essay'} · ${e.wordLimit||'—'} words · ${e.deadline?new Date(e.deadline).toLocaleDateString():'No deadline'}</div><div class="text-sm mt-1">${e.prompt?e.prompt.slice(0,100)+(e.prompt.length>100?'...':''):''}</div><div style="display:flex;gap:0.3rem;margin-top:0.4rem;"><span class="badge">${e.drafts?e.drafts.length:0} drafts</span><button class="btn btn-sm btn-ghost" onclick="editEssay('${e.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteEssay('${e.id}')">🗑️</button></div></div>`;
                 });
                 html += `</div>`;
             }
@@ -3059,20 +2629,11 @@
         function addEssay() {
             const title = document.getElementById('essayTitle').value.trim();
             if (!title) { toast('Title required.', 'error'); return; }
-            data.essays.push({
-                id: genId(),
-                title,
-                type: document.getElementById('essayType').value,
-                prompt: document.getElementById('essayPrompt').value || '',
-                wordLimit: parseInt(document.getElementById('essayWordLimit').value) || null,
-                deadline: document.getElementById('essayDeadline').value || null,
-                drafts: [''],
-                notes: '',
-                feedback: '',
-                finalVersion: null,
-                universityId: null,
-                createdAt: new Date().toISOString(),
-            });
+            data.essays.push({ id: genId(), title, type: document.getElementById('essayType').value, prompt: document
+                    .getElementById('essayPrompt').value || '', wordLimit: parseInt(document.getElementById(
+                    'essayWordLimit').value) || null, deadline: document.getElementById('essayDeadline').value ||
+                    null, drafts: [''], notes: '', feedback: '', finalVersion: null, universityId: null,
+                createdAt: new Date().toISOString() });
             saveData();
             closeModal();
             toast('✅ Essay created', 'success');
@@ -3104,11 +2665,8 @@
             e.wordLimit = parseInt(document.getElementById('editEssayWordLimit').value) || null;
             e.deadline = document.getElementById('editEssayDeadline').value || null;
             const draft = document.getElementById('editEssayDraft').value;
-            if (draft) {
-                if (!e.drafts) e.drafts = [];
-                e.drafts.push(draft);
-                if (e.drafts.length > 20) e.drafts.shift();
-            }
+            if (draft) { if (!e.drafts) e.drafts = [];
+                e.drafts.push(draft); if (e.drafts.length > 20) e.drafts.shift(); }
             e.notes = document.getElementById('editEssayNotes').value || '';
             saveData();
             closeModal();
@@ -3116,13 +2674,11 @@
             renderPage('essays');
         }
 
-        function deleteEssay(id) {
-            if (!confirm('Delete this essay?')) return;
-            data.essays = data.essays.filter(e => e.id !== id);
+        function deleteEssay(id) { if (!confirm('Delete this essay?')) return; data.essays = data.essays.filter(e => e.id !==
+                id);
             saveData();
             toast('🗑️ Deleted', 'info');
-            renderPage('essays');
-        }
+            renderPage('essays'); }
 
         // ================================================================
         //  SETTINGS
@@ -3179,20 +2735,13 @@
             const file = event.target.files[0];
             if (!file) return;
             const reader = new FileReader();
-            reader.onload = (e) => {
-                try {
-                    const imported = JSON.parse(e.target.result);
-                    if (imported.subjects) {
-                        data = imported;
-                        saveData();
-                        toast('✅ Imported', 'success');
-                        renderPage('settings');
-                        navigate('dashboard');
-                    } else {
-                        toast('Invalid file.', 'error');
-                    }
-                } catch (_) { toast('Error reading file.', 'error'); }
-            };
+            reader.onload = (e) => { try { const imported = JSON.parse(e.target.result); if (imported.subjects) { data =
+                        imported;
+                    saveData();
+                    toast('✅ Imported', 'success');
+                    renderPage('settings');
+                    navigate('dashboard'); } else { toast('Invalid file.', 'error'); } } catch (_) { toast(
+                        'Error reading file.', 'error'); } };
             reader.readAsText(file);
             event.target.value = '';
         }
@@ -3247,8 +2796,9 @@
                 navigate('dashboard'); }
         });
 
-        console.log('🚀 O‑LEVEL COMMAND CENTER — Royal Edition loaded.');
+        console.log('🚀 O‑LEVEL COMMAND CENTER — Royal Edition (fixed upload)');
         console.log(`📊 ${data.subjects.length} subjects, ${data.notes.length} notes, ${data.tasks.length} tasks, ${data.pastPapers.length} past papers.`);
     </script>
+
 </body>
 </html>
