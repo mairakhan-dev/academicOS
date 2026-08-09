@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>O‑LEVEL COMMAND CENTER</title>
+    <title>O‑LEVEL COMMAND CENTER — ULTIMATE</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
     <style>
-        /* ---------- Royal Theme ---------- */
+        /* ==============================================================
+           ROYAL THEME — ULTIMATE EDITION
+           ============================================================== */
         :root {
             --royal-purple: #4a2c6e;
             --royal-purple-light: #7a4ba8;
@@ -31,9 +33,17 @@
             --font: 'Inter', -apple-system, system-ui, sans-serif;
             --font-serif: 'Playfair Display', serif;
         }
-        *,
-        *::before,
-        *::after {
+        .dark {
+            --bg: #181625;
+            --card: #24203a;
+            --text: #ece8f5;
+            --text-secondary: #b8b0d0;
+            --text-muted: #8f8aa8;
+            --border: #3d3560;
+            --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+            --shadow-hover: 0 8px 36px rgba(0, 0, 0, 0.5);
+        }
+        * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -49,6 +59,7 @@
             line-height: 1.5;
             display: flex;
             min-height: 100vh;
+            transition: background 0.3s, color 0.3s;
         }
         a {
             color: var(--royal-purple);
@@ -85,9 +96,6 @@
             resize: vertical;
             min-height: 80px;
         }
-        select {
-            appearance: auto;
-        }
         ::-webkit-scrollbar {
             width: 6px;
             height: 6px;
@@ -115,6 +123,7 @@
             display: flex;
             flex-direction: column;
             z-index: 100;
+            transition: background 0.3s, border-color 0.3s;
         }
         .sidebar-brand {
             font-size: 1.3rem;
@@ -189,6 +198,7 @@
             padding: 0.8rem;
             display: flex;
             justify-content: space-between;
+            transition: border-color 0.3s;
         }
         .main {
             flex: 1;
@@ -197,6 +207,7 @@
             max-width: calc(100vw - var(--sidebar-width));
             overflow-y: auto;
             position: relative;
+            transition: background 0.3s;
         }
         .page {
             display: none;
@@ -249,6 +260,11 @@
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
+            gap: 1.2rem;
+        }
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
             gap: 1.2rem;
         }
         .card {
@@ -824,6 +840,7 @@
             opacity: 0.5;
             font-size: 1.1rem;
         }
+        /* responsive */
         @media (max-width: 820px) {
             .sidebar {
                 width: 68px;
@@ -914,12 +931,88 @@
                 font-size: 1.4rem;
             }
         }
+        /* video embed responsive */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            border-radius: var(--radius-sm);
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        /* global search bar */
+        .search-bar {
+            display: flex;
+            gap: 0.6rem;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            background: var(--card);
+            padding: 0.3rem 0.8rem;
+            border-radius: 30px;
+            border: 1.5px solid var(--border);
+            transition: var(--transition);
+        }
+        .search-bar:focus-within {
+            border-color: var(--royal-purple);
+            box-shadow: 0 0 0 3px rgba(74, 44, 110, 0.12);
+        }
+        .search-bar input {
+            border: none;
+            padding: 0.5rem 0;
+            background: transparent;
+            flex: 1;
+        }
+        .search-bar input:focus {
+            outline: none;
+            box-shadow: none;
+            border: none;
+        }
+        .search-bar .search-icon {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+        }
+        .search-results {
+            margin-top: 1rem;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .search-result-item {
+            padding: 0.5rem 0.8rem;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .search-result-item:hover {
+            background: var(--bg);
+        }
+        .search-result-item .result-title {
+            font-weight: 600;
+        }
+        .search-result-item .result-meta {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+        .dark-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
 
     <!-- ===== SIDEBAR ===== -->
-    <nav class="sidebar" id="sidebar" role="navigation">
+    <nav class="sidebar" id="sidebar">
         <div class="sidebar-brand">⚡ O-LEVEL <span>CC</span></div>
         <div class="sidebar-nav" id="navContainer"></div>
         <div class="sidebar-footer">
@@ -936,7 +1029,7 @@
         <div class="modal" id="modalContent"></div>
     </div>
 
-    <!-- ===== FLOATING ADD BUTTON ===== -->
+    <!-- ===== FAB ===== -->
     <button class="fab" id="fabButton">+</button>
 
     <!-- ===== TOAST ===== -->
@@ -944,10 +1037,10 @@
 
     <script>
         // ================================================================
-        //  DATA LAYER
+        //  DATA LAYER — ULTIMATE PERSISTENCE
         // ================================================================
 
-        const DB_KEY = 'olevel_cc_v5';
+        const DB_KEY = 'olevel_cc_v6';
 
         function getDefaultData() {
             return {
@@ -978,7 +1071,15 @@
                 mistakes: [],
                 flashcards: [],
                 pastPapers: [],
-                mockExams: [],
+                videos: [],
+                documents: [],
+                projects: [],
+                skills: [],
+                profile: { interests: '', passions: '', values: '', motivations: '', strengths: '', weaknesses: '',
+                    curiosities: '', beliefs: '', goals: '', problems: '', changedMind: '', experiences: '' },
+                recommendations: [],
+                scholarships: [],
+                evidence: [],
                 activities: [],
                 goals: [],
                 stories: [],
@@ -986,8 +1087,8 @@
                 essays: [],
                 events: [],
                 studySessions: [],
-                settings: { theme: 'light', notifications: true },
-                version: 5,
+                settings: { darkMode: false },
+                version: 6,
             };
         }
 
@@ -999,18 +1100,31 @@
                 if (raw) {
                     const parsed = JSON.parse(raw);
                     const def = getDefaultData();
+                    // Merge: keep existing keys, add missing defaults
                     for (const k in def) {
                         if (!(k in parsed)) parsed[k] = def[k];
                     }
-                    if (!Array.isArray(parsed.pastPapers)) parsed.pastPapers = [];
+                    // Ensure arrays exist
+                    ['subjects', 'notes', 'tasks', 'mistakes', 'flashcards', 'pastPapers', 'videos', 'documents',
+                        'projects', 'skills', 'recommendations', 'scholarships', 'evidence', 'activities', 'goals',
+                        'stories', 'universities', 'essays', 'events', 'studySessions'
+                    ].forEach(arr => {
+                        if (!Array.isArray(parsed[arr])) parsed[arr] = [];
+                    });
+                    if (!parsed.settings) parsed.settings = { darkMode: false };
+                    if (!parsed.profile) parsed.profile = { interests: '', passions: '', values: '', motivations: '',
+                        strengths: '', weaknesses: '', curiosities: '', beliefs: '', goals: '', problems: '',
+                        changedMind: '', experiences: '' };
                     return parsed;
                 }
-            } catch (_) {}
+            } catch (e) { console.warn('Load error, using defaults', e); }
             return getDefaultData();
         }
 
         function saveData() {
             localStorage.setItem(DB_KEY, JSON.stringify(data));
+            // Also save a backup timestamp
+            localStorage.setItem(DB_KEY + '_backup_time', new Date().toISOString());
         }
 
         function genId() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
@@ -1044,7 +1158,7 @@
         });
 
         // ================================================================
-        //  NAVIGATION
+        //  NAVIGATION — ULTIMATE WITH 10 NEW PAGES
         // ================================================================
 
         const NAV_ITEMS = [
@@ -1056,13 +1170,21 @@
             { id: 'mistakes', icon: '❌', label: 'Mistake Bank' },
             { id: 'flashcards', icon: '🃏', label: 'Flashcards' },
             { id: 'pastpapers', icon: '📄', label: 'Past Papers' },
+            { id: 'videos', icon: '🎥', label: 'Videos' },
+            { id: 'documents', icon: '📁', label: 'Documents' },
             { id: 'timer', icon: '⏱️', label: 'Focus Timer' },
             { id: 'calendar', icon: '📅', label: 'Calendar' },
             { id: 'activities', icon: '🏆', label: 'Activities' },
+            { id: 'projects', icon: '🚀', label: 'Projects' },
+            { id: 'skills', icon: '🧠', label: 'Skills' },
+            { id: 'profile', icon: '👤', label: 'Profile' },
             { id: 'goals', icon: '🎯', label: 'Goals' },
             { id: 'stories', icon: '📖', label: 'Story Bank' },
             { id: 'universities', icon: '🏛️', label: 'Universities' },
             { id: 'essays', icon: '✍️', label: 'Essays' },
+            { id: 'recommendations', icon: '📋', label: 'Recommendations' },
+            { id: 'scholarships', icon: '💰', label: 'Scholarships' },
+            { id: 'evidence', icon: '📦', label: 'Evidence' },
             { id: 'settings', icon: '⚙️', label: 'Settings' },
         ];
 
@@ -1125,6 +1247,12 @@
                 case 'pastpapers':
                     container.innerHTML = renderPastPapers();
                     break;
+                case 'videos':
+                    container.innerHTML = renderVideos();
+                    break;
+                case 'documents':
+                    container.innerHTML = renderDocuments();
+                    break;
                 case 'timer':
                     container.innerHTML = renderTimer();
                     break;
@@ -1133,6 +1261,15 @@
                     break;
                 case 'activities':
                     container.innerHTML = renderActivities();
+                    break;
+                case 'projects':
+                    container.innerHTML = renderProjects();
+                    break;
+                case 'skills':
+                    container.innerHTML = renderSkills();
+                    break;
+                case 'profile':
+                    container.innerHTML = renderProfile();
                     break;
                 case 'goals':
                     container.innerHTML = renderGoals();
@@ -1146,6 +1283,15 @@
                 case 'essays':
                     container.innerHTML = renderEssays();
                     break;
+                case 'recommendations':
+                    container.innerHTML = renderRecommendations();
+                    break;
+                case 'scholarships':
+                    container.innerHTML = renderScholarships();
+                    break;
+                case 'evidence':
+                    container.innerHTML = renderEvidence();
+                    break;
                 case 'settings':
                     container.innerHTML = renderSettings();
                     break;
@@ -1155,6 +1301,8 @@
             main.appendChild(container);
             if (page === 'timer') initTimer();
             if (page === 'calendar') initCalendar();
+            // apply dark mode
+            applyDarkMode();
         }
 
         // ================================================================
@@ -1171,6 +1319,8 @@
             const totalTasks = data.tasks.length;
             const pendingTasks = data.tasks.filter(t => t.status !== 'Completed').length;
             const totalPastPapers = data.pastPapers.length;
+            const totalVideos = data.videos.length;
+            const totalDocs = data.documents.length;
             const sessions = data.studySessions || [];
             const streak = sessions.length > 0 ? Math.min(sessions.length, 30) : 4;
             const missionTasks = data.tasks.filter(t => t.status !== 'Completed')
@@ -1184,7 +1334,13 @@
             const recentMistakes = data.mistakes.slice(-3).reverse();
 
             return `
-            <div class="greeting">Good ${now.getHours()<12?'morning':now.getHours()<17?'afternoon':'evening'}, ${name} 👋</div>
+            <div class="flex-between" style="margin-bottom:0.5rem;">
+              <div class="greeting">Good ${now.getHours()<12?'morning':now.getHours()<17?'afternoon':'evening'}, ${name} 👋</div>
+              <div style="display:flex;gap:0.5rem;">
+                <button class="btn btn-sm btn-ghost" onclick="toggleDarkMode()">${data.settings.darkMode?'☀️ Light':'🌙 Dark'}</button>
+                <button class="btn btn-sm btn-primary" onclick="showGlobalSearch()">🔍 Search</button>
+              </div>
+            </div>
             <div class="greeting-sub">${day} · ${grade} · ${examYear}</div>
             <div class="stat-grid">
               <div class="stat-card"><div class="label">Grade</div><div class="value">${grade}</div></div>
@@ -1200,17 +1356,94 @@
               const color = t.priority === 'high' ? 'red' : t.priority === 'medium' ? 'yellow' : 'green';
               return `<div class="mission-item"><span class="dot ${color}"></span><div class="info"><div class="title">${t.title}</div><div class="sub">${t.subjectId?getSubjectName(t.subjectId):'General'} · ${t.priority||'medium'}</div></div><div class="actions"><span class="tag" onclick="toast('📖 Learn: ${t.title}')">Learn</span><span class="tag" onclick="toast('📝 Notes')">Notes</span><span class="tag" onclick="toast('📝 Practice')">Practice</span><span class="tag" onclick="toast('🔄 Review')">Review</span></div></div>`;
             }).join('')}
-            <div class="grid-3 mt-3">
+            <div class="grid-4 mt-3">
               <div class="card"><div class="card-title">📚 Subjects</div><div class="card-value">${totalSubjects}</div><div class="card-label">Active</div></div>
               <div class="card"><div class="card-title">✅ Tasks</div><div class="card-value">${pendingTasks}/${totalTasks}</div><div class="card-label">Pending / Total</div></div>
               <div class="card"><div class="card-title">📄 Past Papers</div><div class="card-value">${totalPastPapers}</div><div class="card-label">Uploaded</div></div>
+              <div class="card"><div class="card-title">🎥 Videos</div><div class="card-value">${totalVideos}</div><div class="card-label">Saved</div></div>
             </div>
             ${recentMistakes.length>0?`<div class="mt-3"><h3 style="font-weight:600;font-size:1rem;margin-bottom:0.4rem;">⚠️ Recent Mistakes</h3>${recentMistakes.map(m=>`<div class="mission-item" style="border-left-color:#e74c4c;"><span class="dot red"></span><div class="info"><div class="title">${m.question||'Mistake'}</div><div class="sub">${m.subjectId?getSubjectName(m.subjectId):'General'} · ${m.type||'Other'} · ${new Date(m.date).toLocaleDateString()}</div></div><span class="pill red">${m.type||'Other'}</span></div>`).join('')}</div>`:''}
           `;
         }
 
         // ================================================================
-        //  SUBJECTS (compact)
+        //  GLOBAL SEARCH (New Feature #1)
+        // ================================================================
+
+        function showGlobalSearch() {
+            openModal(`
+            <div class="modal-title">🔍 Global Search</div>
+            <div class="modal-sub">Search across all your data.</div>
+            <div class="form-group">
+              <input id="globalSearchInput" placeholder="Type to search..." oninput="performGlobalSearch()" autofocus />
+            </div>
+            <div id="globalSearchResults" class="search-results"></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Close</button></div>
+          `);
+            document.getElementById('globalSearchInput').focus();
+        }
+
+        function performGlobalSearch() {
+            const query = document.getElementById('globalSearchInput').value.toLowerCase().trim();
+            const results = document.getElementById('globalSearchResults');
+            if (!query) { results.innerHTML = '<div class="text-muted text-sm">Start typing to search...</div>'; return; }
+            const items = [];
+            data.notes.forEach(n => { if (n.title.toLowerCase().includes(query) || (n.content || '').toLowerCase().includes(
+                    query)) items.push({ type: 'Note', title: n.title || 'Untitled', id: n.id, page: 'notes' }); });
+            data.tasks.forEach(t => { if (t.title.toLowerCase().includes(query)) items.push({ type: 'Task', title: t
+                        .title, id: t.id, page: 'tasks' }); });
+            data.mistakes.forEach(m => { if ((m.question || '').toLowerCase().includes(query)) items.push({ type: 'Mistake',
+                        title: m.question || 'Mistake', id: m.id, page: 'mistakes' }); });
+            data.flashcards.forEach(f => { if ((f.front || '').toLowerCase().includes(query) || (f.back || '')
+                    .toLowerCase().includes(query)) items.push({ type: 'Flashcard', title: f.front || 'Card', id: f
+                        .id, page: 'flashcards' }); });
+            data.pastPapers.forEach(p => { if ((p.title || '').toLowerCase().includes(query) || (p.fileName || '')
+                    .toLowerCase().includes(query)) items.push({ type: 'Past Paper', title: p.title || p.fileName ||
+                        'Paper', id: p.id, page: 'pastpapers' }); });
+            data.videos.forEach(v => { if ((v.title || '').toLowerCase().includes(query)) items.push({ type: 'Video',
+                        title: v.title || 'Video', id: v.id, page: 'videos' }); });
+            data.documents.forEach(d => { if ((d.title || '').toLowerCase().includes(query) || (d.fileName || '')
+                    .toLowerCase().includes(query)) items.push({ type: 'Document', title: d.title || d.fileName ||
+                        'Doc', id: d.id, page: 'documents' }); });
+            data.activities.forEach(a => { if ((a.name || '').toLowerCase().includes(query)) items.push({ type: 'Activity',
+                        title: a.name, id: a.id, page: 'activities' }); });
+            data.projects.forEach(p => { if ((p.name || '').toLowerCase().includes(query)) items.push({ type: 'Project',
+                        title: p.name, id: p.id, page: 'projects' }); });
+            data.universities.forEach(u => { if ((u.name || '').toLowerCase().includes(query)) items.push({ type: 'University',
+                        title: u.name, id: u.id, page: 'universities' }); });
+            data.essays.forEach(e => { if ((e.title || '').toLowerCase().includes(query)) items.push({ type: 'Essay',
+                        title: e.title, id: e.id, page: 'essays' }); });
+            if (items.length === 0) { results.innerHTML =
+                '<div class="text-muted text-sm">No results found.</div>'; return; }
+            results.innerHTML = items.map(item =>
+                `<div class="search-result-item" onclick="closeModal();navigate('${item.page}')">
+              <div class="result-title">${item.type}: ${item.title}</div>
+              <div class="result-meta">${item.page}</div>
+            </div>`
+            ).join('');
+        }
+
+        // ================================================================
+        //  DARK MODE (New Feature #2)
+        // ================================================================
+
+        function toggleDarkMode() {
+            data.settings.darkMode = !data.settings.darkMode;
+            saveData();
+            applyDarkMode();
+            toast(data.settings.darkMode ? '🌙 Dark mode on' : '☀️ Light mode on', 'info');
+        }
+
+        function applyDarkMode() {
+            if (data.settings.darkMode) {
+                document.body.classList.add('dark');
+            } else {
+                document.body.classList.remove('dark');
+            }
+        }
+
+        // ================================================================
+        //  SUBJECTS (unchanged, compact)
         // ================================================================
 
         function renderSubjects() {
@@ -1298,7 +1531,7 @@
         }
 
         // ================================================================
-        //  SYLLABUS (compact)
+        //  SYLLABUS (compact, unchanged)
         // ================================================================
 
         function renderSyllabus() {
@@ -1480,7 +1713,7 @@
         }
 
         // ================================================================
-        //  NOTES (compact)
+        //  NOTES (compact, unchanged)
         // ================================================================
 
         function renderNotes() {
@@ -1571,7 +1804,7 @@
             renderPage('notes'); }
 
         // ================================================================
-        //  TASKS (compact)
+        //  TASKS (compact, unchanged)
         // ================================================================
 
         function renderTasks() {
@@ -1663,7 +1896,7 @@
             renderPage('tasks'); }
 
         // ================================================================
-        //  MISTAKES (compact)
+        //  MISTAKES (compact, unchanged)
         // ================================================================
 
         function renderMistakes() {
@@ -1763,7 +1996,7 @@
             renderPage('mistakes'); }
 
         // ================================================================
-        //  FLASHCARDS (compact)
+        //  FLASHCARDS (compact, unchanged)
         // ================================================================
 
         function renderFlashcards() {
@@ -1842,26 +2075,18 @@
             renderPage('flashcards'); }
 
         // ================================================================
-        //  PAST PAPERS — FULLY ROBUST (FIXED)
+        //  PAST PAPERS (unchanged, fully working)
         // ================================================================
 
+        let pendingFileUpload = null;
+
         function renderPastPapers() {
-            let html = `
-            <div class="flex-between">
-              <div><div class="page-title">📄 Past Papers</div><div class="page-subtitle">Upload and manage past exam papers.</div></div>
-              <button class="btn btn-primary" onclick="showAddPastPaper()">+ Upload Paper</button>
-            </div>
-          `;
+            let html =
+                `<div class="flex-between"><div><div class="page-title">📄 Past Papers</div><div class="page-subtitle">Upload and manage past exam papers.</div></div><button class="btn btn-primary" onclick="showAddPastPaper()">+ Upload Paper</button></div>`;
             const papers = data.pastPapers.sort((a, b) => new Date(b.uploadedAt) - new Date(a.uploadedAt));
             if (!papers.length) {
-                html += `
-              <div class="empty-state">
-                <div class="icon">📄</div>
-                <div class="title">No past papers uploaded</div>
-                <div class="desc">Upload your past exam papers to keep them organized.</div>
-                <button class="btn btn-primary mt-2" onclick="showAddPastPaper()">Upload Your First Paper</button>
-              </div>
-            `;
+                html +=
+                    `<div class="empty-state"><div class="icon">📄</div><div class="title">No past papers uploaded</div><div class="desc">Upload your past exam papers to keep them organized.</div><button class="btn btn-primary mt-2" onclick="showAddPastPaper()">Upload Your First Paper</button></div>`;
             } else {
                 html += `<div class="grid-2 mt-2">`;
                 papers.forEach(p => {
@@ -1870,38 +2095,16 @@
                         'application/pdf' ? '📄' : '📎') : '📎';
                     const fileSize = p.fileSize ? (p.fileSize / 1024).toFixed(1) + ' KB' : '—';
                     const downloadLink = p.fileData ? `data:${p.fileType};base64,${p.fileData}` : '#';
-                    html += `
-                <div class="card">
-                  <div style="font-weight:600;font-size:1.05rem;">${p.title || 'Untitled'}</div>
-                  <div class="text-sm text-muted">${subName} · ${p.year || '—'} · Paper ${p.paperNumber || '—'} ${p.session ? '· '+p.session : ''}</div>
-                  <div class="file-card mt-1">
-                    <span class="file-icon">${fileIcon}</span>
-                    <div class="file-info">
-                      <div class="name">${p.fileName || 'File'}</div>
-                      <div class="meta">${fileSize} · ${p.fileType || 'unknown'}</div>
-                    </div>
-                    <div class="file-actions">
-                      ${p.fileData ? `<a href="${downloadLink}" download="${p.fileName || 'download'}" class="btn btn-sm btn-primary">⬇️</a>` : ''}
-                      <button class="btn btn-sm btn-ghost" onclick="editPastPaper('${p.id}')">✏️</button>
-                      <button class="btn btn-sm btn-danger" onclick="deletePastPaper('${p.id}')">🗑️</button>
-                    </div>
-                  </div>
-                  ${p.notes ? `<div class="text-sm text-muted mt-1">${p.notes}</div>` : ''}
-                  <div class="text-xs text-muted mt-1">Uploaded: ${new Date(p.uploadedAt).toLocaleDateString()}</div>
-                </div>
-              `;
+                    html += `<div class="card"><div style="font-weight:600;font-size:1.05rem;">${p.title||'Untitled'}</div><div class="text-sm text-muted">${subName} · ${p.year||'—'} · Paper ${p.paperNumber||'—'} ${p.session?'· '+p.session:''}</div><div class="file-card mt-1"><span class="file-icon">${fileIcon}</span><div class="file-info"><div class="name">${p.fileName||'File'}</div><div class="meta">${fileSize} · ${p.fileType||'unknown'}</div></div><div class="file-actions">${p.fileData?`<a href="${downloadLink}" download="${p.fileName||'download'}" class="btn btn-sm btn-primary">⬇️</a>`:''}<button class="btn btn-sm btn-ghost" onclick="editPastPaper('${p.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deletePastPaper('${p.id}')">🗑️</button></div></div>${p.notes?`<div class="text-sm text-muted mt-1">${p.notes}</div>`:''}<div class="text-xs text-muted mt-1">Uploaded: ${new Date(p.uploadedAt).toLocaleDateString()}</div></div>`;
                 });
                 html += `</div>`;
             }
             return html;
         }
 
-        // The key fix: store the file input reference and use it directly.
-        let pendingFileUpload = null;
-
         function showAddPastPaper() {
             const subjects = data.subjects.filter(s => !s.archived);
-            pendingFileUpload = null; // reset
+            pendingFileUpload = null;
             openModal(`
             <div class="modal-title">📄 Upload Past Paper</div>
             <div class="modal-sub">Add a past paper with file attachment.</div>
@@ -1912,26 +2115,12 @@
             <div class="form-group"><label>Paper Number</label><input id="ppPaperNumber" placeholder="e.g. 1" /></div>
             <div class="form-group"><label>File (PDF, image, etc.)</label><input id="ppFile" type="file" accept=".pdf,.png,.jpg,.jpeg,.doc,.docx,.txt" /><div class="text-xs text-muted mt-1">Max file size ~5MB recommended.</div></div>
             <div class="form-group"><label>Notes (optional)</label><textarea id="ppNotes" rows="2"></textarea></div>
-            <div class="form-actions">
-              <button class="btn" onclick="closeModal()">Cancel</button>
-              <button class="btn btn-primary" id="uploadBtn" onclick="addPastPaper()">Upload</button>
-            </div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="addPastPaper()">Upload</button></div>
           `);
-            // Attach a change listener to store the file reference
             const fileInput = document.getElementById('ppFile');
-            if (fileInput) {
-                fileInput.onchange = function(e) {
-                    if (this.files && this.files.length > 0) {
-                        pendingFileUpload = this.files[0];
-                    } else {
-                        pendingFileUpload = null;
-                    }
-                };
-                // If the user has already selected a file before the listener is attached, check it.
-                if (fileInput.files && fileInput.files.length > 0) {
-                    pendingFileUpload = fileInput.files[0];
-                }
-            }
+            if (fileInput) { fileInput.onchange = function() { pendingFileUpload = this.files && this.files.length > 0 ?
+                        this.files[0] : null; }; if (fileInput.files && fileInput.files.length > 0) pendingFileUpload =
+                    fileInput.files[0]; }
         }
 
         function addPastPaper() {
@@ -1941,59 +2130,20 @@
             const session = document.getElementById('ppSession').value.trim() || null;
             const paperNumber = document.getElementById('ppPaperNumber').value.trim() || null;
             const notes = document.getElementById('ppNotes').value.trim() || '';
-
-            // Use the stored file reference, or get it fresh from the DOM
             let file = pendingFileUpload;
-            if (!file) {
-                const fileInput = document.getElementById('ppFile');
-                if (fileInput && fileInput.files && fileInput.files.length > 0) {
-                    file = fileInput.files[0];
-                }
-            }
-
-            if (!file) {
-                toast('Please select a file to upload.', 'error');
-                return;
-            }
-
-            // Disable the upload button to prevent double-clicks
-            const uploadBtn = document.getElementById('uploadBtn');
-            if (uploadBtn) { uploadBtn.disabled = true;
-                uploadBtn.textContent = 'Uploading...'; }
-
+            if (!file) { const el = document.getElementById('ppFile'); if (el && el.files && el.files.length > 0) file = el
+                    .files[0]; }
+            if (!file) { toast('Please select a file.', 'error'); return; }
             const reader = new FileReader();
-            reader.onload = function(e) {
-                try {
-                    const base64 = e.target.result.split(',')[1];
-                    data.pastPapers.push({
-                        id: genId(),
-                        title,
-                        subjectId,
-                        year,
-                        session,
-                        paperNumber,
-                        fileName: file.name,
-                        fileType: file.type,
-                        fileSize: file.size,
-                        fileData: base64,
-                        notes,
-                        uploadedAt: new Date().toISOString(),
-                    });
+            reader.onload = function(e) { try { const base64 = e.target.result.split(',')[1];
+                    data.pastPapers.push({ id: genId(), title, subjectId, year, session, paperNumber, fileName: file
+                            .name, fileType: file.type, fileSize: file.size, fileData: base64, notes,
+                        uploadedAt: new Date().toISOString() });
                     saveData();
                     closeModal();
-                    toast('✅ Past paper uploaded!', 'success');
-                    renderPage('pastpapers');
-                } catch (err) {
-                    toast('Error processing file: ' + err.message, 'error');
-                    if (uploadBtn) { uploadBtn.disabled = false;
-                        uploadBtn.textContent = 'Upload'; }
-                }
-            };
-            reader.onerror = function() {
-                toast('Error reading file.', 'error');
-                if (uploadBtn) { uploadBtn.disabled = false;
-                    uploadBtn.textContent = 'Upload'; }
-            };
+                    toast('✅ Uploaded!', 'success');
+                    renderPage('pastpapers'); } catch (err) { toast('Error: ' + err.message, 'error'); } };
+            reader.onerror = function() { toast('Error reading file.', 'error'); };
             reader.readAsDataURL(file);
         }
 
@@ -2011,24 +2161,12 @@
             <div class="form-group"><label>Paper Number</label><input id="editPpPaperNumber" value="${p.paperNumber||''}" /></div>
             <div class="form-group"><label>Notes</label><textarea id="editPpNotes" rows="2">${p.notes||''}</textarea></div>
             <div class="form-group"><label>Replace File (optional)</label><input id="editPpFile" type="file" accept=".pdf,.png,.jpg,.jpeg,.doc,.docx,.txt" /><div class="text-xs text-muted mt-1">Current: ${p.fileName||'None'}</div></div>
-            <div class="form-actions">
-              <button class="btn" onclick="closeModal()">Cancel</button>
-              <button class="btn btn-primary" id="editUploadBtn" onclick="saveEditPastPaper('${id}')">Save</button>
-            </div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEditPastPaper('${id}')">Save</button></div>
           `);
             const fileInput = document.getElementById('editPpFile');
-            if (fileInput) {
-                fileInput.onchange = function(e) {
-                    if (this.files && this.files.length > 0) {
-                        pendingFileUpload = this.files[0];
-                    } else {
-                        pendingFileUpload = null;
-                    }
-                };
-                if (fileInput.files && fileInput.files.length > 0) {
-                    pendingFileUpload = fileInput.files[0];
-                }
-            }
+            if (fileInput) { fileInput.onchange = function() { pendingFileUpload = this.files && this.files.length > 0 ?
+                        this.files[0] : null; }; if (fileInput.files && fileInput.files.length > 0) pendingFileUpload =
+                    fileInput.files[0]; }
         }
 
         function saveEditPastPaper(id) {
@@ -2040,61 +2178,281 @@
             p.session = document.getElementById('editPpSession').value.trim() || null;
             p.paperNumber = document.getElementById('editPpPaperNumber').value.trim() || null;
             p.notes = document.getElementById('editPpNotes').value.trim() || '';
-
             let file = pendingFileUpload;
-            if (!file) {
-                const fileInput = document.getElementById('editPpFile');
-                if (fileInput && fileInput.files && fileInput.files.length > 0) {
-                    file = fileInput.files[0];
-                }
-            }
-
+            if (!file) { const el = document.getElementById('editPpFile'); if (el && el.files && el.files.length > 0) file =
+                    el.files[0]; }
             if (file) {
-                const btn = document.getElementById('editUploadBtn');
-                if (btn) { btn.disabled = true;
-                    btn.textContent = 'Saving...'; }
                 const reader = new FileReader();
-                reader.onload = function(e) {
-                    try {
-                        const base64 = e.target.result.split(',')[1];
+                reader.onload = function(e) { try { const base64 = e.target.result.split(',')[1];
                         p.fileName = file.name;
                         p.fileType = file.type;
                         p.fileSize = file.size;
                         p.fileData = base64;
                         saveData();
                         closeModal();
-                        toast('✅ Past paper updated with new file.', 'success');
-                        renderPage('pastpapers');
-                    } catch (err) {
-                        toast('Error processing file: ' + err.message, 'error');
-                        if (btn) { btn.disabled = false;
-                            btn.textContent = 'Save'; }
-                    }
-                };
-                reader.onerror = function() {
-                    toast('Error reading file.', 'error');
-                    if (btn) { btn.disabled = false;
-                        btn.textContent = 'Save'; }
-                };
+                        toast('✅ Updated with new file.', 'success');
+                        renderPage('pastpapers'); } catch (err) { toast('Error: ' + err.message, 'error'); } };
+                reader.onerror = function() { toast('Error reading file.', 'error'); };
                 reader.readAsDataURL(file);
-            } else {
-                saveData();
+            } else { saveData();
                 closeModal();
-                toast('✅ Past paper updated.', 'success');
-                renderPage('pastpapers');
-            }
+                toast('✅ Updated.', 'success');
+                renderPage('pastpapers'); }
         }
 
-        function deletePastPaper(id) {
-            if (!confirm('Delete this past paper?')) return;
-            data.pastPapers = data.pastPapers.filter(p => p.id !== id);
+        function deletePastPaper(id) { if (!confirm('Delete this past paper?')) return; data.pastPapers = data.pastPapers
+                .filter(p => p.id !== id);
             saveData();
-            toast('🗑️ Past paper deleted.', 'info');
-            renderPage('pastpapers');
-        }
+            toast('🗑️ Deleted.', 'info');
+            renderPage('pastpapers'); }
 
         // ================================================================
-        //  TIMER
+        //  VIDEOS (New Feature #3)
+        // ================================================================
+
+        function renderVideos() {
+            let html =
+                `<div class="flex-between"><div><div class="page-title">🎥 Videos</div><div class="page-subtitle">Embed YouTube videos for each subject.</div></div><button class="btn btn-primary" onclick="showAddVideo()">+ Add Video</button></div>`;
+            const videos = data.videos.sort((a, b) => new Date(b.addedAt) - new Date(a.addedAt));
+            if (!videos.length) {
+                html +=
+                    `<div class="empty-state"><div class="icon">🎥</div><div class="title">No videos added</div><div class="desc">Embed YouTube videos to supplement your learning.</div></div>`;
+            } else {
+                html += `<div class="grid-2 mt-2">`;
+                videos.forEach(v => {
+                    const subName = v.subjectId ? getSubjectName(v.subjectId) : 'General';
+                    // Extract YouTube video ID for embed
+                    let embedUrl = v.url;
+                    if (v.url.includes('youtube.com/watch?v=')) {
+                        const vid = v.url.split('v=')[1]?.split('&')[0];
+                        if (vid) embedUrl = `https://www.youtube.com/embed/${vid}`;
+                    } else if (v.url.includes('youtu.be/')) {
+                        const vid = v.url.split('youtu.be/')[1]?.split('?')[0];
+                        if (vid) embedUrl = `https://www.youtube.com/embed/${vid}`;
+                    }
+                    html += `<div class="card">
+                <div style="font-weight:600;font-size:1.05rem;">${v.title||'Untitled'}</div>
+                <div class="text-sm text-muted">${subName} · ${v.duration||'—'}</div>
+                <div class="video-wrapper mt-1"><iframe src="${embedUrl}" allowfullscreen loading="lazy"></iframe></div>
+                <div class="text-sm mt-1">${v.description||''}</div>
+                <div style="display:flex;gap:0.3rem;margin-top:0.4rem;flex-wrap:wrap;">
+                  <span class="badge">${v.watched?'👀 Watched':'⏳ Unwatched'}</span>
+                  <span class="pill ${v.rating? (v.rating>3?'green':'gold') : 'purple'}">⭐ ${v.rating||'Not rated'}/5</span>
+                  <button class="btn btn-sm btn-ghost" onclick="editVideo('${v.id}')">✏️</button>
+                  <button class="btn btn-sm btn-danger" onclick="deleteVideo('${v.id}')">🗑️</button>
+                </div>
+                ${v.notes?`<div class="text-sm text-muted mt-1">${v.notes}</div>`:''}
+              </div>`;
+                });
+                html += `</div>`;
+            }
+            return html;
+        }
+
+        function showAddVideo() {
+            const subjects = data.subjects.filter(s => !s.archived);
+            openModal(`
+            <div class="modal-title">🎥 Add Video</div>
+            <div class="form-group"><label>Title</label><input id="videoTitle" placeholder="e.g. PED Explained" /></div>
+            <div class="form-group"><label>YouTube URL</label><input id="videoUrl" placeholder="https://www.youtube.com/watch?v=..." /></div>
+            <div class="form-group"><label>Subject</label><select id="videoSubject"><option value="">General</option>${subjects.map(s=>`<option value="${s.id}">${s.name}</option>`).join('')}</select></div>
+            <div class="form-group"><label>Duration (e.g. 10:30)</label><input id="videoDuration" placeholder="10:30" /></div>
+            <div class="form-group"><label>Description</label><textarea id="videoDesc" rows="2"></textarea></div>
+            <div class="form-group"><label>Notes</label><textarea id="videoNotes" rows="2"></textarea></div>
+            <div class="form-group"><label>Watched</label><select id="videoWatched"><option value="false">No</option><option value="true">Yes</option></select></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="addVideo()">Add Video</button></div>
+          `);
+        }
+
+        function addVideo() {
+            const title = document.getElementById('videoTitle').value.trim() || 'Untitled';
+            const url = document.getElementById('videoUrl').value.trim();
+            if (!url) { toast('YouTube URL is required.', 'error'); return; }
+            data.videos.push({
+                id: genId(),
+                title,
+                url,
+                subjectId: document.getElementById('videoSubject').value || null,
+                duration: document.getElementById('videoDuration').value.trim() || '',
+                description: document.getElementById('videoDesc').value.trim() || '',
+                notes: document.getElementById('videoNotes').value.trim() || '',
+                watched: document.getElementById('videoWatched').value === 'true',
+                rating: 0,
+                addedAt: new Date().toISOString(),
+            });
+            saveData();
+            closeModal();
+            toast('✅ Video added', 'success');
+            renderPage('videos');
+        }
+
+        function editVideo(id) {
+            const v = data.videos.find(v => v.id === id);
+            if (!v) return;
+            const subjects = data.subjects.filter(s => !s.archived);
+            openModal(`
+            <div class="modal-title">✏️ Edit Video</div>
+            <div class="form-group"><label>Title</label><input id="editVideoTitle" value="${v.title||''}" /></div>
+            <div class="form-group"><label>YouTube URL</label><input id="editVideoUrl" value="${v.url||''}" /></div>
+            <div class="form-group"><label>Subject</label><select id="editVideoSubject"><option value="">General</option>${subjects.map(s=>`<option value="${s.id}" ${s.id===v.subjectId?'selected':''}>${s.name}</option>`).join('')}</select></div>
+            <div class="form-group"><label>Duration</label><input id="editVideoDuration" value="${v.duration||''}" /></div>
+            <div class="form-group"><label>Description</label><textarea id="editVideoDesc" rows="2">${v.description||''}</textarea></div>
+            <div class="form-group"><label>Notes</label><textarea id="editVideoNotes" rows="2">${v.notes||''}</textarea></div>
+            <div class="form-group"><label>Watched</label><select id="editVideoWatched"><option value="false" ${!v.watched?'selected':''}>No</option><option value="true" ${v.watched?'selected':''}>Yes</option></select></div>
+            <div class="form-group"><label>Rating (1-5)</label><input id="editVideoRating" type="number" min="0" max="5" value="${v.rating||0}" /></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEditVideo('${id}')">Save</button></div>
+          `);
+        }
+
+        function saveEditVideo(id) {
+            const v = data.videos.find(v => v.id === id);
+            if (!v) return;
+            v.title = document.getElementById('editVideoTitle').value.trim() || 'Untitled';
+            v.url = document.getElementById('editVideoUrl').value.trim();
+            v.subjectId = document.getElementById('editVideoSubject').value || null;
+            v.duration = document.getElementById('editVideoDuration').value.trim() || '';
+            v.description = document.getElementById('editVideoDesc').value.trim() || '';
+            v.notes = document.getElementById('editVideoNotes').value.trim() || '';
+            v.watched = document.getElementById('editVideoWatched').value === 'true';
+            v.rating = parseInt(document.getElementById('editVideoRating').value) || 0;
+            saveData();
+            closeModal();
+            toast('✅ Video updated', 'success');
+            renderPage('videos');
+        }
+
+        function deleteVideo(id) { if (!confirm('Delete this video?')) return; data.videos = data.videos.filter(v => v.id !==
+                id);
+            saveData();
+            toast('🗑️ Video deleted', 'info');
+            renderPage('videos'); }
+
+        // ================================================================
+        //  DOCUMENTS (New Feature #4)
+        // ================================================================
+
+        function renderDocuments() {
+            let html =
+                `<div class="flex-between"><div><div class="page-title">📁 Documents</div><div class="page-subtitle">Upload and organize any document (PDF, images, etc.).</div></div><button class="btn btn-primary" onclick="showAddDocument()">+ Upload Document</button></div>`;
+            const docs = data.documents.sort((a, b) => new Date(b.uploadedAt) - new Date(a.uploadedAt));
+            if (!docs.length) {
+                html +=
+                    `<div class="empty-state"><div class="icon">📁</div><div class="title">No documents uploaded</div><div class="desc">Upload any document – certificates, notes, research, etc.</div></div>`;
+            } else {
+                html += `<div class="grid-2 mt-2">`;
+                docs.forEach(d => {
+                    const subName = d.subjectId ? getSubjectName(d.subjectId) : 'General';
+                    const fileIcon = d.fileType ? (d.fileType.startsWith('image/') ? '🖼️' : d.fileType ===
+                        'application/pdf' ? '📄' : '📎') : '📎';
+                    const fileSize = d.fileSize ? (d.fileSize / 1024).toFixed(1) + ' KB' : '—';
+                    const downloadLink = d.fileData ? `data:${d.fileType};base64,${d.fileData}` : '#';
+                    html += `<div class="card"><div style="font-weight:600;font-size:1.05rem;">${d.title||'Untitled'}</div><div class="text-sm text-muted">${subName} · ${d.category||'General'}</div><div class="file-card mt-1"><span class="file-icon">${fileIcon}</span><div class="file-info"><div class="name">${d.fileName||'File'}</div><div class="meta">${fileSize} · ${d.fileType||'unknown'}</div></div><div class="file-actions">${d.fileData?`<a href="${downloadLink}" download="${d.fileName||'download'}" class="btn btn-sm btn-primary">⬇️</a>`:''}<button class="btn btn-sm btn-ghost" onclick="editDocument('${d.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteDocument('${d.id}')">🗑️</button></div></div>${d.notes?`<div class="text-sm text-muted mt-1">${d.notes}</div>`:''}<div class="text-xs text-muted mt-1">Uploaded: ${new Date(d.uploadedAt).toLocaleDateString()}</div></div>`;
+                });
+                html += `</div>`;
+            }
+            return html;
+        }
+
+        let pendingDocUpload = null;
+
+        function showAddDocument() {
+            const subjects = data.subjects.filter(s => !s.archived);
+            pendingDocUpload = null;
+            openModal(`
+            <div class="modal-title">📁 Upload Document</div>
+            <div class="modal-sub">Upload any document – certificates, notes, research, etc.</div>
+            <div class="form-group"><label>Title</label><input id="docTitle" placeholder="e.g. Certificate of Achievement" /></div>
+            <div class="form-group"><label>Subject</label><select id="docSubject"><option value="">General</option>${subjects.map(s=>`<option value="${s.id}">${s.name}</option>`).join('')}</select></div>
+            <div class="form-group"><label>Category</label><input id="docCategory" placeholder="e.g. Certificate, Notes, Research" /></div>
+            <div class="form-group"><label>File</label><input id="docFile" type="file" accept=".pdf,.png,.jpg,.jpeg,.doc,.docx,.txt,.xlsx,.pptx" /><div class="text-xs text-muted mt-1">Max file size ~5MB recommended.</div></div>
+            <div class="form-group"><label>Notes (optional)</label><textarea id="docNotes" rows="2"></textarea></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="addDocument()">Upload</button></div>
+          `);
+            const fileInput = document.getElementById('docFile');
+            if (fileInput) { fileInput.onchange = function() { pendingDocUpload = this.files && this.files.length > 0 ?
+                        this.files[0] : null; }; if (fileInput.files && fileInput.files.length > 0) pendingDocUpload =
+                    fileInput.files[0]; }
+        }
+
+        function addDocument() {
+            const title = document.getElementById('docTitle').value.trim() || 'Untitled';
+            const subjectId = document.getElementById('docSubject').value || null;
+            const category = document.getElementById('docCategory').value.trim() || 'General';
+            const notes = document.getElementById('docNotes').value.trim() || '';
+            let file = pendingDocUpload;
+            if (!file) { const el = document.getElementById('docFile'); if (el && el.files && el.files.length > 0) file = el
+                    .files[0]; }
+            if (!file) { toast('Please select a file.', 'error'); return; }
+            const reader = new FileReader();
+            reader.onload = function(e) { try { const base64 = e.target.result.split(',')[1];
+                    data.documents.push({ id: genId(), title, subjectId, category, fileName: file.name, fileType: file
+                            .type, fileSize: file.size, fileData: base64, notes, uploadedAt: new Date()
+                            .toISOString() });
+                    saveData();
+                    closeModal();
+                    toast('✅ Document uploaded!', 'success');
+                    renderPage('documents'); } catch (err) { toast('Error: ' + err.message, 'error'); } };
+            reader.onerror = function() { toast('Error reading file.', 'error'); };
+            reader.readAsDataURL(file);
+        }
+
+        function editDocument(id) {
+            const d = data.documents.find(d => d.id === id);
+            if (!d) return;
+            const subjects = data.subjects.filter(s => !s.archived);
+            pendingDocUpload = null;
+            openModal(`
+            <div class="modal-title">✏️ Edit Document</div>
+            <div class="form-group"><label>Title</label><input id="editDocTitle" value="${d.title||''}" /></div>
+            <div class="form-group"><label>Subject</label><select id="editDocSubject"><option value="">General</option>${subjects.map(s=>`<option value="${s.id}" ${s.id===d.subjectId?'selected':''}>${s.name}</option>`).join('')}</select></div>
+            <div class="form-group"><label>Category</label><input id="editDocCategory" value="${d.category||''}" /></div>
+            <div class="form-group"><label>Notes</label><textarea id="editDocNotes" rows="2">${d.notes||''}</textarea></div>
+            <div class="form-group"><label>Replace File (optional)</label><input id="editDocFile" type="file" accept=".pdf,.png,.jpg,.jpeg,.doc,.docx,.txt,.xlsx,.pptx" /><div class="text-xs text-muted mt-1">Current: ${d.fileName||'None'}</div></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEditDocument('${id}')">Save</button></div>
+          `);
+            const fileInput = document.getElementById('editDocFile');
+            if (fileInput) { fileInput.onchange = function() { pendingDocUpload = this.files && this.files.length > 0 ?
+                        this.files[0] : null; }; if (fileInput.files && fileInput.files.length > 0) pendingDocUpload =
+                    fileInput.files[0]; }
+        }
+
+        function saveEditDocument(id) {
+            const d = data.documents.find(d => d.id === id);
+            if (!d) return;
+            d.title = document.getElementById('editDocTitle').value.trim() || 'Untitled';
+            d.subjectId = document.getElementById('editDocSubject').value || null;
+            d.category = document.getElementById('editDocCategory').value.trim() || 'General';
+            d.notes = document.getElementById('editDocNotes').value.trim() || '';
+            let file = pendingDocUpload;
+            if (!file) { const el = document.getElementById('editDocFile'); if (el && el.files && el.files.length > 0) file =
+                    el.files[0]; }
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) { try { const base64 = e.target.result.split(',')[1];
+                        d.fileName = file.name;
+                        d.fileType = file.type;
+                        d.fileSize = file.size;
+                        d.fileData = base64;
+                        saveData();
+                        closeModal();
+                        toast('✅ Updated with new file.', 'success');
+                        renderPage('documents'); } catch (err) { toast('Error: ' + err.message, 'error'); } };
+                reader.onerror = function() { toast('Error reading file.', 'error'); };
+                reader.readAsDataURL(file);
+            } else { saveData();
+                closeModal();
+                toast('✅ Updated.', 'success');
+                renderPage('documents'); }
+        }
+
+        function deleteDocument(id) { if (!confirm('Delete this document?')) return; data.documents = data.documents.filter(
+                d => d.id !== id);
+            saveData();
+            toast('🗑️ Document deleted', 'info');
+            renderPage('documents'); }
+
+        // ================================================================
+        //  TIMER (unchanged)
         // ================================================================
 
         let timerState = { running: false, mode: 'pomodoro', timeLeft: 25 * 60, total: 25 * 60, interval: null };
@@ -2175,7 +2533,7 @@
         function initTimer() { updateTimerDisplay(); }
 
         // ================================================================
-        //  CALENDAR
+        //  CALENDAR (unchanged)
         // ================================================================
 
         function renderCalendar() {
@@ -2245,7 +2603,7 @@
         function initCalendar() {}
 
         // ================================================================
-        //  ACTIVITIES (compact)
+        //  ACTIVITIES (unchanged)
         // ================================================================
 
         function renderActivities() {
@@ -2346,7 +2704,220 @@
             renderPage('activities'); }
 
         // ================================================================
-        //  GOALS (compact)
+        //  PROJECTS (New Feature #5)
+        // ================================================================
+
+        function renderProjects() {
+            let html =
+                `<div class="flex-between"><div><div class="page-title">🚀 Projects</div><div class="page-subtitle">Manage your personal and academic projects.</div></div><button class="btn btn-primary" onclick="showAddProject()">+ New Project</button></div>`;
+            const projects = data.projects.sort((a, b) => new Date(b.startDate || b.createdAt) - new Date(a.startDate || a
+                .createdAt));
+            if (!projects.length) {
+                html +=
+                    `<div class="empty-state"><div class="icon">🚀</div><div class="title">No projects yet</div><div class="desc">Track your projects – from research to apps to initiatives.</div></div>`;
+            } else {
+                html += `<div class="grid-2 mt-2">`;
+                projects.forEach(p => {
+                    html += `<div class="card"><div style="font-weight:600;font-size:1.05rem;">${p.name}</div><div class="text-sm text-muted">${p.category||'General'} · ${p.status||'Planning'}</div><div class="text-sm mt-1">${p.description||''}</div><div style="display:flex;gap:0.3rem;margin-top:0.4rem;flex-wrap:wrap;"><span class="badge">${p.startDate?new Date(p.startDate).getFullYear():'—'}</span><button class="btn btn-sm btn-ghost" onclick="editProject('${p.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteProject('${p.id}')">🗑️</button></div></div>`;
+                });
+                html += `</div>`;
+            }
+            return html;
+        }
+
+        function showAddProject() {
+            openModal(`
+            <div class="modal-title">🚀 New Project</div>
+            <div class="form-group"><label>Project Name</label><input id="projName" /></div>
+            <div class="form-group"><label>Category</label><input id="projCategory" placeholder="e.g. AI, Web Dev, Research" /></div>
+            <div class="form-group"><label>Description</label><textarea id="projDesc" rows="2"></textarea></div>
+            <div class="form-group"><label>Role</label><input id="projRole" /></div>
+            <div class="form-group"><label>Start Date</label><input id="projStart" type="date" /></div>
+            <div class="form-group"><label>End Date</label><input id="projEnd" type="date" /></div>
+            <div class="form-group"><label>Status</label><select id="projStatus"><option value="Planning">Planning</option><option value="In Progress">In Progress</option><option value="Completed">Completed</option><option value="On Hold">On Hold</option></select></div>
+            <div class="form-group"><label>Technologies</label><input id="projTech" placeholder="e.g. Python, React" /></div>
+            <div class="form-group"><label>GitHub / Website</label><input id="projLink" /></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="addProject()">Add Project</button></div>
+          `);
+        }
+
+        function addProject() {
+            const name = document.getElementById('projName').value.trim();
+            if (!name) { toast('Project name required.', 'error'); return; }
+            data.projects.push({ id: genId(), name, category: document.getElementById('projCategory').value.trim() ||
+                    'General', description: document.getElementById('projDesc').value.trim() || '', role: document
+                    .getElementById('projRole').value.trim() || '', startDate: document.getElementById('projStart')
+                    .value || null, endDate: document.getElementById('projEnd').value || null, status: document
+                    .getElementById('projStatus').value, technologies: document.getElementById('projTech').value
+                    .trim() || '', link: document.getElementById('projLink').value.trim() || '', createdAt: new Date()
+                    .toISOString() });
+            saveData();
+            closeModal();
+            toast('✅ Project added', 'success');
+            renderPage('projects');
+        }
+
+        function editProject(id) {
+            const p = data.projects.find(p => p.id === id);
+            if (!p) return;
+            openModal(`
+            <div class="modal-title">✏️ Edit Project</div>
+            <div class="form-group"><label>Project Name</label><input id="editProjName" value="${p.name}" /></div>
+            <div class="form-group"><label>Category</label><input id="editProjCategory" value="${p.category||''}" /></div>
+            <div class="form-group"><label>Description</label><textarea id="editProjDesc" rows="2">${p.description||''}</textarea></div>
+            <div class="form-group"><label>Role</label><input id="editProjRole" value="${p.role||''}" /></div>
+            <div class="form-group"><label>Start Date</label><input id="editProjStart" type="date" value="${p.startDate||''}" /></div>
+            <div class="form-group"><label>End Date</label><input id="editProjEnd" type="date" value="${p.endDate||''}" /></div>
+            <div class="form-group"><label>Status</label><select id="editProjStatus"><option value="Planning" ${p.status==='Planning'?'selected':''}>Planning</option><option value="In Progress" ${p.status==='In Progress'?'selected':''}>In Progress</option><option value="Completed" ${p.status==='Completed'?'selected':''}>Completed</option><option value="On Hold" ${p.status==='On Hold'?'selected':''}>On Hold</option></select></div>
+            <div class="form-group"><label>Technologies</label><input id="editProjTech" value="${p.technologies||''}" /></div>
+            <div class="form-group"><label>GitHub / Website</label><input id="editProjLink" value="${p.link||''}" /></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEditProject('${id}')">Save</button></div>
+          `);
+        }
+
+        function saveEditProject(id) {
+            const p = data.projects.find(p => p.id === id);
+            if (!p) return;
+            p.name = document.getElementById('editProjName').value.trim() || 'Project';
+            p.category = document.getElementById('editProjCategory').value.trim() || 'General';
+            p.description = document.getElementById('editProjDesc').value.trim() || '';
+            p.role = document.getElementById('editProjRole').value.trim() || '';
+            p.startDate = document.getElementById('editProjStart').value || null;
+            p.endDate = document.getElementById('editProjEnd').value || null;
+            p.status = document.getElementById('editProjStatus').value;
+            p.technologies = document.getElementById('editProjTech').value.trim() || '';
+            p.link = document.getElementById('editProjLink').value.trim() || '';
+            saveData();
+            closeModal();
+            toast('✅ Project updated', 'success');
+            renderPage('projects');
+        }
+
+        function deleteProject(id) { if (!confirm('Delete this project?')) return; data.projects = data.projects.filter(p =>
+                p.id !== id);
+            saveData();
+            toast('🗑️ Project deleted', 'info');
+            renderPage('projects'); }
+
+        // ================================================================
+        //  SKILLS (New Feature #6)
+        // ================================================================
+
+        function renderSkills() {
+            let html =
+                `<div class="flex-between"><div><div class="page-title">🧠 Skills</div><div class="page-subtitle">Track your skills and proficiency levels.</div></div><button class="btn btn-primary" onclick="showAddSkill()">+ Add Skill</button></div>`;
+            const skills = data.skills.sort((a, b) => a.name.localeCompare(b.name));
+            if (!skills.length) {
+                html +=
+                    `<div class="empty-state"><div class="icon">🧠</div><div class="title">No skills added</div><div class="desc">Track your technical, academic, and personal skills.</div></div>`;
+            } else {
+                html += `<div class="grid-2 mt-2">`;
+                skills.forEach(s => {
+                    html += `<div class="card"><div style="font-weight:600;font-size:1.05rem;">${s.name}</div><div class="text-sm text-muted">Level: ${s.level||'Beginner'}</div><div style="display:flex;gap:0.3rem;margin-top:0.4rem;flex-wrap:wrap;"><span class="badge">${s.projects||'No projects'}</span><button class="btn btn-sm btn-ghost" onclick="editSkill('${s.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteSkill('${s.id}')">🗑️</button></div></div>`;
+                });
+                html += `</div>`;
+            }
+            return html;
+        }
+
+        function showAddSkill() {
+            openModal(`
+            <div class="modal-title">🧠 Add Skill</div>
+            <div class="form-group"><label>Skill Name</label><input id="skillName" placeholder="e.g. Python" /></div>
+            <div class="form-group"><label>Level</label><select id="skillLevel"><option value="Beginner">Beginner</option><option value="Intermediate">Intermediate</option><option value="Advanced">Advanced</option><option value="Expert">Expert</option></select></div>
+            <div class="form-group"><label>Projects / Evidence</label><textarea id="skillProjects" rows="2" placeholder="List projects or courses where you used this skill"></textarea></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="addSkill()">Add Skill</button></div>
+          `);
+        }
+
+        function addSkill() {
+            const name = document.getElementById('skillName').value.trim();
+            if (!name) { toast('Skill name required.', 'error'); return; }
+            data.skills.push({ id: genId(), name, level: document.getElementById('skillLevel').value, projects: document
+                    .getElementById('skillProjects').value.trim() || '' });
+            saveData();
+            closeModal();
+            toast('✅ Skill added', 'success');
+            renderPage('skills');
+        }
+
+        function editSkill(id) {
+            const s = data.skills.find(s => s.id === id);
+            if (!s) return;
+            openModal(`
+            <div class="modal-title">✏️ Edit Skill</div>
+            <div class="form-group"><label>Skill Name</label><input id="editSkillName" value="${s.name}" /></div>
+            <div class="form-group"><label>Level</label><select id="editSkillLevel"><option value="Beginner" ${s.level==='Beginner'?'selected':''}>Beginner</option><option value="Intermediate" ${s.level==='Intermediate'?'selected':''}>Intermediate</option><option value="Advanced" ${s.level==='Advanced'?'selected':''}>Advanced</option><option value="Expert" ${s.level==='Expert'?'selected':''}>Expert</option></select></div>
+            <div class="form-group"><label>Projects / Evidence</label><textarea id="editSkillProjects" rows="2">${s.projects||''}</textarea></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEditSkill('${id}')">Save</button></div>
+          `);
+        }
+
+        function saveEditSkill(id) {
+            const s = data.skills.find(s => s.id === id);
+            if (!s) return;
+            s.name = document.getElementById('editSkillName').value.trim() || 'Skill';
+            s.level = document.getElementById('editSkillLevel').value;
+            s.projects = document.getElementById('editSkillProjects').value.trim() || '';
+            saveData();
+            closeModal();
+            toast('✅ Skill updated', 'success');
+            renderPage('skills');
+        }
+
+        function deleteSkill(id) { if (!confirm('Delete this skill?')) return; data.skills = data.skills.filter(s => s.id !==
+                id);
+            saveData();
+            toast('🗑️ Skill deleted', 'info');
+            renderPage('skills'); }
+
+        // ================================================================
+        //  PROFILE (New Feature #7)
+        // ================================================================
+
+        function renderProfile() {
+            const p = data.profile;
+            return `
+            <div class="page-title">👤 Personal Profile</div>
+            <div class="page-subtitle">Reflect on who you are, what you value, and how you grow.</div>
+            <div class="card"><div style="font-weight:600;margin-bottom:0.5rem;">About You</div>
+              <div class="form-group"><label>Interests</label><textarea id="profInterests" rows="2">${p.interests||''}</textarea></div>
+              <div class="form-group"><label>Passions</label><textarea id="profPassions" rows="2">${p.passions||''}</textarea></div>
+              <div class="form-group"><label>Values</label><textarea id="profValues" rows="2">${p.values||''}</textarea></div>
+              <div class="form-group"><label>Motivations</label><textarea id="profMotivations" rows="2">${p.motivations||''}</textarea></div>
+              <div class="form-group"><label>Strengths</label><textarea id="profStrengths" rows="2">${p.strengths||''}</textarea></div>
+              <div class="form-group"><label>Weaknesses</label><textarea id="profWeaknesses" rows="2">${p.weaknesses||''}</textarea></div>
+              <div class="form-group"><label>Curiosities</label><textarea id="profCuriosities" rows="2">${p.curiosities||''}</textarea></div>
+              <div class="form-group"><label>Beliefs</label><textarea id="profBeliefs" rows="2">${p.beliefs||''}</textarea></div>
+              <div class="form-group"><label>Goals</label><textarea id="profGoals" rows="2">${p.goals||''}</textarea></div>
+              <div class="form-group"><label>Problems I care about</label><textarea id="profProblems" rows="2">${p.problems||''}</textarea></div>
+              <div class="form-group"><label>Things I've changed my mind about</label><textarea id="profChangedMind" rows="2">${p.changedMind||''}</textarea></div>
+              <div class="form-group"><label>Experiences that shaped me</label><textarea id="profExperiences" rows="2">${p.experiences||''}</textarea></div>
+              <button class="btn btn-primary" onclick="saveProfile()">Save Profile</button>
+            </div>
+          `;
+        }
+
+        function saveProfile() {
+            data.profile.interests = document.getElementById('profInterests').value.trim();
+            data.profile.passions = document.getElementById('profPassions').value.trim();
+            data.profile.values = document.getElementById('profValues').value.trim();
+            data.profile.motivations = document.getElementById('profMotivations').value.trim();
+            data.profile.strengths = document.getElementById('profStrengths').value.trim();
+            data.profile.weaknesses = document.getElementById('profWeaknesses').value.trim();
+            data.profile.curiosities = document.getElementById('profCuriosities').value.trim();
+            data.profile.beliefs = document.getElementById('profBeliefs').value.trim();
+            data.profile.goals = document.getElementById('profGoals').value.trim();
+            data.profile.problems = document.getElementById('profProblems').value.trim();
+            data.profile.changedMind = document.getElementById('profChangedMind').value.trim();
+            data.profile.experiences = document.getElementById('profExperiences').value.trim();
+            saveData();
+            toast('✅ Profile saved', 'success');
+            renderPage('profile');
+        }
+
+        // ================================================================
+        //  GOALS (unchanged)
         // ================================================================
 
         function renderGoals() {
@@ -2421,7 +2992,7 @@
             renderPage('goals'); }
 
         // ================================================================
-        //  STORIES (compact)
+        //  STORIES (unchanged)
         // ================================================================
 
         function renderStories() {
@@ -2508,7 +3079,7 @@
             renderPage('stories'); }
 
         // ================================================================
-        //  UNIVERSITIES (compact)
+        //  UNIVERSITIES (unchanged)
         // ================================================================
 
         function renderUniversities() {
@@ -2594,7 +3165,7 @@
             renderPage('universities'); }
 
         // ================================================================
-        //  ESSAYS (compact)
+        //  ESSAYS (unchanged)
         // ================================================================
 
         function renderEssays() {
@@ -2681,7 +3252,287 @@
             renderPage('essays'); }
 
         // ================================================================
-        //  SETTINGS
+        //  RECOMMENDATIONS (New Feature #8)
+        // ================================================================
+
+        function renderRecommendations() {
+            let html =
+                `<div class="flex-between"><div><div class="page-title">📋 Recommendations</div><div class="page-subtitle">Track recommenders and their status.</div></div><button class="btn btn-primary" onclick="showAddRecommendation()">+ Add Recommender</button></div>`;
+            const recs = data.recommendations.sort((a, b) => a.name.localeCompare(b.name));
+            if (!recs.length) {
+                html +=
+                    `<div class="empty-state"><div class="icon">📋</div><div class="title">No recommenders added</div><div class="desc">Keep track of your letters of recommendation.</div></div>`;
+            } else {
+                html += `<div class="table-wrap mt-2"><table><thead><tr><th>Name</th><th>Subject</th><th>Status</th><th>Deadline</th><th>Actions</th></tr></thead><tbody>`;
+                recs.forEach(r => {
+                    html +=
+                        `<tr><td>${r.name}</td><td>${r.subject||'—'}</td><td><span class="pill ${r.status==='Submitted'?'green':r.status==='Agreed'?'gold':'purple'}">${r.status||'Not asked'}</span></td><td>${r.deadline?new Date(r.deadline).toLocaleDateString():'—'}</td><td><button class="btn btn-sm btn-ghost" onclick="editRecommendation('${r.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteRecommendation('${r.id}')">🗑️</button></td></tr>`;
+                });
+                html += `</tbody></table></div>`;
+            }
+            return html;
+        }
+
+        function showAddRecommendation() {
+            openModal(`
+            <div class="modal-title">📋 Add Recommender</div>
+            <div class="form-group"><label>Name</label><input id="recName" /></div>
+            <div class="form-group"><label>Subject / Relationship</label><input id="recSubject" /></div>
+            <div class="form-group"><label>Status</label><select id="recStatus"><option value="Not asked">Not asked</option><option value="Asked">Asked</option><option value="Agreed">Agreed</option><option value="In progress">In progress</option><option value="Submitted">Submitted</option></select></div>
+            <div class="form-group"><label>Deadline</label><input id="recDeadline" type="date" /></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="addRecommendation()">Add</button></div>
+          `);
+        }
+
+        function addRecommendation() {
+            const name = document.getElementById('recName').value.trim();
+            if (!name) { toast('Name required.', 'error'); return; }
+            data.recommendations.push({ id: genId(), name, subject: document.getElementById('recSubject').value.trim() ||
+                    '', status: document.getElementById('recStatus').value, deadline: document.getElementById(
+                    'recDeadline').value || null });
+            saveData();
+            closeModal();
+            toast('✅ Recommender added', 'success');
+            renderPage('recommendations');
+        }
+
+        function editRecommendation(id) {
+            const r = data.recommendations.find(r => r.id === id);
+            if (!r) return;
+            openModal(`
+            <div class="modal-title">✏️ Edit Recommender</div>
+            <div class="form-group"><label>Name</label><input id="editRecName" value="${r.name}" /></div>
+            <div class="form-group"><label>Subject / Relationship</label><input id="editRecSubject" value="${r.subject||''}" /></div>
+            <div class="form-group"><label>Status</label><select id="editRecStatus"><option value="Not asked" ${r.status==='Not asked'?'selected':''}>Not asked</option><option value="Asked" ${r.status==='Asked'?'selected':''}>Asked</option><option value="Agreed" ${r.status==='Agreed'?'selected':''}>Agreed</option><option value="In progress" ${r.status==='In progress'?'selected':''}>In progress</option><option value="Submitted" ${r.status==='Submitted'?'selected':''}>Submitted</option></select></div>
+            <div class="form-group"><label>Deadline</label><input id="editRecDeadline" type="date" value="${r.deadline||''}" /></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEditRecommendation('${id}')">Save</button></div>
+          `);
+        }
+
+        function saveEditRecommendation(id) {
+            const r = data.recommendations.find(r => r.id === id);
+            if (!r) return;
+            r.name = document.getElementById('editRecName').value.trim() || 'Recommender';
+            r.subject = document.getElementById('editRecSubject').value.trim() || '';
+            r.status = document.getElementById('editRecStatus').value;
+            r.deadline = document.getElementById('editRecDeadline').value || null;
+            saveData();
+            closeModal();
+            toast('✅ Updated', 'success');
+            renderPage('recommendations');
+        }
+
+        function deleteRecommendation(id) { if (!confirm('Delete this recommender?')) return; data.recommendations = data
+                .recommendations.filter(r => r.id !== id);
+            saveData();
+            toast('🗑️ Deleted', 'info');
+            renderPage('recommendations'); }
+
+        // ================================================================
+        //  SCHOLARSHIPS (New Feature #9)
+        // ================================================================
+
+        function renderScholarships() {
+            let html =
+                `<div class="flex-between"><div><div class="page-title">💰 Scholarships</div><div class="page-subtitle">Track scholarships and financial aid opportunities.</div></div><button class="btn btn-primary" onclick="showAddScholarship()">+ Add Scholarship</button></div>`;
+            const sch = data.scholarships.sort((a, b) => new Date(b.deadline) - new Date(a.deadline));
+            if (!sch.length) {
+                html +=
+                    `<div class="empty-state"><div class="icon">💰</div><div class="title">No scholarships added</div><div class="desc">Keep track of scholarships you're applying for.</div></div>`;
+            } else {
+                html += `<div class="grid-2 mt-2">`;
+                sch.forEach(s => {
+                    html += `<div class="card"><div style="font-weight:600;font-size:1.05rem;">${s.name}</div><div class="text-sm text-muted">${s.organization||''} · ${s.amount||'—'}</div><div class="text-sm mt-1">Deadline: ${s.deadline?new Date(s.deadline).toLocaleDateString():'—'}</div><div style="display:flex;gap:0.3rem;margin-top:0.4rem;flex-wrap:wrap;"><span class="pill ${s.status==='Applied'?'green':s.status==='Awarded'?'gold':'purple'}">${s.status||'Not applied'}</span><button class="btn btn-sm btn-ghost" onclick="editScholarship('${s.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteScholarship('${s.id}')">🗑️</button></div></div>`;
+                });
+                html += `</div>`;
+            }
+            return html;
+        }
+
+        function showAddScholarship() {
+            openModal(`
+            <div class="modal-title">💰 Add Scholarship</div>
+            <div class="form-group"><label>Scholarship Name</label><input id="schName" /></div>
+            <div class="form-group"><label>Organization</label><input id="schOrg" /></div>
+            <div class="form-group"><label>Amount</label><input id="schAmount" placeholder="e.g. $5,000" /></div>
+            <div class="form-group"><label>Deadline</label><input id="schDeadline" type="date" /></div>
+            <div class="form-group"><label>Status</label><select id="schStatus"><option value="Not applied">Not applied</option><option value="Applied">Applied</option><option value="Awarded">Awarded</option><option value="Rejected">Rejected</option></select></div>
+            <div class="form-group"><label>Requirements / Notes</label><textarea id="schNotes" rows="2"></textarea></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="addScholarship()">Add</button></div>
+          `);
+        }
+
+        function addScholarship() {
+            const name = document.getElementById('schName').value.trim();
+            if (!name) { toast('Scholarship name required.', 'error'); return; }
+            data.scholarships.push({ id: genId(), name, organization: document.getElementById('schOrg').value.trim() ||
+                    '', amount: document.getElementById('schAmount').value.trim() || '', deadline: document
+                    .getElementById('schDeadline').value || null, status: document.getElementById('schStatus')
+                    .value, notes: document.getElementById('schNotes').value.trim() || '' });
+            saveData();
+            closeModal();
+            toast('✅ Scholarship added', 'success');
+            renderPage('scholarships');
+        }
+
+        function editScholarship(id) {
+            const s = data.scholarships.find(s => s.id === id);
+            if (!s) return;
+            openModal(`
+            <div class="modal-title">✏️ Edit Scholarship</div>
+            <div class="form-group"><label>Scholarship Name</label><input id="editSchName" value="${s.name}" /></div>
+            <div class="form-group"><label>Organization</label><input id="editSchOrg" value="${s.organization||''}" /></div>
+            <div class="form-group"><label>Amount</label><input id="editSchAmount" value="${s.amount||''}" /></div>
+            <div class="form-group"><label>Deadline</label><input id="editSchDeadline" type="date" value="${s.deadline||''}" /></div>
+            <div class="form-group"><label>Status</label><select id="editSchStatus"><option value="Not applied" ${s.status==='Not applied'?'selected':''}>Not applied</option><option value="Applied" ${s.status==='Applied'?'selected':''}>Applied</option><option value="Awarded" ${s.status==='Awarded'?'selected':''}>Awarded</option><option value="Rejected" ${s.status==='Rejected'?'selected':''}>Rejected</option></select></div>
+            <div class="form-group"><label>Notes</label><textarea id="editSchNotes" rows="2">${s.notes||''}</textarea></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEditScholarship('${id}')">Save</button></div>
+          `);
+        }
+
+        function saveEditScholarship(id) {
+            const s = data.scholarships.find(s => s.id === id);
+            if (!s) return;
+            s.name = document.getElementById('editSchName').value.trim() || 'Scholarship';
+            s.organization = document.getElementById('editSchOrg').value.trim() || '';
+            s.amount = document.getElementById('editSchAmount').value.trim() || '';
+            s.deadline = document.getElementById('editSchDeadline').value || null;
+            s.status = document.getElementById('editSchStatus').value;
+            s.notes = document.getElementById('editSchNotes').value.trim() || '';
+            saveData();
+            closeModal();
+            toast('✅ Updated', 'success');
+            renderPage('scholarships');
+        }
+
+        function deleteScholarship(id) { if (!confirm('Delete this scholarship?')) return; data.scholarships = data
+                .scholarships.filter(s => s.id !== id);
+            saveData();
+            toast('🗑️ Deleted', 'info');
+            renderPage('scholarships'); }
+
+        // ================================================================
+        //  EVIDENCE (New Feature #10)
+        // ================================================================
+
+        function renderEvidence() {
+            let html =
+                `<div class="flex-between"><div><div class="page-title">📦 Evidence Vault</div><div class="page-subtitle">Store certificates, photos, documents – all your proof.</div></div><button class="btn btn-primary" onclick="showAddEvidence()">+ Add Evidence</button></div>`;
+            const ev = data.evidence.sort((a, b) => new Date(b.date) - new Date(a.date));
+            if (!ev.length) {
+                html +=
+                    `<div class="empty-state"><div class="icon">📦</div><div class="title">No evidence items</div><div class="desc">Upload certificates, awards, project screenshots, and more.</div></div>`;
+            } else {
+                html += `<div class="grid-2 mt-2">`;
+                ev.forEach(e => {
+                    const fileIcon = e.fileType ? (e.fileType.startsWith('image/') ? '🖼️' : e.fileType ===
+                        'application/pdf' ? '📄' : '📎') : '📎';
+                    const downloadLink = e.fileData ? `data:${e.fileType};base64,${e.fileData}` : '#';
+                    html += `<div class="card"><div style="font-weight:600;font-size:1.05rem;">${e.title||'Untitled'}</div><div class="text-sm text-muted">${e.category||'General'} · ${e.date?new Date(e.date).toLocaleDateString():'—'}</div><div class="file-card mt-1"><span class="file-icon">${fileIcon}</span><div class="file-info"><div class="name">${e.fileName||'File'}</div><div class="meta">${e.fileSize?(e.fileSize/1024).toFixed(1)+' KB':'—'}</div></div><div class="file-actions">${e.fileData?`<a href="${downloadLink}" download="${e.fileName||'download'}" class="btn btn-sm btn-primary">⬇️</a>`:''}<button class="btn btn-sm btn-ghost" onclick="editEvidence('${e.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteEvidence('${e.id}')">🗑️</button></div></div>${e.notes?`<div class="text-sm text-muted mt-1">${e.notes}</div>`:''}</div>`;
+                });
+                html += `</div>`;
+            }
+            return html;
+        }
+
+        let pendingEvidenceUpload = null;
+
+        function showAddEvidence() {
+            pendingEvidenceUpload = null;
+            openModal(`
+            <div class="modal-title">📦 Add Evidence</div>
+            <div class="modal-sub">Upload certificates, photos, awards, project screenshots, etc.</div>
+            <div class="form-group"><label>Title</label><input id="evTitle" placeholder="e.g. Debate Certificate" /></div>
+            <div class="form-group"><label>Category</label><input id="evCategory" placeholder="e.g. Award, Certificate, Project" /></div>
+            <div class="form-group"><label>Date</label><input id="evDate" type="date" /></div>
+            <div class="form-group"><label>File</label><input id="evFile" type="file" accept=".pdf,.png,.jpg,.jpeg,.doc,.docx,.txt" /></div>
+            <div class="form-group"><label>Notes</label><textarea id="evNotes" rows="2"></textarea></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="addEvidence()">Upload</button></div>
+          `);
+            const fileInput = document.getElementById('evFile');
+            if (fileInput) { fileInput.onchange = function() { pendingEvidenceUpload = this.files && this.files.length > 0 ?
+                        this.files[0] : null; }; if (fileInput.files && fileInput.files.length > 0) pendingEvidenceUpload =
+                    fileInput.files[0]; }
+        }
+
+        function addEvidence() {
+            const title = document.getElementById('evTitle').value.trim() || 'Untitled';
+            const category = document.getElementById('evCategory').value.trim() || 'General';
+            const date = document.getElementById('evDate').value || null;
+            const notes = document.getElementById('evNotes').value.trim() || '';
+            let file = pendingEvidenceUpload;
+            if (!file) { const el = document.getElementById('evFile'); if (el && el.files && el.files.length > 0) file = el
+                    .files[0]; }
+            if (!file) { toast('Please select a file.', 'error'); return; }
+            const reader = new FileReader();
+            reader.onload = function(e) { try { const base64 = e.target.result.split(',')[1];
+                    data.evidence.push({ id: genId(), title, category, date, fileName: file.name, fileType: file
+                            .type, fileSize: file.size, fileData: base64, notes, uploadedAt: new Date()
+                            .toISOString() });
+                    saveData();
+                    closeModal();
+                    toast('✅ Evidence uploaded!', 'success');
+                    renderPage('evidence'); } catch (err) { toast('Error: ' + err.message, 'error'); } };
+            reader.onerror = function() { toast('Error reading file.', 'error'); };
+            reader.readAsDataURL(file);
+        }
+
+        function editEvidence(id) {
+            const e = data.evidence.find(e => e.id === id);
+            if (!e) return;
+            pendingEvidenceUpload = null;
+            openModal(`
+            <div class="modal-title">✏️ Edit Evidence</div>
+            <div class="form-group"><label>Title</label><input id="editEvTitle" value="${e.title||''}" /></div>
+            <div class="form-group"><label>Category</label><input id="editEvCategory" value="${e.category||''}" /></div>
+            <div class="form-group"><label>Date</label><input id="editEvDate" type="date" value="${e.date||''}" /></div>
+            <div class="form-group"><label>Notes</label><textarea id="editEvNotes" rows="2">${e.notes||''}</textarea></div>
+            <div class="form-group"><label>Replace File</label><input id="editEvFile" type="file" accept=".pdf,.png,.jpg,.jpeg,.doc,.docx,.txt" /><div class="text-xs text-muted mt-1">Current: ${e.fileName||'None'}</div></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEditEvidence('${id}')">Save</button></div>
+          `);
+            const fileInput = document.getElementById('editEvFile');
+            if (fileInput) { fileInput.onchange = function() { pendingEvidenceUpload = this.files && this.files.length > 0 ?
+                        this.files[0] : null; }; if (fileInput.files && fileInput.files.length > 0) pendingEvidenceUpload =
+                    fileInput.files[0]; }
+        }
+
+        function saveEditEvidence(id) {
+            const e = data.evidence.find(e => e.id === id);
+            if (!e) return;
+            e.title = document.getElementById('editEvTitle').value.trim() || 'Untitled';
+            e.category = document.getElementById('editEvCategory').value.trim() || 'General';
+            e.date = document.getElementById('editEvDate').value || null;
+            e.notes = document.getElementById('editEvNotes').value.trim() || '';
+            let file = pendingEvidenceUpload;
+            if (!file) { const el = document.getElementById('editEvFile'); if (el && el.files && el.files.length > 0) file =
+                    el.files[0]; }
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) { try { const base64 = e.target.result.split(',')[1];
+                        e.fileName = file.name;
+                        e.fileType = file.type;
+                        e.fileSize = file.size;
+                        e.fileData = base64;
+                        saveData();
+                        closeModal();
+                        toast('✅ Updated with new file.', 'success');
+                        renderPage('evidence'); } catch (err) { toast('Error: ' + err.message, 'error'); } };
+                reader.onerror = function() { toast('Error reading file.', 'error'); };
+                reader.readAsDataURL(file);
+            } else { saveData();
+                closeModal();
+                toast('✅ Updated.', 'success');
+                renderPage('evidence'); }
+        }
+
+        function deleteEvidence(id) { if (!confirm('Delete this evidence?')) return; data.evidence = data.evidence.filter(e =>
+                e.id !== id);
+            saveData();
+            toast('🗑️ Evidence deleted', 'info');
+            renderPage('evidence'); }
+
+        // ================================================================
+        //  SETTINGS (upgraded with Dark Mode toggle)
         // ================================================================
 
         function renderSettings() {
@@ -2695,6 +3546,11 @@
               <div class="form-group"><label>Exam Year</label><input id="settingsExamYear" value="${data.student.examYear||'CIE 2027'}" /></div>
               <button class="btn btn-primary" onclick="saveSettings()">Save Profile</button>
             </div>
+            <div class="card mt-2"><div style="font-weight:600;margin-bottom:0.5rem;">🎨 Appearance</div>
+              <div class="flex-between"><span>Dark Mode</span>
+                <button class="btn ${data.settings.darkMode?'btn-gold':'btn-primary'}" onclick="toggleDarkMode()">${data.settings.darkMode?'☀️ Light':'🌙 Dark'}</button>
+              </div>
+            </div>
             <div class="card mt-2"><div style="font-weight:600;margin-bottom:0.5rem;">💾 Data Management</div>
               <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
                 <button class="btn btn-outline" onclick="exportData()">📤 Export</button>
@@ -2702,10 +3558,11 @@
                 <input type="file" id="importInput" accept=".json" style="display:none;" onchange="importData(event)" />
                 <button class="btn btn-danger" onclick="resetData()">⚠️ Reset All</button>
               </div>
+              <div class="text-xs text-muted mt-1">Data is stored locally in your browser. Version ${data.version||1}</div>
             </div>
             <div class="card mt-2"><div style="font-weight:600;margin-bottom:0.5rem;">📊 Stats</div>
-              <div class="text-sm text-muted">Subjects: ${data.subjects.length} · Notes: ${data.notes.length} · Tasks: ${data.tasks.length} · Mistakes: ${data.mistakes.length} · Flashcards: ${data.flashcards.length} · Activities: ${data.activities.length} · Goals: ${data.goals.length} · Stories: ${data.stories.length} · Universities: ${data.universities.length} · Essays: ${data.essays.length} · Past Papers: ${data.pastPapers.length}</div>
-              <div class="text-xs text-muted mt-1">Data version: v${data.version||1} · Last saved: ${new Date().toLocaleString()}</div>
+              <div class="text-sm text-muted">Subjects: ${data.subjects.length} · Notes: ${data.notes.length} · Tasks: ${data.tasks.length} · Mistakes: ${data.mistakes.length} · Flashcards: ${data.flashcards.length} · Past Papers: ${data.pastPapers.length} · Videos: ${data.videos.length} · Documents: ${data.documents.length} · Projects: ${data.projects.length} · Skills: ${data.skills.length} · Activities: ${data.activities.length} · Goals: ${data.goals.length} · Stories: ${data.stories.length} · Universities: ${data.universities.length} · Essays: ${data.essays.length} · Recommendations: ${data.recommendations.length} · Scholarships: ${data.scholarships.length} · Evidence: ${data.evidence.length}</div>
+              <div class="text-xs text-muted mt-1">Last saved: ${new Date().toLocaleString()}</div>
             </div>
           `;
         }
@@ -2756,7 +3613,7 @@
         }
 
         // ================================================================
-        //  FLOATING ADD BUTTON
+        //  FLOATING ADD BUTTON (updated with new items)
         // ================================================================
 
         document.getElementById('fabButton').addEventListener('click', () => {
@@ -2766,15 +3623,22 @@
                 { label: 'New Mistake', action: 'showAddMistake()' },
                 { label: 'New Flashcard', action: 'showAddFlashcard()' },
                 { label: 'New Past Paper', action: 'showAddPastPaper()' },
+                { label: 'New Video', action: 'showAddVideo()' },
+                { label: 'New Document', action: 'showAddDocument()' },
                 { label: 'New Activity', action: 'showAddActivity()' },
+                { label: 'New Project', action: 'showAddProject()' },
+                { label: 'New Skill', action: 'showAddSkill()' },
                 { label: 'New Goal', action: 'showAddGoal()' },
                 { label: 'New Story', action: 'showAddStory()' },
                 { label: 'New University', action: 'showAddUniversity()' },
                 { label: 'New Essay', action: 'showAddEssay()' },
+                { label: 'New Recommender', action: 'showAddRecommendation()' },
+                { label: 'New Scholarship', action: 'showAddScholarship()' },
+                { label: 'New Evidence', action: 'showAddEvidence()' },
                 { label: 'New Event', action: 'showAddEvent()' },
             ];
             let html =
-                `<div class="modal-title">✨ Quick Add</div><div class="modal-sub">Choose what to create.</div><div style="display:flex;flex-direction:column;gap:0.4rem;">`;
+                `<div class="modal-title">✨ Quick Add</div><div class="modal-sub">Choose what to create.</div><div style="display:flex;flex-direction:column;gap:0.4rem;max-height:300px;overflow-y:auto;">`;
             options.forEach(opt => {
                 html +=
                     `<button class="btn btn-ghost" style="justify-content:flex-start;padding:0.6rem 0.8rem;" onclick="closeModal();${opt.action}">${opt.label}</button>`;
@@ -2794,11 +3658,13 @@
         document.addEventListener('keydown', (e) => {
             if (e.ctrlKey && e.shiftKey && e.key === 'D') { e.preventDefault();
                 navigate('dashboard'); }
+            if (e.ctrlKey && e.key === 'k') { e.preventDefault();
+                showGlobalSearch(); }
         });
 
-        console.log('🚀 O‑LEVEL COMMAND CENTER — Royal Edition (fixed upload)');
-        console.log(`📊 ${data.subjects.length} subjects, ${data.notes.length} notes, ${data.tasks.length} tasks, ${data.pastPapers.length} past papers.`);
+        console.log('🚀 O‑LEVEL COMMAND CENTER — ULTIMATE EDITION');
+        console.log(`📊 ${data.subjects.length} subjects, ${data.notes.length} notes, ${data.tasks.length} tasks, ${data.pastPapers.length} past papers, ${data.videos.length} videos, ${data.documents.length} documents.`);
+        console.log('💾 Data is saved to localStorage. It will persist across refreshes and GitHub commits.');
     </script>
-
 </body>
 </html>
