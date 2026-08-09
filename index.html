@@ -6756,5 +6756,94 @@
         console.log('✅ Notes Padlet Wall loaded!');
     })();
 </script>
+    <!-- ================================================================
+     🌙 DARK MODE FIX — Notes Padlet Wall
+     Paste after the notes wall code, before </body>
+     ================================================================ -->
+
+<style>
+    /* ===== DARK MODE OVERRIDES for Notes Wall ===== */
+    .dark .note-card {
+        border-color: rgba(255,255,255,0.08);
+        box-shadow: 0 6px 24px rgba(0,0,0,0.3);
+    }
+    .dark .note-card:hover {
+        box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+        border-color: var(--royal-gold);
+    }
+
+    /* Dark mode pastel backgrounds (darker, muted tones) */
+    .dark .note-card.pastel-0 { background: #2d1a1a; }  /* dark red */
+    .dark .note-card.pastel-1 { background: #1a2a3d; }  /* dark blue */
+    .dark .note-card.pastel-2 { background: #1a2d1a; }  /* dark green */
+    .dark .note-card.pastel-3 { background: #2d241a; }  /* dark orange */
+    .dark .note-card.pastel-4 { background: #241a2d; }  /* dark purple */
+    .dark .note-card.pastel-5 { background: #2d1a24; }  /* dark pink */
+    .dark .note-card.pastel-6 { background: #1a2d24; }  /* dark teal */
+    .dark .note-card.pastel-7 { background: #2d1f1a; }  /* dark brown */
+    .dark .note-card.pastel-8 { background: #1a1f2d; }  /* dark indigo */
+    .dark .note-card.pastel-9 { background: #1f2d1a; }  /* dark lime */
+
+    .dark .note-card .note-title {
+        color: #ece8f5;
+    }
+    .dark .note-card .note-content {
+        color: #b8b0d0;
+    }
+    .dark .note-card .note-meta {
+        border-top-color: rgba(255,255,255,0.06);
+        color: #8f8aa8;
+    }
+    .dark .note-card .note-tags .tag {
+        background: rgba(255,255,255,0.08);
+        color: #b8b0d0;
+    }
+    .dark .note-card .note-actions .btn {
+        background: rgba(30, 26, 50, 0.7);
+        border-color: rgba(255,255,255,0.08);
+        color: #b8b0d0;
+    }
+    .dark .note-card .note-actions .btn:hover {
+        background: var(--royal-gold-light);
+        color: var(--text);
+        border-color: var(--royal-gold);
+    }
+    .dark .note-card .note-actions {
+        opacity: 0.6;
+    }
+    .dark .note-card:hover .note-actions {
+        opacity: 1;
+    }
+
+    /* Dark mode filter bar adjustments */
+    .dark .filter-bar {
+        background: var(--card-bg);
+        border-color: var(--card-border);
+    }
+    .dark .filter-bar select,
+    .dark .filter-bar input {
+        background: var(--bg);
+        color: var(--text);
+        border-color: var(--card-border);
+    }
+    .dark .filter-bar select:focus,
+    .dark .filter-bar input:focus {
+        border-color: var(--royal-purple);
+        box-shadow: 0 0 0 3px rgba(108,59,154,0.2);
+    }
+
+    /* Dark mode empty state */
+    .dark .notes-wall-empty .title {
+        color: var(--text-secondary);
+    }
+    .dark .notes-wall-empty .desc {
+        color: var(--text-muted);
+    }
+
+    /* Dark mode pinned icon */
+    .dark .note-card.pinned::after {
+        opacity: 0.5;
+    }
+</style>
 </body>
 </html>
