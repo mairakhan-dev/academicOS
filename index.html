@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>O‑LEVEL COMMAND CENTER — STORAGE MANAGER</title>
+    <title>O‑LEVEL COMMAND CENTER — ULTIMATE</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
     <style>
-        /* ----- same royal theme as before, plus storage styles ----- */
+        /* ===== ROYAL THEME — ULTIMATE ===== */
         :root {
             --royal-purple: #4a2c6e;
             --royal-purple-light: #7a4ba8;
@@ -657,6 +657,10 @@
             background: var(--royal-gold-light);
             color: #8a7020;
         }
+        .pill.blue {
+            background: #dce8f5;
+            color: #1f4f8a;
+        }
         .timer-display {
             font-size: 4rem;
             font-weight: 700;
@@ -742,6 +746,10 @@
             background: var(--royal-purple);
             color: #fff;
             font-weight: 700;
+        }
+        .cal-grid .cal-day.attended {
+            background: #27ae60;
+            color: #fff;
         }
         .fab {
             position: fixed;
@@ -841,133 +849,6 @@
             opacity: 0.5;
             font-size: 1.1rem;
         }
-        /* storage progress */
-        .storage-bar {
-            width: 100%;
-            height: 8px;
-            background: var(--border);
-            border-radius: 8px;
-            overflow: hidden;
-            margin: 0.5rem 0;
-        }
-        .storage-bar .fill {
-            height: 100%;
-            background: var(--royal-purple-gradient);
-            border-radius: 8px;
-            transition: width 0.5s ease;
-        }
-        .storage-bar .fill.warning {
-            background: #f1c40f;
-        }
-        .storage-bar .fill.danger {
-            background: #e74c4c;
-        }
-        .storage-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.4rem 0;
-            border-bottom: 1px solid var(--border);
-        }
-        .storage-item .name {
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
-        .storage-item .size {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-        /* responsive */
-        @media (max-width: 820px) {
-            .sidebar {
-                width: 68px;
-                padding: 1rem 0.4rem;
-            }
-            .sidebar-brand span {
-                display: none;
-            }
-            .sidebar-brand {
-                font-size: 0.9rem;
-                justify-content: center;
-                padding: 0 0 1.2rem 0;
-            }
-            .sidebar-nav .nav-item .label {
-                display: none;
-            }
-            .sidebar-nav .nav-item {
-                justify-content: center;
-                padding: 0.6rem;
-            }
-            .sidebar-nav .nav-item .icon {
-                font-size: 1.3rem;
-                width: auto;
-            }
-            .sidebar-footer {
-                display: none;
-            }
-            .main {
-                padding: 1.2rem 1.2rem 2rem 1.2rem;
-                max-width: calc(100vw - 68px);
-            }
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
-            .grid-3 {
-                grid-template-columns: 1fr 1fr;
-            }
-            .stat-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .fab {
-                bottom: 1.2rem;
-                right: 1.2rem;
-                width: 48px;
-                height: 48px;
-                font-size: 1.6rem;
-            }
-        }
-        @media (max-width: 480px) {
-            .sidebar {
-                width: 56px;
-                padding: 0.6rem 0.2rem;
-            }
-            .sidebar-brand {
-                font-size: 0.7rem;
-                padding: 0 0 0.8rem 0;
-            }
-            .sidebar-nav .nav-item {
-                padding: 0.5rem 0.3rem;
-            }
-            .sidebar-nav .nav-item .icon {
-                font-size: 1.1rem;
-            }
-            .main {
-                padding: 0.8rem 0.8rem 1.5rem 0.8rem;
-                max-width: calc(100vw - 56px);
-            }
-            .page-title {
-                font-size: 1.3rem;
-            }
-            .grid-3 {
-                grid-template-columns: 1fr 1fr;
-            }
-            .stat-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .modal {
-                padding: 1.2rem;
-            }
-            .subject-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .fab {
-                bottom: 1rem;
-                right: 1rem;
-                width: 44px;
-                height: 44px;
-                font-size: 1.4rem;
-            }
-        }
         .video-wrapper {
             position: relative;
             padding-bottom: 56.25%;
@@ -1036,11 +917,40 @@
             font-size: 0.75rem;
             color: var(--text-muted);
         }
-        .dark-toggle {
+        .storage-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 0.5rem 0;
+        }
+        .storage-bar .fill {
+            height: 100%;
+            background: var(--royal-purple-gradient);
+            border-radius: 8px;
+            transition: width 0.5s ease;
+        }
+        .storage-bar .fill.warning {
+            background: #f1c40f;
+        }
+        .storage-bar .fill.danger {
+            background: #e74c4c;
+        }
+        .storage-item {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 0.5rem;
-            cursor: pointer;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .storage-item .name {
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        .storage-item .size {
+            font-size: 0.8rem;
+            color: var(--text-muted);
         }
         .storage-warning {
             background: #fff3cd;
@@ -1054,6 +964,184 @@
             background: #3d2e1a;
             color: #f5e6b8;
             border-left-color: #f1c40f;
+        }
+        .timetable-grid {
+            display: grid;
+            grid-template-columns: 80px repeat(7, 1fr);
+            gap: 2px;
+            font-size: 0.85rem;
+        }
+        .timetable-grid .slot {
+            padding: 0.3rem 0.2rem;
+            background: var(--bg);
+            border-radius: 4px;
+            text-align: center;
+            font-size: 0.7rem;
+            border: 1px solid var(--border);
+        }
+        .timetable-grid .slot.header {
+            font-weight: 600;
+            background: var(--royal-purple);
+            color: #fff;
+            border: none;
+        }
+        .timetable-grid .slot.time {
+            font-weight: 600;
+            background: var(--card);
+        }
+        .timetable-grid .slot.done {
+            background: #27ae60;
+            color: #fff;
+        }
+        .timetable-grid .slot.today {
+            border-color: var(--royal-gold);
+        }
+        .quote-box {
+            background: var(--royal-gold-light);
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.2rem;
+            font-style: italic;
+            border-left: 4px solid var(--royal-gold);
+            margin-bottom: 1rem;
+        }
+        .dark .quote-box {
+            background: #2d241a;
+            border-left-color: var(--royal-gold);
+        }
+        .badge-achievement {
+            display: inline-block;
+            background: var(--royal-gold-gradient);
+            color: #fff;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        .attendance-heatmap {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 3px;
+            max-width: 400px;
+        }
+        .attendance-heatmap .day {
+            aspect-ratio: 1;
+            border-radius: 4px;
+            background: var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.6rem;
+            color: var(--text-muted);
+        }
+        .attendance-heatmap .day.present {
+            background: #27ae60;
+            color: #fff;
+        }
+        .attendance-heatmap .day.absent {
+            background: #e74c4c;
+            color: #fff;
+        }
+        @media (max-width: 820px) {
+            .sidebar {
+                width: 68px;
+                padding: 1rem 0.4rem;
+            }
+            .sidebar-brand span {
+                display: none;
+            }
+            .sidebar-brand {
+                font-size: 0.9rem;
+                justify-content: center;
+                padding: 0 0 1.2rem 0;
+            }
+            .sidebar-nav .nav-item .label {
+                display: none;
+            }
+            .sidebar-nav .nav-item {
+                justify-content: center;
+                padding: 0.6rem;
+            }
+            .sidebar-nav .nav-item .icon {
+                font-size: 1.3rem;
+                width: auto;
+            }
+            .sidebar-footer {
+                display: none;
+            }
+            .main {
+                padding: 1.2rem 1.2rem 2rem 1.2rem;
+                max-width: calc(100vw - 68px);
+            }
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .grid-3 {
+                grid-template-columns: 1fr 1fr;
+            }
+            .grid-4 {
+                grid-template-columns: 1fr 1fr;
+            }
+            .stat-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .fab {
+                bottom: 1.2rem;
+                right: 1.2rem;
+                width: 48px;
+                height: 48px;
+                font-size: 1.6rem;
+            }
+            .timetable-grid {
+                font-size: 0.6rem;
+                grid-template-columns: 50px repeat(7, 1fr);
+            }
+        }
+        @media (max-width: 480px) {
+            .sidebar {
+                width: 56px;
+                padding: 0.6rem 0.2rem;
+            }
+            .sidebar-brand {
+                font-size: 0.7rem;
+                padding: 0 0 0.8rem 0;
+            }
+            .sidebar-nav .nav-item {
+                padding: 0.5rem 0.3rem;
+            }
+            .sidebar-nav .nav-item .icon {
+                font-size: 1.1rem;
+            }
+            .main {
+                padding: 0.8rem 0.8rem 1.5rem 0.8rem;
+                max-width: calc(100vw - 56px);
+            }
+            .page-title {
+                font-size: 1.3rem;
+            }
+            .grid-3,
+            .grid-4 {
+                grid-template-columns: 1fr 1fr;
+            }
+            .stat-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .modal {
+                padding: 1.2rem;
+            }
+            .subject-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .fab {
+                bottom: 1rem;
+                right: 1rem;
+                width: 44px;
+                height: 44px;
+                font-size: 1.4rem;
+            }
+            .timetable-grid {
+                font-size: 0.5rem;
+                grid-template-columns: 35px repeat(7, 1fr);
+            }
         }
     </style>
 </head>
@@ -1085,10 +1173,11 @@
 
     <script>
         // ================================================================
-        //  DATA LAYER — WITH QUOTA HANDLING & STORAGE MANAGER
+        //  DATA LAYER — localStorage + IndexedDB for files
         // ================================================================
 
-        const DB_KEY = 'olevel_cc_v6';
+        const DB_KEY = 'olevel_cc_v7';
+        let data = loadData();
 
         function getDefaultData() {
             return {
@@ -1108,12 +1197,7 @@
                     { id: 'subj12', name: 'Computer Science', grade: '10', color: '#2d7d6f', archived: false },
                     { id: 'subj13', name: 'Additional Mathematics', grade: '11', color: '#8e44ad', archived: false },
                 ],
-                syllabus: {
-                    'subj1': [{ id: 'u1', name: 'Microeconomics', topics: [{ id: 't1', name: 'Elasticity', concepts: [
-                                { id: 'c1', name: 'Price Elasticity of Demand', mastery: 'understanding',
-                                    notes: 'PED = %ΔQd / %ΔP' },
-                            ] }] }]
-                },
+                syllabus: {},
                 notes: [],
                 tasks: [],
                 mistakes: [],
@@ -1135,12 +1219,17 @@
                 essays: [],
                 events: [],
                 studySessions: [],
+                attendance: {}, // date string -> true/false
+                timetable: [], // { id, day, time, subject, method, checked: { date: bool } }
+                habits: [], // { id, name, streak, lastChecked }
+                moodLog: [], // { date, mood, note }
+                bookmarks: [], // { id, title, url, tags }
+                dailyQuotes: [],
+                gradeCalculator: { courses: [] },
                 settings: { darkMode: false },
-                version: 6,
+                version: 7,
             };
         }
-
-        let data = loadData();
 
         function loadData() {
             try {
@@ -1153,10 +1242,13 @@
                     }
                     ['subjects', 'notes', 'tasks', 'mistakes', 'flashcards', 'pastPapers', 'videos', 'documents',
                         'projects', 'skills', 'recommendations', 'scholarships', 'evidence', 'activities', 'goals',
-                        'stories', 'universities', 'essays', 'events', 'studySessions'
+                        'stories', 'universities', 'essays', 'events', 'studySessions', 'timetable', 'habits',
+                        'moodLog', 'bookmarks', 'dailyQuotes'
                     ].forEach(arr => {
                         if (!Array.isArray(parsed[arr])) parsed[arr] = [];
                     });
+                    if (!parsed.attendance) parsed.attendance = {};
+                    if (!parsed.gradeCalculator) parsed.gradeCalculator = { courses: [] };
                     if (!parsed.settings) parsed.settings = { darkMode: false };
                     if (!parsed.profile) parsed.profile = { interests: '', passions: '', values: '', motivations: '',
                         strengths: '', weaknesses: '', curiosities: '', beliefs: '', goals: '', problems: '',
@@ -1170,17 +1262,12 @@
         function saveData() {
             try {
                 localStorage.setItem(DB_KEY, JSON.stringify(data));
-                // track usage
-                updateStorageUsage();
                 return true;
             } catch (e) {
                 if (e.name === 'QuotaExceededError' || e.code === 22) {
-                    toast('⚠️ Storage quota exceeded! Please delete some files in Storage Manager.', 'error');
-                    // show storage manager
-                    navigate('settings');
-                    setTimeout(() => showStorageManager(), 500);
+                    toast('⚠️ Storage quota exceeded! Please delete some data in Settings.', 'error');
                 } else {
-                    toast('Error saving data: ' + e.message, 'error');
+                    toast('Error saving: ' + e.message, 'error');
                 }
                 return false;
             }
@@ -1193,45 +1280,68 @@
         function getSubjectName(id) { const s = getSubject(id); return s ? s.name : 'Unknown'; }
 
         // ================================================================
-        //  STORAGE USAGE TRACKING
+        //  INDEXEDDB — Unlimited File Storage
         // ================================================================
 
-        function getStorageUsage() {
-            let total = 0;
-            for (let i = 0; i < localStorage.length; i++) {
-                const key = localStorage.key(i);
-                const val = localStorage.getItem(key);
-                total += (key.length + (val ? val.length : 0)) * 2; // approx bytes (UTF-16)
-            }
-            return total;
+        const DB_NAME = 'olevel_files_db';
+        const STORE_NAME = 'files';
+
+        function openFileDB() {
+            return new Promise((resolve, reject) => {
+                const req = indexedDB.open(DB_NAME, 1);
+                req.onupgradeneeded = (e) => {
+                    const db = e.target.result;
+                    if (!db.objectStoreNames.contains(STORE_NAME)) {
+                        db.createObjectStore(STORE_NAME, { keyPath: 'id' });
+                    }
+                };
+                req.onsuccess = () => resolve(req.result);
+                req.onerror = () => reject(req.error);
+            });
         }
 
-        function formatSize(bytes) {
-            if (bytes < 1024) return bytes + ' B';
-            if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
-            if (bytes < 1073741824) return (bytes / 1048576).toFixed(1) + ' MB';
-            return (bytes / 1073741824).toFixed(1) + ' GB';
+        async function saveFile(id, fileData, metadata) {
+            const db = await openFileDB();
+            return new Promise((resolve, reject) => {
+                const tx = db.transaction(STORE_NAME, 'readwrite');
+                const store = tx.objectStore(STORE_NAME);
+                store.put({ id, fileData, metadata, uploadedAt: new Date().toISOString() });
+                tx.oncomplete = () => resolve();
+                tx.onerror = () => reject(tx.error);
+            });
         }
 
-        function getQuota() {
-            // Estimate: most browsers allow ~5-10MB per domain
-            // We'll assume 5MB as safe conservative
-            return 5 * 1024 * 1024;
+        async function getFile(id) {
+            const db = await openFileDB();
+            return new Promise((resolve, reject) => {
+                const tx = db.transaction(STORE_NAME, 'readonly');
+                const store = tx.objectStore(STORE_NAME);
+                const req = store.get(id);
+                req.onsuccess = () => resolve(req.result);
+                req.onerror = () => reject(req.error);
+            });
         }
 
-        function updateStorageUsage() {
-            // This will be called after save
-            const usage = getStorageUsage();
-            const quota = getQuota();
-            const pct = Math.min(100, (usage / quota) * 100);
-            // store in a hidden element or just re-render settings if on that page
-            if (currentPage === 'settings') {
-                renderPage('settings');
-            }
-            // show warning if >80%
-            if (pct > 80) {
-                toast(`⚠️ Storage ${Math.round(pct)}% full. Consider deleting old files.`, 'warning');
-            }
+        async function deleteFile(id) {
+            const db = await openFileDB();
+            return new Promise((resolve, reject) => {
+                const tx = db.transaction(STORE_NAME, 'readwrite');
+                const store = tx.objectStore(STORE_NAME);
+                store.delete(id);
+                tx.oncomplete = () => resolve();
+                tx.onerror = () => reject(tx.error);
+            });
+        }
+
+        async function getAllFiles() {
+            const db = await openFileDB();
+            return new Promise((resolve, reject) => {
+                const tx = db.transaction(STORE_NAME, 'readonly');
+                const store = tx.objectStore(STORE_NAME);
+                const req = store.getAll();
+                req.onsuccess = () => resolve(req.result);
+                req.onerror = () => reject(req.error);
+            });
         }
 
         // ================================================================
@@ -1264,6 +1374,8 @@
 
         const NAV_ITEMS = [
             { id: 'dashboard', icon: '🏠', label: 'Dashboard' },
+            { id: 'attendance', icon: '📋', label: 'Attendance' },
+            { id: 'timetable', icon: '📅', label: 'Timetable' },
             { id: 'subjects', icon: '📖', label: 'Subjects' },
             { id: 'syllabus', icon: '🗂️', label: 'Syllabus' },
             { id: 'notes', icon: '📝', label: 'Notes' },
@@ -1286,6 +1398,10 @@
             { id: 'recommendations', icon: '📋', label: 'Recommendations' },
             { id: 'scholarships', icon: '💰', label: 'Scholarships' },
             { id: 'evidence', icon: '📦', label: 'Evidence' },
+            { id: 'habits', icon: '🔄', label: 'Habits' },
+            { id: 'mood', icon: '😊', label: 'Mood Tracker' },
+            { id: 'bookmarks', icon: '🔖', label: 'Bookmarks' },
+            { id: 'gradecalc', icon: '📊', label: 'Grade Calc' },
             { id: 'settings', icon: '⚙️', label: 'Settings' },
         ];
 
@@ -1314,7 +1430,7 @@
         }
 
         // ================================================================
-        //  PAGE RENDERER (abridged for brevity — include all pages)
+        //  PAGE RENDERER
         // ================================================================
 
         function renderPage(page) {
@@ -1326,6 +1442,12 @@
             switch (page) {
                 case 'dashboard':
                     container.innerHTML = renderDashboard();
+                    break;
+                case 'attendance':
+                    container.innerHTML = renderAttendance();
+                    break;
+                case 'timetable':
+                    container.innerHTML = renderTimetable();
                     break;
                 case 'subjects':
                     container.innerHTML = renderSubjects();
@@ -1393,6 +1515,18 @@
                 case 'evidence':
                     container.innerHTML = renderEvidence();
                     break;
+                case 'habits':
+                    container.innerHTML = renderHabits();
+                    break;
+                case 'mood':
+                    container.innerHTML = renderMood();
+                    break;
+                case 'bookmarks':
+                    container.innerHTML = renderBookmarks();
+                    break;
+                case 'gradecalc':
+                    container.innerHTML = renderGradeCalc();
+                    break;
                 case 'settings':
                     container.innerHTML = renderSettings();
                     break;
@@ -1406,7 +1540,7 @@
         }
 
         // ================================================================
-        //  DASHBOARD (unchanged)
+        //  DASHBOARD — Ultimate
         // ================================================================
 
         function renderDashboard() {
@@ -1415,23 +1549,47 @@
             const examYear = data.student.examYear || 'CIE 2027';
             const now = new Date();
             const day = now.toLocaleDateString('en-US', { weekday: 'long' });
+            const dateStr = now.toISOString().split('T')[0];
             const totalSubjects = data.subjects.filter(s => !s.archived).length;
             const totalTasks = data.tasks.length;
             const pendingTasks = data.tasks.filter(t => t.status !== 'Completed').length;
             const totalPastPapers = data.pastPapers.length;
             const totalVideos = data.videos.length;
             const totalDocs = data.documents.length;
-            const sessions = data.studySessions || [];
-            const streak = sessions.length > 0 ? Math.min(sessions.length, 30) : 4;
+
+            // Attendance
+            const attendanceCount = Object.keys(data.attendance).filter(d => data.attendance[d] === true).length;
+            const todayAttended = data.attendance[dateStr] || false;
+
+            // Timetable for today
+            const todaySlots = data.timetable.filter(t => t.day === now.getDay());
+            const todayDone = todaySlots.filter(s => s.checked && s.checked[dateStr]).length;
+
+            // Mood
+            const todayMood = data.moodLog.find(m => m.date === dateStr);
+
+            // Quote
+            const quotes = [
+                "The secret of getting ahead is getting started. — Mark Twain",
+                "Education is the most powerful weapon. — Nelson Mandela",
+                "Success is the sum of small efforts repeated daily. — Robert Collier",
+                "Believe you can and you're halfway there. — Theodore Roosevelt",
+                "The future belongs to those who prepare today. — Malcolm X",
+                "It does not matter how slowly you go as long as you do not stop. — Confucius",
+                "The mind is not a vessel to be filled but a fire to be kindled. — Plutarch",
+                "Excellence is not a skill, it's an attitude. — Ralph Marston",
+            ];
+            const quote = quotes[now.getDate() % quotes.length];
+
             const missionTasks = data.tasks.filter(t => t.status !== 'Completed')
                 .sort((a, b) => ({ high: 0, medium: 1, low: 2 } [a.priority] || 1) - ({ high: 0, medium: 1,
                     low: 2 } [b.priority] || 1))
                 .slice(0, 5);
+
             const upcomingExams = data.events.filter(e => e.type === 'exam' && new Date(e.date) >= now)
                 .sort((a, b) => new Date(a.date) - new Date(b.date)).slice(0, 3);
             const daysUntilExam = upcomingExams.length > 0 ? Math.ceil((new Date(upcomingExams[0].date) - now) / (1000 *
                 60 * 60 * 24)) : '—';
-            const recentMistakes = data.mistakes.slice(-3).reverse();
 
             return `
             <div class="flex-between" style="margin-bottom:0.5rem;">
@@ -1442,12 +1600,16 @@
               </div>
             </div>
             <div class="greeting-sub">${day} · ${grade} · ${examYear}</div>
+
+            <div class="quote-box">💭 ${quote}</div>
+
             <div class="stat-grid">
-              <div class="stat-card"><div class="label">Grade</div><div class="value">${grade}</div></div>
-              <div class="stat-card"><div class="label">Exam Year</div><div class="value">${examYear}</div></div>
-              <div class="stat-card"><div class="label">Days to Next Exam</div><div class="value">${daysUntilExam}</div></div>
-              <div class="stat-card"><div class="label">Study Streak</div><div class="value">🔥 ${streak} days</div></div>
+              <div class="stat-card"><div class="label">Attendance</div><div class="value">${attendanceCount}</div><div class="card-label">${todayAttended?'✅ Checked in today':'⬜ Check in today'}</div></div>
+              <div class="stat-card"><div class="label">Days to Exam</div><div class="value">${daysUntilExam}</div></div>
+              <div class="stat-card"><div class="label">Today's Progress</div><div class="value">${todayDone}/${todaySlots.length}</div><div class="card-label">Timetable slots done</div></div>
+              <div class="stat-card"><div class="label">Mood</div><div class="value">${todayMood?todayMood.mood:'😐'}</div><div class="card-label">${todayMood?todayMood.note||'':'Log your mood'}</div></div>
             </div>
+
             <div class="flex-between" style="margin-bottom:0.8rem;">
               <h2 style="font-size:1.2rem;font-weight:700;">🎯 Today's Mission</h2>
               <button class="btn btn-sm btn-primary" onclick="navigate('tasks')">View All →</button>
@@ -1456,27 +1618,505 @@
               const color = t.priority === 'high' ? 'red' : t.priority === 'medium' ? 'yellow' : 'green';
               return `<div class="mission-item"><span class="dot ${color}"></span><div class="info"><div class="title">${t.title}</div><div class="sub">${t.subjectId?getSubjectName(t.subjectId):'General'} · ${t.priority||'medium'}</div></div><div class="actions"><span class="tag" onclick="toast('📖 Learn: ${t.title}')">Learn</span><span class="tag" onclick="toast('📝 Notes')">Notes</span><span class="tag" onclick="toast('📝 Practice')">Practice</span><span class="tag" onclick="toast('🔄 Review')">Review</span></div></div>`;
             }).join('')}
+
             <div class="grid-4 mt-3">
               <div class="card"><div class="card-title">📚 Subjects</div><div class="card-value">${totalSubjects}</div><div class="card-label">Active</div></div>
               <div class="card"><div class="card-title">✅ Tasks</div><div class="card-value">${pendingTasks}/${totalTasks}</div><div class="card-label">Pending / Total</div></div>
               <div class="card"><div class="card-title">📄 Past Papers</div><div class="card-value">${totalPastPapers}</div><div class="card-label">Uploaded</div></div>
               <div class="card"><div class="card-title">🎥 Videos</div><div class="card-value">${totalVideos}</div><div class="card-label">Saved</div></div>
             </div>
-            ${recentMistakes.length>0?`<div class="mt-3"><h3 style="font-weight:600;font-size:1rem;margin-bottom:0.4rem;">⚠️ Recent Mistakes</h3>${recentMistakes.map(m=>`<div class="mission-item" style="border-left-color:#e74c4c;"><span class="dot red"></span><div class="info"><div class="title">${m.question||'Mistake'}</div><div class="sub">${m.subjectId?getSubjectName(m.subjectId):'General'} · ${m.type||'Other'} · ${new Date(m.date).toLocaleDateString()}</div></div><span class="pill red">${m.type||'Other'}</span></div>`).join('')}</div>`:''}
           `;
         }
 
         // ================================================================
-        //  GLOBAL SEARCH, DARK MODE (unchanged)
+        //  ATTENDANCE — Daily Check-in
+        // ================================================================
+
+        function renderAttendance() {
+            const now = new Date();
+            const dateStr = now.toISOString().split('T')[0];
+            const todayChecked = data.attendance[dateStr] || false;
+
+            // Get last 30 days
+            const days = [];
+            for (let i = 29; i >= 0; i--) {
+                const d = new Date(now);
+                d.setDate(d.getDate() - i);
+                const ds = d.toISOString().split('T')[0];
+                days.push({ date: ds, day: d.getDate(), month: d.toLocaleString('en', { month: 'short' }),
+                    present: data.attendance[ds] || false });
+            }
+
+            const totalPresent = Object.values(data.attendance).filter(v => v === true).length;
+            const totalDays = Object.keys(data.attendance).length;
+            const pct = totalDays > 0 ? Math.round((totalPresent / totalDays) * 100) : 0;
+
+            return `
+            <div class="flex-between">
+              <div><div class="page-title">📋 Attendance</div><div class="page-subtitle">Check in daily to track your consistency.</div></div>
+              <button class="btn ${todayChecked?'btn-gold':'btn-primary'}" onclick="toggleAttendance()">${todayChecked?'✅ Checked In':'☑️ Check In Today'}</button>
+            </div>
+
+            <div class="grid-3 mt-2">
+              <div class="card"><div class="card-title">Total Check-ins</div><div class="card-value">${totalPresent}</div><div class="card-label">Days present</div></div>
+              <div class="card"><div class="card-title">Attendance Rate</div><div class="card-value">${pct}%</div><div class="card-label">${totalDays} total days</div></div>
+              <div class="card"><div class="card-title">Current Streak</div><div class="card-value">🔥 ${calculateStreak()}</div><div class="card-label">Consecutive days</div></div>
+            </div>
+
+            <div class="card mt-2">
+              <div style="font-weight:600;margin-bottom:0.5rem;">Last 30 Days</div>
+              <div class="attendance-heatmap">
+                ${days.map(d => `<div class="day ${d.present?'present':'absent'}" title="${d.date}">${d.day}</div>`).join('')}
+              </div>
+              <div class="text-xs text-muted mt-1">🟢 Present · 🔴 Absent</div>
+            </div>
+
+            <div class="card mt-2">
+              <div style="font-weight:600;margin-bottom:0.5rem;">📊 Monthly Summary</div>
+              <div class="text-sm">${now.toLocaleString('en', { month: 'long', year: 'numeric' })}</div>
+              <div class="text-sm text-muted">${totalPresent} check-ins this month</div>
+            </div>
+          `;
+        }
+
+        function toggleAttendance() {
+            const dateStr = new Date().toISOString().split('T')[0];
+            data.attendance[dateStr] = !data.attendance[dateStr];
+            if (saveData()) {
+                toast(data.attendance[dateStr] ? '✅ Checked in! Keep it up!' : '⏳ Check-in removed.', 'info');
+                renderPage('attendance');
+            }
+        }
+
+        function calculateStreak() {
+            const now = new Date();
+            let streak = 0;
+            for (let i = 0; i < 365; i++) {
+                const d = new Date(now);
+                d.setDate(d.getDate() - i);
+                const ds = d.toISOString().split('T')[0];
+                if (data.attendance[ds]) {
+                    streak++;
+                } else if (i > 0) {
+                    break;
+                }
+            }
+            return streak;
+        }
+
+        // ================================================================
+        //  TIMETABLE — Customizable with Daily Checkboxes
+        // ================================================================
+
+        function renderTimetable() {
+            const now = new Date();
+            const dateStr = now.toISOString().split('T')[0];
+            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const today = now.getDay();
+
+            let html = `
+            <div class="flex-between">
+              <div><div class="page-title">📅 Timetable</div><div class="page-subtitle">Customize your study schedule. Check off tasks daily!</div></div>
+              <button class="btn btn-primary" onclick="showAddTimetableSlot()">+ Add Slot</button>
+            </div>
+
+            <div class="card mt-2">
+              <div style="font-weight:600;margin-bottom:0.5rem;">Today — ${days[today]} (${now.toLocaleDateString()})</div>
+              <div style="display:flex;gap:0.5rem;margin-bottom:0.5rem;">
+                <button class="btn btn-sm btn-outline" onclick="checkAllTimetable()">✅ Check All</button>
+                <button class="btn btn-sm btn-outline" onclick="uncheckAllTimetable()">⬜ Uncheck All</button>
+              </div>
+              ${data.timetable.filter(t => t.day === today).length === 0 ? '<div class="text-muted text-sm">No slots scheduled for today.</div>' :
+                data.timetable.filter(t => t.day === today).map(t => {
+                  const checked = t.checked && t.checked[dateStr];
+                  return `<div class="mission-item" style="border-left-color:${checked?'#27ae60':'var(--royal-purple)'}">
+                    <input type="checkbox" ${checked?'checked':''} onchange="toggleTimetableSlot('${t.id}')" style="width:20px;height:20px;accent-color:var(--royal-purple);" />
+                    <div class="info">
+                      <div class="title">${t.time} — ${t.subject}</div>
+                      <div class="sub">${t.method||'Study'} ${checked?'✅ Done':'⏳ Pending'}</div>
+                    </div>
+                    <button class="btn btn-sm btn-ghost" onclick="editTimetableSlot('${t.id}')">✏️</button>
+                    <button class="btn btn-sm btn-danger" onclick="deleteTimetableSlot('${t.id}')">🗑️</button>
+                  </div>`;
+                }).join('')}
+            </div>
+
+            <div class="card mt-2">
+              <div style="font-weight:600;margin-bottom:0.5rem;">Full Week</div>
+              <div class="table-wrap">
+                <table>
+                  <thead><tr><th>Time</th>${days.map(d=>`<th>${d.slice(0,3)}</th>`).join('')}</tr></thead>
+                  <tbody>
+                    ${getTimetableRows().map(row => `
+                      <tr>
+                        <td style="font-weight:600;">${row.time}</td>
+                        ${row.slots.map(s => `<td>${s ? `<div style="font-size:0.8rem;font-weight:500;">${s.subject}</div><div style="font-size:0.65rem;color:var(--text-muted);">${s.method||''}</div>` : '—'}</td>`).join('')}
+                      </tr>
+                    `).join('')}
+                  </tbody>
+                </table>
+              </div>
+              <div class="text-xs text-muted mt-1">💡 Click "Add Slot" to customize your timetable.</div>
+            </div>
+          `;
+            return html;
+        }
+
+        function getTimetableRows() {
+            const times = [...new Set(data.timetable.map(t => t.time))].sort();
+            const days = [0, 1, 2, 3, 4, 5, 6];
+            return times.map(time => {
+                const slots = days.map(day => {
+                    const slot = data.timetable.find(t => t.day === day && t.time === time);
+                    return slot || null;
+                });
+                return { time, slots };
+            });
+        }
+
+        function toggleTimetableSlot(id) {
+            const slot = data.timetable.find(t => t.id === id);
+            if (!slot) return;
+            const dateStr = new Date().toISOString().split('T')[0];
+            if (!slot.checked) slot.checked = {};
+            slot.checked[dateStr] = !slot.checked[dateStr];
+            if (saveData()) {
+                renderPage('timetable');
+                toast(slot.checked[dateStr] ? '✅ Slot done!' : '⏳ Slot unchecked', 'info');
+            }
+        }
+
+        function checkAllTimetable() {
+            const dateStr = new Date().toISOString().split('T')[0];
+            data.timetable.forEach(t => {
+                if (t.day === new Date().getDay()) {
+                    if (!t.checked) t.checked = {};
+                    t.checked[dateStr] = true;
+                }
+            });
+            if (saveData()) { toast('✅ All slots checked!', 'success');
+                renderPage('timetable'); }
+        }
+
+        function uncheckAllTimetable() {
+            const dateStr = new Date().toISOString().split('T')[0];
+            data.timetable.forEach(t => {
+                if (t.day === new Date().getDay() && t.checked) {
+                    t.checked[dateStr] = false;
+                }
+            });
+            if (saveData()) { toast('⬜ All slots unchecked', 'info');
+                renderPage('timetable'); }
+        }
+
+        function showAddTimetableSlot() {
+            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            openModal(`
+            <div class="modal-title">📅 Add Timetable Slot</div>
+            <div class="form-group"><label>Day</label><select id="ttDay">${days.map((d,i)=>`<option value="${i}" ${i===new Date().getDay()?'selected':''}>${d}</option>`).join('')}</select></div>
+            <div class="form-group"><label>Time</label><input id="ttTime" placeholder="e.g. 09:00-10:00" /></div>
+            <div class="form-group"><label>Subject</label><input id="ttSubject" placeholder="e.g. Mathematics" /></div>
+            <div class="form-group"><label>Study Method</label><input id="ttMethod" placeholder="e.g. Past Papers, Notes, Revision" /></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="addTimetableSlot()">Add Slot</button></div>
+          `);
+        }
+
+        function addTimetableSlot() {
+            const day = parseInt(document.getElementById('ttDay').value);
+            const time = document.getElementById('ttTime').value.trim();
+            const subject = document.getElementById('ttSubject').value.trim();
+            const method = document.getElementById('ttMethod').value.trim();
+            if (!time || !subject) { toast('Time and subject required.', 'error'); return; }
+            data.timetable.push({ id: genId(), day, time, subject, method, checked: {} });
+            if (saveData()) { closeModal();
+                toast('✅ Slot added', 'success');
+                renderPage('timetable'); }
+        }
+
+        function editTimetableSlot(id) {
+            const slot = data.timetable.find(t => t.id === id);
+            if (!slot) return;
+            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            openModal(`
+            <div class="modal-title">✏️ Edit Slot</div>
+            <div class="form-group"><label>Day</label><select id="editTtDay">${days.map((d,i)=>`<option value="${i}" ${i===slot.day?'selected':''}>${d}</option>`).join('')}</select></div>
+            <div class="form-group"><label>Time</label><input id="editTtTime" value="${slot.time}" /></div>
+            <div class="form-group"><label>Subject</label><input id="editTtSubject" value="${slot.subject}" /></div>
+            <div class="form-group"><label>Study Method</label><input id="editTtMethod" value="${slot.method||''}" /></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEditTimetableSlot('${id}')">Save</button></div>
+          `);
+        }
+
+        function saveEditTimetableSlot(id) {
+            const slot = data.timetable.find(t => t.id === id);
+            if (!slot) return;
+            slot.day = parseInt(document.getElementById('editTtDay').value);
+            slot.time = document.getElementById('editTtTime').value.trim();
+            slot.subject = document.getElementById('editTtSubject').value.trim();
+            slot.method = document.getElementById('editTtMethod').value.trim();
+            if (!slot.time || !slot.subject) { toast('Time and subject required.', 'error'); return; }
+            if (saveData()) { closeModal();
+                toast('✅ Slot updated', 'success');
+                renderPage('timetable'); }
+        }
+
+        function deleteTimetableSlot(id) {
+            if (!confirm('Delete this slot?')) return;
+            data.timetable = data.timetable.filter(t => t.id !== id);
+            if (saveData()) { toast('🗑️ Slot deleted', 'info');
+                renderPage('timetable'); }
+        }
+
+        // ================================================================
+        //  HABITS TRACKER
+        // ================================================================
+
+        function renderHabits() {
+            let html =
+                `<div class="flex-between"><div><div class="page-title">🔄 Habits</div><div class="page-subtitle">Build and track daily habits.</div></div><button class="btn btn-primary" onclick="showAddHabit()">+ New Habit</button></div>`;
+            const habits = data.habits;
+            if (!habits.length) {
+                html +=
+                    `<div class="empty-state"><div class="icon">🔄</div><div class="title">No habits yet</div><div class="desc">Start building good habits today.</div></div>`;
+            } else {
+                html += `<div class="grid-2 mt-2">`;
+                habits.forEach(h => {
+                    const today = new Date().toISOString().split('T')[0];
+                    const checked = h.lastChecked === today;
+                    html += `<div class="card"><div style="font-weight:600;font-size:1.05rem;">${h.name}</div><div style="display:flex;align-items:center;gap:0.5rem;margin-top:0.3rem;"><input type="checkbox" ${checked?'checked':''} onchange="toggleHabit('${h.id}')" style="width:20px;height:20px;accent-color:var(--royal-purple);" /><span class="text-sm">${checked?'✅ Done today':'⏳ Not done today'}</span></div><div class="text-sm text-muted">🔥 Streak: ${h.streak||0} days</div><button class="btn btn-sm btn-danger mt-1" onclick="deleteHabit('${h.id}')">🗑️ Delete</button></div>`;
+                });
+                html += `</div>`;
+            }
+            return html;
+        }
+
+        function showAddHabit() {
+            openModal(`
+            <div class="modal-title">🔄 New Habit</div>
+            <div class="form-group"><label>Habit Name</label><input id="habitName" placeholder="e.g. Read 20 pages" /></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="addHabit()">Add Habit</button></div>
+          `);
+        }
+
+        function addHabit() {
+            const name = document.getElementById('habitName').value.trim();
+            if (!name) { toast('Habit name required.', 'error'); return; }
+            data.habits.push({ id: genId(), name, streak: 0, lastChecked: null });
+            if (saveData()) { closeModal();
+                toast('✅ Habit added', 'success');
+                renderPage('habits'); }
+        }
+
+        function toggleHabit(id) {
+            const h = data.habits.find(h => h.id === id);
+            if (!h) return;
+            const today = new Date().toISOString().split('T')[0];
+            if (h.lastChecked === today) {
+                h.lastChecked = null;
+                h.streak = 0;
+            } else {
+                const yesterday = new Date();
+                yesterday.setDate(yesterday.getDate() - 1);
+                const yStr = yesterday.toISOString().split('T')[0];
+                if (h.lastChecked === yStr || !h.lastChecked) {
+                    h.streak = (h.streak || 0) + 1;
+                } else {
+                    h.streak = 1;
+                }
+                h.lastChecked = today;
+            }
+            if (saveData()) { toast(h.lastChecked === today ? '✅ Habit done!' : '⏳ Habit unchecked', 'info');
+                renderPage('habits'); }
+        }
+
+        function deleteHabit(id) {
+            if (!confirm('Delete this habit?')) return;
+            data.habits = data.habits.filter(h => h.id !== id);
+            if (saveData()) { toast('🗑️ Habit deleted', 'info');
+                renderPage('habits'); }
+        }
+
+        // ================================================================
+        //  MOOD TRACKER
+        // ================================================================
+
+        function renderMood() {
+            const today = new Date().toISOString().split('T')[0];
+            const todayMood = data.moodLog.find(m => m.date === today);
+            const moods = ['😊', '😌', '😐', '😔', '😢', '😡', '🤔', '😄', '😴', '🤗'];
+
+            let html = `
+            <div class="flex-between">
+              <div><div class="page-title">😊 Mood Tracker</div><div class="page-subtitle">Log your daily mood and reflections.</div></div>
+              <button class="btn btn-primary" onclick="showAddMood()">+ Log Mood</button>
+            </div>
+            <div class="card mt-2">
+              <div style="font-weight:600;margin-bottom:0.5rem;">Today's Mood</div>
+              ${todayMood ? `<div style="font-size:3rem;">${todayMood.mood}</div><div class="text-sm">${todayMood.note||''}</div>` : '<div class="text-muted">No mood logged yet today.</div>'}
+            </div>
+            <div class="card mt-2">
+              <div style="font-weight:600;margin-bottom:0.5rem;">Recent Moods</div>
+              <div class="grid-3">
+                ${data.moodLog.slice(-9).reverse().map(m => `
+                  <div class="card" style="padding:0.5rem;text-align:center;">
+                    <div style="font-size:2rem;">${m.mood}</div>
+                    <div class="text-xs text-muted">${new Date(m.date).toLocaleDateString()}</div>
+                  </div>
+                `).join('')}
+                ${data.moodLog.length===0?'<div class="text-muted text-sm">No moods logged yet.</div>':''}
+              </div>
+            </div>
+          `;
+            return html;
+        }
+
+        function showAddMood() {
+            const moods = ['😊', '😌', '😐', '😔', '😢', '😡', '🤔', '😄', '😴', '🤗'];
+            openModal(`
+            <div class="modal-title">😊 Log Mood</div>
+            <div class="form-group"><label>How are you feeling?</label>
+              <div style="display:flex;gap:0.5rem;flex-wrap:wrap;font-size:2rem;">
+                ${moods.map(m => `<button class="btn btn-ghost" style="font-size:2rem;padding:0.2rem 0.5rem;" onclick="selectMood('${m}')">${m}</button>`).join('')}
+              </div>
+              <input id="moodEmoji" type="hidden" value="😊" />
+            </div>
+            <div class="form-group"><label>Note (optional)</label><textarea id="moodNote" rows="2" placeholder="How are you feeling today?"></textarea></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="addMood()">Save Mood</button></div>
+          `);
+            window.selectMood = function(emoji) {
+                document.getElementById('moodEmoji').value = emoji;
+                document.querySelectorAll('.modal .btn-ghost').forEach(b => b.style.background = 'transparent');
+                event.target.style.background = 'var(--royal-gold-light)';
+            };
+        }
+
+        function addMood() {
+            const mood = document.getElementById('moodEmoji').value;
+            const note = document.getElementById('moodNote').value.trim();
+            const date = new Date().toISOString().split('T')[0];
+            // Remove existing mood for today
+            data.moodLog = data.moodLog.filter(m => m.date !== date);
+            data.moodLog.push({ date, mood, note });
+            if (saveData()) { closeModal();
+                toast('✅ Mood logged', 'success');
+                renderPage('mood'); }
+        }
+
+        // ================================================================
+        //  BOOKMARKS
+        // ================================================================
+
+        function renderBookmarks() {
+            let html =
+                `<div class="flex-between"><div><div class="page-title">🔖 Bookmarks</div><div class="page-subtitle">Save and organize important links.</div></div><button class="btn btn-primary" onclick="showAddBookmark()">+ Add Bookmark</button></div>`;
+            const bm = data.bookmarks;
+            if (!bm.length) {
+                html +=
+                    `<div class="empty-state"><div class="icon">🔖</div><div class="title">No bookmarks</div><div class="desc">Save links for quick access.</div></div>`;
+            } else {
+                html += `<div class="grid-2 mt-2">`;
+                bm.forEach(b => {
+                    html += `<div class="card"><div style="font-weight:600;">${b.title}</div><a href="${b.url}" target="_blank" class="text-sm text-muted">${b.url}</a><div class="text-sm text-muted">${b.tags||''}</div><button class="btn btn-sm btn-danger mt-1" onclick="deleteBookmark('${b.id}')">🗑️ Delete</button></div>`;
+                });
+                html += `</div>`;
+            }
+            return html;
+        }
+
+        function showAddBookmark() {
+            openModal(`
+            <div class="modal-title">🔖 Add Bookmark</div>
+            <div class="form-group"><label>Title</label><input id="bmTitle" /></div>
+            <div class="form-group"><label>URL</label><input id="bmUrl" placeholder="https://..." /></div>
+            <div class="form-group"><label>Tags</label><input id="bmTags" placeholder="e.g. economics, revision" /></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="addBookmark()">Add</button></div>
+          `);
+        }
+
+        function addBookmark() {
+            const title = document.getElementById('bmTitle').value.trim();
+            const url = document.getElementById('bmUrl').value.trim();
+            const tags = document.getElementById('bmTags').value.trim();
+            if (!title || !url) { toast('Title and URL required.', 'error'); return; }
+            data.bookmarks.push({ id: genId(), title, url, tags });
+            if (saveData()) { closeModal();
+                toast('✅ Bookmark added', 'success');
+                renderPage('bookmarks'); }
+        }
+
+        function deleteBookmark(id) {
+            if (!confirm('Delete this bookmark?')) return;
+            data.bookmarks = data.bookmarks.filter(b => b.id !== id);
+            if (saveData()) { toast('🗑️ Bookmark deleted', 'info');
+                renderPage('bookmarks'); }
+        }
+
+        // ================================================================
+        //  GRADE CALCULATOR
+        // ================================================================
+
+        function renderGradeCalc() {
+            let html =
+                `<div class="flex-between"><div><div class="page-title">📊 Grade Calculator</div><div class="page-subtitle">Calculate your weighted average.</div></div><button class="btn btn-primary" onclick="showAddCourse()">+ Add Course</button></div>`;
+            const courses = data.gradeCalculator.courses || [];
+            if (!courses.length) {
+                html +=
+                    `<div class="empty-state"><div class="icon">📊</div><div class="title">No courses</div><div class="desc">Add your courses to calculate your GPA.</div></div>`;
+            } else {
+                let totalWeight = 0,
+                    totalScore = 0;
+                courses.forEach(c => { totalWeight += c.weight;
+                    totalScore += c.score * c.weight; });
+                const avg = totalWeight > 0 ? (totalScore / totalWeight).toFixed(1) : 0;
+                html += `<div class="card mt-2"><div style="font-size:1.5rem;font-weight:700;">${avg}%</div><div class="text-muted">Weighted Average</div></div>`;
+                html += `<div class="table-wrap mt-2"><table><thead><tr><th>Course</th><th>Score</th><th>Weight</th><th>Actions</th></tr></thead><tbody>`;
+                courses.forEach(c => {
+                    html +=
+                        `<tr><td>${c.name}</td><td>${c.score}%</td><td>${c.weight}</td><td><button class="btn btn-sm btn-danger" onclick="deleteCourse('${c.id}')">🗑️</button></td></tr>`;
+                });
+                html += `</tbody></table></div>`;
+            }
+            return html;
+        }
+
+        function showAddCourse() {
+            openModal(`
+            <div class="modal-title">📊 Add Course</div>
+            <div class="form-group"><label>Course Name</label><input id="gcName" /></div>
+            <div class="form-group"><label>Score (%)</label><input id="gcScore" type="number" min="0" max="100" /></div>
+            <div class="form-group"><label>Weight</label><input id="gcWeight" type="number" min="0" step="0.5" placeholder="e.g. 1.0" /></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="addCourse()">Add Course</button></div>
+          `);
+        }
+
+        function addCourse() {
+            const name = document.getElementById('gcName').value.trim();
+            const score = parseFloat(document.getElementById('gcScore').value);
+            const weight = parseFloat(document.getElementById('gcWeight').value);
+            if (!name || isNaN(score) || isNaN(weight)) { toast('All fields required.', 'error'); return; }
+            if (!data.gradeCalculator.courses) data.gradeCalculator.courses = [];
+            data.gradeCalculator.courses.push({ id: genId(), name, score, weight });
+            if (saveData()) { closeModal();
+                toast('✅ Course added', 'success');
+                renderPage('gradecalc'); }
+        }
+
+        function deleteCourse(id) {
+            if (!confirm('Delete this course?')) return;
+            data.gradeCalculator.courses = data.gradeCalculator.courses.filter(c => c.id !== id);
+            if (saveData()) { toast('🗑️ Course deleted', 'info');
+                renderPage('gradecalc'); }
+        }
+
+        // ================================================================
+        //  GLOBAL SEARCH & DARK MODE
         // ================================================================
 
         function showGlobalSearch() {
             openModal(`
             <div class="modal-title">🔍 Global Search</div>
             <div class="modal-sub">Search across all your data.</div>
-            <div class="form-group">
-              <input id="globalSearchInput" placeholder="Type to search..." oninput="performGlobalSearch()" autofocus />
-            </div>
+            <div class="form-group"><input id="globalSearchInput" placeholder="Type to search..." oninput="performGlobalSearch()" autofocus /></div>
             <div id="globalSearchResults" class="search-results"></div>
             <div class="form-actions"><button class="btn" onclick="closeModal()">Close</button></div>
           `);
@@ -1486,7 +2126,7 @@
         function performGlobalSearch() {
             const query = document.getElementById('globalSearchInput').value.toLowerCase().trim();
             const results = document.getElementById('globalSearchResults');
-            if (!query) { results.innerHTML = '<div class="text-muted text-sm">Start typing to search...</div>'; return; }
+            if (!query) { results.innerHTML = '<div class="text-muted text-sm">Start typing...</div>'; return; }
             const items = [];
             data.notes.forEach(n => { if (n.title.toLowerCase().includes(query) || (n.content || '').toLowerCase().includes(
                     query)) items.push({ type: 'Note', title: n.title || 'Untitled', id: n.id, page: 'notes' }); });
@@ -1513,6 +2153,9 @@
                         title: u.name, id: u.id, page: 'universities' }); });
             data.essays.forEach(e => { if ((e.title || '').toLowerCase().includes(query)) items.push({ type: 'Essay',
                         title: e.title, id: e.id, page: 'essays' }); });
+            data.bookmarks.forEach(b => { if ((b.title || '').toLowerCase().includes(query) || (b.tags || '')
+                    .toLowerCase().includes(query)) items.push({ type: 'Bookmark', title: b.title, id: b.id,
+                        page: 'bookmarks' }); });
             if (items.length === 0) { results.innerHTML =
                 '<div class="text-muted text-sm">No results found.</div>'; return; }
             results.innerHTML = items.map(item =>
@@ -1531,11 +2174,8 @@
         }
 
         function applyDarkMode() {
-            if (data.settings.darkMode) {
-                document.body.classList.add('dark');
-            } else {
-                document.body.classList.remove('dark');
-            }
+            if (data.settings.darkMode) document.body.classList.add('dark');
+            else document.body.classList.remove('dark');
         }
 
         // ================================================================
@@ -1548,45 +2188,6 @@
             const pct = Math.min(100, (usage / quota) * 100);
             const pctRounded = Math.round(pct);
             const colorClass = pct > 90 ? 'danger' : pct > 70 ? 'warning' : '';
-
-            // Collect all file items with their sizes
-            const fileItems = [];
-            data.pastPapers.forEach(p => {
-                if (p.fileData) {
-                    const size = p.fileData.length * 0.75; // approximate base64 size
-                    fileItems.push({ id: p.id, type: 'Past Paper', name: p.title || p.fileName || 'Untitled',
-                        size: size, deleteFn: `deletePastPaper('${p.id}')` });
-                }
-            });
-            data.documents.forEach(d => {
-                if (d.fileData) {
-                    const size = d.fileData.length * 0.75;
-                    fileItems.push({ id: d.id, type: 'Document', name: d.title || d.fileName || 'Untitled',
-                        size: size, deleteFn: `deleteDocument('${d.id}')` });
-                }
-            });
-            data.evidence.forEach(e => {
-                if (e.fileData) {
-                    const size = e.fileData.length * 0.75;
-                    fileItems.push({ id: e.id, type: 'Evidence', name: e.title || e.fileName || 'Untitled',
-                        size: size, deleteFn: `deleteEvidence('${e.id}')` });
-                }
-            });
-            // sort by size descending
-            fileItems.sort((a, b) => b.size - a.size);
-
-            let fileListHtml = '';
-            if (fileItems.length === 0) {
-                fileListHtml = '<div class="text-muted text-sm">No files stored.</div>';
-            } else {
-                fileListHtml = fileItems.map(item =>
-                    `<div class="storage-item">
-                <span class="name">${item.type}: ${item.name}</span>
-                <span class="size">${formatSize(item.size)}</span>
-                <button class="btn btn-sm btn-danger" onclick="${item.deleteFn}; setTimeout(()=>renderPage('settings'),300);">🗑️</button>
-              </div>`
-                ).join('');
-            }
 
             return `
             <div class="page-title">⚙️ Settings</div>
@@ -1606,54 +2207,96 @@
               </div>
             </div>
 
-            <div class="card mt-2" id="storageManager">
+            <div class="card mt-2">
               <div style="font-weight:600;margin-bottom:0.5rem;">💾 Storage Manager</div>
               <div class="text-sm text-muted">Total usage: ${formatSize(usage)} of ~${formatSize(quota)} (${pctRounded}%)</div>
-              <div class="storage-bar">
-                <div class="fill ${colorClass}" style="width:${pct}%;"></div>
-              </div>
+              <div class="storage-bar"><div class="fill ${colorClass}" style="width:${pct}%;"></div></div>
               ${pct > 80 ? `<div class="storage-warning">⚠️ Storage is ${pctRounded}% full. Delete old files to free up space.</div>` : ''}
               <div style="margin-top:0.5rem;">
-                <button class="btn btn-sm btn-danger" onclick="if(confirm('Delete ALL file data? This will remove all uploaded files but keep metadata.')){clearAllFiles();}">🗑️ Clear All Files</button>
+                <button class="btn btn-sm btn-danger" onclick="if(confirm('Delete ALL file data?')){clearAllFiles();}">🗑️ Clear All Files</button>
                 <button class="btn btn-sm btn-outline" onclick="exportData()">📤 Export Backup</button>
                 <button class="btn btn-sm btn-outline" onclick="document.getElementById('importInput').click()">📥 Import Backup</button>
                 <input type="file" id="importInput" accept=".json" style="display:none;" onchange="importData(event)" />
               </div>
-              <div class="mt-2">
-                <div style="font-weight:500;margin-bottom:0.3rem;">Largest Files</div>
-                ${fileListHtml}
-              </div>
             </div>
 
             <div class="card mt-2"><div style="font-weight:600;margin-bottom:0.5rem;">📊 Stats</div>
-              <div class="text-sm text-muted">Subjects: ${data.subjects.length} · Notes: ${data.notes.length} · Tasks: ${data.tasks.length} · Mistakes: ${data.mistakes.length} · Flashcards: ${data.flashcards.length} · Past Papers: ${data.pastPapers.length} · Videos: ${data.videos.length} · Documents: ${data.documents.length} · Projects: ${data.projects.length} · Skills: ${data.skills.length} · Activities: ${data.activities.length} · Goals: ${data.goals.length} · Stories: ${data.stories.length} · Universities: ${data.universities.length} · Essays: ${data.essays.length} · Recommendations: ${data.recommendations.length} · Scholarships: ${data.scholarships.length} · Evidence: ${data.evidence.length}</div>
+              <div class="text-sm text-muted">Subjects: ${data.subjects.length} · Notes: ${data.notes.length} · Tasks: ${data.tasks.length} · Mistakes: ${data.mistakes.length} · Flashcards: ${data.flashcards.length} · Past Papers: ${data.pastPapers.length} · Videos: ${data.videos.length} · Documents: ${data.documents.length} · Projects: ${data.projects.length} · Skills: ${data.skills.length} · Activities: ${data.activities.length} · Goals: ${data.goals.length} · Stories: ${data.stories.length} · Universities: ${data.universities.length} · Essays: ${data.essays.length} · Recommendations: ${data.recommendations.length} · Scholarships: ${data.scholarships.length} · Evidence: ${data.evidence.length} · Habits: ${data.habits.length} · Bookmarks: ${data.bookmarks.length}</div>
               <div class="text-xs text-muted mt-1">Last saved: ${new Date().toLocaleString()}</div>
             </div>
           `;
         }
 
+        function saveSettings() {
+            data.student.name = document.getElementById('settingsName').value.trim() || 'Maira';
+            data.student.grade = document.getElementById('settingsGrade').value.trim() || 'Grade 9';
+            data.student.currentYear = document.getElementById('settingsYear').value.trim() || '2026-2027';
+            data.student.examYear = document.getElementById('settingsExamYear').value.trim() || 'CIE 2027';
+            if (saveData()) { toast('✅ Settings saved', 'success');
+                renderPage('settings'); }
+        }
+
+        function getStorageUsage() {
+            let total = 0;
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                const val = localStorage.getItem(key);
+                total += (key.length + (val ? val.length : 0)) * 2;
+            }
+            return total;
+        }
+
+        function formatSize(bytes) {
+            if (bytes < 1024) return bytes + ' B';
+            if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+            if (bytes < 1073741824) return (bytes / 1048576).toFixed(1) + ' MB';
+            return (bytes / 1073741824).toFixed(1) + ' GB';
+        }
+
+        function getQuota() { return 5 * 1024 * 1024; }
+
         function clearAllFiles() {
-            // Remove fileData from pastPapers, documents, evidence
             data.pastPapers.forEach(p => { delete p.fileData; });
             data.documents.forEach(d => { delete d.fileData; });
             data.evidence.forEach(e => { delete e.fileData; });
-            if (saveData()) {
-                toast('🗑️ All file data cleared.', 'info');
-                renderPage('settings');
-            }
+            if (saveData()) { toast('🗑️ All file data cleared.', 'info');
+                renderPage('settings'); }
+        }
+
+        function exportData() {
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `olevel_cc_backup_${new Date().toISOString().slice(0,10)}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+            toast('📤 Exported', 'success');
+        }
+
+        function importData(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (e) => { try { const imported = JSON.parse(e.target.result); if (imported.subjects) { data =
+                            imported;
+                        saveData();
+                        toast('✅ Imported', 'success');
+                        renderPage('settings');
+                        navigate('dashboard'); } else { toast('Invalid file.', 'error'); } } catch (_) { toast(
+                            'Error reading file.', 'error'); } };
+            reader.readAsText(file);
+            event.target.value = '';
         }
 
         // ================================================================
-        //  All other page renderers (abridged for space — they are identical to previous version)
-        //  For brevity, we keep only essential ones and reuse the same functions.
-        //  In the final code, include all the full page functions from the previous version.
+        //  SUBJECTS, SYLLABUS, NOTES, TASKS, MISTAKES, FLASHCARDS, PAST PAPERS, VIDEOS, DOCUMENTS
+        //  TIMER, CALENDAR, ACTIVITIES, PROJECTS, SKILLS, PROFILE, GOALS, STORIES, UNIVERSITIES, ESSAYS
+        //  RECOMMENDATIONS, SCHOLARSHIPS, EVIDENCE — All from previous version, compacted.
         // ================================================================
 
-        // Since the full code is huge, I'll include placeholders for the other pages.
-        // In the actual final output, all functions (subjects, syllabus, notes, tasks, mistakes, flashcards, pastPapers, videos, documents, timer, calendar, activities, projects, skills, profile, goals, stories, universities, essays, recommendations, scholarships, evidence) are fully implemented.
-        // To avoid duplication, I'll reference the same functions as before.
+        // I'll include compact versions of all these functions to keep the code complete.
 
-        // ===== SUBJECTS (full) =====
         function renderSubjects() {
             const active = data.subjects.filter(s => !s.archived);
             const archived = data.subjects.filter(s => s.archived);
@@ -1706,9 +2349,7 @@
         function saveEditSubject(id) {
             const s = getSubject(id);
             if (!s) return;
-            const name = document.getElementById('editSubName').value.trim();
-            if (!name) { toast('Name required.', 'error'); return; }
-            s.name = name;
+            s.name = document.getElementById('editSubName').value.trim() || 'Subject';
             s.grade = document.getElementById('editSubGrade').value;
             s.color = document.getElementById('editSubColor').value;
             if (saveData()) { closeModal();
@@ -1718,13 +2359,14 @@
 
         function archiveSubject(id) {
             const s = getSubject(id);
-            if (s) { s.archived = !s.archived; if (saveData()) { toast(s.archived ? '📦 Archived' : '📂 Unarchived',
-                        'info');
-                    renderPage('subjects'); } }
+            if (s) { s.archived = !s.archived;
+                saveData();
+                toast(s.archived ? '📦 Archived' : '📂 Unarchived', 'info');
+                renderPage('subjects'); }
         }
 
         function deleteSubject(id) {
-            if (!confirm('Delete this subject and all related data?')) return;
+            if (!confirm('Delete this subject?')) return;
             data.subjects = data.subjects.filter(s => s.id !== id);
             data.notes = data.notes.filter(n => n.subjectId !== id);
             data.tasks = data.tasks.filter(t => t.subjectId !== id);
@@ -1734,20 +2376,1755 @@
                 renderPage('subjects'); }
         }
 
-        // ===== SYLLABUS (full) =====
-        function renderSyllabus() { /* full code from previous version */ return '<div>...</div>'; }
+        // ===== SYLLABUS (compact) =====
+        function renderSyllabus() {
+            const subjects = data.subjects.filter(s => !s.archived);
+            if (!subjects.length) return `<div class="page-title">🗂️ Syllabus</div><div class="empty-state"><div class="icon">📚</div><div class="title">No subjects</div><div class="desc">Add a subject first.</div></div>`;
+            let html = `<div class="page-title">🗂️ Syllabus</div><div class="page-subtitle">Break down subjects into units, topics, and concepts.</div>`;
+            subjects.forEach(sub => {
+                const syllabus = data.syllabus[sub.id] || [];
+                html += `<div class="card mt-2"><div class="flex-between"><div><span style="font-weight:700;">${sub.name}</span><span class="badge">${syllabus.length} units</span></div><button class="btn btn-sm btn-primary" onclick="addSyllabusUnit('${sub.id}')">+ Unit</button></div><div class="mt-1">${syllabus.length===0?'<div class="text-muted text-sm">No units yet.</div>':syllabus.map((unit,ui)=>`<div style="padding:0.3rem 0.5rem;background:var(--bg);border-radius:var(--radius-sm);margin-top:0.2rem;"><div class="flex-between"><span style="font-weight:600;">${unit.name}</span><div><button class="btn btn-sm btn-ghost" onclick="addSyllabusTopic('${sub.id}',${ui})">+ Topic</button><button class="btn btn-sm btn-ghost" onclick="editSyllabusUnit('${sub.id}',${ui})">✏️</button><button class="btn btn-sm btn-ghost" onclick="deleteSyllabusUnit('${sub.id}',${ui})">🗑️</button></div></div>${unit.topics&&unit.topics.length?unit.topics.map((topic,ti)=>`<div class="tree-item"><div class="node"><span>📌</span><span>${topic.name}</span><span style="font-size:0.7rem;color:var(--text-muted);">${topic.concepts?topic.concepts.length:0}</span><button class="btn btn-sm btn-ghost" onclick="addSyllabusConcept('${sub.id}',${ui},${ti})">+</button><button class="btn btn-sm btn-ghost" onclick="editSyllabusTopic('${sub.id}',${ui},${ti})">✏️</button><button class="btn btn-sm btn-ghost" onclick="deleteSyllabusTopic('${sub.id}',${ui},${ti})">🗑️</button></div>${topic.concepts&&topic.concepts.length?topic.concepts.map((concept,ci)=>`<div class="tree-item"><div class="node"><span class="mastery ${concept.mastery||'not_started'}"></span><span>${concept.name}</span><span class="pill ${concept.mastery||'not_started'}">${concept.mastery||'Not Started'}</span><button class="btn btn-sm btn-ghost" onclick="editSyllabusConcept('${sub.id}',${ui},${ti},${ci})">✏️</button><button class="btn btn-sm btn-ghost" onclick="deleteSyllabusConcept('${sub.id}',${ui},${ti},${ci})">🗑️</button></div></div>`).join(''):'<div class="text-muted text-xs" style="padding-left:1.2rem;">No concepts.</div>'}</div>`).join(''):'<div class="text-muted text-xs" style="padding-left:0.8rem;">No topics.</div>'}</div>`).join('')}</div></div>`;
+            });
+            return html;
+        }
 
-        // ... (all other functions from previous version are included, but I'll keep them as comments to save space)
-        // Actually, for a complete answer, I need to include all functions. But due to output length, I'll provide a minimal set.
-        // The user asked for a working solution, so I'll include the full code in the final answer.
+        function getSyllabus(subId) { if (!data.syllabus[subId]) data.syllabus[subId] = []; return data.syllabus[subId]; }
 
-        // Since I'm limited, I'll now produce the final code with all features.
+        function addSyllabusUnit(subId) {
+            openModal(
+                `<div class="modal-title">📂 Add Unit</div><div class="form-group"><label>Unit Name</label><input id="sylUnitName" /></div><div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveSyllabusUnit('${subId}')">Add</button></div>`
+                );
+        }
+
+        function saveSyllabusUnit(subId) {
+            const name = document.getElementById('sylUnitName').value.trim();
+            if (!name) { toast('Name required.', 'error'); return; }
+            const syllabus = getSyllabus(subId);
+            syllabus.push({ id: genId(), name, topics: [] });
+            data.syllabus[subId] = syllabus;
+            if (saveData()) { closeModal();
+                toast('✅ Unit added', 'success');
+                renderPage('syllabus'); }
+        }
+
+        function editSyllabusUnit(subId, ui) {
+            const syllabus = getSyllabus(subId);
+            const unit = syllabus[ui];
+            if (!unit) return;
+            openModal(
+                `<div class="modal-title">✏️ Edit Unit</div><div class="form-group"><label>Unit Name</label><input id="editSylUnit" value="${unit.name}" /></div><div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEditSyllabusUnit('${subId}',${ui})">Save</button></div>`
+                );
+        }
+
+        function saveEditSyllabusUnit(subId, ui) {
+            const syllabus = getSyllabus(subId);
+            const name = document.getElementById('editSylUnit').value.trim();
+            if (!name) { toast('Name required.', 'error'); return; }
+            syllabus[ui].name = name;
+            data.syllabus[subId] = syllabus;
+            if (saveData()) { closeModal();
+                toast('✅ Unit updated', 'success');
+                renderPage('syllabus'); }
+        }
+
+        function deleteSyllabusUnit(subId, ui) {
+            if (!confirm('Delete this unit?')) return;
+            const syllabus = getSyllabus(subId);
+            syllabus.splice(ui, 1);
+            data.syllabus[subId] = syllabus;
+            if (saveData()) { toast('🗑️ Unit deleted', 'info');
+                renderPage('syllabus'); }
+        }
+
+        function addSyllabusTopic(subId, ui) {
+            openModal(
+                `<div class="modal-title">📌 Add Topic</div><div class="form-group"><label>Topic Name</label><input id="sylTopicName" /></div><div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveSyllabusTopic('${subId}',${ui})">Add</button></div>`
+                );
+        }
+
+        function saveSyllabusTopic(subId, ui) {
+            const name = document.getElementById('sylTopicName').value.trim();
+            if (!name) { toast('Name required.', 'error'); return; }
+            const syllabus = getSyllabus(subId);
+            if (!syllabus[ui].topics) syllabus[ui].topics = [];
+            syllabus[ui].topics.push({ id: genId(), name, concepts: [] });
+            data.syllabus[subId] = syllabus;
+            if (saveData()) { closeModal();
+                toast('✅ Topic added', 'success');
+                renderPage('syllabus'); }
+        }
+
+        function editSyllabusTopic(subId, ui, ti) {
+            const syllabus = getSyllabus(subId);
+            const topic = syllabus[ui].topics[ti];
+            if (!topic) return;
+            openModal(
+                `<div class="modal-title">✏️ Edit Topic</div><div class="form-group"><label>Topic Name</label><input id="editSylTopic" value="${topic.name}" /></div><div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEditSyllabusTopic('${subId}',${ui},${ti})">Save</button></div>`
+                );
+        }
+
+        function saveEditSyllabusTopic(subId, ui, ti) {
+            const syllabus = getSyllabus(subId);
+            const name = document.getElementById('editSylTopic').value.trim();
+            if (!name) { toast('Name required.', 'error'); return; }
+            syllabus[ui].topics[ti].name = name;
+            data.syllabus[subId] = syllabus;
+            if (saveData()) { closeModal();
+                toast('✅ Topic updated', 'success');
+                renderPage('syllabus'); }
+        }
+
+        function deleteSyllabusTopic(subId, ui, ti) {
+            if (!confirm('Delete this topic?')) return;
+            const syllabus = getSyllabus(subId);
+            syllabus[ui].topics.splice(ti, 1);
+            data.syllabus[subId] = syllabus;
+            if (saveData()) { toast('🗑️ Topic deleted', 'info');
+                renderPage('syllabus'); }
+        }
+
+        function addSyllabusConcept(subId, ui, ti) {
+            openModal(`
+            <div class="modal-title">🧠 Add Concept</div>
+            <div class="form-group"><label>Concept Name</label><input id="sylConceptName" /></div>
+            <div class="form-group"><label>Mastery</label><select id="sylConceptMastery">${['not_started','learning','understanding','exam_ready','mastered'].map(m=>`<option value="${m}">${m.replace('_',' ').toUpperCase()}</option>`).join('')}</select></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveSyllabusConcept('${subId}',${ui},${ti})">Add</button></div>
+          `);
+        }
+
+        function saveSyllabusConcept(subId, ui, ti) {
+            const name = document.getElementById('sylConceptName').value.trim();
+            const mastery = document.getElementById('sylConceptMastery').value;
+            if (!name) { toast('Name required.', 'error'); return; }
+            const syllabus = getSyllabus(subId);
+            if (!syllabus[ui].topics[ti].concepts) syllabus[ui].topics[ti].concepts = [];
+            syllabus[ui].topics[ti].concepts.push({ id: genId(), name, mastery, notes: '' });
+            data.syllabus[subId] = syllabus;
+            if (saveData()) { closeModal();
+                toast('✅ Concept added', 'success');
+                renderPage('syllabus'); }
+        }
+
+        function editSyllabusConcept(subId, ui, ti, ci) {
+            const syllabus = getSyllabus(subId);
+            const concept = syllabus[ui].topics[ti].concepts[ci];
+            if (!concept) return;
+            openModal(`
+            <div class="modal-title">✏️ Edit Concept</div>
+            <div class="form-group"><label>Concept Name</label><input id="editSylConcept" value="${concept.name}" /></div>
+            <div class="form-group"><label>Mastery</label><select id="editSylConceptMastery">${['not_started','learning','understanding','exam_ready','mastered'].map(m=>`<option value="${m}" ${m===concept.mastery?'selected':''}>${m.replace('_',' ').toUpperCase()}</option>`).join('')}</select></div>
+            <div class="form-group"><label>Notes</label><textarea id="editSylConceptNotes" rows="2">${concept.notes||''}</textarea></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEditSyllabusConcept('${subId}',${ui},${ti},${ci})">Save</button></div>
+          `);
+        }
+
+        function saveEditSyllabusConcept(subId, ui, ti, ci) {
+            const syllabus = getSyllabus(subId);
+            const concept = syllabus[ui].topics[ti].concepts[ci];
+            concept.name = document.getElementById('editSylConcept').value.trim() || 'Concept';
+            concept.mastery = document.getElementById('editSylConceptMastery').value;
+            concept.notes = document.getElementById('editSylConceptNotes').value;
+            data.syllabus[subId] = syllabus;
+            if (saveData()) { closeModal();
+                toast('✅ Concept updated', 'success');
+                renderPage('syllabus'); }
+        }
+
+        function deleteSyllabusConcept(subId, ui, ti, ci) {
+            if (!confirm('Delete this concept?')) return;
+            const syllabus = getSyllabus(subId);
+            syllabus[ui].topics[ti].concepts.splice(ci, 1);
+            data.syllabus[subId] = syllabus;
+            if (saveData()) { toast('🗑️ Concept deleted', 'info');
+                renderPage('syllabus'); }
+        }
+
+        // ===== NOTES =====
+        function renderNotes() {
+            let html =
+                `<div class="flex-between"><div><div class="page-title">📝 Notes</div><div class="page-subtitle">Knowledge base.</div></div><button class="btn btn-primary" onclick="showAddNote()">+ New Note</button></div>`;
+            const notes = data.notes.filter(n => !n.archived).sort((a, b) => new Date(b.updatedAt || b.createdAt) - new Date(a
+                .createdAt));
+            if (!notes.length) { html +=
+                    `<div class="empty-state"><div class="icon">📝</div><div class="title">No notes</div><div class="desc">Create your first note.</div></div>`; } else {
+                html += `<div class="grid-2 mt-2">`;
+                notes.forEach(n => {
+                    html += `<div class="card"><div class="flex-between"><span style="font-weight:600;">${n.title||'Untitled'}</span><span class="badge">${n.subjectId?getSubjectName(n.subjectId):'General'}</span></div><div class="text-sm text-muted mt-1">${n.content?n.content.slice(0,120)+(n.content.length>120?'...':''):''}</div><div style="display:flex;gap:0.3rem;margin-top:0.5rem;flex-wrap:wrap;"><span class="pill purple">${n.tags?n.tags.join(', '):'untagged'}</span><button class="btn btn-sm btn-ghost" onclick="editNote('${n.id}')">✏️</button><button class="btn btn-sm btn-ghost" onclick="archiveNote('${n.id}')">📦</button><button class="btn btn-sm btn-danger" onclick="deleteNote('${n.id}')">🗑️</button></div></div>`;
+                });
+                html += `</div>`;
+            }
+            return html;
+        }
+
+        function showAddNote() {
+            const subjects = data.subjects.filter(s => !s.archived);
+            openModal(`
+            <div class="modal-title">📝 New Note</div>
+            <div class="form-group"><label>Title</label><input id="noteTitle" /></div>
+            <div class="form-group"><label>Subject</label><select id="noteSubject"><option value="">General</option>${subjects.map(s=>`<option value="${s.id}">${s.name}</option>`).join('')}</select></div>
+            <div class="form-group"><label>Content</label><textarea id="noteContent" rows="4"></textarea></div>
+            <div class="form-group"><label>Tags (comma)</label><input id="noteTags" /></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="addNote()">Save</button></div>
+          `);
+        }
+
+        function addNote() {
+            const title = document.getElementById('noteTitle').value.trim() || 'Untitled';
+            data.notes.push({ id: genId(), title, content: document.getElementById('noteContent').value || '', subjectId: document
+                    .getElementById('noteSubject').value || null, topicId: null, conceptId: null, tags: document
+                    .getElementById('noteTags').value.split(',').map(t => t.trim()).filter(Boolean), pinned: false,
+                archived: false, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() });
+            if (saveData()) { closeModal();
+                toast('✅ Note saved', 'success');
+                renderPage('notes'); }
+        }
+
+        function editNote(id) {
+            const n = data.notes.find(n => n.id === id);
+            if (!n) return;
+            const subjects = data.subjects.filter(s => !s.archived);
+            openModal(`
+            <div class="modal-title">✏️ Edit Note</div>
+            <div class="form-group"><label>Title</label><input id="editNoteTitle" value="${n.title||''}" /></div>
+            <div class="form-group"><label>Subject</label><select id="editNoteSubject"><option value="">General</option>${subjects.map(s=>`<option value="${s.id}" ${s.id===n.subjectId?'selected':''}>${s.name}</option>`).join('')}</select></div>
+            <div class="form-group"><label>Content</label><textarea id="editNoteContent" rows="4">${n.content||''}</textarea></div>
+            <div class="form-group"><label>Tags</label><input id="editNoteTags" value="${(n.tags||[]).join(', ')}" /></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEditNote('${id}')">Save</button></div>
+          `);
+        }
+
+        function saveEditNote(id) {
+            const n = data.notes.find(n => n.id === id);
+            if (!n) return;
+            n.title = document.getElementById('editNoteTitle').value.trim() || 'Untitled';
+            n.subjectId = document.getElementById('editNoteSubject').value || null;
+            n.content = document.getElementById('editNoteContent').value || '';
+            n.tags = document.getElementById('editNoteTags').value.split(',').map(t => t.trim()).filter(Boolean);
+            n.updatedAt = new Date().toISOString();
+            if (saveData()) { closeModal();
+                toast('✅ Note updated', 'success');
+                renderPage('notes'); }
+        }
+
+        function archiveNote(id) { const n = data.notes.find(n => n.id === id); if (n) { n.archived = true;
+                saveData();
+                toast('📦 Archived', 'info');
+                renderPage('notes'); } }
+
+        function deleteNote(id) { if (!confirm('Delete this note?')) return; data.notes = data.notes.filter(n => n.id !== id);
+            if (saveData()) { toast('🗑️ Deleted', 'info');
+                renderPage('notes'); } }
+
+        // ===== TASKS =====
+        function renderTasks() {
+            let html =
+                `<div class="flex-between"><div><div class="page-title">✅ Tasks</div><div class="page-subtitle">Manage to-dos.</div></div><button class="btn btn-primary" onclick="showAddTask()">+ New Task</button></div>`;
+            const tasks = data.tasks.sort((a, b) => ({ high: 0, medium: 1, low: 2 } [a.priority] || 1) - ({ high: 0,
+                    medium: 1, low: 2 } [b.priority] || 1));
+            if (!tasks.length) { html +=
+                    `<div class="empty-state"><div class="icon">✅</div><div class="title">No tasks</div><div class="desc">Add your first task.</div></div>`; } else {
+                html += `<div class="table-wrap mt-2"><table><thead><tr><th>Task</th><th>Subject</th><th>Priority</th><th>Status</th><th>Deadline</th><th>Actions</th></tr></thead><tbody>`;
+                tasks.forEach(t => {
+                    html +=
+                        `<tr><td><span style="font-weight:500;">${t.title}</span></td><td>${t.subjectId?getSubjectName(t.subjectId):'—'}</td><td><span class="pill ${t.priority==='high'?'red':t.priority==='medium'?'gold':'green'}">${t.priority||'medium'}</span></td><td><span class="pill ${t.status==='Completed'?'green':t.status==='In progress'?'blue':'purple'}">${t.status||'Not started'}</span></td><td>${t.deadline?new Date(t.deadline).toLocaleDateString():'—'}</td><td><button class="btn btn-sm btn-ghost" onclick="toggleTaskStatus('${t.id}')">↻</button><button class="btn btn-sm btn-ghost" onclick="editTask('${t.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteTask('${t.id}')">🗑️</button></td></tr>`;
+                });
+                html += `</tbody></table></div>`;
+            }
+            return html;
+        }
+
+        function showAddTask() {
+            const subjects = data.subjects.filter(s => !s.archived);
+            openModal(`
+            <div class="modal-title">✅ New Task</div>
+            <div class="form-group"><label>Title</label><input id="taskTitle" /></div>
+            <div class="form-group"><label>Subject</label><select id="taskSubject"><option value="">General</option>${subjects.map(s=>`<option value="${s.id}">${s.name}</option>`).join('')}</select></div>
+            <div class="form-group"><label>Priority</label><select id="taskPriority"><option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option></select></div>
+            <div class="form-group"><label>Status</label><select id="taskStatus"><option value="Not started">Not started</option><option value="In progress">In progress</option><option value="Completed">Completed</option></select></div>
+            <div class="form-group"><label>Deadline</label><input id="taskDeadline" type="date" /></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="addTask()">Add</button></div>
+          `);
+        }
+
+        function addTask() {
+            const title = document.getElementById('taskTitle').value.trim();
+            if (!title) { toast('Title required.', 'error'); return; }
+            data.tasks.push({ id: genId(), title, subjectId: document.getElementById('taskSubject').value || null,
+                priority: document.getElementById('taskPriority').value, status: document.getElementById('taskStatus')
+                    .value, deadline: document.getElementById('taskDeadline').value || null, createdAt: new Date()
+                    .toISOString() });
+            if (saveData()) { closeModal();
+                toast('✅ Task added', 'success');
+                renderPage('tasks'); }
+        }
+
+        function editTask(id) {
+            const t = data.tasks.find(t => t.id === id);
+            if (!t) return;
+            const subjects = data.subjects.filter(s => !s.archived);
+            openModal(`
+            <div class="modal-title">✏️ Edit Task</div>
+            <div class="form-group"><label>Title</label><input id="editTaskTitle" value="${t.title}" /></div>
+            <div class="form-group"><label>Subject</label><select id="editTaskSubject"><option value="">General</option>${subjects.map(s=>`<option value="${s.id}" ${s.id===t.subjectId?'selected':''}>${s.name}</option>`).join('')}</select></div>
+            <div class="form-group"><label>Priority</label><select id="editTaskPriority">${['low','medium','high'].map(p=>`<option value="${p}" ${p===t.priority?'selected':''}>${p.charAt(0).toUpperCase()+p.slice(1)}</option>`).join('')}</select></div>
+            <div class="form-group"><label>Status</label><select id="editTaskStatus">${['Not started','In progress','Completed'].map(s=>`<option value="${s}" ${s===t.status?'selected':''}>${s}</option>`).join('')}</select></div>
+            <div class="form-group"><label>Deadline</label><input id="editTaskDeadline" type="date" value="${t.deadline||''}" /></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEditTask('${id}')">Save</button></div>
+          `);
+        }
+
+        function saveEditTask(id) {
+            const t = data.tasks.find(t => t.id === id);
+            if (!t) return;
+            t.title = document.getElementById('editTaskTitle').value.trim() || 'Untitled';
+            t.subjectId = document.getElementById('editTaskSubject').value || null;
+            t.priority = document.getElementById('editTaskPriority').value;
+            t.status = document.getElementById('editTaskStatus').value;
+            t.deadline = document.getElementById('editTaskDeadline').value || null;
+            if (saveData()) { closeModal();
+                toast('✅ Task updated', 'success');
+                renderPage('tasks'); }
+        }
+
+        function toggleTaskStatus(id) {
+            const t = data.tasks.find(t => t.id === id);
+            if (!t) return;
+            const statuses = ['Not started', 'In progress', 'Completed'];
+            const idx = statuses.indexOf(t.status);
+            t.status = statuses[(idx + 1) % statuses.length];
+            if (saveData()) { toast(`↻ ${t.status}`, 'info');
+                renderPage('tasks'); }
+        }
+
+        function deleteTask(id) { if (!confirm('Delete this task?')) return; data.tasks = data.tasks.filter(t => t.id !== id);
+            if (saveData()) { toast('🗑️ Deleted', 'info');
+                renderPage('tasks'); } }
+
+        // ===== MISTAKES =====
+        function renderMistakes() {
+            let html =
+                `<div class="flex-between"><div><div class="page-title">❌ Mistake Bank</div><div class="page-subtitle">Learn from mistakes.</div></div><button class="btn btn-primary" onclick="showAddMistake()">+ Record</button></div>`;
+            const mistakes = data.mistakes.sort((a, b) => new Date(b.date) - new Date(a.date));
+            if (!mistakes.length) { html +=
+                    `<div class="empty-state"><div class="icon">✅</div><div class="title">No mistakes yet</div><div class="desc">Record your first mistake.</div></div>`; } else {
+                html += `<div class="table-wrap mt-2"><table><thead><tr><th>Question</th><th>Subject</th><th>Type</th><th>Date</th><th>Reviewed</th><th>Actions</th></tr></thead><tbody>`;
+                mistakes.forEach(m => {
+                    html +=
+                        `<tr><td>${m.question||'—'}</td><td>${m.subjectId?getSubjectName(m.subjectId):'—'}</td><td><span class="pill purple">${m.type||'Other'}</span></td><td>${new Date(m.date).toLocaleDateString()}</td><td>${m.reviewed?'✅':'⏳'}</td><td><button class="btn btn-sm btn-ghost" onclick="toggleMistakeReviewed('${m.id}')">↻</button><button class="btn btn-sm btn-ghost" onclick="editMistake('${m.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteMistake('${m.id}')">🗑️</button></td></tr>`;
+                });
+                html += `</tbody></table></div>`;
+            }
+            return html;
+        }
+
+        function showAddMistake() {
+            const subjects = data.subjects.filter(s => !s.archived);
+            const types = ['Concept misunderstanding', 'Calculation', 'Misread question', 'Forgot information',
+                'Exam technique', 'Time management', 'Careless mistake', 'Other'
+            ];
+            openModal(`
+            <div class="modal-title">❌ Record Mistake</div>
+            <div class="form-group"><label>Question</label><input id="mistakeQuestion" /></div>
+            <div class="form-group"><label>Subject</label><select id="mistakeSubject"><option value="">General</option>${subjects.map(s=>`<option value="${s.id}">${s.name}</option>`).join('')}</select></div>
+            <div class="form-group"><label>My Answer</label><input id="mistakeMyAnswer" /></div>
+            <div class="form-group"><label>Correct Answer</label><input id="mistakeCorrectAnswer" /></div>
+            <div class="form-group"><label>Why wrong?</label><textarea id="mistakeWhy" rows="2"></textarea></div>
+            <div class="form-group"><label>Type</label><select id="mistakeType">${types.map(t=>`<option value="${t}">${t}</option>`).join('')}</select></div>
+            <div class="form-group"><label>Corrected Understanding</label><textarea id="mistakeCorrected" rows="2"></textarea></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="addMistake()">Save</button></div>
+          `);
+        }
+
+        function addMistake() {
+            const question = document.getElementById('mistakeQuestion').value.trim() || 'Mistake';
+            data.mistakes.push({ id: genId(), subjectId: document.getElementById('mistakeSubject').value || null,
+                question, myAnswer: document.getElementById('mistakeMyAnswer').value || '', correctAnswer: document
+                    .getElementById('mistakeCorrectAnswer').value || '', whyWrong: document.getElementById(
+                    'mistakeWhy').value || '', type: document.getElementById('mistakeType').value, date: new Date()
+                    .toISOString(), reviewed: false, correctedUnderstanding: document.getElementById(
+                    'mistakeCorrected').value || '' });
+            if (saveData()) { closeModal();
+                toast('✅ Mistake recorded', 'success');
+                renderPage('mistakes'); }
+        }
+
+        function editMistake(id) {
+            const m = data.mistakes.find(m => m.id === id);
+            if (!m) return;
+            const subjects = data.subjects.filter(s => !s.archived);
+            const types = ['Concept misunderstanding', 'Calculation', 'Misread question', 'Forgot information',
+                'Exam technique', 'Time management', 'Careless mistake', 'Other'
+            ];
+            openModal(`
+            <div class="modal-title">✏️ Edit Mistake</div>
+            <div class="form-group"><label>Question</label><input id="editMistakeQuestion" value="${m.question||''}" /></div>
+            <div class="form-group"><label>Subject</label><select id="editMistakeSubject"><option value="">General</option>${subjects.map(s=>`<option value="${s.id}" ${s.id===m.subjectId?'selected':''}>${s.name}</option>`).join('')}</select></div>
+            <div class="form-group"><label>My Answer</label><input id="editMistakeMyAnswer" value="${m.myAnswer||''}" /></div>
+            <div class="form-group"><label>Correct Answer</label><input id="editMistakeCorrectAnswer" value="${m.correctAnswer||''}" /></div>
+            <div class="form-group"><label>Why wrong?</label><textarea id="editMistakeWhy" rows="2">${m.whyWrong||''}</textarea></div>
+            <div class="form-group"><label>Type</label><select id="editMistakeType">${types.map(t=>`<option value="${t}" ${t===m.type?'selected':''}>${t}</option>`).join('')}</select></div>
+            <div class="form-group"><label>Reviewed</label><select id="editMistakeReviewed"><option value="false" ${!m.reviewed?'selected':''}>No</option><option value="true" ${m.reviewed?'selected':''}>Yes</option></select></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEditMistake('${id}')">Save</button></div>
+          `);
+        }
+
+        function saveEditMistake(id) {
+            const m = data.mistakes.find(m => m.id === id);
+            if (!m) return;
+            m.question = document.getElementById('editMistakeQuestion').value.trim() || 'Mistake';
+            m.subjectId = document.getElementById('editMistakeSubject').value || null;
+            m.myAnswer = document.getElementById('editMistakeMyAnswer').value || '';
+            m.correctAnswer = document.getElementById('editMistakeCorrectAnswer').value || '';
+            m.whyWrong = document.getElementById('editMistakeWhy').value || '';
+            m.type = document.getElementById('editMistakeType').value;
+            m.reviewed = document.getElementById('editMistakeReviewed').value === 'true';
+            if (saveData()) { closeModal();
+                toast('✅ Mistake updated', 'success');
+                renderPage('mistakes'); }
+        }
+
+        function toggleMistakeReviewed(id) { const m = data.mistakes.find(m => m.id === id); if (m) { m.reviewed = !m
+                    .reviewed;
+                saveData();
+                toast(m.reviewed ? '✅ Reviewed' : '⏳ Unreviewed', 'info');
+                renderPage('mistakes'); } }
+
+        function deleteMistake(id) { if (!confirm('Delete this mistake?')) return; data.mistakes = data.mistakes.filter(m => m
+                    .id !== id);
+            if (saveData()) { toast('🗑️ Deleted', 'info');
+                renderPage('mistakes'); } }
+
+        // ===== FLASHCARDS =====
+        function renderFlashcards() {
+            let html =
+                `<div class="flex-between"><div><div class="page-title">🃏 Flashcards</div><div class="page-subtitle">Active recall.</div></div><button class="btn btn-primary" onclick="showAddFlashcard()">+ New</button></div>`;
+            const cards = data.flashcards;
+            if (!cards.length) { html +=
+                    `<div class="empty-state"><div class="icon">🃏</div><div class="title">No flashcards</div><div class="desc">Create your first card.</div></div>`; } else {
+                html += `<div class="grid-3 mt-2">`;
+                cards.forEach(c => {
+                    html +=
+                        `<div class="card"><div style="font-weight:600;">${c.front||'Question'}</div><div class="text-sm text-muted mt-1">${c.back||'Answer'}</div><div style="display:flex;gap:0.3rem;margin-top:0.4rem;flex-wrap:wrap;align-items:center;"><span class="pill ${c.confidence>3?'green':c.confidence>1?'gold':'red'}">${c.confidence||0}/5</span><span class="badge">${c.subjectId?getSubjectName(c.subjectId):'General'}</span><button class="btn btn-sm btn-ghost" onclick="editFlashcard('${c.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteFlashcard('${c.id}')">🗑️</button></div><div style="font-size:0.7rem;color:var(--text-muted);margin-top:0.2rem;">Review: ${c.reviewDate?new Date(c.reviewDate).toLocaleDateString():'—'}</div></div>`;
+                });
+                html += `</div>`;
+            }
+            return html;
+        }
+
+        function showAddFlashcard() {
+            const subjects = data.subjects.filter(s => !s.archived);
+            openModal(`
+            <div class="modal-title">🃏 New Flashcard</div>
+            <div class="form-group"><label>Front</label><input id="flashFront" /></div>
+            <div class="form-group"><label>Back</label><input id="flashBack" /></div>
+            <div class="form-group"><label>Subject</label><select id="flashSubject"><option value="">General</option>${subjects.map(s=>`<option value="${s.id}">${s.name}</option>`).join('')}</select></div>
+            <div class="form-group"><label>Confidence (1-5)</label><input id="flashConfidence" type="number" min="1" max="5" value="3" /></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="addFlashcard()">Add</button></div>
+          `);
+        }
+
+        function addFlashcard() {
+            const front = document.getElementById('flashFront').value.trim();
+            const back = document.getElementById('flashBack').value.trim();
+            if (!front || !back) { toast('Both sides required.', 'error'); return; }
+            data.flashcards.push({ id: genId(), front, back, subjectId: document.getElementById('flashSubject').value ||
+                    null, confidence: parseInt(document.getElementById('flashConfidence').value) || 3,
+                reviewDate: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString() });
+            if (saveData()) { closeModal();
+                toast('✅ Flashcard added', 'success');
+                renderPage('flashcards'); }
+        }
+
+        function editFlashcard(id) {
+            const c = data.flashcards.find(c => c.id === id);
+            if (!c) return;
+            const subjects = data.subjects.filter(s => !s.archived);
+            openModal(`
+            <div class="modal-title">✏️ Edit Flashcard</div>
+            <div class="form-group"><label>Front</label><input id="editFlashFront" value="${c.front||''}" /></div>
+            <div class="form-group"><label>Back</label><input id="editFlashBack" value="${c.back||''}" /></div>
+            <div class="form-group"><label>Subject</label><select id="editFlashSubject"><option value="">General</option>${subjects.map(s=>`<option value="${s.id}" ${s.id===c.subjectId?'selected':''}>${s.name}</option>`).join('')}</select></div>
+            <div class="form-group"><label>Confidence</label><input id="editFlashConfidence" type="number" min="1" max="5" value="${c.confidence||3}" /></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEditFlashcard('${id}')">Save</button></div>
+          `);
+        }
+
+        function saveEditFlashcard(id) {
+            const c = data.flashcards.find(c => c.id === id);
+            if (!c) return;
+            c.front = document.getElementById('editFlashFront').value.trim() || 'Question';
+            c.back = document.getElementById('editFlashBack').value.trim() || 'Answer';
+            c.subjectId = document.getElementById('editFlashSubject').value || null;
+            c.confidence = parseInt(document.getElementById('editFlashConfidence').value) || 3;
+            if (saveData()) { closeModal();
+                toast('✅ Flashcard updated', 'success');
+                renderPage('flashcards'); }
+        }
+
+        function deleteFlashcard(id) { if (!confirm('Delete this flashcard?')) return; data.flashcards = data.flashcards
+                .filter(c => c.id !== id);
+            if (saveData()) { toast('🗑️ Deleted', 'info');
+                renderPage('flashcards'); } }
+
+        // ===== PAST PAPERS (with IndexedDB) =====
+        let pendingFileUpload = null;
+
+        function renderPastPapers() {
+            let html =
+                `<div class="flex-between"><div><div class="page-title">📄 Past Papers</div><div class="page-subtitle">Upload and manage past exam papers.</div></div><button class="btn btn-primary" onclick="showAddPastPaper()">+ Upload Paper</button></div>`;
+            const papers = data.pastPapers.sort((a, b) => new Date(b.uploadedAt) - new Date(a.uploadedAt));
+            if (!papers.length) {
+                html +=
+                    `<div class="empty-state"><div class="icon">📄</div><div class="title">No past papers uploaded</div><div class="desc">Upload your past exam papers to keep them organized.</div></div>`;
+            } else {
+                html += `<div class="grid-2 mt-2">`;
+                papers.forEach(p => {
+                    const subName = p.subjectId ? getSubjectName(p.subjectId) : 'General';
+                    html += `<div class="card"><div style="font-weight:600;font-size:1.05rem;">${p.title||'Untitled'}</div><div class="text-sm text-muted">${subName} · ${p.year||'—'} · Paper ${p.paperNumber||'—'}</div><div class="file-card mt-1"><span class="file-icon">📄</span><div class="file-info"><div class="name">${p.fileName||'File'}</div><div class="meta">${p.fileSize?(p.fileSize/1024).toFixed(1)+' KB':'—'}</div></div><div class="file-actions">${p.fileId?`<button class="btn btn-sm btn-primary" onclick="downloadFile('${p.fileId}','${p.fileName||'download'}')">⬇️</button>`:''}<button class="btn btn-sm btn-ghost" onclick="editPastPaper('${p.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deletePastPaper('${p.id}')">🗑️</button></div></div>${p.notes?`<div class="text-sm text-muted mt-1">${p.notes}</div>`:''}<div class="text-xs text-muted mt-1">Uploaded: ${new Date(p.uploadedAt).toLocaleDateString()}</div></div>`;
+                });
+                html += `</div>`;
+            }
+            return html;
+        }
+
+        function showAddPastPaper() {
+            const subjects = data.subjects.filter(s => !s.archived);
+            pendingFileUpload = null;
+            openModal(`
+            <div class="modal-title">📄 Upload Past Paper</div>
+            <div class="modal-sub">Add a past paper with file attachment.</div>
+            <div class="form-group"><label>Title</label><input id="ppTitle" placeholder="e.g. Economics May 2022 Paper 1" /></div>
+            <div class="form-group"><label>Subject</label><select id="ppSubject"><option value="">General</option>${subjects.map(s=>`<option value="${s.id}">${s.name}</option>`).join('')}</select></div>
+            <div class="form-group"><label>Year</label><input id="ppYear" placeholder="e.g. 2022" /></div>
+            <div class="form-group"><label>Paper Number</label><input id="ppPaperNumber" placeholder="e.g. 1" /></div>
+            <div class="form-group"><label>File</label><input id="ppFile" type="file" accept=".pdf,.png,.jpg,.jpeg,.doc,.docx,.txt" /></div>
+            <div class="form-group"><label>Notes</label><textarea id="ppNotes" rows="2"></textarea></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="addPastPaper()">Upload</button></div>
+          `);
+            const fileInput = document.getElementById('ppFile');
+            if (fileInput) { fileInput.onchange = function() { pendingFileUpload = this.files && this.files.length > 0 ?
+                        this.files[0] : null; }; }
+        }
+
+        async function addPastPaper() {
+            const title = document.getElementById('ppTitle').value.trim() || 'Untitled';
+            const subjectId = document.getElementById('ppSubject').value || null;
+            const year = document.getElementById('ppYear').value.trim() || null;
+            const paperNumber = document.getElementById('ppPaperNumber').value.trim() || null;
+            const notes = document.getElementById('ppNotes').value.trim() || '';
+            let file = pendingFileUpload || document.getElementById('ppFile').files[0];
+            if (!file) { toast('Please select a file.', 'error'); return; }
+
+            try {
+                const fileId = genId();
+                const reader = new FileReader();
+                reader.onload = async function(e) {
+                    try {
+                        const base64 = e.target.result.split(',')[1];
+                        await saveFile(fileId, base64, { name: file.name, type: file.type, size: file.size });
+                        data.pastPapers.push({ id: genId(), title, subjectId, year, paperNumber, fileName: file
+                                .name, fileSize: file.size, fileId, notes, uploadedAt: new Date()
+                                .toISOString() });
+                        if (saveData()) { closeModal();
+                            toast('✅ Past paper uploaded!', 'success');
+                            renderPage('pastpapers'); }
+                    } catch (err) { toast('Error saving: ' + err.message, 'error'); }
+                };
+                reader.readAsDataURL(file);
+            } catch (err) { toast('Error: ' + err.message, 'error'); }
+        }
+
+        async function downloadFile(fileId, fileName) {
+            try {
+                const fileData = await getFile(fileId);
+                if (!fileData) { toast('File not found.', 'error'); return; }
+                const blob = new Blob([Uint8Array.from(atob(fileData.fileData), c => c.charCodeAt(0))], { type: fileData
+                        .metadata.type || 'application/octet-stream' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = fileName || 'download';
+                a.click();
+                URL.revokeObjectURL(url);
+                toast('⬇️ Downloading...', 'success');
+            } catch (err) { toast('Error downloading: ' + err.message, 'error'); }
+        }
+
+        function editPastPaper(id) {
+            const p = data.pastPapers.find(p => p.id === id);
+            if (!p) return;
+            const subjects = data.subjects.filter(s => !s.archived);
+            pendingFileUpload = null;
+            openModal(`
+            <div class="modal-title">✏️ Edit Past Paper</div>
+            <div class="form-group"><label>Title</label><input id="editPpTitle" value="${p.title||''}" /></div>
+            <div class="form-group"><label>Subject</label><select id="editPpSubject"><option value="">General</option>${subjects.map(s=>`<option value="${s.id}" ${s.id===p.subjectId?'selected':''}>${s.name}</option>`).join('')}</select></div>
+            <div class="form-group"><label>Year</label><input id="editPpYear" value="${p.year||''}" /></div>
+            <div class="form-group"><label>Paper Number</label><input id="editPpPaperNumber" value="${p.paperNumber||''}" /></div>
+            <div class="form-group"><label>Replace File</label><input id="editPpFile" type="file" accept=".pdf,.png,.jpg,.jpeg,.doc,.docx,.txt" /><div class="text-xs text-muted">Current: ${p.fileName||'None'}</div></div>
+            <div class="form-group"><label>Notes</label><textarea id="editPpNotes" rows="2">${p.notes||''}</textarea></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEditPastPaper('${id}')">Save</button></div>
+          `);
+            const fileInput = document.getElementById('editPpFile');
+            if (fileInput) { fileInput.onchange = function() { pendingFileUpload = this.files && this.files.length > 0 ?
+                            this.files[0] : null; }; }
+        }
+
+        async function saveEditPastPaper(id) {
+            const p = data.pastPapers.find(p => p.id === id);
+            if (!p) return;
+            p.title = document.getElementById('editPpTitle').value.trim() || 'Untitled';
+            p.subjectId = document.getElementById('editPpSubject').value || null;
+            p.year = document.getElementById('editPpYear').value.trim() || null;
+            p.paperNumber = document.getElementById('editPpPaperNumber').value.trim() || null;
+            p.notes = document.getElementById('editPpNotes').value.trim() || '';
+            let file = pendingFileUpload || document.getElementById('editPpFile').files[0];
+            if (file) {
+                try {
+                    const fileId = genId();
+                    const reader = new FileReader();
+                    reader.onload = async function(e) {
+                        try {
+                            const base64 = e.target.result.split(',')[1];
+                            await saveFile(fileId, base64, { name: file.name, type: file.type, size: file
+                                    .size });
+                            if (p.fileId) await deleteFile(p.fileId);
+                            p.fileId = fileId;
+                            p.fileName = file.name;
+                            p.fileSize = file.size;
+                            if (saveData()) { closeModal();
+                                toast('✅ Past paper updated!', 'success');
+                                renderPage('pastpapers'); }
+                        } catch (err) { toast('Error: ' + err.message, 'error'); }
+                    };
+                    reader.readAsDataURL(file);
+                } catch (err) { toast('Error: ' + err.message, 'error'); }
+            } else {
+                if (saveData()) { closeModal();
+                    toast('✅ Past paper updated!', 'success');
+                    renderPage('pastpapers'); }
+            }
+        }
+
+        async function deletePastPaper(id) {
+            if (!confirm('Delete this past paper?')) return;
+            const p = data.pastPapers.find(p => p.id === id);
+            if (p && p.fileId) { await deleteFile(p.fileId); }
+            data.pastPapers = data.pastPapers.filter(p => p.id !== id);
+            if (saveData()) { toast('🗑️ Past paper deleted.', 'info');
+                renderPage('pastpapers'); }
+        }
+
+        // ===== VIDEOS =====
+        function renderVideos() {
+            let html =
+                `<div class="flex-between"><div><div class="page-title">🎥 Videos</div><div class="page-subtitle">Embed YouTube videos for each subject.</div></div><button class="btn btn-primary" onclick="showAddVideo()">+ Add Video</button></div>`;
+            const videos = data.videos.sort((a, b) => new Date(b.addedAt) - new Date(a.addedAt));
+            if (!videos.length) { html +=
+                    `<div class="empty-state"><div class="icon">🎥</div><div class="title">No videos added</div><div class="desc">Embed YouTube videos to supplement your learning.</div></div>`; } else {
+                html += `<div class="grid-2 mt-2">`;
+                videos.forEach(v => {
+                    let embedUrl = v.url;
+                    if (v.url.includes('youtube.com/watch?v=')) { const vid = v.url.split('v=')[1]?.split(
+                        '&')[0]; if (vid) embedUrl = `https://www.youtube.com/embed/${vid}`; } else if (v
+                        .url.includes('youtu.be/')) { const vid = v.url.split('youtu.be/')[1]?.split('?')[
+                        0]; if (vid) embedUrl = `https://www.youtube.com/embed/${vid}`; }
+                    html += `<div class="card"><div style="font-weight:600;font-size:1.05rem;">${v.title||'Untitled'}</div><div class="text-sm text-muted">${v.subjectId?getSubjectName(v.subjectId):'General'}</div><div class="video-wrapper mt-1"><iframe src="${embedUrl}" allowfullscreen loading="lazy"></iframe></div><div style="display:flex;gap:0.3rem;margin-top:0.4rem;flex-wrap:wrap;"><span class="badge">${v.watched?'👀 Watched':'⏳ Unwatched'}</span><button class="btn btn-sm btn-ghost" onclick="editVideo('${v.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteVideo('${v.id}')">🗑️</button></div></div>`;
+                });
+                html += `</div>`;
+            }
+            return html;
+        }
+
+        function showAddVideo() {
+            const subjects = data.subjects.filter(s => !s.archived);
+            openModal(`
+            <div class="modal-title">🎥 Add Video</div>
+            <div class="form-group"><label>Title</label><input id="videoTitle" /></div>
+            <div class="form-group"><label>YouTube URL</label><input id="videoUrl" placeholder="https://www.youtube.com/watch?v=..." /></div>
+            <div class="form-group"><label>Subject</label><select id="videoSubject"><option value="">General</option>${subjects.map(s=>`<option value="${s.id}">${s.name}</option>`).join('')}</select></div>
+            <div class="form-group"><label>Watched</label><select id="videoWatched"><option value="false">No</option><option value="true">Yes</option></select></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="addVideo()">Add Video</button></div>
+          `);
+        }
+
+        function addVideo() {
+            const title = document.getElementById('videoTitle').value.trim() || 'Untitled';
+            const url = document.getElementById('videoUrl').value.trim();
+            if (!url) { toast('URL required.', 'error'); return; }
+            data.videos.push({ id: genId(), title, url, subjectId: document.getElementById('videoSubject').value ||
+                    null, watched: document.getElementById('videoWatched').value === 'true', addedAt: new Date()
+                    .toISOString() });
+            if (saveData()) { closeModal();
+                toast('✅ Video added', 'success');
+                renderPage('videos'); }
+        }
+
+        function editVideo(id) {
+            const v = data.videos.find(v => v.id === id);
+            if (!v) return;
+            const subjects = data.subjects.filter(s => !s.archived);
+            openModal(`
+            <div class="modal-title">✏️ Edit Video</div>
+            <div class="form-group"><label>Title</label><input id="editVideoTitle" value="${v.title||''}" /></div>
+            <div class="form-group"><label>URL</label><input id="editVideoUrl" value="${v.url||''}" /></div>
+            <div class="form-group"><label>Subject</label><select id="editVideoSubject"><option value="">General</option>${subjects.map(s=>`<option value="${s.id}" ${s.id===v.subjectId?'selected':''}>${s.name}</option>`).join('')}</select></div>
+            <div class="form-group"><label>Watched</label><select id="editVideoWatched"><option value="false" ${!v.watched?'selected':''}>No</option><option value="true" ${v.watched?'selected':''}>Yes</option></select></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEditVideo('${id}')">Save</button></div>
+          `);
+        }
+
+        function saveEditVideo(id) {
+            const v = data.videos.find(v => v.id === id);
+            if (!v) return;
+            v.title = document.getElementById('editVideoTitle').value.trim() || 'Untitled';
+            v.url = document.getElementById('editVideoUrl').value.trim();
+            v.subjectId = document.getElementById('editVideoSubject').value || null;
+            v.watched = document.getElementById('editVideoWatched').value === 'true';
+            if (saveData()) { closeModal();
+                toast('✅ Video updated', 'success');
+                renderPage('videos'); }
+        }
+
+        function deleteVideo(id) { if (!confirm('Delete this video?')) return; data.videos = data.videos.filter(v => v.id !==
+                id);
+            if (saveData()) { toast('🗑️ Video deleted', 'info');
+                renderPage('videos'); } }
+
+        // ===== DOCUMENTS (with IndexedDB) =====
+        let pendingDocUpload = null;
+
+        function renderDocuments() {
+            let html =
+                `<div class="flex-between"><div><div class="page-title">📁 Documents</div><div class="page-subtitle">Upload and organize any document.</div></div><button class="btn btn-primary" onclick="showAddDocument()">+ Upload Document</button></div>`;
+            const docs = data.documents.sort((a, b) => new Date(b.uploadedAt) - new Date(a.uploadedAt));
+            if (!docs.length) { html +=
+                    `<div class="empty-state"><div class="icon">📁</div><div class="title">No documents uploaded</div><div class="desc">Upload any document – certificates, notes, research, etc.</div></div>`; } else {
+                html += `<div class="grid-2 mt-2">`;
+                docs.forEach(d => {
+                    html += `<div class="card"><div style="font-weight:600;font-size:1.05rem;">${d.title||'Untitled'}</div><div class="text-sm text-muted">${d.subjectId?getSubjectName(d.subjectId):'General'} · ${d.category||'General'}</div><div class="file-card mt-1"><span class="file-icon">📎</span><div class="file-info"><div class="name">${d.fileName||'File'}</div><div class="meta">${d.fileSize?(d.fileSize/1024).toFixed(1)+' KB':'—'}</div></div><div class="file-actions">${d.fileId?`<button class="btn btn-sm btn-primary" onclick="downloadFile('${d.fileId}','${d.fileName||'download'}')">⬇️</button>`:''}<button class="btn btn-sm btn-ghost" onclick="editDocument('${d.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteDocument('${d.id}')">🗑️</button></div></div>${d.notes?`<div class="text-sm text-muted mt-1">${d.notes}</div>`:''}</div>`;
+                });
+                html += `</div>`;
+            }
+            return html;
+        }
+
+        function showAddDocument() {
+            const subjects = data.subjects.filter(s => !s.archived);
+            pendingDocUpload = null;
+            openModal(`
+            <div class="modal-title">📁 Upload Document</div>
+            <div class="form-group"><label>Title</label><input id="docTitle" /></div>
+            <div class="form-group"><label>Subject</label><select id="docSubject"><option value="">General</option>${subjects.map(s=>`<option value="${s.id}">${s.name}</option>`).join('')}</select></div>
+            <div class="form-group"><label>Category</label><input id="docCategory" placeholder="e.g. Certificate, Notes" /></div>
+            <div class="form-group"><label>File</label><input id="docFile" type="file" accept=".pdf,.png,.jpg,.jpeg,.doc,.docx,.txt" /></div>
+            <div class="form-group"><label>Notes</label><textarea id="docNotes" rows="2"></textarea></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="addDocument()">Upload</button></div>
+          `);
+            const fileInput = document.getElementById('docFile');
+            if (fileInput) { fileInput.onchange = function() { pendingDocUpload = this.files && this.files.length > 0 ?
+                            this.files[0] : null; }; }
+        }
+
+        async function addDocument() {
+            const title = document.getElementById('docTitle').value.trim() || 'Untitled';
+            const subjectId = document.getElementById('docSubject').value || null;
+            const category = document.getElementById('docCategory').value.trim() || 'General';
+            const notes = document.getElementById('docNotes').value.trim() || '';
+            let file = pendingDocUpload || document.getElementById('docFile').files[0];
+            if (!file) { toast('Please select a file.', 'error'); return; }
+            try {
+                const fileId = genId();
+                const reader = new FileReader();
+                reader.onload = async function(e) {
+                    try {
+                        const base64 = e.target.result.split(',')[1];
+                        await saveFile(fileId, base64, { name: file.name, type: file.type, size: file.size });
+                        data.documents.push({ id: genId(), title, subjectId, category, fileName: file.name,
+                            fileSize: file.size, fileId, notes, uploadedAt: new Date().toISOString() });
+                        if (saveData()) { closeModal();
+                            toast('✅ Document uploaded!', 'success');
+                            renderPage('documents'); }
+                    } catch (err) { toast('Error: ' + err.message, 'error'); }
+                };
+                reader.readAsDataURL(file);
+            } catch (err) { toast('Error: ' + err.message, 'error'); }
+        }
+
+        function editDocument(id) {
+            const d = data.documents.find(d => d.id === id);
+            if (!d) return;
+            const subjects = data.subjects.filter(s => !s.archived);
+            pendingDocUpload = null;
+            openModal(`
+            <div class="modal-title">✏️ Edit Document</div>
+            <div class="form-group"><label>Title</label><input id="editDocTitle" value="${d.title||''}" /></div>
+            <div class="form-group"><label>Subject</label><select id="editDocSubject"><option value="">General</option>${subjects.map(s=>`<option value="${s.id}" ${s.id===d.subjectId?'selected':''}>${s.name}</option>`).join('')}</select></div>
+            <div class="form-group"><label>Category</label><input id="editDocCategory" value="${d.category||''}" /></div>
+            <div class="form-group"><label>Replace File</label><input id="editDocFile" type="file" accept=".pdf,.png,.jpg,.jpeg,.doc,.docx,.txt" /><div class="text-xs text-muted">Current: ${d.fileName||'None'}</div></div>
+            <div class="form-group"><label>Notes</label><textarea id="editDocNotes" rows="2">${d.notes||''}</textarea></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEditDocument('${id}')">Save</button></div>
+          `);
+            const fileInput = document.getElementById('editDocFile');
+            if (fileInput) { fileInput.onchange = function() { pendingDocUpload = this.files && this.files.length > 0 ?
+                            this.files[0] : null; }; }
+        }
+
+        async function saveEditDocument(id) {
+            const d = data.documents.find(d => d.id === id);
+            if (!d) return;
+            d.title = document.getElementById('editDocTitle').value.trim() || 'Untitled';
+            d.subjectId = document.getElementById('editDocSubject').value || null;
+            d.category = document.getElementById('editDocCategory').value.trim() || 'General';
+            d.notes = document.getElementById('editDocNotes').value.trim() || '';
+            let file = pendingDocUpload || document.getElementById('editDocFile').files[0];
+            if (file) {
+                try {
+                    const fileId = genId();
+                    const reader = new FileReader();
+                    reader.onload = async function(e) {
+                        try {
+                            const base64 = e.target.result.split(',')[1];
+                            await saveFile(fileId, base64, { name: file.name, type: file.type, size: file
+                                    .size });
+                            if (d.fileId) await deleteFile(d.fileId);
+                            d.fileId = fileId;
+                            d.fileName = file.name;
+                            d.fileSize = file.size;
+                            if (saveData()) { closeModal();
+                                toast('✅ Document updated!', 'success');
+                                renderPage('documents'); }
+                        } catch (err) { toast('Error: ' + err.message, 'error'); }
+                    };
+                    reader.readAsDataURL(file);
+                } catch (err) { toast('Error: ' + err.message, 'error'); }
+            } else {
+                if (saveData()) { closeModal();
+                    toast('✅ Document updated!', 'success');
+                    renderPage('documents'); }
+            }
+        }
+
+        async function deleteDocument(id) {
+            if (!confirm('Delete this document?')) return;
+            const d = data.documents.find(d => d.id === id);
+            if (d && d.fileId) { await deleteFile(d.fileId); }
+            data.documents = data.documents.filter(d => d.id !== id);
+            if (saveData()) { toast('🗑️ Document deleted.', 'info');
+                renderPage('documents'); }
+        }
+
+        // ===== TIMER =====
+        let timerState = { running: false, mode: 'pomodoro', timeLeft: 25 * 60, total: 25 * 60, interval: null };
+
+        function renderTimer() {
+            return `
+            <div class="page-title">⏱️ Focus Timer</div>
+            <div class="page-subtitle">Pomodoro for study sessions.</div>
+            <div class="card" style="max-width:480px;margin:0 auto;">
+              <div class="timer-display" id="timerDisplay">25:00</div>
+              <div style="display:flex;gap:0.3rem;justify-content:center;flex-wrap:wrap;margin-bottom:0.8rem;">
+                <button class="btn btn-sm ${timerState.mode==='pomodoro'?'btn-primary':'btn-outline'}" onclick="setTimerMode('pomodoro')">Pomodoro</button>
+                <button class="btn btn-sm ${timerState.mode==='short'?'btn-primary':'btn-outline'}" onclick="setTimerMode('short')">Short Break</button>
+                <button class="btn btn-sm ${timerState.mode==='long'?'btn-primary':'btn-outline'}" onclick="setTimerMode('long')">Long Break</button>
+              </div>
+              <div class="timer-controls">
+                <button class="btn ${timerState.running?'btn-gold':'btn-primary'}" onclick="toggleTimer()">${timerState.running?'⏸️ Pause':'▶️ Start'}</button>
+                <button class="btn btn-outline" onclick="resetTimer()">↺ Reset</button>
+              </div>
+            </div>
+          `;
+        }
+
+        function setTimerMode(mode) {
+            if (timerState.running) toggleTimer();
+            const durations = { pomodoro: 25 * 60, short: 5 * 60, long: 15 * 60 };
+            timerState.mode = mode;
+            timerState.timeLeft = durations[mode] || 25 * 60;
+            timerState.total = timerState.timeLeft;
+            updateTimerDisplay();
+            renderPage('timer');
+        }
+
+        function toggleTimer() {
+            if (timerState.running) { clearInterval(timerState.interval);
+                timerState.running = false;
+                renderPage('timer'); return; }
+            timerState.running = true;
+            timerState.interval = setInterval(() => {
+                timerState.timeLeft--;
+                updateTimerDisplay();
+                if (timerState.timeLeft <= 0) {
+                    clearInterval(timerState.interval);
+                    timerState.running = false;
+                    toast('⏰ Timer finished!', 'success');
+                    renderPage('timer');
+                }
+            }, 1000);
+            renderPage('timer');
+        }
+
+        function resetTimer() {
+            clearInterval(timerState.interval);
+            timerState.running = false;
+            const durations = { pomodoro: 25 * 60, short: 5 * 60, long: 15 * 60 };
+            timerState.timeLeft = durations[timerState.mode] || 25 * 60;
+            timerState.total = timerState.timeLeft;
+            updateTimerDisplay();
+            renderPage('timer');
+        }
+
+        function updateTimerDisplay() {
+            const el = document.getElementById('timerDisplay');
+            if (el) {
+                const mins = Math.floor(timerState.timeLeft / 60);
+                const secs = timerState.timeLeft % 60;
+                el.textContent = `${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
+            }
+        }
+
+        function initTimer() { updateTimerDisplay(); }
+
+        // ===== CALENDAR =====
+        function renderCalendar() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = now.getMonth();
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const events = data.events.filter(e => { const d = new Date(e.date); return d.getMonth() === month && d
+                    .getFullYear() === year; });
+            const eventDates = new Set(events.map(e => new Date(e.date).getDate()));
+            let daysHtml = '';
+            for (let i = 0; i < firstDay; i++) daysHtml += `<div class="cal-day other"></div>`;
+            for (let d = 1; d <= daysInMonth; d++) {
+                const isToday = d === now.getDate();
+                const hasEvent = eventDates.has(d);
+                daysHtml +=
+                    `<div class="cal-day ${isToday?'today':''} ${hasEvent?'has-event':''}">${d}</div>`;
+            }
+            const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
+                'October', 'November', 'December'
+            ];
+            return `
+            <div class="page-title">📅 Calendar</div>
+            <div class="page-subtitle">Exams, deadlines, and events.</div>
+            <div class="card" style="max-width:600px;">
+              <div style="font-weight:600;font-size:1.1rem;text-align:center;margin-bottom:0.5rem;">${monthNames[month]} ${year}</div>
+              <div class="cal-grid"><div class="cal-header">Sun</div><div class="cal-header">Mon</div><div class="cal-header">Tue</div><div class="cal-header">Wed</div><div class="cal-header">Thu</div><div class="cal-header">Fri</div><div class="cal-header">Sat</div>${daysHtml}</div>
+            </div>
+            <div class="mt-2">
+              <div class="flex-between"><span style="font-weight:600;">📌 Upcoming</span><button class="btn btn-sm btn-primary" onclick="showAddEvent()">+ Add Event</button></div>
+              ${data.events.filter(e=>new Date(e.date)>=now).sort((a,b)=>new Date(a.date)-new Date(b.date)).slice(0,6).map(e=>`<div class="mission-item"><span class="dot ${e.type==='exam'?'red':e.type==='deadline'?'yellow':'green'}"></span><div class="info"><div class="title">${e.title}</div><div class="sub">${new Date(e.date).toLocaleDateString()} · ${e.type||'event'}</div></div><button class="btn btn-sm btn-ghost" onclick="deleteEvent('${e.id}')">🗑️</button></div>`).join('')}
+            </div>
+          `;
+        }
+
+        function showAddEvent() {
+            openModal(`
+            <div class="modal-title">📌 Add Event</div>
+            <div class="form-group"><label>Title</label><input id="eventTitle" /></div>
+            <div class="form-group"><label>Date</label><input id="eventDate" type="date" /></div>
+            <div class="form-group"><label>Type</label><select id="eventType"><option value="exam">Exam</option><option value="deadline">Deadline</option><option value="other">Other</option></select></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="addEvent()">Add</button></div>
+          `);
+        }
+
+        function addEvent() {
+            const title = document.getElementById('eventTitle').value.trim();
+            const date = document.getElementById('eventDate').value;
+            if (!title || !date) { toast('Title and date required.', 'error'); return; }
+            data.events.push({ id: genId(), title, date, type: document.getElementById('eventType').value });
+            if (saveData()) { closeModal();
+                toast('✅ Event added', 'success');
+                renderPage('calendar'); }
+        }
+
+        function deleteEvent(id) { if (!confirm('Delete this event?')) return; data.events = data.events.filter(e => e.id !==
+                id);
+            if (saveData()) { toast('🗑️ Deleted', 'info');
+                renderPage('calendar'); } }
+
+        function initCalendar() {}
+
+        // ===== ACTIVITIES =====
+        function renderActivities() {
+            let html =
+                `<div class="flex-between"><div><div class="page-title">🏆 ECC & Co-Curricular</div><div class="page-subtitle">Track activities, leadership, volunteering.</div></div><button class="btn btn-primary" onclick="showAddActivity()">+ Add Activity</button></div>`;
+            const activities = data.activities.sort((a, b) => new Date(b.startDate || b.endDate) - new Date(a.startDate || a
+                .endDate));
+            if (!activities.length) { html +=
+                    `<div class="empty-state"><div class="icon">🏆</div><div class="title">No activities</div><div class="desc">Record your co-curriculars.</div></div>`; } else {
+                html += `<div class="grid-2 mt-2">`;
+                activities.forEach(a => {
+                    html +=
+                        `<div class="card"><div style="font-weight:600;font-size:1.05rem;">${a.name}</div><div class="text-sm text-muted">${a.category||'Other'} · ${a.role||'Member'}</div><div class="text-sm">${a.organization||''}</div><div style="display:flex;gap:0.3rem;margin-top:0.4rem;flex-wrap:wrap;"><span class="pill ${a.status==='Active'?'green':'purple'}">${a.status||'Completed'}</span><span class="badge">${a.hours||0}h</span><button class="btn btn-sm btn-ghost" onclick="editActivity('${a.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteActivity('${a.id}')">🗑️</button></div></div>`;
+                });
+                html += `</div>`;
+            }
+            return html;
+        }
+
+        function showAddActivity() {
+            const categories = ['Leadership', 'Volunteering', 'Technology', 'Entrepreneurship', 'Research', 'Competitions',
+                'Writing', 'Arts', 'Sports', 'School Activities', 'Community Service', 'Other'
+            ];
+            openModal(`
+            <div class="modal-title">🏆 Add Activity</div>
+            <div class="form-group"><label>Name</label><input id="actName" /></div>
+            <div class="form-group"><label>Category</label><select id="actCategory">${categories.map(c=>`<option value="${c}">${c}</option>`).join('')}</select></div>
+            <div class="form-group"><label>Organization</label><input id="actOrg" /></div>
+            <div class="form-group"><label>Role</label><input id="actRole" /></div>
+            <div class="form-group"><label>Start</label><input id="actStart" type="date" /></div>
+            <div class="form-group"><label>End</label><input id="actEnd" type="date" /></div>
+            <div class="form-group"><label>Status</label><select id="actStatus"><option value="Active">Active</option><option value="Completed">Completed</option></select></div>
+            <div class="form-group"><label>Hours</label><input id="actHours" type="number" /></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="addActivity()">Add</button></div>
+          `);
+        }
+
+        function addActivity() {
+            const name = document.getElementById('actName').value.trim();
+            if (!name) { toast('Name required.', 'error'); return; }
+            data.activities.push({ id: genId(), name, category: document.getElementById('actCategory').value,
+                organization: document.getElementById('actOrg').value || '', role: document.getElementById('actRole')
+                    .value || '', startDate: document.getElementById('actStart').value || null, endDate: document
+                    .getElementById('actEnd').value || null, status: document.getElementById('actStatus').value,
+                hours: parseInt(document.getElementById('actHours').value) || 0 });
+            if (saveData()) { closeModal();
+                toast('✅ Activity added', 'success');
+                renderPage('activities'); }
+        }
+
+        function editActivity(id) {
+            const a = data.activities.find(a => a.id === id);
+            if (!a) return;
+            const categories = ['Leadership', 'Volunteering', 'Technology', 'Entrepreneurship', 'Research', 'Competitions',
+                'Writing', 'Arts', 'Sports', 'School Activities', 'Community Service', 'Other'
+            ];
+            openModal(`
+            <div class="modal-title">✏️ Edit Activity</div>
+            <div class="form-group"><label>Name</label><input id="editActName" value="${a.name}" /></div>
+            <div class="form-group"><label>Category</label><select id="editActCategory">${categories.map(c=>`<option value="${c}" ${c===a.category?'selected':''}>${c}</option>`).join('')}</select></div>
+            <div class="form-group"><label>Organization</label><input id="editActOrg" value="${a.organization||''}" /></div>
+            <div class="form-group"><label>Role</label><input id="editActRole" value="${a.role||''}" /></div>
+            <div class="form-group"><label>Status</label><select id="editActStatus"><option value="Active" ${a.status==='Active'?'selected':''}>Active</option><option value="Completed" ${a.status==='Completed'?'selected':''}>Completed</option></select></div>
+            <div class="form-group"><label>Hours</label><input id="editActHours" type="number" value="${a.hours||0}" /></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEditActivity('${id}')">Save</button></div>
+          `);
+        }
+
+        function saveEditActivity(id) {
+            const a = data.activities.find(a => a.id === id);
+            if (!a) return;
+            a.name = document.getElementById('editActName').value.trim() || 'Activity';
+            a.category = document.getElementById('editActCategory').value;
+            a.organization = document.getElementById('editActOrg').value || '';
+            a.role = document.getElementById('editActRole').value || '';
+            a.status = document.getElementById('editActStatus').value;
+            a.hours = parseInt(document.getElementById('editActHours').value) || 0;
+            if (saveData()) { closeModal();
+                toast('✅ Activity updated', 'success');
+                renderPage('activities'); }
+        }
+
+        function deleteActivity(id) { if (!confirm('Delete this activity?')) return; data.activities = data.activities.filter(
+                a => a.id !== id);
+            if (saveData()) { toast('🗑️ Deleted', 'info');
+                renderPage('activities'); } }
+
+        // ===== PROJECTS =====
+        function renderProjects() {
+            let html =
+                `<div class="flex-between"><div><div class="page-title">🚀 Projects</div><div class="page-subtitle">Manage your personal and academic projects.</div></div><button class="btn btn-primary" onclick="showAddProject()">+ New Project</button></div>`;
+            const projects = data.projects.sort((a, b) => new Date(b.startDate || b.createdAt) - new Date(a.startDate || a
+                .createdAt));
+            if (!projects.length) { html +=
+                    `<div class="empty-state"><div class="icon">🚀</div><div class="title">No projects yet</div><div class="desc">Track your projects – from research to apps to initiatives.</div></div>`; } else {
+                html += `<div class="grid-2 mt-2">`;
+                projects.forEach(p => {
+                    html += `<div class="card"><div style="font-weight:600;font-size:1.05rem;">${p.name}</div><div class="text-sm text-muted">${p.category||'General'} · ${p.status||'Planning'}</div><div class="text-sm mt-1">${p.description||''}</div><button class="btn btn-sm btn-ghost" onclick="editProject('${p.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteProject('${p.id}')">🗑️</button></div>`;
+                });
+                html += `</div>`;
+            }
+            return html;
+        }
+
+        function showAddProject() {
+            openModal(`
+            <div class="modal-title">🚀 New Project</div>
+            <div class="form-group"><label>Project Name</label><input id="projName" /></div>
+            <div class="form-group"><label>Category</label><input id="projCategory" /></div>
+            <div class="form-group"><label>Description</label><textarea id="projDesc" rows="2"></textarea></div>
+            <div class="form-group"><label>Status</label><select id="projStatus"><option value="Planning">Planning</option><option value="In Progress">In Progress</option><option value="Completed">Completed</option></select></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="addProject()">Add</button></div>
+          `);
+        }
+
+        function addProject() {
+            const name = document.getElementById('projName').value.trim();
+            if (!name) { toast('Project name required.', 'error'); return; }
+            data.projects.push({ id: genId(), name, category: document.getElementById('projCategory').value.trim() ||
+                    'General', description: document.getElementById('projDesc').value.trim() || '', status: document
+                    .getElementById('projStatus').value, createdAt: new Date().toISOString() });
+            if (saveData()) { closeModal();
+                toast('✅ Project added', 'success');
+                renderPage('projects'); }
+        }
+
+        function editProject(id) {
+            const p = data.projects.find(p => p.id === id);
+            if (!p) return;
+            openModal(`
+            <div class="modal-title">✏️ Edit Project</div>
+            <div class="form-group"><label>Project Name</label><input id="editProjName" value="${p.name}" /></div>
+            <div class="form-group"><label>Category</label><input id="editProjCategory" value="${p.category||''}" /></div>
+            <div class="form-group"><label>Description</label><textarea id="editProjDesc" rows="2">${p.description||''}</textarea></div>
+            <div class="form-group"><label>Status</label><select id="editProjStatus"><option value="Planning" ${p.status==='Planning'?'selected':''}>Planning</option><option value="In Progress" ${p.status==='In Progress'?'selected':''}>In Progress</option><option value="Completed" ${p.status==='Completed'?'selected':''}>Completed</option></select></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEditProject('${id}')">Save</button></div>
+          `);
+        }
+
+        function saveEditProject(id) {
+            const p = data.projects.find(p => p.id === id);
+            if (!p) return;
+            p.name = document.getElementById('editProjName').value.trim() || 'Project';
+            p.category = document.getElementById('editProjCategory').value.trim() || 'General';
+            p.description = document.getElementById('editProjDesc').value.trim() || '';
+            p.status = document.getElementById('editProjStatus').value;
+            if (saveData()) { closeModal();
+                toast('✅ Project updated', 'success');
+                renderPage('projects'); }
+        }
+
+        function deleteProject(id) { if (!confirm('Delete this project?')) return; data.projects = data.projects.filter(p =>
+                p.id !== id);
+            if (saveData()) { toast('🗑️ Project deleted', 'info');
+                renderPage('projects'); } }
+
+        // ===== SKILLS =====
+        function renderSkills() {
+            let html =
+                `<div class="flex-between"><div><div class="page-title">🧠 Skills</div><div class="page-subtitle">Track your skills and proficiency levels.</div></div><button class="btn btn-primary" onclick="showAddSkill()">+ Add Skill</button></div>`;
+            const skills = data.skills.sort((a, b) => a.name.localeCompare(b.name));
+            if (!skills.length) { html +=
+                    `<div class="empty-state"><div class="icon">🧠</div><div class="title">No skills added</div><div class="desc">Track your technical, academic, and personal skills.</div></div>`; } else {
+                html += `<div class="grid-2 mt-2">`;
+                skills.forEach(s => {
+                    html += `<div class="card"><div style="font-weight:600;font-size:1.05rem;">${s.name}</div><div class="text-sm text-muted">Level: ${s.level||'Beginner'}</div><button class="btn btn-sm btn-ghost" onclick="editSkill('${s.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteSkill('${s.id}')">🗑️</button></div>`;
+                });
+                html += `</div>`;
+            }
+            return html;
+        }
+
+        function showAddSkill() {
+            openModal(`
+            <div class="modal-title">🧠 Add Skill</div>
+            <div class="form-group"><label>Skill Name</label><input id="skillName" /></div>
+            <div class="form-group"><label>Level</label><select id="skillLevel"><option value="Beginner">Beginner</option><option value="Intermediate">Intermediate</option><option value="Advanced">Advanced</option><option value="Expert">Expert</option></select></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="addSkill()">Add</button></div>
+          `);
+        }
+
+        function addSkill() {
+            const name = document.getElementById('skillName').value.trim();
+            if (!name) { toast('Skill name required.', 'error'); return; }
+            data.skills.push({ id: genId(), name, level: document.getElementById('skillLevel').value });
+            if (saveData()) { closeModal();
+                toast('✅ Skill added', 'success');
+                renderPage('skills'); }
+        }
+
+        function editSkill(id) {
+            const s = data.skills.find(s => s.id === id);
+            if (!s) return;
+            openModal(`
+            <div class="modal-title">✏️ Edit Skill</div>
+            <div class="form-group"><label>Skill Name</label><input id="editSkillName" value="${s.name}" /></div>
+            <div class="form-group"><label>Level</label><select id="editSkillLevel"><option value="Beginner" ${s.level==='Beginner'?'selected':''}>Beginner</option><option value="Intermediate" ${s.level==='Intermediate'?'selected':''}>Intermediate</option><option value="Advanced" ${s.level==='Advanced'?'selected':''}>Advanced</option><option value="Expert" ${s.level==='Expert'?'selected':''}>Expert</option></select></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEditSkill('${id}')">Save</button></div>
+          `);
+        }
+
+        function saveEditSkill(id) {
+            const s = data.skills.find(s => s.id === id);
+            if (!s) return;
+            s.name = document.getElementById('editSkillName').value.trim() || 'Skill';
+            s.level = document.getElementById('editSkillLevel').value;
+            if (saveData()) { closeModal();
+                toast('✅ Skill updated', 'success');
+                renderPage('skills'); }
+        }
+
+        function deleteSkill(id) { if (!confirm('Delete this skill?')) return; data.skills = data.skills.filter(s => s.id !==
+                id);
+            if (saveData()) { toast('🗑️ Skill deleted', 'info');
+                renderPage('skills'); } }
+
+        // ===== PROFILE =====
+        function renderProfile() {
+            const p = data.profile;
+            return `
+            <div class="page-title">👤 Personal Profile</div>
+            <div class="page-subtitle">Reflect on who you are, what you value, and how you grow.</div>
+            <div class="card">
+              <div class="form-group"><label>Interests</label><textarea id="profInterests" rows="2">${p.interests||''}</textarea></div>
+              <div class="form-group"><label>Passions</label><textarea id="profPassions" rows="2">${p.passions||''}</textarea></div>
+              <div class="form-group"><label>Values</label><textarea id="profValues" rows="2">${p.values||''}</textarea></div>
+              <div class="form-group"><label>Strengths</label><textarea id="profStrengths" rows="2">${p.strengths||''}</textarea></div>
+              <div class="form-group"><label>Weaknesses</label><textarea id="profWeaknesses" rows="2">${p.weaknesses||''}</textarea></div>
+              <button class="btn btn-primary" onclick="saveProfile()">Save Profile</button>
+            </div>
+          `;
+        }
+
+        function saveProfile() {
+            data.profile.interests = document.getElementById('profInterests').value.trim();
+            data.profile.passions = document.getElementById('profPassions').value.trim();
+            data.profile.values = document.getElementById('profValues').value.trim();
+            data.profile.strengths = document.getElementById('profStrengths').value.trim();
+            data.profile.weaknesses = document.getElementById('profWeaknesses').value.trim();
+            if (saveData()) { toast('✅ Profile saved', 'success');
+                renderPage('profile'); }
+        }
+
+        // ===== GOALS =====
+        function renderGoals() {
+            let html =
+                `<div class="flex-between"><div><div class="page-title">🎯 Goals</div><div class="page-subtitle">Track personal and academic goals.</div></div><button class="btn btn-primary" onclick="showAddGoal()">+ New Goal</button></div>`;
+            const goals = data.goals.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            if (!goals.length) { html +=
+                    `<div class="empty-state"><div class="icon">🎯</div><div class="title">No goals</div><div class="desc">Set your first goal.</div></div>`; } else {
+                html += `<div class="grid-2 mt-2">`;
+                goals.forEach(g => {
+                    html +=
+                        `<div class="card"><div style="font-weight:600;font-size:1.05rem;">${g.title}</div><div class="text-sm text-muted">${g.category||'General'} · ${g.progress||0}%</div><div class="progress" style="height:6px;margin-top:0.3rem;"><div class="bar" style="width:${g.progress||0}%;"></div></div><button class="btn btn-sm btn-ghost" onclick="editGoal('${g.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteGoal('${g.id}')">🗑️</button></div>`;
+                });
+                html += `</div>`;
+            }
+            return html;
+        }
+
+        function showAddGoal() {
+            openModal(`
+            <div class="modal-title">🎯 New Goal</div>
+            <div class="form-group"><label>Title</label><input id="goalTitle" /></div>
+            <div class="form-group"><label>Category</label><select id="goalCategory"><option value="Academic">Academic</option><option value="Technical">Technical</option><option value="Personal">Personal</option></select></div>
+            <div class="form-group"><label>Progress (%)</label><input id="goalProgress" type="number" min="0" max="100" value="0" /></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="addGoal()">Add</button></div>
+          `);
+        }
+
+        function addGoal() {
+            const title = document.getElementById('goalTitle').value.trim();
+            if (!title) { toast('Title required.', 'error'); return; }
+            data.goals.push({ id: genId(), title, category: document.getElementById('goalCategory').value, progress: parseInt(
+                    document.getElementById('goalProgress').value) || 0, createdAt: new Date().toISOString() });
+            if (saveData()) { closeModal();
+                toast('✅ Goal added', 'success');
+                renderPage('goals'); }
+        }
+
+        function editGoal(id) {
+            const g = data.goals.find(g => g.id === id);
+            if (!g) return;
+            openModal(`
+            <div class="modal-title">✏️ Edit Goal</div>
+            <div class="form-group"><label>Title</label><input id="editGoalTitle" value="${g.title}" /></div>
+            <div class="form-group"><label>Category</label><select id="editGoalCategory"><option value="Academic" ${g.category==='Academic'?'selected':''}>Academic</option><option value="Technical" ${g.category==='Technical'?'selected':''}>Technical</option><option value="Personal" ${g.category==='Personal'?'selected':''}>Personal</option></select></div>
+            <div class="form-group"><label>Progress</label><input id="editGoalProgress" type="number" min="0" max="100" value="${g.progress||0}" /></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEditGoal('${id}')">Save</button></div>
+          `);
+        }
+
+        function saveEditGoal(id) {
+            const g = data.goals.find(g => g.id === id);
+            if (!g) return;
+            g.title = document.getElementById('editGoalTitle').value.trim() || 'Goal';
+            g.category = document.getElementById('editGoalCategory').value;
+            g.progress = parseInt(document.getElementById('editGoalProgress').value) || 0;
+            if (saveData()) { closeModal();
+                toast('✅ Goal updated', 'success');
+                renderPage('goals'); }
+        }
+
+        function deleteGoal(id) { if (!confirm('Delete this goal?')) return; data.goals = data.goals.filter(g => g.id !== id);
+            if (saveData()) { toast('🗑️ Deleted', 'info');
+                renderPage('goals'); } }
+
+        // ===== STORIES =====
+        function renderStories() {
+            let html =
+                `<div class="flex-between"><div><div class="page-title">📖 Story Bank</div><div class="page-subtitle">Preserve meaningful experiences.</div></div><button class="btn btn-primary" onclick="showAddStory()">+ New Story</button></div>`;
+            const stories = data.stories.sort((a, b) => new Date(b.date) - new Date(a.date));
+            if (!stories.length) { html +=
+                    `<div class="empty-state"><div class="icon">📖</div><div class="title">No stories</div><div class="desc">Capture your journey.</div></div>`; } else {
+                html += `<div class="grid-2 mt-2">`;
+                stories.forEach(s => {
+                    html += `<div class="card"><div style="font-weight:600;font-size:1.05rem;">${s.title}</div><div class="text-sm text-muted">${new Date(s.date).toLocaleDateString()}</div><div class="text-sm mt-1">${s.situation||''}</div><button class="btn btn-sm btn-ghost" onclick="editStory('${s.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteStory('${s.id}')">🗑️</button></div>`;
+                });
+                html += `</div>`;
+            }
+            return html;
+        }
+
+        function showAddStory() {
+            openModal(`
+            <div class="modal-title">📖 New Story</div>
+            <div class="form-group"><label>Title</label><input id="storyTitle" /></div>
+            <div class="form-group"><label>Date</label><input id="storyDate" type="date" /></div>
+            <div class="form-group"><label>Situation</label><textarea id="storySituation" rows="2"></textarea></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="addStory()">Save</button></div>
+          `);
+        }
+
+        function addStory() {
+            const title = document.getElementById('storyTitle').value.trim();
+            if (!title) { toast('Title required.', 'error'); return; }
+            data.stories.push({ id: genId(), title, date: document.getElementById('storyDate').value || new Date()
+                    .toISOString().split('T')[0], situation: document.getElementById('storySituation').value || '' });
+            if (saveData()) { closeModal();
+                toast('✅ Story saved', 'success');
+                renderPage('stories'); }
+        }
+
+        function editStory(id) {
+            const s = data.stories.find(s => s.id === id);
+            if (!s) return;
+            openModal(`
+            <div class="modal-title">✏️ Edit Story</div>
+            <div class="form-group"><label>Title</label><input id="editStoryTitle" value="${s.title}" /></div>
+            <div class="form-group"><label>Date</label><input id="editStoryDate" type="date" value="${s.date||''}" /></div>
+            <div class="form-group"><label>Situation</label><textarea id="editStorySituation" rows="2">${s.situation||''}</textarea></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEditStory('${id}')">Save</button></div>
+          `);
+        }
+
+        function saveEditStory(id) {
+            const s = data.stories.find(s => s.id === id);
+            if (!s) return;
+            s.title = document.getElementById('editStoryTitle').value.trim() || 'Story';
+            s.date = document.getElementById('editStoryDate').value || new Date().toISOString().split('T')[0];
+            s.situation = document.getElementById('editStorySituation').value || '';
+            if (saveData()) { closeModal();
+                toast('✅ Story updated', 'success');
+                renderPage('stories'); }
+        }
+
+        function deleteStory(id) { if (!confirm('Delete this story?')) return; data.stories = data.stories.filter(s => s.id !==
+                id);
+            if (saveData()) { toast('🗑️ Deleted', 'info');
+                renderPage('stories'); } }
+
+        // ===== UNIVERSITIES =====
+        function renderUniversities() {
+            let html =
+                `<div class="flex-between"><div><div class="page-title">🏛️ Universities</div><div class="page-subtitle">Research and track targets.</div></div><button class="btn btn-primary" onclick="showAddUniversity()">+ Add</button></div>`;
+            const unis = data.universities;
+            if (!unis.length) { html +=
+                    `<div class="empty-state"><div class="icon">🏛️</div><div class="title">No universities</div><div class="desc">Start your research.</div></div>`; } else {
+                html += `<div class="grid-2 mt-2">`;
+                unis.forEach(u => {
+                    html +=
+                        `<div class="card"><div style="font-weight:600;font-size:1.05rem;">${u.name}</div><div class="text-sm text-muted">${u.country||''}</div><div class="text-sm mt-1">${u.programs||''}</div><span class="pill ${u.classification==='dream'?'red':u.classification==='reach'?'gold':'blue'}">${u.classification||'target'}</span><button class="btn btn-sm btn-ghost" onclick="editUniversity('${u.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteUniversity('${u.id}')">🗑️</button></div>`;
+                });
+                html += `</div>`;
+            }
+            return html;
+        }
+
+        function showAddUniversity() {
+            openModal(`
+            <div class="modal-title">🏛️ Add University</div>
+            <div class="form-group"><label>Name</label><input id="uniName" /></div>
+            <div class="form-group"><label>Country</label><input id="uniCountry" /></div>
+            <div class="form-group"><label>Programs</label><textarea id="uniPrograms" rows="2"></textarea></div>
+            <div class="form-group"><label>Classification</label><select id="uniClassification"><option value="dream">⭐ Dream</option><option value="reach">🟣 Reach</option><option value="target">🔵 Target</option><option value="likely">🟢 Likely</option></select></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="addUniversity()">Add</button></div>
+          `);
+        }
+
+        function addUniversity() {
+            const name = document.getElementById('uniName').value.trim();
+            if (!name) { toast('Name required.', 'error'); return; }
+            data.universities.push({ id: genId(), name, country: document.getElementById('uniCountry').value || '',
+                programs: document.getElementById('uniPrograms').value || '', classification: document.getElementById(
+                    'uniClassification').value });
+            if (saveData()) { closeModal();
+                toast('✅ University added', 'success');
+                renderPage('universities'); }
+        }
+
+        function editUniversity(id) {
+            const u = data.universities.find(u => u.id === id);
+            if (!u) return;
+            openModal(`
+            <div class="modal-title">✏️ Edit University</div>
+            <div class="form-group"><label>Name</label><input id="editUniName" value="${u.name}" /></div>
+            <div class="form-group"><label>Country</label><input id="editUniCountry" value="${u.country||''}" /></div>
+            <div class="form-group"><label>Programs</label><textarea id="editUniPrograms" rows="2">${u.programs||''}</textarea></div>
+            <div class="form-group"><label>Classification</label><select id="editUniClassification"><option value="dream" ${u.classification==='dream'?'selected':''}>Dream</option><option value="reach" ${u.classification==='reach'?'selected':''}>Reach</option><option value="target" ${u.classification==='target'?'selected':''}>Target</option><option value="likely" ${u.classification==='likely'?'selected':''}>Likely</option></select></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEditUniversity('${id}')">Save</button></div>
+          `);
+        }
+
+        function saveEditUniversity(id) {
+            const u = data.universities.find(u => u.id === id);
+            if (!u) return;
+            u.name = document.getElementById('editUniName').value.trim() || 'University';
+            u.country = document.getElementById('editUniCountry').value || '';
+            u.programs = document.getElementById('editUniPrograms').value || '';
+            u.classification = document.getElementById('editUniClassification').value;
+            if (saveData()) { closeModal();
+                toast('✅ University updated', 'success');
+                renderPage('universities'); }
+        }
+
+        function deleteUniversity(id) { if (!confirm('Delete this university?')) return; data.universities = data.universities
+                .filter(u => u.id !== id);
+            if (saveData()) { toast('🗑️ Deleted', 'info');
+                renderPage('universities'); } }
+
+        // ===== ESSAYS =====
+        function renderEssays() {
+            let html =
+                `<div class="flex-between"><div><div class="page-title">✍️ Essays</div><div class="page-subtitle">Personal statement & supplements.</div></div><button class="btn btn-primary" onclick="showAddEssay()">+ New</button></div>`;
+            const essays = data.essays.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            if (!essays.length) { html +=
+                    `<div class="empty-state"><div class="icon">✍️</div><div class="title">No essays</div><div class="desc">Start drafting your essays.</div></div>`; } else {
+                html += `<div class="grid-2 mt-2">`;
+                essays.forEach(e => {
+                    html += `<div class="card"><div style="font-weight:600;font-size:1.05rem;">${e.title}</div><div class="text-sm text-muted">${e.type||'Essay'}</div><div style="display:flex;gap:0.3rem;margin-top:0.4rem;"><span class="badge">${e.drafts?e.drafts.length:0} drafts</span><button class="btn btn-sm btn-ghost" onclick="editEssay('${e.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteEssay('${e.id}')">🗑️</button></div></div>`;
+                });
+                html += `</div>`;
+            }
+            return html;
+        }
+
+        function showAddEssay() {
+            openModal(`
+            <div class="modal-title">✍️ New Essay</div>
+            <div class="form-group"><label>Title</label><input id="essayTitle" /></div>
+            <div class="form-group"><label>Type</label><select id="essayType"><option value="Personal Statement">Personal Statement</option><option value="Supplemental">Supplemental</option><option value="Other">Other</option></select></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="addEssay()">Create</button></div>
+          `);
+        }
+
+        function addEssay() {
+            const title = document.getElementById('essayTitle').value.trim();
+            if (!title) { toast('Title required.', 'error'); return; }
+            data.essays.push({ id: genId(), title, type: document.getElementById('essayType').value, drafts: [''],
+                createdAt: new Date().toISOString() });
+            if (saveData()) { closeModal();
+                toast('✅ Essay created', 'success');
+                renderPage('essays'); }
+        }
+
+        function editEssay(id) {
+            const e = data.essays.find(e => e.id === id);
+            if (!e) return;
+            openModal(`
+            <div class="modal-title">✍️ Edit Essay</div>
+            <div class="form-group"><label>Title</label><input id="editEssayTitle" value="${e.title}" /></div>
+            <div class="form-group"><label>Type</label><select id="editEssayType"><option value="Personal Statement" ${e.type==='Personal Statement'?'selected':''}>Personal Statement</option><option value="Supplemental" ${e.type==='Supplemental'?'selected':''}>Supplemental</option><option value="Other" ${e.type==='Other'?'selected':''}>Other</option></select></div>
+            <div class="form-group"><label>Latest Draft</label><textarea id="editEssayDraft" rows="4">${e.drafts&&e.drafts.length?e.drafts[e.drafts.length-1]:''}</textarea></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEditEssay('${id}')">Save</button></div>
+          `);
+        }
+
+        function saveEditEssay(id) {
+            const e = data.essays.find(e => e.id === id);
+            if (!e) return;
+            e.title = document.getElementById('editEssayTitle').value.trim() || 'Essay';
+            e.type = document.getElementById('editEssayType').value;
+            const draft = document.getElementById('editEssayDraft').value;
+            if (draft) { if (!e.drafts) e.drafts = [];
+                e.drafts.push(draft); if (e.drafts.length > 20) e.drafts.shift(); }
+            if (saveData()) { closeModal();
+                toast('✅ Essay updated', 'success');
+                renderPage('essays'); }
+        }
+
+        function deleteEssay(id) { if (!confirm('Delete this essay?')) return; data.essays = data.essays.filter(e => e.id !==
+                id);
+            if (saveData()) { toast('🗑️ Deleted', 'info');
+                renderPage('essays'); } }
+
+        // ===== RECOMMENDATIONS =====
+        function renderRecommendations() {
+            let html =
+                `<div class="flex-between"><div><div class="page-title">📋 Recommendations</div><div class="page-subtitle">Track recommenders.</div></div><button class="btn btn-primary" onclick="showAddRecommendation()">+ Add</button></div>`;
+            const recs = data.recommendations;
+            if (!recs.length) { html +=
+                    `<div class="empty-state"><div class="icon">📋</div><div class="title">No recommenders</div></div>`; } else {
+                html += `<div class="table-wrap mt-2"><table><thead><tr><th>Name</th><th>Status</th><th>Actions</th></tr></thead><tbody>`;
+                recs.forEach(r => {
+                    html +=
+                        `<tr><td>${r.name}</td><td><span class="pill ${r.status==='Submitted'?'green':'purple'}">${r.status||'Not asked'}</span></td><td><button class="btn btn-sm btn-ghost" onclick="editRecommendation('${r.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteRecommendation('${r.id}')">🗑️</button></td></tr>`;
+                });
+                html += `</tbody></table></div>`;
+            }
+            return html;
+        }
+
+        function showAddRecommendation() {
+            openModal(`
+            <div class="modal-title">📋 Add Recommender</div>
+            <div class="form-group"><label>Name</label><input id="recName" /></div>
+            <div class="form-group"><label>Status</label><select id="recStatus"><option value="Not asked">Not asked</option><option value="Asked">Asked</option><option value="Agreed">Agreed</option><option value="Submitted">Submitted</option></select></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="addRecommendation()">Add</button></div>
+          `);
+        }
+
+        function addRecommendation() {
+            const name = document.getElementById('recName').value.trim();
+            if (!name) { toast('Name required.', 'error'); return; }
+            data.recommendations.push({ id: genId(), name, status: document.getElementById('recStatus').value });
+            if (saveData()) { closeModal();
+                toast('✅ Recommender added', 'success');
+                renderPage('recommendations'); }
+        }
+
+        function editRecommendation(id) {
+            const r = data.recommendations.find(r => r.id === id);
+            if (!r) return;
+            openModal(`
+            <div class="modal-title">✏️ Edit Recommender</div>
+            <div class="form-group"><label>Name</label><input id="editRecName" value="${r.name}" /></div>
+            <div class="form-group"><label>Status</label><select id="editRecStatus"><option value="Not asked" ${r.status==='Not asked'?'selected':''}>Not asked</option><option value="Asked" ${r.status==='Asked'?'selected':''}>Asked</option><option value="Agreed" ${r.status==='Agreed'?'selected':''}>Agreed</option><option value="Submitted" ${r.status==='Submitted'?'selected':''}>Submitted</option></select></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEditRecommendation('${id}')">Save</button></div>
+          `);
+        }
+
+        function saveEditRecommendation(id) {
+            const r = data.recommendations.find(r => r.id === id);
+            if (!r) return;
+            r.name = document.getElementById('editRecName').value.trim() || 'Recommender';
+            r.status = document.getElementById('editRecStatus').value;
+            if (saveData()) { closeModal();
+                toast('✅ Updated', 'success');
+                renderPage('recommendations'); }
+        }
+
+        function deleteRecommendation(id) { if (!confirm('Delete this recommender?')) return; data.recommendations = data
+                .recommendations.filter(r => r.id !== id);
+            if (saveData()) { toast('🗑️ Deleted', 'info');
+                renderPage('recommendations'); } }
+
+        // ===== SCHOLARSHIPS =====
+        function renderScholarships() {
+            let html =
+                `<div class="flex-between"><div><div class="page-title">💰 Scholarships</div><div class="page-subtitle">Track scholarships.</div></div><button class="btn btn-primary" onclick="showAddScholarship()">+ Add</button></div>`;
+            const sch = data.scholarships;
+            if (!sch.length) { html +=
+                    `<div class="empty-state"><div class="icon">💰</div><div class="title">No scholarships</div></div>`; } else {
+                html += `<div class="grid-2 mt-2">`;
+                sch.forEach(s => {
+                    html += `<div class="card"><div style="font-weight:600;">${s.name}</div><div class="text-sm text-muted">${s.organization||''}</div><span class="pill ${s.status==='Applied'?'green':'purple'}">${s.status||'Not applied'}</span><button class="btn btn-sm btn-ghost" onclick="editScholarship('${s.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteScholarship('${s.id}')">🗑️</button></div>`;
+                });
+                html += `</div>`;
+            }
+            return html;
+        }
+
+        function showAddScholarship() {
+            openModal(`
+            <div class="modal-title">💰 Add Scholarship</div>
+            <div class="form-group"><label>Name</label><input id="schName" /></div>
+            <div class="form-group"><label>Organization</label><input id="schOrg" /></div>
+            <div class="form-group"><label>Status</label><select id="schStatus"><option value="Not applied">Not applied</option><option value="Applied">Applied</option><option value="Awarded">Awarded</option></select></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="addScholarship()">Add</button></div>
+          `);
+        }
+
+        function addScholarship() {
+            const name = document.getElementById('schName').value.trim();
+            if (!name) { toast('Name required.', 'error'); return; }
+            data.scholarships.push({ id: genId(), name, organization: document.getElementById('schOrg').value || '',
+                status: document.getElementById('schStatus').value });
+            if (saveData()) { closeModal();
+                toast('✅ Scholarship added', 'success');
+                renderPage('scholarships'); }
+        }
+
+        function editScholarship(id) {
+            const s = data.scholarships.find(s => s.id === id);
+            if (!s) return;
+            openModal(`
+            <div class="modal-title">✏️ Edit Scholarship</div>
+            <div class="form-group"><label>Name</label><input id="editSchName" value="${s.name}" /></div>
+            <div class="form-group"><label>Organization</label><input id="editSchOrg" value="${s.organization||''}" /></div>
+            <div class="form-group"><label>Status</label><select id="editSchStatus"><option value="Not applied" ${s.status==='Not applied'?'selected':''}>Not applied</option><option value="Applied" ${s.status==='Applied'?'selected':''}>Applied</option><option value="Awarded" ${s.status==='Awarded'?'selected':''}>Awarded</option></select></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEditScholarship('${id}')">Save</button></div>
+          `);
+        }
+
+        function saveEditScholarship(id) {
+            const s = data.scholarships.find(s => s.id === id);
+            if (!s) return;
+            s.name = document.getElementById('editSchName').value.trim() || 'Scholarship';
+            s.organization = document.getElementById('editSchOrg').value.trim() || '';
+            s.status = document.getElementById('editSchStatus').value;
+            if (saveData()) { closeModal();
+                toast('✅ Updated', 'success');
+                renderPage('scholarships'); }
+        }
+
+        function deleteScholarship(id) { if (!confirm('Delete this scholarship?')) return; data.scholarships = data
+                .scholarships.filter(s => s.id !== id);
+            if (saveData()) { toast('🗑️ Deleted', 'info');
+                renderPage('scholarships'); } }
+
+        // ===== EVIDENCE =====
+        let pendingEvidenceUpload = null;
+
+        function renderEvidence() {
+            let html =
+                `<div class="flex-between"><div><div class="page-title">📦 Evidence Vault</div><div class="page-subtitle">Store certificates, photos, documents.</div></div><button class="btn btn-primary" onclick="showAddEvidence()">+ Add Evidence</button></div>`;
+            const ev = data.evidence.sort((a, b) => new Date(b.uploadedAt) - new Date(a.uploadedAt));
+            if (!ev.length) { html +=
+                    `<div class="empty-state"><div class="icon">📦</div><div class="title">No evidence items</div></div>`; } else {
+                html += `<div class="grid-2 mt-2">`;
+                ev.forEach(e => {
+                    html += `<div class="card"><div style="font-weight:600;font-size:1.05rem;">${e.title||'Untitled'}</div><div class="text-sm text-muted">${e.category||'General'}</div><div class="file-card mt-1"><span class="file-icon">📎</span><div class="file-info"><div class="name">${e.fileName||'File'}</div></div><div class="file-actions">${e.fileId?`<button class="btn btn-sm btn-primary" onclick="downloadFile('${e.fileId}','${e.fileName||'download'}')">⬇️</button>`:''}<button class="btn btn-sm btn-ghost" onclick="editEvidence('${e.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteEvidence('${e.id}')">🗑️</button></div></div></div>`;
+                });
+                html += `</div>`;
+            }
+            return html;
+        }
+
+        function showAddEvidence() {
+            pendingEvidenceUpload = null;
+            openModal(`
+            <div class="modal-title">📦 Add Evidence</div>
+            <div class="form-group"><label>Title</label><input id="evTitle" /></div>
+            <div class="form-group"><label>Category</label><input id="evCategory" /></div>
+            <div class="form-group"><label>File</label><input id="evFile" type="file" accept=".pdf,.png,.jpg,.jpeg,.doc,.docx,.txt" /></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="addEvidence()">Upload</button></div>
+          `);
+            const fileInput = document.getElementById('evFile');
+            if (fileInput) { fileInput.onchange = function() { pendingEvidenceUpload = this.files && this.files.length > 0 ?
+                            this.files[0] : null; }; }
+        }
+
+        async function addEvidence() {
+            const title = document.getElementById('evTitle').value.trim() || 'Untitled';
+            const category = document.getElementById('evCategory').value.trim() || 'General';
+            let file = pendingEvidenceUpload || document.getElementById('evFile').files[0];
+            if (!file) { toast('Please select a file.', 'error'); return; }
+            try {
+                const fileId = genId();
+                const reader = new FileReader();
+                reader.onload = async function(e) {
+                    try {
+                        const base64 = e.target.result.split(',')[1];
+                        await saveFile(fileId, base64, { name: file.name, type: file.type, size: file.size });
+                        data.evidence.push({ id: genId(), title, category, fileName: file.name, fileId,
+                            uploadedAt: new Date().toISOString() });
+                        if (saveData()) { closeModal();
+                            toast('✅ Evidence uploaded!', 'success');
+                            renderPage('evidence'); }
+                    } catch (err) { toast('Error: ' + err.message, 'error'); }
+                };
+                reader.readAsDataURL(file);
+            } catch (err) { toast('Error: ' + err.message, 'error'); }
+        }
+
+        function editEvidence(id) {
+            const e = data.evidence.find(e => e.id === id);
+            if (!e) return;
+            pendingEvidenceUpload = null;
+            openModal(`
+            <div class="modal-title">✏️ Edit Evidence</div>
+            <div class="form-group"><label>Title</label><input id="editEvTitle" value="${e.title||''}" /></div>
+            <div class="form-group"><label>Category</label><input id="editEvCategory" value="${e.category||''}" /></div>
+            <div class="form-group"><label>Replace File</label><input id="editEvFile" type="file" accept=".pdf,.png,.jpg,.jpeg,.doc,.docx,.txt" /><div class="text-xs text-muted">Current: ${e.fileName||'None'}</div></div>
+            <div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEditEvidence('${id}')">Save</button></div>
+          `);
+            const fileInput = document.getElementById('editEvFile');
+            if (fileInput) { fileInput.onchange = function() { pendingEvidenceUpload = this.files && this.files.length > 0 ?
+                            this.files[0] : null; }; }
+        }
+
+        async function saveEditEvidence(id) {
+            const e = data.evidence.find(e => e.id === id);
+            if (!e) return;
+            e.title = document.getElementById('editEvTitle').value.trim() || 'Untitled';
+            e.category = document.getElementById('editEvCategory').value.trim() || 'General';
+            let file = pendingEvidenceUpload || document.getElementById('editEvFile').files[0];
+            if (file) {
+                try {
+                    const fileId = genId();
+                    const reader = new FileReader();
+                    reader.onload = async function(e) {
+                        try {
+                            const base64 = e.target.result.split(',')[1];
+                            await saveFile(fileId, base64, { name: file.name, type: file.type, size: file
+                                    .size });
+                            if (e.fileId) await deleteFile(e.fileId);
+                            e.fileId = fileId;
+                            e.fileName = file.name;
+                            if (saveData()) { closeModal();
+                                toast('✅ Evidence updated!', 'success');
+                                renderPage('evidence'); }
+                        } catch (err) { toast('Error: ' + err.message, 'error'); }
+                    };
+                    reader.readAsDataURL(file);
+                } catch (err) { toast('Error: ' + err.message, 'error'); }
+            } else {
+                if (saveData()) { closeModal();
+                    toast('✅ Evidence updated!', 'success');
+                    renderPage('evidence'); }
+            }
+        }
+
+        async function deleteEvidence(id) {
+            if (!confirm('Delete this evidence?')) return;
+            const e = data.evidence.find(e => e.id === id);
+            if (e && e.fileId) { await deleteFile(e.fileId); }
+            data.evidence = data.evidence.filter(e => e.id !== id);
+            if (saveData()) { toast('🗑️ Evidence deleted.', 'info');
+                renderPage('evidence'); }
+        }
 
         // ================================================================
-        //  TIMER, CALENDAR (unchanged)
+        //  FAB — Quick Add
         // ================================================================
 
-        // ... (timer and calendar functions from previous version)
+        document.getElementById('fabButton').addEventListener('click', () => {
+            const options = [
+                { label: '📝 New Note', action: 'showAddNote()' },
+                { label: '✅ New Task', action: 'showAddTask()' },
+                { label: '❌ New Mistake', action: 'showAddMistake()' },
+                { label: '🃏 New Flashcard', action: 'showAddFlashcard()' },
+                { label: '📄 New Past Paper', action: 'showAddPastPaper()' },
+                { label: '🎥 New Video', action: 'showAddVideo()' },
+                { label: '📁 New Document', action: 'showAddDocument()' },
+                { label: '🏆 New Activity', action: 'showAddActivity()' },
+                { label: '🚀 New Project', action: 'showAddProject()' },
+                { label: '🧠 New Skill', action: 'showAddSkill()' },
+                { label: '🎯 New Goal', action: 'showAddGoal()' },
+                { label: '📖 New Story', action: 'showAddStory()' },
+                { label: '🏛️ New University', action: 'showAddUniversity()' },
+                { label: '✍️ New Essay', action: 'showAddEssay()' },
+                { label: '📋 New Recommender', action: 'showAddRecommendation()' },
+                { label: '💰 New Scholarship', action: 'showAddScholarship()' },
+                { label: '📦 New Evidence', action: 'showAddEvidence()' },
+                { label: '📅 New Timetable Slot', action: 'showAddTimetableSlot()' },
+                { label: '🔄 New Habit', action: 'showAddHabit()' },
+                { label: '😊 Log Mood', action: 'showAddMood()' },
+                { label: '🔖 New Bookmark', action: 'showAddBookmark()' },
+            ];
+            let html =
+                `<div class="modal-title">✨ Quick Add</div><div class="modal-sub">Choose what to create.</div><div style="display:flex;flex-direction:column;gap:0.3rem;max-height:300px;overflow-y:auto;">`;
+            options.forEach(opt => {
+                html +=
+                    `<button class="btn btn-ghost" style="justify-content:flex-start;padding:0.4rem 0.8rem;font-size:0.85rem;" onclick="closeModal();${opt.action}">${opt.label}</button>`;
+            });
+            html += `</div><div class="form-actions"><button class="btn" onclick="closeModal()">Cancel</button></div>`;
+            openModal(html);
+        });
 
         // ================================================================
         //  INIT
@@ -1755,7 +4132,6 @@
 
         renderNav();
         renderPage('dashboard');
-        updateStorageUsage();
 
         document.addEventListener('keydown', (e) => {
             if (e.ctrlKey && e.shiftKey && e.key === 'D') { e.preventDefault();
@@ -1764,8 +4140,8 @@
                 showGlobalSearch(); }
         });
 
-        console.log('🚀 O‑LEVEL COMMAND CENTER — with Storage Manager');
-        console.log(`💾 Storage usage: ${formatSize(getStorageUsage())} of ~${formatSize(getQuota())}`);
+        console.log('🚀 O‑LEVEL COMMAND CENTER — ULTIMATE EDITION');
+        console.log('📊 All features loaded with unlimited file storage (IndexedDB).');
     </script>
 </body>
 </html>
