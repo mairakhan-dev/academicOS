@@ -4469,16 +4469,716 @@
 </style>
 
 <script>
-    // ================================================================
-    //  🎯 ENHANCEMENT SCRIPT — Sound Effects + Fun + Interactive
-    //  Paste this at the end of your HTML file
-    // ================================================================
+    <!-- ================================================================
+     🎯 ULTIMATE ENHANCEMENT PACK — All Easter Eggs + Premium Visuals
+     Paste this before </body> in your HTML file
+     ================================================================ -->
 
+<style>
+    /* ==============================================================
+       🌟 PREMIUM VISUAL ENHANCEMENTS
+       ============================================================== */
+
+    /* --- Glass-morphism cards with glow --- */
+    .card {
+        transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                    box-shadow 0.4s ease,
+                    border-color 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--border);
+    }
+    .card:hover {
+        transform: translateY(-6px) scale(1.008);
+        box-shadow: 0 16px 56px rgba(74, 44, 110, 0.18);
+        border-color: var(--royal-gold);
+    }
+
+    /* --- Animated gradient border on cards --- */
+    .card::before {
+        content: '';
+        position: absolute;
+        inset: -2px;
+        border-radius: var(--radius);
+        padding: 2px;
+        background: conic-gradient(from var(--angle, 0deg),
+                transparent 0%,
+                var(--royal-gold) 20%,
+                var(--royal-purple) 40%,
+                var(--royal-gold) 60%,
+                transparent 80%,
+                transparent 100%);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.6s ease;
+        pointer-events: none;
+        animation: rotateBorder 4s linear infinite;
+    }
+    .card:hover::before {
+        opacity: 0.7;
+    }
+    @keyframes rotateBorder {
+        to { --angle: 360deg; }
+    }
+    .card {
+        --angle: 0deg;
+    }
+
+    /* --- Premium button styles --- */
+    .btn {
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        position: relative;
+        overflow: hidden;
+        letter-spacing: 0.3px;
+    }
+    .btn::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                rgba(255,255,255,0.2) 0%,
+                transparent 60%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        pointer-events: none;
+    }
+    .btn:hover::after {
+        opacity: 1;
+    }
+    .btn:active {
+        transform: scale(0.92) !important;
+    }
+    .btn-primary {
+        box-shadow: 0 4px 20px rgba(74, 44, 110, 0.25);
+    }
+    .btn-primary:hover {
+        box-shadow: 0 8px 32px rgba(74, 44, 110, 0.4);
+        transform: translateY(-2px);
+    }
+    .btn-gold {
+        box-shadow: 0 4px 20px rgba(184, 148, 48, 0.25);
+    }
+    .btn-gold:hover {
+        box-shadow: 0 8px 32px rgba(184, 148, 48, 0.4);
+        transform: translateY(-2px);
+    }
+
+    /* --- Sidebar nav with active glow --- */
+    .sidebar-nav .nav-item {
+        position: relative;
+        transition: all 0.25s ease;
+        border-radius: var(--radius-sm);
+    }
+    .sidebar-nav .nav-item::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%) scaleX(0);
+        width: 4px;
+        height: 50%;
+        background: var(--royal-gold);
+        border-radius: 0 6px 6px 0;
+        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .sidebar-nav .nav-item:hover::before {
+        transform: translateY(-50%) scaleX(1);
+    }
+    .sidebar-nav .nav-item.active {
+        background: var(--royal-purple-gradient);
+        color: #fff;
+        box-shadow: 0 4px 20px rgba(74, 44, 110, 0.3);
+    }
+    .sidebar-nav .nav-item.active::before {
+        transform: translateY(-50%) scaleX(1);
+        background: var(--royal-gold);
+        width: 4px;
+    }
+    .sidebar-nav .nav-item .icon {
+        transition: transform 0.3s ease;
+    }
+    .sidebar-nav .nav-item:hover .icon {
+        transform: scale(1.2) rotate(-8deg);
+    }
+    .sidebar-nav .nav-item.active .icon {
+        transform: scale(1.1);
+    }
+
+    /* --- Page title with elegant underline --- */
+    .page-title {
+        text-shadow: 0 2px 30px rgba(74, 44, 110, 0.08);
+        position: relative;
+        display: inline-block;
+    }
+    .page-title::after {
+        content: '';
+        position: absolute;
+        bottom: -6px;
+        left: 0;
+        width: 80px;
+        height: 3px;
+        background: var(--royal-gold-gradient);
+        border-radius: 4px;
+        opacity: 0.5;
+        transition: width 0.4s ease;
+    }
+    .page-title:hover::after {
+        width: 120px;
+        opacity: 0.8;
+    }
+
+    /* --- Stat cards with pulse on hover --- */
+    .stat-card {
+        transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        border-left: 4px solid transparent;
+    }
+    .stat-card:hover {
+        border-left-color: var(--royal-gold);
+        transform: translateY(-4px);
+    }
+    .stat-card:hover .value {
+        animation: pulseValue 0.6s ease;
+    }
+    @keyframes pulseValue {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.12); color: var(--royal-purple); }
+    }
+
+    /* --- Mission items with shimmer --- */
+    .mission-item {
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        border-left-width: 4px;
+    }
+    .mission-item::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg,
+                transparent 0%,
+                rgba(108, 59, 154, 0.04) 30%,
+                rgba(108, 59, 154, 0.06) 50%,
+                rgba(108, 59, 154, 0.04) 70%,
+                transparent 100%);
+        transform: translateX(-100%);
+        transition: transform 0.8s ease;
+    }
+    .mission-item:hover::after {
+        transform: translateX(100%);
+    }
+    .mission-item:hover {
+        background: rgba(108, 59, 154, 0.04);
+        transform: translateX(4px);
+    }
+
+    /* --- Subject cards with color animation --- */
+    .subject-card {
+        transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        position: relative;
+        overflow: hidden;
+    }
+    .subject-card .color-bar {
+        height: 4px;
+        transition: height 0.3s ease;
+    }
+    .subject-card:hover .color-bar {
+        height: 6px;
+    }
+    .subject-card:hover .name {
+        color: var(--royal-purple);
+        transform: translateX(4px);
+    }
+    .subject-card .name {
+        transition: all 0.3s ease;
+    }
+
+    /* --- Scrollbar premium --- */
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        background: var(--bg);
+        border-radius: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: linear-gradient(var(--royal-purple), var(--royal-purple-light));
+        border-radius: 8px;
+        border: 2px solid var(--bg);
+        transition: background 0.3s ease;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(var(--royal-purple-light), var(--royal-purple));
+        transform: scale(1.1);
+    }
+
+    /* --- Toast with bounce and glow --- */
+    .toast {
+        animation: toastIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        border: 1px solid var(--border);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    }
+    .toast.success {
+        border-left-color: #27ae60;
+        border-left-width: 6px;
+    }
+    .toast.error {
+        border-left-color: #e74c4c;
+        border-left-width: 6px;
+    }
+    .toast.warning {
+        border-left-color: #f1c40f;
+        border-left-width: 6px;
+    }
+    @keyframes toastIn {
+        0% { opacity: 0; transform: translateX(60px) scale(0.8) rotate(-4deg); }
+        60% { opacity: 1; transform: translateX(-8px) scale(1.02) rotate(1deg); }
+        100% { opacity: 1; transform: translateX(0) scale(1) rotate(0deg); }
+    }
+
+    /* --- Particles background (elegant) --- */
+    .particle-container {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+    }
+    .particle {
+        position: absolute;
+        border-radius: 50%;
+        background: var(--royal-purple);
+        opacity: 0.04;
+        animation: floatParticle linear infinite;
+        filter: blur(1px);
+    }
+    @keyframes floatParticle {
+        0% { transform: translateY(100vh) rotate(0deg) scale(1); opacity: 0.04; }
+        20% { opacity: 0.08; }
+        80% { opacity: 0.08; }
+        100% { transform: translateY(-10vh) rotate(720deg) scale(0.3); opacity: 0; }
+    }
+
+    /* --- Achievement popup premium --- */
+    .achievement-popup {
+        position: fixed;
+        top: 24px;
+        right: 24px;
+        background: var(--card-bg);
+        border: 2px solid var(--royal-gold);
+        border-radius: var(--radius);
+        padding: 1.2rem 1.8rem;
+        box-shadow: 0 20px 64px rgba(0,0,0,0.25);
+        z-index: 3000;
+        animation: achievementSlide 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+        max-width: 420px;
+        backdrop-filter: blur(20px);
+        background: rgba(255,255,255,0.92);
+        border-left: 6px solid var(--royal-gold);
+    }
+    .dark .achievement-popup {
+        background: rgba(30, 26, 50, 0.92);
+        border-color: var(--royal-gold);
+    }
+    @keyframes achievementSlide {
+        0% { opacity: 0; transform: translateX(80px) scale(0.7) rotate(-3deg); }
+        60% { opacity: 1; transform: translateX(-10px) scale(1.05) rotate(1deg); }
+        100% { opacity: 1; transform: translateX(0) scale(1) rotate(0deg); }
+    }
+    .achievement-popup .icon { font-size: 2.4rem; animation: bounceIcon 1s ease infinite; }
+    @keyframes bounceIcon {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.15) rotate(-5deg); }
+    }
+    .achievement-popup .text { font-weight: 700; font-size: 1rem; color: var(--text); }
+    .achievement-popup .sub { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
+
+    /* --- Confetti premium --- */
+    .confetti-container {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 4000;
+        overflow: hidden;
+    }
+    .confetti-piece {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        top: -10px;
+        animation: confettiFall linear forwards;
+        will-change: transform;
+    }
+    @keyframes confettiFall {
+        0% { transform: translateY(0) rotate(0deg) scale(1) skewX(0deg); opacity: 1; }
+        50% { opacity: 0.9; }
+        100% { transform: translateY(110vh) rotate(720deg) scale(0.2) skewX(20deg); opacity: 0; }
+    }
+
+    /* --- Floating emoji premium --- */
+    .float-emoji {
+        position: fixed;
+        font-size: 2.8rem;
+        pointer-events: none;
+        z-index: 5000;
+        animation: floatEmojiUp 1.4s ease forwards;
+        text-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        filter: drop-shadow(0 8px 24px rgba(0,0,0,0.08));
+    }
+    @keyframes floatEmojiUp {
+        0% { opacity: 1; transform: translateY(0) scale(0.3) rotate(-10deg); }
+        40% { opacity: 1; transform: translateY(-60px) scale(1.3) rotate(5deg); }
+        70% { opacity: 0.9; transform: translateY(-120px) scale(1.1) rotate(-3deg); }
+        100% { opacity: 0; transform: translateY(-200px) scale(0.8) rotate(0deg); }
+    }
+
+    /* --- Badge with glow pulse --- */
+    .badge {
+        animation: badgeGlow 3s ease-in-out infinite;
+        box-shadow: 0 2px 12px rgba(184, 148, 48, 0.15);
+    }
+    @keyframes badgeGlow {
+        0%, 100% { box-shadow: 0 2px 12px rgba(184, 148, 48, 0.15); }
+        50% { box-shadow: 0 4px 24px rgba(184, 148, 48, 0.3); }
+    }
+
+    /* --- Modal glass premium --- */
+    .modal {
+        backdrop-filter: blur(24px) saturate(180%);
+        background: rgba(255,255,255,0.88);
+        border: 1px solid rgba(255,255,255,0.3);
+        box-shadow: 0 32px 80px rgba(0,0,0,0.2);
+    }
+    .dark .modal {
+        background: rgba(24, 22, 37, 0.92);
+        border-color: rgba(255,255,255,0.05);
+    }
+    .modal .modal-title {
+        background: var(--royal-purple-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    /* --- Table hover row effect --- */
+    .table-wrap tr {
+        transition: background 0.2s ease;
+    }
+    .table-wrap tr:hover td {
+        background: rgba(108, 59, 154, 0.03);
+    }
+
+    /* --- Filter bar premium --- */
+    .filter-bar {
+        background: var(--card-bg);
+        backdrop-filter: blur(8px);
+        border: 1px solid var(--border);
+        box-shadow: 0 4px 16px rgba(74, 44, 110, 0.06);
+        border-radius: var(--radius-sm);
+        padding: 0.8rem 1.2rem;
+    }
+
+    /* --- FAB with pulse ring --- */
+    .fab {
+        box-shadow: 0 8px 32px rgba(74, 44, 110, 0.35);
+        transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .fab::after {
+        content: '';
+        position: absolute;
+        inset: -4px;
+        border-radius: 50%;
+        border: 2px solid var(--royal-gold);
+        opacity: 0;
+        animation: fabPulse 2s ease-in-out infinite;
+        pointer-events: none;
+    }
+    @keyframes fabPulse {
+        0%, 100% { opacity: 0; transform: scale(1); }
+        50% { opacity: 0.4; transform: scale(1.15); }
+    }
+    .fab:hover {
+        transform: scale(1.12) rotate(90deg);
+        box-shadow: 0 12px 48px rgba(74, 44, 110, 0.45);
+    }
+
+    /* --- Shake animation for errors --- */
+    @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        10% { transform: translateX(-10px) rotate(-1deg); }
+        20% { transform: translateX(10px) rotate(1deg); }
+        30% { transform: translateX(-6px); }
+        40% { transform: translateX(6px); }
+        50% { transform: translateX(-3px); }
+        60% { transform: translateX(3px); }
+        70% { transform: translateX(-1px); }
+        80% { transform: translateX(1px); }
+    }
+    .shake { animation: shake 0.5s ease; }
+
+    /* --- Loading shimmer for cards --- */
+    .shimmer {
+        background: linear-gradient(90deg, var(--card-bg) 25%, var(--bg) 50%, var(--card-bg) 75%);
+        background-size: 200% 100%;
+        animation: shimmer 1.8s infinite;
+    }
+    @keyframes shimmer {
+        0% { background-position: -200% 0; }
+        100% { background-position: 200% 0; }
+    }
+
+    /* --- Typography glow for page titles --- */
+    .page-title {
+        text-shadow: 0 2px 30px rgba(74, 44, 110, 0.06);
+    }
+
+    /* --- Checkbox custom styling --- */
+    input[type="checkbox"] {
+        accent-color: var(--royal-purple);
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+    }
+    input[type="checkbox"]:hover {
+        transform: scale(1.15);
+    }
+
+    /* --- Empty state with animated icon --- */
+    .empty-state .icon {
+        animation: floatIcon 3s ease-in-out infinite;
+    }
+    @keyframes floatIcon {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+
+    /* --- Quote box premium --- */
+    .quote-box {
+        background: var(--royal-gold-light);
+        border-radius: var(--radius-sm);
+        padding: 1.2rem 1.6rem;
+        font-style: italic;
+        border-left: 5px solid var(--royal-gold);
+        box-shadow: 0 4px 20px rgba(184, 148, 48, 0.08);
+        transition: all 0.3s ease;
+        font-size: 1.05rem;
+    }
+    .quote-box:hover {
+        transform: translateX(4px);
+        box-shadow: 0 8px 32px rgba(184, 148, 48, 0.15);
+    }
+    .dark .quote-box {
+        background: #2d241a;
+        border-left-color: var(--royal-gold);
+    }
+
+    /* --- Video wrapper hover --- */
+    .video-wrapper {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-radius: var(--radius-sm);
+        overflow: hidden;
+    }
+    .video-wrapper:hover {
+        transform: scale(1.01);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    }
+
+    /* --- File card hover --- */
+    .file-card {
+        transition: all 0.3s ease;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        padding: 0.8rem 1rem;
+        background: var(--bg);
+    }
+    .file-card:hover {
+        border-color: var(--royal-purple);
+        background: rgba(108, 59, 154, 0.03);
+        transform: translateX(4px);
+    }
+
+    /* --- Storage bar premium --- */
+    .storage-bar {
+        height: 10px;
+        border-radius: 10px;
+        overflow: hidden;
+        background: var(--border);
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .storage-bar .fill {
+        height: 100%;
+        border-radius: 10px;
+        transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        background: var(--royal-purple-gradient);
+        box-shadow: 0 2px 12px rgba(74, 44, 110, 0.2);
+    }
+    .storage-bar .fill.warning { background: linear-gradient(135deg, #f39c12, #f1c40f); }
+    .storage-bar .fill.danger { background: linear-gradient(135deg, #e74c4c, #c0392b); }
+
+    /* --- Timer display premium --- */
+    .timer-display {
+        font-size: 4.5rem;
+        font-weight: 700;
+        letter-spacing: -3px;
+        font-variant-numeric: tabular-nums;
+        text-align: center;
+        padding: 0.8rem 0;
+        background: var(--royal-purple-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: none;
+        font-family: var(--font-serif);
+    }
+
+    /* --- Calendar day hover --- */
+    .cal-grid .cal-day {
+        transition: all 0.25s ease;
+        cursor: default;
+        font-weight: 500;
+    }
+    .cal-grid .cal-day:hover {
+        transform: scale(1.08);
+        background: var(--royal-gold-light);
+        color: var(--royal-purple);
+    }
+    .cal-grid .cal-day.today {
+        background: var(--royal-purple);
+        color: #fff;
+        font-weight: 700;
+        box-shadow: 0 4px 16px rgba(74, 44, 110, 0.3);
+    }
+    .cal-grid .cal-day.has-event {
+        background: var(--royal-gold-light);
+        color: #8a7020;
+        font-weight: 600;
+    }
+
+    /* --- Attendance heatmap day hover --- */
+    .attendance-heatmap .day {
+        transition: all 0.2s ease;
+        cursor: default;
+    }
+    .attendance-heatmap .day:hover {
+        transform: scale(1.15);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .attendance-heatmap .day.present {
+        background: #27ae60;
+        color: #fff;
+    }
+    .attendance-heatmap .day.absent {
+        background: #e74c4c;
+        color: #fff;
+    }
+
+    /* --- Timetable slot hover --- */
+    .timetable-grid .slot {
+        transition: all 0.2s ease;
+    }
+    .timetable-grid .slot:hover {
+        transform: scale(1.04);
+        z-index: 1;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .timetable-grid .slot.done {
+        background: #27ae60;
+        color: #fff;
+    }
+    .timetable-grid .slot.today {
+        border-color: var(--royal-gold);
+        border-width: 2px;
+    }
+
+    /* --- Tree item hover --- */
+    .tree-item .node {
+        transition: all 0.2s ease;
+        border-radius: var(--radius-sm);
+        padding: 0.3rem 0.6rem;
+    }
+    .tree-item .node:hover {
+        background: rgba(108, 59, 154, 0.06);
+        transform: translateX(4px);
+    }
+
+    /* --- Search result hover --- */
+    .search-result-item {
+        transition: all 0.25s ease;
+        border-radius: var(--radius-sm);
+        padding: 0.6rem 0.8rem;
+        margin: 2px 0;
+    }
+    .search-result-item:hover {
+        background: rgba(108, 59, 154, 0.06);
+        transform: translateX(4px);
+        border-left: 3px solid var(--royal-gold);
+    }
+
+    /* --- Tag button hover --- */
+    .mission-item .actions .tag {
+        transition: all 0.25s ease;
+        border-radius: 12px;
+        padding: 0.1rem 0.6rem;
+    }
+    .mission-item .actions .tag:hover {
+        background: var(--royal-purple);
+        color: #fff;
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(74, 44, 110, 0.2);
+    }
+
+    /* --- Pill hover --- */
+    .pill {
+        transition: all 0.2s ease;
+        cursor: default;
+    }
+    .pill:hover {
+        transform: scale(1.06);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    /* --- Easter egg notification --- */
+    .easter-egg-notification {
+        position: fixed;
+        bottom: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--card-bg);
+        border: 2px solid var(--royal-gold);
+        border-radius: var(--radius-sm);
+        padding: 0.6rem 1.2rem;
+        box-shadow: 0 12px 48px rgba(0,0,0,0.15);
+        z-index: 6000;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--text);
+        backdrop-filter: blur(12px);
+        animation: eggFloat 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        pointer-events: none;
+    }
+    .dark .easter-egg-notification {
+        background: rgba(30, 26, 50, 0.92);
+        border-color: var(--royal-gold);
+    }
+    @keyframes eggFloat {
+        0% { opacity: 0; transform: translateX(-50%) translateY(20px) scale(0.8); }
+        100% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+    }
+</style>
+
+<script>
     (function() {
         'use strict';
 
         // ==============================================================
-        //  1. SOUND EFFECTS ENGINE (Web Audio)
+        //  🎵 SOUND EFFECTS ENGINE
         // ==============================================================
 
         let audioCtx = null;
@@ -4488,9 +5188,7 @@
             if (!audioCtx) {
                 try {
                     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                } catch (_) {
-                    return null;
-                }
+                } catch (_) { return null; }
             }
             return audioCtx;
         }
@@ -4499,14 +5197,12 @@
             if (!soundEnabled) return;
             const ctx = getAudioContext();
             if (!ctx) return;
-
             try {
                 const osc = ctx.createOscillator();
                 const gain = ctx.createGain();
                 osc.connect(gain);
                 gain.connect(ctx.destination);
                 gain.gain.value = 0.07;
-
                 switch (type) {
                     case 'click':
                         osc.frequency.value = 600;
@@ -4515,7 +5211,6 @@
                         osc.start(ctx.currentTime);
                         osc.stop(ctx.currentTime + 0.06);
                         break;
-
                     case 'success':
                         osc.frequency.setValueAtTime(523, ctx.currentTime);
                         osc.frequency.setValueAtTime(659, ctx.currentTime + 0.08);
@@ -4525,18 +5220,17 @@
                         osc.start(ctx.currentTime);
                         osc.stop(ctx.currentTime + 0.3);
                         break;
-
                     case 'achievement':
                         osc.frequency.setValueAtTime(880, ctx.currentTime);
-                        osc.frequency.setValueAtTime(1108, ctx.currentTime + 0.12);
-                        osc.frequency.setValueAtTime(1318, ctx.currentTime + 0.24);
+                        osc.frequency.setValueAtTime(1108, ctx.currentTime + 0.1);
+                        osc.frequency.setValueAtTime(1318, ctx.currentTime + 0.2);
+                        osc.frequency.setValueAtTime(1568, ctx.currentTime + 0.3);
                         osc.type = 'square';
                         gain.gain.value = 0.05;
-                        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.45);
+                        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.5);
                         osc.start(ctx.currentTime);
-                        osc.stop(ctx.currentTime + 0.45);
+                        osc.stop(ctx.currentTime + 0.5);
                         break;
-
                     case 'error':
                         osc.frequency.value = 200;
                         osc.type = 'sawtooth';
@@ -4545,7 +5239,6 @@
                         osc.start(ctx.currentTime);
                         osc.stop(ctx.currentTime + 0.25);
                         break;
-
                     case 'pop':
                         osc.frequency.value = 800;
                         osc.type = 'sine';
@@ -4554,17 +5247,26 @@
                         osc.start(ctx.currentTime);
                         osc.stop(ctx.currentTime + 0.04);
                         break;
-
                     case 'woosh':
                         osc.frequency.setValueAtTime(300, ctx.currentTime);
-                        osc.frequency.exponentialRampToValueAtTime(100, ctx.currentTime + 0.15);
+                        osc.frequency.exponentialRampToValueAtTime(80, ctx.currentTime + 0.2);
                         osc.type = 'sine';
                         gain.gain.value = 0.03;
-                        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15);
+                        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2);
                         osc.start(ctx.currentTime);
-                        osc.stop(ctx.currentTime + 0.15);
+                        osc.stop(ctx.currentTime + 0.2);
                         break;
-
+                    case 'magic':
+                        osc.frequency.setValueAtTime(440, ctx.currentTime);
+                        osc.frequency.setValueAtTime(554, ctx.currentTime + 0.06);
+                        osc.frequency.setValueAtTime(659, ctx.currentTime + 0.12);
+                        osc.frequency.setValueAtTime(880, ctx.currentTime + 0.18);
+                        osc.type = 'sine';
+                        gain.gain.value = 0.06;
+                        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
+                        osc.start(ctx.currentTime);
+                        osc.stop(ctx.currentTime + 0.3);
+                        break;
                     default:
                         osc.frequency.value = 500;
                         osc.type = 'sine';
@@ -4572,84 +5274,90 @@
                         osc.start(ctx.currentTime);
                         osc.stop(ctx.currentTime + 0.05);
                 }
-            } catch (_) { /* ignore audio errors */ }
+            } catch (_) {}
         }
 
         // ==============================================================
-        //  2. FUN VISUAL EFFECTS
+        //  ✨ FUN VISUAL EFFECTS
         // ==============================================================
 
-        // --- Confetti ---
-        function fireConfetti(count = 40) {
+        function fireConfetti(count = 50) {
             const container = document.createElement('div');
             container.className = 'confetti-container';
             document.body.appendChild(container);
-
-            const colors = ['#e74c4c', '#f1c40f', '#2ecc71', '#3498db', '#9b59b6', '#e67e22', '#1abc9c', '#ff6b6b', '#ffd93d',
-                '#6bcb77'
+            const colors = ['#e74c4c', '#f1c40f', '#2ecc71', '#3498db', '#9b59b6',
+                '#e67e22', '#1abc9c', '#ff6b6b', '#ffd93d', '#6bcb77',
+                '#ff4757', '#ff6348', '#70a1ff', '#7bed9f', '#eccc68'
             ];
-
+            const shapes = ['square', 'circle', 'triangle'];
             for (let i = 0; i < count; i++) {
                 const piece = document.createElement('div');
                 piece.className = 'confetti-piece';
                 const color = colors[Math.floor(Math.random() * colors.length)];
-                const size = 6 + Math.random() * 10;
+                const size = 6 + Math.random() * 12;
                 const left = Math.random() * 100;
-                const delay = Math.random() * 1.5;
-                const duration = 1.5 + Math.random() * 2;
-                const rotation = Math.random() * 360;
-
+                const delay = Math.random() * 1.8;
+                const duration = 1.8 + Math.random() * 2.5;
+                const shape = shapes[Math.floor(Math.random() * shapes.length)];
+                let borderRadius = '2px';
+                if (shape === 'circle') borderRadius = '50%';
+                if (shape === 'triangle') {
+                    borderRadius = '0';
+                    piece.style.clipPath = 'polygon(50% 0%, 0% 100%, 100% 100%)';
+                    piece.style.background = 'none';
+                    piece.style.borderBottom = size + 'px solid ' + color;
+                    piece.style.width = '0';
+                    piece.style.height = '0';
+                }
                 piece.style.cssText = `
                     left: ${left}%;
-                    width: ${size}px;
-                    height: ${size * (0.4 + Math.random() * 0.8)}px;
-                    background: ${color};
-                    border-radius: ${Math.random() > 0.5 ? '50%' : '2px'};
+                    width: ${shape === 'triangle' ? '0' : size + 'px'};
+                    height: ${shape === 'triangle' ? '0' : size * (0.4 + Math.random() * 0.8) + 'px'};
+                    background: ${shape === 'triangle' ? 'none' : color};
+                    border-bottom: ${shape === 'triangle' ? size + 'px solid ' + color : 'none'};
+                    border-radius: ${borderRadius};
                     animation-delay: ${delay}s;
                     animation-duration: ${duration}s;
-                    transform: rotate(${rotation}deg);
+                    transform: rotate(${Math.random() * 360}deg);
+                    opacity: ${0.8 + Math.random() * 0.2};
                 `;
                 container.appendChild(piece);
             }
-
-            setTimeout(() => container.remove(), 4000);
+            setTimeout(() => container.remove(), 5000);
             playSound('achievement');
         }
 
-        // --- Floating Emoji ---
-        function floatEmoji(emoji, x, y) {
+        function floatEmoji(emoji, x, y, size = 2.8) {
             const el = document.createElement('div');
             el.className = 'float-emoji';
             el.textContent = emoji;
             el.style.left = (x || 50) + '%';
             el.style.top = (y || 50) + '%';
+            el.style.fontSize = size + 'rem';
             document.body.appendChild(el);
-            setTimeout(() => el.remove(), 1400);
+            setTimeout(() => el.remove(), 1600);
         }
 
-        // --- Sparkle effect on click ---
         function sparkleEffect(e) {
             const x = e.clientX || window.innerWidth / 2;
             const y = e.clientY || window.innerHeight / 2;
-            const emojis = ['✨', '⭐', '🌟', '💫', '🎉', '⚡'];
-            for (let i = 0; i < 5; i++) {
+            const emojis = ['✨', '⭐', '🌟', '💫', '🎉', '⚡', '🌈', '🔥'];
+            for (let i = 0; i < 8; i++) {
                 const el = document.createElement('div');
                 el.className = 'float-emoji';
                 el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-                el.style.left = (x + (Math.random() - 0.5) * 60) + 'px';
-                el.style.top = (y + (Math.random() - 0.5) * 60) + 'px';
-                el.style.fontSize = (1.2 + Math.random() * 1.2) + 'rem';
-                el.style.animationDuration = (0.8 + Math.random() * 0.6) + 's';
+                el.style.left = (x + (Math.random() - 0.5) * 80) + 'px';
+                el.style.top = (y + (Math.random() - 0.5) * 80) + 'px';
+                el.style.fontSize = (1 + Math.random() * 1.6) + 'rem';
+                el.style.animationDuration = (0.8 + Math.random() * 0.8) + 's';
                 document.body.appendChild(el);
-                setTimeout(() => el.remove(), 1600);
+                setTimeout(() => el.remove(), 1800);
             }
         }
 
-        // --- Achievement Popup ---
         function showAchievement(title, subtitle, icon = '🏆') {
             const existing = document.querySelector('.achievement-popup');
             if (existing) existing.remove();
-
             const popup = document.createElement('div');
             popup.className = 'achievement-popup';
             popup.innerHTML = `
@@ -4660,107 +5368,135 @@
                 </div>
             `;
             document.body.appendChild(popup);
-            fireConfetti(30);
+            fireConfetti(35);
             playSound('achievement');
-
             setTimeout(() => {
                 popup.style.opacity = '0';
-                popup.style.transform = 'translateX(40px) scale(0.8)';
-                popup.style.transition = 'all 0.4s ease';
-                setTimeout(() => popup.remove(), 500);
-            }, 3500);
+                popup.style.transform = 'translateX(60px) scale(0.7)';
+                popup.style.transition = 'all 0.5s ease';
+                setTimeout(() => popup.remove(), 600);
+            }, 4000);
+        }
+
+        function showEasterEggNotification(text) {
+            const existing = document.querySelector('.easter-egg-notification');
+            if (existing) existing.remove();
+            const el = document.createElement('div');
+            el.className = 'easter-egg-notification';
+            el.textContent = '🎮 ' + text;
+            document.body.appendChild(el);
+            setTimeout(() => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateX(-50%) translateY(-20px)';
+                el.style.transition = 'all 0.5s ease';
+                setTimeout(() => el.remove(), 600);
+            }, 2500);
         }
 
         // ==============================================================
-        //  3. INTERCEPT ACTIONS FOR SOUND + FUN
+        //  🎯 INTERCEPT ACTIONS
         // ==============================================================
 
-        // --- Intercept button clicks ---
         document.addEventListener('click', function(e) {
             const target = e.target.closest('button, .btn, .nav-item, .tag, .fab');
             if (!target) return;
-
-            // Play click sound
             playSound('click');
-
-            // Sparkle on primary buttons
             if (target.classList.contains('btn-primary') || target.classList.contains('btn-gold')) {
                 sparkleEffect(e);
             }
-
-            // Fun emoji on FAB
             if (target.classList.contains('fab')) {
                 floatEmoji('✨', 90, 85);
                 playSound('pop');
             }
-
-            // Achievement on any .btn-success click
             if (target.classList.contains('btn-success')) {
-                setTimeout(() => {
-                    showAchievement('🎉 Great Job!', 'You completed an action!', '🌟');
-                }, 300);
+                setTimeout(() => showAchievement('🎉 Great Job!', 'You completed an action!', '🌟'), 300);
             }
-
-            // Sidebar nav click - woosh
             if (target.closest('.nav-item')) {
                 playSound('woosh');
             }
         }, true);
 
-        // --- Intercept toast for success sound ---
         const originalToast = window.toast;
         if (originalToast) {
             window.toast = function(msg, type) {
                 originalToast(msg, type);
                 if (type === 'success') {
                     playSound('success');
-                    setTimeout(() => {
-                        floatEmoji('🎉', 80, 70);
-                    }, 200);
+                    setTimeout(() => floatEmoji('🎉', 80, 70), 200);
                 }
                 if (type === 'error') {
                     playSound('error');
+                    // Shake the toast
+                    setTimeout(() => {
+                        const toasts = document.querySelectorAll('.toast');
+                        if (toasts.length) toasts[toasts.length - 1].classList.add('shake');
+                    }, 100);
                 }
             };
         }
 
-        // --- Intercept saveData for achievement tracking ---
         const originalSaveData = window.saveData;
         if (originalSaveData) {
             window.saveData = function() {
                 const result = originalSaveData();
-                // Track achievements based on data size
                 try {
                     const data = JSON.parse(localStorage.getItem('olevel_cc_v7') || '{}');
                     const notes = data.notes ? data.notes.length : 0;
                     const tasks = data.tasks ? data.tasks.length : 0;
                     const pastPapers = data.pastPapers ? data.pastPapers.length : 0;
-
-                    // Achievement: First note
                     if (notes === 1 && !localStorage.getItem('_ach_note')) {
                         localStorage.setItem('_ach_note', '1');
                         setTimeout(() => showAchievement('📝 First Note!', 'You wrote your first note!', '📝'), 500);
                     }
-                    // Achievement: 10 notes
                     if (notes >= 10 && !localStorage.getItem('_ach_notes10')) {
                         localStorage.setItem('_ach_notes10', '1');
                         setTimeout(() => showAchievement('📚 Knowledge Builder!', 'You created 10 notes!', '📚'), 500);
                     }
-                    // Achievement: First task
+                    if (notes >= 50 && !localStorage.getItem('_ach_notes50')) {
+                        localStorage.setItem('_ach_notes50', '1');
+                        setTimeout(() => showAchievement('🧠 Scholar!', '50 notes created!', '🧠'), 500);
+                    }
                     if (tasks === 1 && !localStorage.getItem('_ach_task')) {
                         localStorage.setItem('_ach_task', '1');
                         setTimeout(() => showAchievement('✅ First Task!', 'You added your first task!', '✅'), 500);
                     }
-                    // Achievement: 10 tasks
                     if (tasks >= 10 && !localStorage.getItem('_ach_tasks10')) {
                         localStorage.setItem('_ach_tasks10', '1');
                         setTimeout(() => showAchievement('🚀 Task Master!', 'You created 10 tasks!', '🚀'), 500);
                     }
-                    // Achievement: First past paper
+                    if (tasks >= 50 && !localStorage.getItem('_ach_tasks50')) {
+                        localStorage.setItem('_ach_tasks50', '1');
+                        setTimeout(() => showAchievement('⚡ Productivity King!', '50 tasks created!', '⚡'), 500);
+                    }
                     if (pastPapers === 1 && !localStorage.getItem('_ach_paper')) {
                         localStorage.setItem('_ach_paper', '1');
                         setTimeout(() => showAchievement('📄 First Past Paper!', 'You uploaded a past paper!', '📄'),
-                        500);
+                            500);
+                    }
+                    if (pastPapers >= 10 && !localStorage.getItem('_ach_papers10')) {
+                        localStorage.setItem('_ach_papers10', '1');
+                        setTimeout(() => showAchievement('📚 Exam Ready!', '10 past papers uploaded!', '📚'), 500);
+                    }
+                    const attendance = data.attendance ? Object.values(data.attendance).filter(v => v === true).length :
+                        0;
+                    if (attendance >= 5 && !localStorage.getItem('_ach_attendance5')) {
+                        localStorage.setItem('_ach_attendance5', '1');
+                        setTimeout(() => showAchievement('📋 Consistency!', '5 days of attendance!', '📋'), 500);
+                    }
+                    if (attendance >= 30 && !localStorage.getItem('_ach_attendance30')) {
+                        localStorage.setItem('_ach_attendance30', '1');
+                        setTimeout(() => showAchievement('🔥 On Fire!', '30 days of attendance!', '🔥'), 500);
+                    }
+                    const activities = data.activities ? data.activities.length : 0;
+                    if (activities >= 5 && !localStorage.getItem('_ach_activities5')) {
+                        localStorage.setItem('_ach_activities5', '1');
+                        setTimeout(() => showAchievement('🏆 Active Student!', '5 co-curricular activities!', '🏆'),
+                            500);
+                    }
+                    if (activities >= 20 && !localStorage.getItem('_ach_activities20')) {
+                        localStorage.setItem('_ach_activities20', '1');
+                        setTimeout(() => showAchievement('🌟 All-Rounder!', '20 co-curricular activities!', '🌟'),
+                            500);
                     }
                 } catch (_) {}
                 return result;
@@ -4768,63 +5504,48 @@
         }
 
         // ==============================================================
-        //  4. INTERACTIVE FUN — Random Motivational Messages
+        //  💬 MOTIVATIONAL MESSAGES
         // ==============================================================
 
         const MOTIVATIONAL_MESSAGES = [
-            '💪 You got this!',
-            '🌟 You are amazing!',
-            '🔥 Keep going!',
-            '✨ You\'re making progress!',
-            '🎯 Stay focused!',
-            '🧠 You\'re getting smarter every day!',
-            '📚 Knowledge is power!',
-            '💡 Great minds think differently!',
-            '⚡ You\'re on fire!',
-            '🌟 Shine bright!',
-            '💪 Keep pushing forward!',
-            '🎉 Celebrate every win!',
-            '🌱 Growing every day!',
-            '🚀 Reaching new heights!',
-            '🏆 You\'re a champion!',
+            '💪 You got this!', '🌟 You are amazing!', '🔥 Keep going!',
+            '✨ You\'re making progress!', '🎯 Stay focused!',
+            '🧠 You\'re getting smarter every day!', '📚 Knowledge is power!',
+            '💡 Great minds think differently!', '⚡ You\'re on fire!',
+            '🌟 Shine bright!', '💪 Keep pushing forward!', '🎉 Celebrate every win!',
+            '🌱 Growing every day!', '🚀 Reaching new heights!', '🏆 You\'re a champion!',
+            '💎 You are priceless!', '🌈 Every day is a fresh start!',
+            '🌟 The best is yet to come!', '🔥 You are unstoppable!',
+            '💫 Keep believing in yourself!'
         ];
 
         function showMotivation() {
             const msg = MOTIVATIONAL_MESSAGES[Math.floor(Math.random() * MOTIVATIONAL_MESSAGES.length)];
-            const emojis = ['✨', '🌟', '💫', '⚡', '🎉', '🎊', '🔥', '💪'];
+            const emojis = ['✨', '🌟', '💫', '⚡', '🎉', '🎊', '🔥', '💪', '🌈', '💎'];
             const emoji = emojis[Math.floor(Math.random() * emojis.length)];
-            const x = 10 + Math.random() * 80;
-            const y = 10 + Math.random() * 80;
-            floatEmoji(emoji + ' ' + msg, x, y);
+            floatEmoji(emoji + ' ' + msg, 10 + Math.random() * 80, 10 + Math.random() * 80);
             playSound('pop');
         }
 
-        // --- Show motivation every 2-4 minutes ---
         let motivationInterval = setInterval(() => {
-            // Only show if user is active (page visible)
-            if (!document.hidden) {
-                showMotivation();
-            }
+            if (!document.hidden) showMotivation();
         }, 120000 + Math.random() * 120000);
 
-        // --- Reset interval on visibility change ---
         document.addEventListener('visibilitychange', function() {
             if (!document.hidden) {
                 clearInterval(motivationInterval);
                 motivationInterval = setInterval(() => {
-                    if (!document.hidden) {
-                        showMotivation();
-                    }
+                    if (!document.hidden) showMotivation();
                 }, 120000 + Math.random() * 120000);
             }
         });
 
         // ==============================================================
-        //  5. MOUSE FOLLOW GLOW (on cards)
+        //  🖱️ MOUSE FOLLOW GLOW
         // ==============================================================
 
         document.addEventListener('mousemove', function(e) {
-            document.querySelectorAll('.card, .btn, .subject-card').forEach(el => {
+            document.querySelectorAll('.card, .btn, .subject-card, .mission-item').forEach(el => {
                 const rect = el.getBoundingClientRect();
                 const x = ((e.clientX - rect.left) / rect.width) * 100;
                 const y = ((e.clientY - rect.top) / rect.height) * 100;
@@ -4834,107 +5555,248 @@
         });
 
         // ==============================================================
-        //  6. PARTICLE BACKGROUND
+        //  🌌 PARTICLE BACKGROUND
         // ==============================================================
 
-        function createParticles() {
+        (function createParticles() {
             const container = document.createElement('div');
             container.className = 'particle-container';
             document.body.prepend(container);
-
-            const colors = ['#4a2c6e', '#7a4ba8', '#c9a84c', '#8a5fc4', '#b89430'];
-            for (let i = 0; i < 25; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                const size = 2 + Math.random() * 4;
-                const left = Math.random() * 100;
-                const delay = Math.random() * 20;
-                const duration = 20 + Math.random() * 30;
-                const color = colors[Math.floor(Math.random() * colors.length)];
-                particle.style.cssText = `
-                    left: ${left}%;
+            const colors = ['#4a2c6e', '#7a4ba8', '#c9a84c', '#8a5fc4', '#b89430', '#6c3b9a'];
+            for (let i = 0; i < 35; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                const size = 2 + Math.random() * 6;
+                p.style.cssText = `
+                    left: ${Math.random() * 100}%;
                     width: ${size}px;
                     height: ${size}px;
-                    background: ${color};
-                    animation-delay: ${delay}s;
-                    animation-duration: ${duration}s;
-                    opacity: ${0.02 + Math.random() * 0.04};
+                    background: ${colors[Math.floor(Math.random() * colors.length)]};
+                    animation-delay: ${Math.random() * 25}s;
+                    animation-duration: ${20 + Math.random() * 40}s;
+                    opacity: ${0.02 + Math.random() * 0.05};
+                    filter: blur(${Math.random() * 2}px);
                 `;
-                container.appendChild(particle);
+                container.appendChild(p);
             }
-        }
-        createParticles();
+        })();
 
         // ==============================================================
-        //  7. FUN KEYBOARD SHORTCUTS
+        //  ⌨️ KEYBOARD SHORTCUTS — ALL EASTER EGGS
         // ==============================================================
+
+        function isInFormField(e) {
+            const t = e.target;
+            return t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' ||
+                t.tagName === 'SELECT' || t.isContentEditable ||
+                t.closest('input, textarea, select, [contenteditable="true"]');
+        }
+
+        // Track sequences for multi-key easter eggs
+        let easterEggSeq = [];
+        let konamiSeq = [];
 
         document.addEventListener('keydown', function(e) {
-            // 'M' for motivation
-            if (e.key === 'm' || e.key === 'M') {
-                if (!e.ctrlKey && !e.metaKey && !e.altKey) {
-                    showMotivation();
+            if (isInFormField(e)) return;
+
+            // === SINGLE KEY EASTER EGGS ===
+
+            // '!' — Confetti explosion
+            if (e.key === '!' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+                fireConfetti(80);
+                showEasterEggNotification('🎉 BOOM! Secret unlocked!');
+                setTimeout(() => {
+                    showAchievement('💥 BOOM!', 'You found the secret!', '💥');
+                }, 400);
+                playSound('magic');
+                e.preventDefault();
+            }
+
+            // '?' — Motivation + confetti
+            if (e.key === '?' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+                showMotivation();
+                setTimeout(() => {
+                    fireConfetti(40);
+                    showEasterEggNotification('🤔 Question everything!');
+                }, 300);
+                playSound('success');
+                e.preventDefault();
+            }
+
+            // '*' — Star power confetti
+            if (e.key === '*' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+                fireConfetti(60);
+                showEasterEggNotification('✨ STAR POWER!');
+                setTimeout(() => {
+                    showAchievement('✨ Star Power!', 'You found the secret!', '✨');
+                }, 400);
+                playSound('magic');
+                e.preventDefault();
+            }
+
+            // '#' — Hash tag confetti
+            if (e.key === '#' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+                fireConfetti(50);
+                showEasterEggNotification('🔑 HASH TAG!');
+                setTimeout(() => {
+                    showAchievement('🔑 Hash Tag!', 'You found the secret!', '🔑');
+                }, 400);
+                playSound('achievement');
+                e.preventDefault();
+            }
+
+            // '&' — Ampersand confetti
+            if (e.key === '&' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+                fireConfetti(55);
+                showEasterEggNotification('💎 AMPERSAND!');
+                setTimeout(() => {
+                    showAchievement('💎 Ampersand!', 'You found the secret!', '💎');
+                }, 400);
+                playSound('magic');
+                e.preventDefault();
+            }
+
+            // '$' — Money confetti
+            if (e.key === '$' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+                fireConfetti(70);
+                showEasterEggNotification('💰 MONEY!');
+                setTimeout(() => {
+                    showAchievement('💰 Money!', 'You found the secret!', '💰');
+                }, 400);
+                playSound('achievement');
+                e.preventDefault();
+            }
+
+            // '@' — At symbol confetti
+            if (e.key === '@' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+                fireConfetti(65);
+                showEasterEggNotification('🚀 AT THE SPEED OF LIGHT!');
+                setTimeout(() => {
+                    showAchievement('🚀 At Symbol!', 'You found the secret!', '🚀');
+                }, 400);
+                playSound('woosh');
+                e.preventDefault();
+            }
+
+            // === MULTI-KEY EASTER EGGS ===
+
+            // '123' sequence
+            easterEggSeq.push(e.key);
+            if (easterEggSeq.length > 3) easterEggSeq.shift();
+            if (easterEggSeq.join('') === '123') {
+                easterEggSeq = [];
+                fireConfetti(80);
+                showEasterEggNotification('🔢 123! Sequence unlocked!');
+                setTimeout(() => {
+                    showAchievement('🔢 123!', 'You found the sequence!', '🔢');
+                }, 400);
+                playSound('magic');
+                e.preventDefault();
+            }
+
+            // 'BOOM' sequence (case insensitive)
+            const boomSeq = [...easterEggSeq];
+            if (boomSeq.join('').toUpperCase() === 'BOOM') {
+                // Check if the last 4 chars spell BOOM
+                const check = easterEggSeq.slice(-4).join('').toUpperCase();
+                if (check === 'BOOM') {
+                    easterEggSeq = [];
+                    fireConfetti(100);
+                    showEasterEggNotification('💥 BOOM! KABOOM!');
+                    setTimeout(() => {
+                        showAchievement('💥 BOOM!', 'You found the secret!', '💥');
+                    }, 400);
+                    playSound('achievement');
                     e.preventDefault();
                 }
             }
-            // 'C' for confetti
-            if (e.key === 'c' || e.key === 'C') {
-                if (!e.ctrlKey && !e.metaKey && !e.altKey) {
-                    fireConfetti(60);
-                    e.preventDefault();
-                }
+
+            // === KONAMI CODE (↑↑↓↓←→←→BA) ===
+            konamiSeq.push(e.key);
+            if (konamiSeq.length > 10) konamiSeq.shift();
+            if (konamiSeq.join(',') === ['ArrowUp','ArrowUp','ArrowDown','ArrowDown',
+                    'ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'
+                ].join(',')) {
+                konamiSeq = [];
+                fireConfetti(120);
+                showEasterEggNotification('🎮 KONAMI CODE! 30 lives!');
+                setTimeout(() => {
+                    showAchievement('🎮 KONAMI CODE!', 'You found the legendary secret!', '🎮');
+                }, 500);
+                playSound('achievement');
+                setTimeout(() => {
+                    floatEmoji('🎮', 30, 40);
+                    floatEmoji('🕹️', 70, 30);
+                    floatEmoji('⭐', 50, 70);
+                    floatEmoji('🔥', 20, 60);
+                    floatEmoji('💪', 80, 50);
+                }, 200);
+                e.preventDefault();
             }
-            // 'S' for sound toggle
-            if (e.key === 's' || e.key === 'S') {
-                if (!e.ctrlKey && !e.metaKey && !e.altKey) {
-                    soundEnabled = !soundEnabled;
-                    toast(soundEnabled ? '🔊 Sound on' : '🔇 Sound off', 'info');
-                    e.preventDefault();
-                }
+
+            // === REGULAR SHORTCUTS ===
+
+            // 'M' — Motivation
+            if ((e.key === 'm' || e.key === 'M') && !e.ctrlKey && !e.metaKey && !e.altKey) {
+                showMotivation();
+                e.preventDefault();
+            }
+
+            // 'C' — Confetti
+            if ((e.key === 'c' || e.key === 'C') && !e.ctrlKey && !e.metaKey && !e.altKey) {
+                fireConfetti(60);
+                showEasterEggNotification('🎊 Confetti!');
+                e.preventDefault();
+            }
+
+            // 'S' — Sound toggle
+            if ((e.key === 's' || e.key === 'S') && !e.ctrlKey && !e.metaKey && !e.altKey) {
+                soundEnabled = !soundEnabled;
+                window.__soundEnabled = soundEnabled;
+                toast(soundEnabled ? '🔊 Sound on' : '🔇 Sound off', 'info');
+                if (soundEnabled) playSound('success');
+                e.preventDefault();
             }
         });
 
         // ==============================================================
-        //  8. DOUBLE CLICK FUN — Confetti explosion
+        //  🖱️ DOUBLE CLICK — Confetti explosion
         // ==============================================================
 
         document.addEventListener('dblclick', function(e) {
-            // Don't trigger on inputs, textareas, modals
             if (e.target.closest('input, textarea, .modal, select')) return;
-            fireConfetti(80);
+            fireConfetti(90);
             floatEmoji('🎉', e.clientX / window.innerWidth * 100, e.clientY / window.innerHeight * 100);
+            showEasterEggNotification('🎉 Double click!');
             playSound('achievement');
         });
 
         // ==============================================================
-        //  9. SOUND TOGGLE BUTTON — Add to settings page
+        //  🔊 SOUND TOGGLE IN SETTINGS
         // ==============================================================
 
-        // Add sound toggle to settings page when it renders
         const originalRenderSettings = window.renderSettings;
         if (originalRenderSettings) {
             window.renderSettings = function() {
                 const html = originalRenderSettings();
-                // We'll inject via DOM after render
                 setTimeout(() => {
-                    const settingsCards = document.querySelectorAll('#page-settings .card');
-                    if (settingsCards.length > 1) {
-                        const appearanceCard = settingsCards[1];
-                        if (appearanceCard) {
-                            const soundToggle = document.createElement('div');
-                            soundToggle.className = 'flex-between mt-1';
-                            soundToggle.style.marginTop = '0.8rem';
-                            soundToggle.style.paddingTop = '0.8rem';
-                            soundToggle.style.borderTop = '1px solid var(--border)';
-                            soundToggle.innerHTML = `
+                    const cards = document.querySelectorAll('#page-settings .card');
+                    if (cards.length > 1) {
+                        const appearance = cards[1];
+                        if (appearance && !appearance.querySelector('#soundToggleBtn')) {
+                            const toggle = document.createElement('div');
+                            toggle.className = 'flex-between mt-1';
+                            toggle.style.cssText =
+                                'margin-top:0.8rem;padding-top:0.8rem;border-top:1px solid var(--border)';
+                            toggle.innerHTML = `
                                 <span>🔊 Sound Effects</span>
-                                <button class="btn ${soundEnabled ? 'btn-primary' : 'btn-outline'}" 
-                                        onclick="toggleSoundEnhancement()" 
+                                <button class="btn ${soundEnabled ? 'btn-primary' : 'btn-outline'}"
+                                        onclick="toggleSoundEnhancement()"
                                         id="soundToggleBtn">
                                     ${soundEnabled ? '🔊 On' : '🔇 Off'}
                                 </button>
                             `;
-                            appearanceCard.appendChild(soundToggle);
+                            appearance.appendChild(toggle);
                         }
                     }
                 }, 50);
@@ -4942,9 +5804,9 @@
             };
         }
 
-        // Sound toggle function
         window.toggleSoundEnhancement = function() {
             soundEnabled = !soundEnabled;
+            window.__soundEnabled = soundEnabled;
             const btn = document.getElementById('soundToggleBtn');
             if (btn) {
                 btn.textContent = soundEnabled ? '🔊 On' : '🔇 Off';
@@ -4954,45 +5816,10 @@
             if (soundEnabled) playSound('success');
         };
 
-        // Also expose soundEnabled globally so settings can access it
         window.__soundEnabled = soundEnabled;
-        window.__toggleSound = function() {
-            soundEnabled = !soundEnabled;
-            window.__soundEnabled = soundEnabled;
-            toast(soundEnabled ? '🔊 Sound on' : '🔇 Sound off', 'info');
-            if (soundEnabled) playSound('success');
-        };
 
         // ==============================================================
-        //  10. RANDOM EASTER EGGS
-        // ==============================================================
-
-        // Konami code (just for fun)
-        let konami = [];
-        const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft',
-            'ArrowRight', 'b', 'a'
-        ];
-
-        document.addEventListener('keydown', function(e) {
-            konami.push(e.key);
-            if (konami.length > konamiCode.length) konami.shift();
-            if (konami.join(',') === konamiCode.join(',')) {
-                konami = [];
-                fireConfetti(100);
-                setTimeout(() => {
-                    showAchievement('🎮 KONAMI CODE!', 'You found the secret! 🎉', '🎮');
-                }, 300);
-                playSound('achievement');
-                setTimeout(() => {
-                    floatEmoji('🎮', 30, 40);
-                    floatEmoji('🕹️', 70, 30);
-                    floatEmoji('⭐', 50, 70);
-                }, 200);
-            }
-        });
-
-        // ==============================================================
-        //  11. FUN ON PAGE LOAD — Welcome achievement
+        //  👋 WELCOME ACHIEVEMENT
         // ==============================================================
 
         setTimeout(() => {
@@ -5005,13 +5832,14 @@
         }, 800);
 
         // ==============================================================
-        //  12. EXPOSE FUNCTIONS FOR CONSOLE PLAY
+        //  🎮 CONSOLE FUN
         // ==============================================================
 
-        console.log('%c🎯 O-LEVEL CC — Enhancement Pack Loaded!', 'font-size:18px;font-weight:bold;color:#6c3b9a;');
+        console.log('%c🎯 O-LEVEL CC — ULTIMATE ENHANCEMENT PACK', 'font-size:22px;font-weight:bold;color:#6c3b9a;');
         console.log('%c📌 Press M for motivation, C for confetti, S for sound toggle', 'font-size:13px;color:#8f8aa8;');
-        console.log('%c🕹️ Try the Konami code: ↑↑↓↓←→←→BA', 'font-size:13px;color:#8f8aa8;');
+        console.log('%c🎮 EASTER EGGS: ! ? * # $ @ 123 BOOM ↑↑↓↓←→←→BA', 'font-size:13px;color:#8f8aa8;');
         console.log('%c✨ Double-click anywhere for confetti!', 'font-size:13px;color:#8f8aa8;');
+        console.log('%c🏆 Achievements: First note, 10 notes, 50 notes, first task, 10 tasks, 50 tasks, first past paper, 10 past papers, 5 attendance, 30 attendance, 5 activities, 20 activities', 'font-size:12px;color:#8f8aa8;');
 
         window.fireConfetti = fireConfetti;
         window.showAchievement = showAchievement;
@@ -5019,7 +5847,7 @@
         window.sparkleEffect = sparkleEffect;
         window.playSound = playSound;
 
-        console.log('✅ Enhancement pack ready! 🚀');
+        console.log('✅ Ultimate enhancement pack ready! 🚀');
 
     })();
 </script>
