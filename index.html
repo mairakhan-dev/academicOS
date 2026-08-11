@@ -6845,5 +6845,328 @@
         opacity: 0.5;
     }
 </style>
+    <!-- ================================================================
+     📚 BULK SYLLABUS BREAKDOWN — Paste your syllabus outline in bulk
+     Paste this before </body> in your HTML file
+     ================================================================ -->
+
+<style>
+    /* ===== BULK SYLLABUS MODAL ===== */
+    .bulk-syllabus-modal .modal {
+        max-width: 700px;
+    }
+    .bulk-syllabus-modal textarea {
+        font-family: 'Courier New', monospace;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        min-height: 300px;
+        resize: vertical;
+    }
+    .bulk-syllabus-modal .example-format {
+        background: var(--bg);
+        border-radius: var(--radius-sm);
+        padding: 0.8rem 1rem;
+        font-size: 0.8rem;
+        font-family: 'Courier New', monospace;
+        white-space: pre-wrap;
+        border: 1px solid var(--card-border);
+        margin-top: 0.5rem;
+        color: var(--text-secondary);
+    }
+    .bulk-syllabus-modal .format-hint {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        margin-bottom: 0.5rem;
+    }
+    .dark .bulk-syllabus-modal .example-format {
+        background: var(--card-bg);
+        border-color: var(--card-border);
+        color: var(--text-secondary);
+    }
+    .bulk-syllabus-modal .parse-status {
+        margin-top: 0.5rem;
+        padding: 0.5rem 0.8rem;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+        display: none;
+    }
+    .bulk-syllabus-modal .parse-status.success {
+        display: block;
+        background: rgba(39, 174, 96, 0.1);
+        border: 1px solid #27ae60;
+        color: #1f6e2f;
+    }
+    .bulk-syllabus-modal .parse-status.error {
+        display: block;
+        background: rgba(231, 76, 60, 0.1);
+        border: 1px solid #e74c4c;
+        color: #b13a3a;
+    }
+    .bulk-syllabus-modal .parse-status.info {
+        display: block;
+        background: rgba(52, 152, 219, 0.1);
+        border: 1px solid #3498db;
+        color: #1f4f8a;
+    }
+</style>
+
+<script>
+    (function() {
+        'use strict';
+
+        // ================================================================
+        //  📚 BULK SYLLABUS BREAKDOWN — Parser & UI
+        // ================================================================
+
+        // --- Parse syllabus text into structured data ---
+        function parseSyllabusText(text) {
+            const lines = text.split('\n').filter(line => line.trim() !== '');
+            const units = [];
+            let currentUnit = null;
+            let currentTopic = null;
+
+            // Determine indentation level (spaces or tabs)
+            function getIndentLevel(line) {
+                const match = line.match(/^(\s*)/);
+                return match ? match[1].length : 0;
+            }
+
+            // Remove bullet points, numbers, etc.
+            function cleanText(str) {
+                return str.replace(/^[\s•\-*•\d+.)]+\s*/, '').trim();
+            }
+
+            // Detect if line is a unit (level 0)
+            // Assume unit if no indentation or indentation less than 2 spaces
+            // Also allow explicit "Unit X:" pattern
+            const unitRegex = /^unit\s+\d+[:.]/i;
+
+            for (let i = 0; i < lines.length; i++) {
+                const raw = lines[i];
+                const indent = getIndentLevel(raw);
+                const text = cleanText(raw);
+
+                if (!text) continue;
+
+                // Determine level based on indentation
+                // Level 0: Unit (indent 0-1)
+                // Level 1: Topic (indent 2-3)
+                // Level 2: Concept (indent 4+)
+                // Also handle explicit markers like "Topic:" "Concept:"
+                const isUnit = unitRegex.test(raw) || indent <= 1;
+                const isTopic = /^topic\s+[\d:.]/i.test(raw) || (indent >= 2 && indent <= 3);
+                const isConcept = /^concept\s+[\d:.]/i.test(raw) || indent >= 4;
+
+                if (isUnit) {
+                    // Start new unit
+                    const unitName = text.replace(/^unit\s+\d+[:.]\s*/i, '').trim() || text;
+                    currentUnit = { id: genId(), name: unitName, topics: [] };
+                    units.push(currentUnit);
+                    currentTopic = null;
+                } else if (isTopic && currentUnit) {
+                    // Start new topic under current unit
+                    const topicName = text.replace(/^topic\s+[\d:.]\s*/i, '').trim() || text;
+                    currentTopic = { id: genId(), name: topicName, concepts: [] };
+                    currentUnit.topics.push(currentTopic);
+                } else if (isConcept && currentTopic) {
+                    // Start new concept under current topic
+                    const conceptName = text.replace(/^concept\s+[\d:.]\s*/i, '').trim() || text;
+                    currentTopic.concepts.push({ id: genId(), name: conceptName, mastery: 'not_started', notes: '' });
+                } else {
+                    // If we can't classify, treat as concept if we have a topic, else topic if we have a unit
+                    if (currentTopic) {
+                        // Assume concept
+                        const conceptName = text;
+                        currentTopic.concepts.push({ id: genId(), name: conceptName, mastery: 'not_started', notes: '' });
+                    } else if (currentUnit) {
+                        // Assume topic
+                        const topicName = text;
+                        currentTopic = { id: genId(), name: topicName, concepts: [] };
+                        currentUnit.topics.push(currentTopic);
+                    } else {
+                        // No unit yet? Treat as unit
+                        currentUnit = { id: genId(), name: text, topics: [] };
+                        units.push(currentUnit);
+                        currentTopic = null;
+                    }
+                }
+            }
+
+            return units;
+        }
+
+        // --- Show Bulk Add Modal ---
+        function showBulkAddSyllabus(subjectId) {
+            const subjects = data.subjects.filter(s => !s.archived);
+            const subjectOptions = subjects.map(s =>
+                `<option value="${s.id}" ${s.id === subjectId ? 'selected' : ''}>${s.name}</option>`
+            ).join('');
+
+            const modalHtml = `
+                <div class="modal-title">📚 Bulk Add Syllabus</div>
+                <div class="modal-sub">Paste your syllabus outline below. The system will automatically create units, topics, and concepts.</div>
+
+                <div class="form-group">
+                    <label>Select Subject</label>
+                    <select id="bulkSubject">${subjectOptions}</select>
+                </div>
+
+                <div class="form-group">
+                    <label>Syllabus Outline</label>
+                    <div class="format-hint">Use indentation (spaces or tabs) to indicate hierarchy:</div>
+                    <div class="example-format">
+                        Unit 1: Microeconomics
+                          Topic 1: Elasticity
+                            Concept: Price Elasticity of Demand
+                            Concept: Income Elasticity
+                          Topic 2: Supply and Demand
+                        Unit 2: Macroeconomics
+                          Topic 1: GDP
+                            Concept: Calculation
+                            Concept: Limitations
+                    </div>
+                    <textarea id="bulkSyllabusText" placeholder="Paste your syllabus outline here..."></textarea>
+                </div>
+
+                <div id="bulkParseStatus" class="parse-status"></div>
+
+                <div class="form-actions">
+                    <button class="btn" onclick="closeModal()">Cancel</button>
+                    <button class="btn btn-primary" onclick="processBulkSyllabus()">Import Syllabus</button>
+                </div>
+            `;
+
+            openModal(modalHtml);
+            // Make modal larger
+            document.querySelector('.modal-overlay .modal').classList.add('bulk-syllabus-modal');
+        }
+
+        // --- Process the bulk syllabus import ---
+        function processBulkSyllabus() {
+            const subjectId = document.getElementById('bulkSubject').value;
+            const text = document.getElementById('bulkSyllabusText').value;
+            const statusEl = document.getElementById('bulkParseStatus');
+
+            if (!subjectId) {
+                statusEl.className = 'parse-status error';
+                statusEl.textContent = '❌ Please select a subject.';
+                return;
+            }
+
+            if (!text.trim()) {
+                statusEl.className = 'parse-status error';
+                statusEl.textContent = '❌ Please paste your syllabus outline.';
+                return;
+            }
+
+            // Parse the text
+            const units = parseSyllabusText(text);
+
+            if (units.length === 0) {
+                statusEl.className = 'parse-status error';
+                statusEl.textContent = '❌ No units found. Please check the format.';
+                return;
+            }
+
+            // Count total items
+            let totalTopics = 0,
+                totalConcepts = 0;
+            units.forEach(u => {
+                totalTopics += u.topics.length;
+                u.topics.forEach(t => totalConcepts += t.concepts.length);
+            });
+
+            // Confirm with user
+            const confirmMsg =
+                `📊 Found:\n• ${units.length} unit(s)\n• ${totalTopics} topic(s)\n• ${totalConcepts} concept(s)\n\nAdd to "${getSubjectName(subjectId)}"?`;
+            if (!confirm(confirmMsg)) return;
+
+            // Append to syllabus
+            if (!data.syllabus[subjectId]) data.syllabus[subjectId] = [];
+
+            // Merge: for each unit, check if it already exists by name, if so merge topics, else add new
+            units.forEach(newUnit => {
+                const existingUnit = data.syllabus[subjectId].find(u => u.name === newUnit.name);
+                if (existingUnit) {
+                    // Merge topics
+                    newUnit.topics.forEach(newTopic => {
+                        const existingTopic = existingUnit.topics.find(t => t.name === newTopic.name);
+                        if (existingTopic) {
+                            // Merge concepts
+                            newTopic.concepts.forEach(newConcept => {
+                                const existingConcept = existingTopic.concepts.find(c => c.name ===
+                                    newConcept.name);
+                                if (!existingConcept) {
+                                    existingTopic.concepts.push(newConcept);
+                                }
+                            });
+                        } else {
+                            existingUnit.topics.push(newTopic);
+                        }
+                    });
+                } else {
+                    data.syllabus[subjectId].push(newUnit);
+                }
+            });
+
+            // Save and close
+            if (saveData()) {
+                statusEl.className = 'parse-status success';
+                statusEl.textContent = `✅ Successfully imported ${units.length} unit(s), ${totalTopics} topic(s), ${totalConcepts} concept(s)!`;
+                setTimeout(() => {
+                    closeModal();
+                    renderPage('syllabus');
+                }, 1500);
+            } else {
+                statusEl.className = 'parse-status error';
+                statusEl.textContent = '❌ Failed to save data. Please try again.';
+            }
+        }
+
+        // --- Override renderSyllabus to add Bulk Add button ---
+        const originalRenderSyllabus = window.renderSyllabus;
+        if (originalRenderSyllabus) {
+            window.renderSyllabus = function() {
+                const html = originalRenderSyllabus();
+
+                // Inject the bulk add button into each subject card
+                // We'll use a DOM approach: after rendering, add button to each subject card
+                setTimeout(() => {
+                    const subjectCards = document.querySelectorAll('#page-syllabus .card.mt-2');
+                    subjectCards.forEach(card => {
+                        // Find the flex-between div inside
+                        const header = card.querySelector('.flex-between');
+                        if (header) {
+                            // Check if button already exists
+                            if (header.querySelector('.bulk-add-btn')) return;
+                            const bulkBtn = document.createElement('button');
+                            bulkBtn.className = 'btn btn-sm btn-outline bulk-add-btn';
+                            bulkBtn.textContent = '📚 Bulk Add';
+                            bulkBtn.style.marginLeft = '0.5rem';
+                            // Get subject id from the card (data-subject-id attribute)
+                            // We need to find the subject name and look up id
+                            const subName = card.querySelector('span[style*="font-weight:700;"]')?.textContent;
+                            if (subName) {
+                                const sub = data.subjects.find(s => s.name === subName);
+                                if (sub) {
+                                    bulkBtn.onclick = () => showBulkAddSyllabus(sub.id);
+                                    header.appendChild(bulkBtn);
+                                }
+                            }
+                        }
+                    });
+                }, 100);
+
+                return html;
+            };
+        }
+
+        // --- Add a global reference to the functions ---
+        window.showBulkAddSyllabus = showBulkAddSyllabus;
+        window.processBulkSyllabus = processBulkSyllabus;
+
+        console.log('✅ Bulk Syllabus Breakdown loaded!');
+    })();
+</script>
 </body>
 </html>
