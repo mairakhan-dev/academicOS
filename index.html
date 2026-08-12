@@ -7168,5 +7168,506 @@
         console.log('✅ Bulk Syllabus Breakdown loaded!');
     })();
 </script>
+    <!-- ================================================================
+     📥 BULK YOUTUBE VIDEO IMPORT — Add multiple videos at once
+     Paste this before </body> in your HTML file
+     ================================================================ -->
+
+<style>
+    /* ===== BULK IMPORT STYLES ===== */
+    .bulk-video-preview {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.8rem;
+        margin-top: 1rem;
+        max-height: 350px;
+        overflow-y: auto;
+        padding-right: 0.5rem;
+    }
+    .bulk-video-preview .video-item {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        background: var(--bg);
+        border-radius: var(--radius-sm);
+        padding: 0.5rem 0.8rem;
+        border: 1px solid var(--card-border);
+        transition: all 0.2s ease;
+        cursor: default;
+    }
+    .bulk-video-preview .video-item:hover {
+        border-color: var(--royal-purple);
+        background: rgba(108, 59, 154, 0.04);
+    }
+    .bulk-video-preview .video-item .thumb {
+        width: 80px;
+        height: 45px;
+        background: #000;
+        border-radius: 4px;
+        flex-shrink: 0;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        color: #fff;
+        background: #1a1a2e;
+    }
+    .bulk-video-preview .video-item .thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .bulk-video-preview .video-item .info {
+        flex: 1;
+        min-width: 0;
+    }
+    .bulk-video-preview .video-item .info .title {
+        font-weight: 600;
+        font-size: 0.85rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .bulk-video-preview .video-item .info .url {
+        font-size: 0.65rem;
+        color: var(--text-muted);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .bulk-video-preview .video-item .status {
+        font-size: 1.2rem;
+        flex-shrink: 0;
+    }
+    .bulk-video-preview .video-item .status.loading {
+        animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    .bulk-video-preview .video-item .checkbox-wrap {
+        flex-shrink: 0;
+    }
+    .bulk-video-preview .video-item .checkbox-wrap input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        accent-color: var(--royal-purple);
+        cursor: pointer;
+    }
+    .bulk-progress {
+        margin: 0.5rem 0;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .bulk-progress .bar {
+        flex: 1;
+        height: 6px;
+        background: var(--border);
+        border-radius: 6px;
+        overflow: hidden;
+    }
+    .bulk-progress .bar .fill {
+        height: 100%;
+        background: var(--royal-purple-gradient);
+        border-radius: 6px;
+        transition: width 0.3s ease;
+        width: 0%;
+    }
+    .bulk-stats {
+        display: flex;
+        gap: 1.5rem;
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        margin-top: 0.3rem;
+    }
+    .bulk-stats span {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+    }
+    @media (max-width: 600px) {
+        .bulk-video-preview {
+            grid-template-columns: 1fr;
+        }
+        .bulk-video-preview .video-item .thumb {
+            width: 60px;
+            height: 34px;
+        }
+    }
+</style>
+
+<script>
+    (function() {
+        'use strict';
+
+        // ================================================================
+        //  📥 BULK YOUTUBE VIDEO IMPORT
+        // ================================================================
+
+        // Store fetched video data
+        let bulkVideos = [];
+        let bulkFetching = false;
+
+        // --- Show bulk import modal ---
+        window.showBulkAddVideos = function() {
+            const subjects = data.subjects.filter(s => !s.archived);
+            bulkVideos = [];
+
+            openModal(`
+                <div class="modal-title">📥 Bulk Import YouTube Videos</div>
+                <div class="modal-sub">Paste multiple YouTube URLs and import them all at once.</div>
+
+                <div class="form-group">
+                    <label>YouTube URLs (one per line)</label>
+                    <textarea id="bulkVideoUrls" rows="6" placeholder="https://www.youtube.com/watch?v=abc123&#10;https://youtu.be/xyz789&#10;https://www.youtube.com/watch?v=def456" style="font-family: monospace; font-size: 0.85rem;"></textarea>
+                </div>
+
+                <div class="form-group" style="display:flex; gap:0.8rem; flex-wrap:wrap;">
+                    <div style="flex:1; min-width:150px;">
+                        <label>Subject</label>
+                        <select id="bulkVideoSubject">
+                            <option value="">General</option>
+                            ${subjects.map(s => `<option value="${s.id}">${s.name}</option>`).join('')}
+                        </select>
+                    </div>
+                    <div style="flex:1; min-width:150px;">
+                        <label>Watched Status</label>
+                        <select id="bulkWatchedStatus">
+                            <option value="false">Unwatched</option>
+                            <option value="true">Watched</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-actions" style="gap:0.6rem; flex-wrap:wrap;">
+                    <button class="btn btn-primary" onclick="fetchBulkVideos()" id="bulkFetchBtn">
+                        🔍 Fetch Video Info
+                    </button>
+                    <button class="btn btn-outline" onclick="pasteFromClipboard()" id="bulkPasteBtn">
+                        📋 Paste from Clipboard
+                    </button>
+                    <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+                </div>
+
+                <div id="bulkProgressArea" style="display:none;">
+                    <div class="bulk-progress">
+                        <span id="bulkProgressText">Fetching...</span>
+                        <div class="bar"><div class="fill" id="bulkProgressFill"></div></div>
+                    </div>
+                </div>
+
+                <div id="bulkResultsArea" style="display:none; margin-top:0.5rem;">
+                    <div class="flex-between" style="margin-bottom:0.3rem;">
+                        <span style="font-weight:600;">📹 Found Videos</span>
+                        <div class="bulk-stats" id="bulkStats">
+                            <span>✅ <span id="bulkValidCount">0</span> valid</span>
+                            <span>❌ <span id="bulkInvalidCount">0</span> invalid</span>
+                        </div>
+                    </div>
+                    <div id="bulkVideoList" class="bulk-video-preview"></div>
+                    <div class="form-actions" id="bulkImportActions" style="display:none; margin-top:0.8rem;">
+                        <button class="btn btn-outline" onclick="selectAllBulkVideos()">✅ Select All</button>
+                        <button class="btn btn-outline" onclick="deselectAllBulkVideos()">⬜ Deselect All</button>
+                        <button class="btn btn-primary" onclick="importBulkVideos()">📥 Import Selected (<span id="bulkSelectedCount">0</span>)</button>
+                    </div>
+                </div>
+            `);
+
+            // Auto-focus the textarea
+            setTimeout(() => {
+                const ta = document.getElementById('bulkVideoUrls');
+                if (ta) ta.focus();
+            }, 300);
+        };
+
+        // --- Paste from clipboard ---
+        window.pasteFromClipboard = async function() {
+            try {
+                const text = await navigator.clipboard.readText();
+                const ta = document.getElementById('bulkVideoUrls');
+                if (ta) {
+                    // Append to existing content
+                    if (ta.value.trim()) {
+                        ta.value += '\n' + text;
+                    } else {
+                        ta.value = text;
+                    }
+                    ta.focus();
+                    toast('📋 Pasted from clipboard!', 'success');
+                }
+            } catch (err) {
+                toast('⚠️ Could not read clipboard. Please paste manually (Ctrl+V).', 'error');
+            }
+        };
+
+        // --- Fetch video info for all URLs ---
+        window.fetchBulkVideos = async function() {
+            const ta = document.getElementById('bulkVideoUrls');
+            const urls = ta.value.split('\n').map(s => s.trim()).filter(Boolean);
+            if (urls.length === 0) {
+                toast('⚠️ Please paste at least one YouTube URL.', 'error');
+                return;
+            }
+
+            const progressArea = document.getElementById('bulkProgressArea');
+            const progressText = document.getElementById('bulkProgressText');
+            const progressFill = document.getElementById('bulkProgressFill');
+            const resultsArea = document.getElementById('bulkResultsArea');
+
+            progressArea.style.display = 'block';
+            resultsArea.style.display = 'none';
+            bulkFetching = true;
+
+            const subjectId = document.getElementById('bulkVideoSubject').value || null;
+            const watched = document.getElementById('bulkWatchedStatus').value === 'true';
+
+            bulkVideos = [];
+            let validCount = 0;
+            let invalidCount = 0;
+
+            for (let i = 0; i < urls.length; i++) {
+                const url = urls[i];
+                progressText.textContent = `Fetching ${i + 1}/${urls.length}: ${url.slice(0, 40)}...`;
+                progressFill.style.width = `${((i + 1) / urls.length) * 100}%`;
+
+                try {
+                    const videoData = await fetchVideoInfo(url);
+                    if (videoData) {
+                        bulkVideos.push({
+                            url: url,
+                            title: videoData.title || 'Untitled',
+                            thumbnail: videoData.thumbnail || null,
+                            author: videoData.author || '',
+                            valid: true,
+                            selected: true,
+                            subjectId: subjectId,
+                            watched: watched,
+                            videoId: videoData.videoId || null,
+                        });
+                        validCount++;
+                    } else {
+                        bulkVideos.push({
+                            url: url,
+                            title: 'Invalid URL',
+                            valid: false,
+                            selected: false,
+                            subjectId: subjectId,
+                            watched: watched,
+                        });
+                        invalidCount++;
+                    }
+                } catch (err) {
+                    bulkVideos.push({
+                        url: url,
+                        title: 'Error fetching',
+                        valid: false,
+                        selected: false,
+                        subjectId: subjectId,
+                        watched: watched,
+                    });
+                    invalidCount++;
+                }
+            }
+
+            bulkFetching = false;
+            progressArea.style.display = 'none';
+            resultsArea.style.display = 'block';
+
+            document.getElementById('bulkValidCount').textContent = validCount;
+            document.getElementById('bulkInvalidCount').textContent = invalidCount;
+
+            renderBulkVideoList();
+            updateBulkSelectedCount();
+
+            if (validCount > 0) {
+                document.getElementById('bulkImportActions').style.display = 'flex';
+            }
+
+            toast(`✅ Found ${validCount} valid videos, ${invalidCount} invalid.`, validCount > 0 ? 'success' : 'error');
+        };
+
+        // --- Fetch video info from YouTube oEmbed ---
+        async function fetchVideoInfo(url) {
+            // Extract video ID
+            const videoId = extractYouTubeId(url);
+            if (!videoId) return null;
+
+            try {
+                // Try oEmbed API first
+                const oembedUrl =
+                    `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&format=json`;
+                const response = await fetch(oembedUrl);
+                if (response.ok) {
+                    const data = await response.json();
+                    return {
+                        title: data.title || 'Untitled',
+                        thumbnail: data.thumbnail_url || `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`,
+                        author: data.author_name || '',
+                        videoId: videoId,
+                    };
+                }
+            } catch (_) {}
+
+            // Fallback: use thumbnail only
+            return {
+                title: 'Video',
+                thumbnail: `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`,
+                author: '',
+                videoId: videoId,
+            };
+        }
+
+        // --- Extract YouTube video ID ---
+        function extractYouTubeId(url) {
+            const patterns = [
+                /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/,
+                /youtube\.com\/shorts\/([^&\n?#]+)/,
+            ];
+            for (const pattern of patterns) {
+                const match = url.match(pattern);
+                if (match) return match[1];
+            }
+            return null;
+        }
+
+        // --- Render bulk video list ---
+        function renderBulkVideoList() {
+            const container = document.getElementById('bulkVideoList');
+            if (!container) return;
+
+            container.innerHTML = bulkVideos.map((v, idx) => {
+                const checked = v.selected ? 'checked' : '';
+                const statusIcon = v.valid ? '✅' : '❌';
+                const titleClass = v.valid ? '' : 'text-muted';
+                const thumbHtml = v.thumbnail ?
+                    `<img src="${v.thumbnail}" alt="Thumbnail" loading="lazy" />` :
+                    '🎬';
+
+                return `
+                    <div class="video-item">
+                        <div class="checkbox-wrap">
+                            <input type="checkbox" ${checked} onchange="toggleBulkVideo(${idx})" ${v.valid ? '' : 'disabled'} />
+                        </div>
+                        <div class="thumb">${thumbHtml}</div>
+                        <div class="info">
+                            <div class="title ${titleClass}">${v.title}</div>
+                            <div class="url">${v.url.slice(0, 50)}${v.url.length > 50 ? '…' : ''}</div>
+                            ${v.author ? `<div style="font-size:0.6rem;color:var(--text-muted);">${v.author}</div>` : ''}
+                        </div>
+                        <div class="status">${statusIcon}</div>
+                    </div>
+                `;
+            }).join('');
+
+            updateBulkSelectedCount();
+        }
+
+        // --- Toggle individual video selection ---
+        window.toggleBulkVideo = function(idx) {
+            if (idx >= 0 && idx < bulkVideos.length && bulkVideos[idx].valid) {
+                bulkVideos[idx].selected = !bulkVideos[idx].selected;
+                renderBulkVideoList();
+                updateBulkSelectedCount();
+            }
+        };
+
+        // --- Select all valid videos ---
+        window.selectAllBulkVideos = function() {
+            bulkVideos.forEach(v => {
+                if (v.valid) v.selected = true;
+            });
+            renderBulkVideoList();
+            updateBulkSelectedCount();
+            toast('✅ All valid videos selected', 'info');
+        };
+
+        // --- Deselect all videos ---
+        window.deselectAllBulkVideos = function() {
+            bulkVideos.forEach(v => {
+                if (v.valid) v.selected = false;
+            });
+            renderBulkVideoList();
+            updateBulkSelectedCount();
+            toast('⬜ All videos deselected', 'info');
+        };
+
+        // --- Update selected count ---
+        function updateBulkSelectedCount() {
+            const count = bulkVideos.filter(v => v.selected).length;
+            const el = document.getElementById('bulkSelectedCount');
+            if (el) el.textContent = count;
+        }
+
+        // --- Import selected videos ---
+        window.importBulkVideos = function() {
+            const selected = bulkVideos.filter(v => v.selected && v.valid);
+            if (selected.length === 0) {
+                toast('⚠️ Please select at least one valid video to import.', 'error');
+                return;
+            }
+
+            let imported = 0;
+            selected.forEach(v => {
+                const embedUrl = v.videoId ? `https://www.youtube.com/watch?v=${v.videoId}` : v.url;
+                data.videos.push({
+                    id: genId(),
+                    title: v.title || 'Untitled',
+                    url: embedUrl,
+                    subjectId: v.subjectId || null,
+                    watched: v.watched || false,
+                    addedAt: new Date().toISOString(),
+                    duration: '',
+                    description: '',
+                    notes: '',
+                    rating: 0,
+                });
+                imported++;
+            });
+
+            if (saveData()) {
+                toast(`✅ Imported ${imported} videos successfully!`, 'success');
+                closeModal();
+                if (currentPage === 'videos') {
+                    renderPage('videos');
+                } else {
+                    navigate('videos');
+                }
+                playSound('success');
+            }
+        };
+
+        // --- Add button to videos page ---
+        const originalRenderVideos = window.renderVideos;
+        if (originalRenderVideos) {
+            window.renderVideos = function() {
+                const html = originalRenderVideos();
+                // Inject bulk import button next to "Add Video"
+                // We'll do it via DOM manipulation after render
+                setTimeout(() => {
+                    const header = document.querySelector('#page-videos .flex-between');
+                    if (header) {
+                        const existing = header.querySelector('.btn-bulk-import');
+                        if (!existing) {
+                            const btn = document.createElement('button');
+                            btn.className = 'btn btn-outline btn-bulk-import';
+                            btn.innerHTML = '📥 Bulk Import';
+                            btn.onclick = showBulkAddVideos;
+                            btn.style.marginRight = '0.5rem';
+                            header.querySelector('.btn-primary').before(btn);
+                        }
+                    }
+                }, 50);
+                return html;
+            };
+        }
+
+        console.log('✅ Bulk YouTube Import loaded!');
+    })();
+</script>
 </body>
 </html>
