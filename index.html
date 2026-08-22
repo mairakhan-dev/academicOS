@@ -7669,5 +7669,330 @@
         console.log('✅ Bulk YouTube Import loaded!');
     })();
 </script>
+    <!-- ================================================================
+     🗓️ TIMETABLE DAY FIX — Correct weekday detection + custom week start
+     Paste this before </body> in your HTML file
+     ================================================================ -->
+
+<style>
+    /* Optional: visual indicator for the current day in timetable headers */
+    .timetable .col-today th {
+        background: var(--royal-purple) !important;
+        color: #fff !important;
+        border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+        position: relative;
+    }
+    .timetable .col-today th::after {
+        content: '⭐';
+        position: absolute;
+        top: -8px;
+        right: -4px;
+        font-size: 0.8rem;
+    }
+</style>
+
+<script>
+    (function() {
+        'use strict';
+
+        // ================================================================
+        //  🗓️ TIMETABLE DAY FIX — Correct weekday mapping
+        //  Allows custom week start (default: Monday)
+        // ================================================================
+
+        // --- Configuration ---
+        // 0 = Sunday, 1 = Monday, ... 6 = Saturday
+        const WEEK_START_DAY = 1; // Change to 0 if you prefer Sunday as first day
+
+        // --- Helper: get the display index for a given day number (0-6) ---
+        function getDisplayIndex(dayNumber) {
+            // dayNumber: 0=Sunday, 1=Monday, ...
+            // Display order: starts at WEEK_START_DAY
+            return (dayNumber - WEEK_START_DAY + 7) % 7;
+        }
+
+        // --- Helper: get the day number from a display index ---
+        function getDayNumber(displayIndex) {
+            return (displayIndex + WEEK_START_DAY) % 7;
+        }
+
+        // --- Override getTimetableRows to use the new ordering ---
+        const originalGetRows = window.getTimetableRows;
+        window.getTimetableRows = function() {
+            const times = [...new Set(data.timetable.map(t => t.time))].sort();
+            // For each time, we need slots for each display position (0..6)
+            const displaySlots = [];
+            for (let displayIdx = 0; displayIdx < 7; displayIdx++) {
+                const dayNumber = getDayNumber(displayIdx);
+                const slotsForDay = data.timetable.filter(t => t.day === dayNumber);
+                displaySlots.push(slotsForDay);
+            }
+
+            // Build rows: for each time, get the slot for each display position
+            const rows = times.map(time => {
+                const slots = [];
+                for (let displayIdx = 0; displayIdx < 7; displayIdx++) {
+                    const daySlots = displaySlots[displayIdx];
+                    const slot = daySlots.find(t => t.time === time) || null;
+                    slots.push(slot);
+                }
+                return { time, slots };
+            });
+            return rows;
+        };
+
+        // --- Override renderTimetable ---
+        const originalRenderTimetable = window.renderTimetable;
+        window.renderTimetable = function() {
+            const now = new Date();
+            const dateStr = now.toISOString().split('T')[0];
+            const todayDayNumber = now.getDay(); // 0=Sunday
+            const todayDisplayIndex = getDisplayIndex(todayDayNumber);
+
+            // Days in display order
+            const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const displayDays = [];
+            for (let i = 0; i < 7; i++) {
+                const dayNum = getDayNumber(i);
+                displayDays.push(dayNames[dayNum]);
+            }
+
+            // --- If no slots, show empty state ---
+            if (data.timetable.length === 0) {
+                return `
+                    <div class="flex-between">
+                        <div>
+                            <div class="page-title">📅 Timetable</div>
+                            <div class="page-subtitle">Customize your study schedule. Check off tasks daily!</div>
+                        </div>
+                        <button class="btn btn-primary" onclick="showAddTimetableSlot()">+ Add Slot</button>
+                    </div>
+                    <div class="card mt-2" style="padding:3rem 1rem; text-align:center;">
+                        <div style="font-size:4rem; margin-bottom:0.5rem;">📅</div>
+                        <div style="font-size:1.2rem; font-weight:600; margin-bottom:0.3rem;">Your timetable is empty</div>
+                        <div class="text-muted" style="margin-bottom:1rem;">Start by adding your first study slot.</div>
+                        <button class="btn btn-primary" onclick="showAddTimetableSlot()">+ Add Your First Slot</button>
+                    </div>
+                    <div class="card mt-2">
+                        <div style="font-weight:600; margin-bottom:0.5rem;">Full Week Preview</div>
+                        <div class="text-muted text-sm">No slots added yet. Build your perfect schedule!</div>
+                    </div>
+                `;
+            }
+
+            const rows = window.getTimetableRows();
+            if (rows.length === 0) {
+                return `<div class="page-title">📅 Timetable</div><div class="empty-state"><div class="icon">📅</div><div class="title">No time slots configured</div><div class="desc">Please add time entries to your timetable.</div></div>`;
+            }
+
+            let html = `
+                <div class="flex-between">
+                    <div>
+                        <div class="page-title">📅 Timetable</div>
+                        <div class="page-subtitle">Customize your study schedule. Check off tasks daily!</div>
+                    </div>
+                    <button class="btn btn-primary" onclick="showAddTimetableSlot()">+ Add Slot</button>
+                </div>
+
+                <!-- Today's Progress -->
+                <div class="card mt-2" style="padding:0.8rem 1.2rem; display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
+                    <div style="font-weight:600;">📌 Today's Progress</div>
+                    ${data.timetable.filter(t => t.day === todayDayNumber).length === 0 ? 
+                        '<span class="text-muted text-sm">No slots scheduled for today.</span>' :
+                        data.timetable.filter(t => t.day === todayDayNumber).map(t => {
+                            const checked = t.checked && t.checked[dateStr];
+                            return `<div style="display:flex;align-items:center;gap:0.3rem;background:var(--bg);padding:0.1rem 0.6rem;border-radius:20px;border:1px solid ${checked?'#27ae60':'var(--border)'};">
+                                <input type="checkbox" ${checked?'checked':''} onchange="toggleTimetableSlot('${t.id}')" style="width:16px;height:16px;accent-color:var(--royal-purple);" />
+                                <span style="font-size:0.75rem; ${checked?'text-decoration:line-through;color:#27ae60;':''}">${t.time} — ${t.subject}</span>
+                            </div>`;
+                        }).join('')
+                    }
+                </div>
+
+                <!-- Full Week Table -->
+                <div class="table-wrap timetable-wrap mt-2">
+                    <table class="timetable">
+                        <thead>
+                            <tr>
+                                <th style="min-width:70px; z-index:25; background:var(--card-bg); border-right:2px solid var(--border);">⏰ Time</th>
+                                ${displayDays.map((d, i) => `
+                                    <th class="${i === todayDisplayIndex ? 'col-today' : ''}" style="min-width:90px;">
+                                        ${d.slice(0,3)}
+                                        ${i === todayDisplayIndex ? '<span style="font-size:0.6rem;display:block;font-weight:400;opacity:0.8;">Today</span>' : ''}
+                                    </th>
+                                `).join('')}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${rows.map(row => `
+                                <tr>
+                                    <td class="time-col">${row.time}</td>
+                                    ${row.slots.map((slot, idx) => {
+                                        const isToday = idx === todayDisplayIndex;
+                                        const checked = slot && slot.checked && slot.checked[dateStr];
+                                        const subjectColor = slot ? (data.subjects.find(s => s.id === slot.subjectId)?.color || 'var(--royal-purple)') : 'transparent';
+                                        let slotHtml = '';
+                                        if (slot) {
+                                            slotHtml = `
+                                                <div class="slot-content ${checked ? 'slot-done' : ''}">
+                                                    <div class="slot-subject" style="border-left-color: ${subjectColor};">
+                                                        ${slot.subject}
+                                                    </div>
+                                                    ${slot.method ? `<div class="slot-method">${slot.method}</div>` : ''}
+                                                </div>
+                                                <div class="slot-actions">
+                                                    <button class="btn btn-ghost" onclick="editTimetableSlot('${slot.id}')" title="Edit">✏️</button>
+                                                    <button class="btn btn-ghost" onclick="deleteTimetableSlot('${slot.id}')" title="Delete">🗑️</button>
+                                                </div>
+                                            `;
+                                        } else {
+                                            slotHtml = `<div class="slot-empty">—</div>`;
+                                        }
+                                        return `<td class="${isToday ? 'col-today' : ''}">${slotHtml}</td>`;
+                                    }).join('')}
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-xs text-muted mt-1">💡 Hover over a slot to edit or delete. Check off tasks daily!</div>
+            `;
+
+            return html;
+        };
+
+        // --- Override showAddTimetableSlot to pre-select the correct day ---
+        const originalShowAdd = window.showAddTimetableSlot;
+        window.showAddTimetableSlot = function() {
+            const now = new Date();
+            const todayDayNumber = now.getDay();
+            const todayDisplayIndex = getDisplayIndex(todayDayNumber);
+            const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const displayDays = [];
+            for (let i = 0; i < 7; i++) {
+                const dayNum = getDayNumber(i);
+                displayDays.push(dayNames[dayNum]);
+            }
+
+            openModal(`
+                <div class="modal-title">📅 Add Timetable Slot</div>
+                <div class="form-group">
+                    <label>Day</label>
+                    <select id="ttDay">
+                        ${displayDays.map((d, i) => `<option value="${i}" ${i === todayDisplayIndex ? 'selected' : ''}>${d}</option>`).join('')}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Time</label>
+                    <input id="ttTime" placeholder="e.g. 09:00-10:00" />
+                </div>
+                <div class="form-group">
+                    <label>Subject</label>
+                    <input id="ttSubject" placeholder="e.g. Mathematics" />
+                </div>
+                <div class="form-group">
+                    <label>Study Method</label>
+                    <input id="ttMethod" placeholder="e.g. Past Papers, Notes, Revision" />
+                </div>
+                <div class="form-actions">
+                    <button class="btn" onclick="closeModal()">Cancel</button>
+                    <button class="btn btn-primary" onclick="addTimetableSlot()">Add Slot</button>
+                </div>
+            `);
+        };
+
+        // --- Override addTimetableSlot to store the correct day number ---
+        const originalAddSlot = window.addTimetableSlot;
+        window.addTimetableSlot = function() {
+            const displayIndex = parseInt(document.getElementById('ttDay').value);
+            const dayNumber = getDayNumber(displayIndex);
+            const time = document.getElementById('ttTime').value.trim();
+            const subject = document.getElementById('ttSubject').value.trim();
+            const method = document.getElementById('ttMethod').value.trim();
+            if (!time || !subject) {
+                toast('Time and subject required.', 'error');
+                return;
+            }
+            data.timetable.push({
+                id: genId(),
+                day: dayNumber,
+                time,
+                subject,
+                method,
+                checked: {}
+            });
+            if (saveData()) {
+                closeModal();
+                toast('✅ Slot added', 'success');
+                renderPage('timetable');
+            }
+        };
+
+        // --- Override editTimetableSlot to show the correct day ---
+        const originalEditSlot = window.editTimetableSlot;
+        window.editTimetableSlot = function(id) {
+            const slot = data.timetable.find(t => t.id === id);
+            if (!slot) return;
+            const displayIndex = getDisplayIndex(slot.day);
+            const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const displayDays = [];
+            for (let i = 0; i < 7; i++) {
+                const dayNum = getDayNumber(i);
+                displayDays.push(dayNames[dayNum]);
+            }
+
+            openModal(`
+                <div class="modal-title">✏️ Edit Slot</div>
+                <div class="form-group">
+                    <label>Day</label>
+                    <select id="editTtDay">
+                        ${displayDays.map((d, i) => `<option value="${i}" ${i === displayIndex ? 'selected' : ''}>${d}</option>`).join('')}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Time</label>
+                    <input id="editTtTime" value="${slot.time}" />
+                </div>
+                <div class="form-group">
+                    <label>Subject</label>
+                    <input id="editTtSubject" value="${slot.subject}" />
+                </div>
+                <div class="form-group">
+                    <label>Study Method</label>
+                    <input id="editTtMethod" value="${slot.method || ''}" />
+                </div>
+                <div class="form-actions">
+                    <button class="btn" onclick="closeModal()">Cancel</button>
+                    <button class="btn btn-primary" onclick="saveEditTimetableSlot('${id}')">Save</button>
+                </div>
+            `);
+        };
+
+        // --- Override saveEditTimetableSlot to store the correct day ---
+        const originalSaveEdit = window.saveEditTimetableSlot;
+        window.saveEditTimetableSlot = function(id) {
+            const slot = data.timetable.find(t => t.id === id);
+            if (!slot) return;
+            const displayIndex = parseInt(document.getElementById('editTtDay').value);
+            slot.day = getDayNumber(displayIndex);
+            slot.time = document.getElementById('editTtTime').value.trim();
+            slot.subject = document.getElementById('editTtSubject').value.trim();
+            slot.method = document.getElementById('editTtMethod').value.trim();
+            if (!slot.time || !slot.subject) {
+                toast('Time and subject required.', 'error');
+                return;
+            }
+            if (saveData()) {
+                closeModal();
+                toast('✅ Slot updated', 'success');
+                renderPage('timetable');
+            }
+        };
+
+        console.log('✅ Timetable Day Fix applied. Week starts on ' + ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][WEEK_START_DAY]);
+        console.log('📅 Today is ' + ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][new Date().getDay()] + ' (highlighted column ' + getDisplayIndex(new Date().getDay()) + ')');
+
+    })();
+</script>
 </body>
 </html>
