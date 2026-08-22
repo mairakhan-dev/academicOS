@@ -7670,24 +7670,231 @@
     })();
 </script>
     <!-- ================================================================
-     🗓️ TIMETABLE DAY FIX — Correct weekday detection + custom week start
+     🗓️ TIMETABLE DAY FIX — Direct day comparison for accurate highlighting
      Paste this before </body> in your HTML file
      ================================================================ -->
 
 <style>
-    /* Optional: visual indicator for the current day in timetable headers */
-    .timetable .col-today th {
+    /* ===== TIMETABLE ULTIMATE ===== */
+    .table-wrap.timetable-wrap {
+        overflow: auto;
+        border-radius: var(--radius);
+        border: 1px solid var(--card-border);
+        background: var(--card-bg);
+        padding: 0.5rem;
+        box-shadow: var(--shadow);
+    }
+
+    table.timetable {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 4px;
+        font-size: 0.85rem;
+        min-width: 700px;
+    }
+
+    /* Sticky Header */
+    table.timetable thead th {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: var(--bg);
+        padding: 0.8rem 0.3rem;
+        font-weight: 700;
+        text-align: center;
+        border-bottom: 3px solid var(--border);
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--text-secondary);
+        transition: background 0.3s ease;
+    }
+
+    /* Sticky Time Column */
+    table.timetable .time-col {
+        position: sticky;
+        left: 0;
+        z-index: 15;
+        background: var(--card-bg);
+        font-weight: 600;
+        font-size: 0.85rem;
+        text-align: center;
+        min-width: 70px;
+        border-right: 2px solid var(--border);
+        box-shadow: 2px 0 8px rgba(0,0,0,0.02);
+        color: var(--text-secondary);
+    }
+
+    /* Table Cells */
+    table.timetable tbody td {
+        padding: 0.5rem 0.2rem;
+        text-align: center;
+        background: var(--bg);
+        border-radius: var(--radius-sm);
+        border: 1px solid transparent;
+        transition: all 0.25s ease;
+        min-width: 90px;
+        max-width: 120px;
+        position: relative;
+        vertical-align: middle;
+    }
+
+    /* Today Column Highlight — FIXED: uses day comparison */
+    table.timetable .col-today {
+        background: rgba(108, 59, 154, 0.08);
+        border: 2px solid var(--royal-gold);
+        box-shadow: inset 0 0 40px rgba(184, 148, 48, 0.08), 0 0 20px rgba(184, 148, 48, 0.05);
+        border-radius: var(--radius-sm);
+    }
+    table.timetable .col-today th {
         background: var(--royal-purple) !important;
         color: #fff !important;
         border-radius: var(--radius-sm) var(--radius-sm) 0 0;
         position: relative;
+        border-bottom: 3px solid var(--royal-gold) !important;
     }
-    .timetable .col-today th::after {
-        content: '⭐';
+    table.timetable .col-today th::after {
+        content: '⭐ Today';
         position: absolute;
-        top: -8px;
-        right: -4px;
+        top: -10px;
+        right: -6px;
+        font-size: 0.6rem;
+        background: var(--royal-gold);
+        color: #fff;
+        padding: 0.05rem 0.4rem;
+        border-radius: 10px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+    table.timetable .col-today td {
+        background: rgba(108, 59, 154, 0.04);
+        border-color: var(--royal-gold);
+    }
+
+    /* Slot Content */
+    .slot-content {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        align-items: center;
+        width: 100%;
+    }
+    .slot-subject {
+        font-weight: 600;
         font-size: 0.8rem;
+        padding: 0.1rem 0.4rem;
+        border-radius: 4px;
+        background: var(--card-bg);
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        border-left: 3px solid var(--royal-purple);
+        box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+    }
+    .slot-method {
+        font-size: 0.6rem;
+        color: var(--text-muted);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-weight: 500;
+        letter-spacing: 0.2px;
+    }
+
+    /* Done State */
+    .slot-done {
+        opacity: 0.7;
+    }
+    .slot-done .slot-subject {
+        background: #dff0e0;
+        color: #1f6e2f;
+        border-left-color: #27ae60;
+        text-decoration: line-through;
+        text-decoration-color: #27ae60;
+    }
+    .slot-done .slot-method {
+        text-decoration: line-through;
+        color: #8faa8f;
+    }
+
+    /* Empty State */
+    .slot-empty {
+        color: var(--text-muted);
+        font-size: 0.7rem;
+        font-weight: 400;
+        opacity: 0.5;
+    }
+
+    /* Hover Actions (Edit/Delete) */
+    .slot-actions {
+        position: absolute;
+        top: 2px;
+        right: 4px;
+        display: flex;
+        gap: 2px;
+        opacity: 0;
+        transition: opacity 0.25s ease, transform 0.2s ease;
+        transform: translateY(-4px);
+    }
+    table.timetable tbody td:hover .slot-actions {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .slot-actions .btn {
+        padding: 0.05rem 0.3rem;
+        font-size: 0.55rem;
+        border-radius: 4px;
+        background: var(--card-bg);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        border: 1px solid var(--border);
+    }
+    .slot-actions .btn:hover {
+        background: var(--royal-gold-light);
+        border-color: var(--royal-gold);
+    }
+
+    /* Responsive Tweaks */
+    @media (max-width: 820px) {
+        table.timetable {
+            font-size: 0.75rem;
+            min-width: 600px;
+        }
+        table.timetable .time-col {
+            min-width: 50px;
+            font-size: 0.7rem;
+        }
+        .slot-subject {
+            font-size: 0.7rem;
+        }
+        .slot-method {
+            font-size: 0.55rem;
+        }
+        table.timetable .col-today th::after {
+            content: '⭐';
+            font-size: 0.8rem;
+            top: -6px;
+            right: -2px;
+            background: transparent;
+            padding: 0;
+        }
+    }
+    @media (max-width: 480px) {
+        table.timetable {
+            font-size: 0.65rem;
+            min-width: 480px;
+        }
+        table.timetable .time-col {
+            min-width: 40px;
+            font-size: 0.6rem;
+        }
+        .slot-subject {
+            font-size: 0.6rem;
+            padding: 0.05rem 0.2rem;
+        }
+        .slot-method {
+            font-size: 0.5rem;
+        }
     }
 </style>
 
@@ -7696,44 +7903,31 @@
         'use strict';
 
         // ================================================================
-        //  🗓️ TIMETABLE DAY FIX — Correct weekday mapping
-        //  Allows custom week start (default: Monday)
+        //  🗓️ TIMETABLE DAY FIX — Direct day comparison
+        //  The key fix: uses getDayNumber(i) === todayDayNumber
+        //  instead of i === todayDisplayIndex
         // ================================================================
 
-        // --- Configuration ---
-        // 0 = Sunday, 1 = Monday, ... 6 = Saturday
-        const WEEK_START_DAY = 1; // Change to 0 if you prefer Sunday as first day
+        const WEEK_START_DAY = 1; // 0=Sunday, 1=Monday
 
-        // --- Helper: get the display index for a given day number (0-6) ---
-        function getDisplayIndex(dayNumber) {
-            // dayNumber: 0=Sunday, 1=Monday, ...
-            // Display order: starts at WEEK_START_DAY
-            return (dayNumber - WEEK_START_DAY + 7) % 7;
-        }
-
-        // --- Helper: get the day number from a display index ---
+        // --- Helper: get day number from display index ---
         function getDayNumber(displayIndex) {
             return (displayIndex + WEEK_START_DAY) % 7;
         }
 
-        // --- Override getTimetableRows to use the new ordering ---
-        const originalGetRows = window.getTimetableRows;
+        // --- Helper: get display index from day number ---
+        function getDisplayIndex(dayNumber) {
+            return (dayNumber - WEEK_START_DAY + 7) % 7;
+        }
+
+        // --- Override getTimetableRows ---
         window.getTimetableRows = function() {
             const times = [...new Set(data.timetable.map(t => t.time))].sort();
-            // For each time, we need slots for each display position (0..6)
-            const displaySlots = [];
-            for (let displayIdx = 0; displayIdx < 7; displayIdx++) {
-                const dayNumber = getDayNumber(displayIdx);
-                const slotsForDay = data.timetable.filter(t => t.day === dayNumber);
-                displaySlots.push(slotsForDay);
-            }
-
-            // Build rows: for each time, get the slot for each display position
             const rows = times.map(time => {
                 const slots = [];
-                for (let displayIdx = 0; displayIdx < 7; displayIdx++) {
-                    const daySlots = displaySlots[displayIdx];
-                    const slot = daySlots.find(t => t.time === time) || null;
+                for (let i = 0; i < 7; i++) {
+                    const dayNum = getDayNumber(i);
+                    const slot = data.timetable.find(t => t.day === dayNum && t.time === time) || null;
                     slots.push(slot);
                 }
                 return { time, slots };
@@ -7742,22 +7936,20 @@
         };
 
         // --- Override renderTimetable ---
-        const originalRenderTimetable = window.renderTimetable;
         window.renderTimetable = function() {
             const now = new Date();
             const dateStr = now.toISOString().split('T')[0];
-            const todayDayNumber = now.getDay(); // 0=Sunday
-            const todayDisplayIndex = getDisplayIndex(todayDayNumber);
+            const todayDayNumber = now.getDay(); // 0=Sunday, 1=Monday...
+            const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
             // Days in display order
-            const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
             const displayDays = [];
             for (let i = 0; i < 7; i++) {
                 const dayNum = getDayNumber(i);
                 displayDays.push(dayNames[dayNum]);
             }
 
-            // --- If no slots, show empty state ---
+            // --- If no slots ---
             if (data.timetable.length === 0) {
                 return `
                     <div class="flex-between">
@@ -7815,12 +8007,14 @@
                         <thead>
                             <tr>
                                 <th style="min-width:70px; z-index:25; background:var(--card-bg); border-right:2px solid var(--border);">⏰ Time</th>
-                                ${displayDays.map((d, i) => `
-                                    <th class="${i === todayDisplayIndex ? 'col-today' : ''}" style="min-width:90px;">
+                                ${displayDays.map((d, i) => {
+                                    const dayNum = getDayNumber(i);
+                                    const isToday = dayNum === todayDayNumber;
+                                    return `<th class="${isToday ? 'col-today' : ''}" style="min-width:90px;">
                                         ${d.slice(0,3)}
-                                        ${i === todayDisplayIndex ? '<span style="font-size:0.6rem;display:block;font-weight:400;opacity:0.8;">Today</span>' : ''}
-                                    </th>
-                                `).join('')}
+                                        ${isToday ? '<span style="font-size:0.6rem;display:block;font-weight:400;opacity:0.8;">Today</span>' : ''}
+                                    </th>`;
+                                }).join('')}
                             </tr>
                         </thead>
                         <tbody>
@@ -7828,7 +8022,8 @@
                                 <tr>
                                     <td class="time-col">${row.time}</td>
                                     ${row.slots.map((slot, idx) => {
-                                        const isToday = idx === todayDisplayIndex;
+                                        const dayNum = getDayNumber(idx);
+                                        const isToday = dayNum === todayDayNumber;
                                         const checked = slot && slot.checked && slot.checked[dateStr];
                                         const subjectColor = slot ? (data.subjects.find(s => s.id === slot.subjectId)?.color || 'var(--royal-purple)') : 'transparent';
                                         let slotHtml = '';
@@ -7861,12 +8056,11 @@
             return html;
         };
 
-        // --- Override showAddTimetableSlot to pre-select the correct day ---
+        // --- Override showAddTimetableSlot ---
         const originalShowAdd = window.showAddTimetableSlot;
         window.showAddTimetableSlot = function() {
             const now = new Date();
             const todayDayNumber = now.getDay();
-            const todayDisplayIndex = getDisplayIndex(todayDayNumber);
             const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
             const displayDays = [];
             for (let i = 0; i < 7; i++) {
@@ -7879,7 +8073,10 @@
                 <div class="form-group">
                     <label>Day</label>
                     <select id="ttDay">
-                        ${displayDays.map((d, i) => `<option value="${i}" ${i === todayDisplayIndex ? 'selected' : ''}>${d}</option>`).join('')}
+                        ${displayDays.map((d, i) => {
+                            const dayNum = getDayNumber(i);
+                            return `<option value="${i}" ${dayNum === todayDayNumber ? 'selected' : ''}>${d}</option>`;
+                        }).join('')}
                     </select>
                 </div>
                 <div class="form-group">
@@ -7901,8 +8098,7 @@
             `);
         };
 
-        // --- Override addTimetableSlot to store the correct day number ---
-        const originalAddSlot = window.addTimetableSlot;
+        // --- Override addTimetableSlot ---
         window.addTimetableSlot = function() {
             const displayIndex = parseInt(document.getElementById('ttDay').value);
             const dayNumber = getDayNumber(displayIndex);
@@ -7928,8 +8124,7 @@
             }
         };
 
-        // --- Override editTimetableSlot to show the correct day ---
-        const originalEditSlot = window.editTimetableSlot;
+        // --- Override editTimetableSlot ---
         window.editTimetableSlot = function(id) {
             const slot = data.timetable.find(t => t.id === id);
             if (!slot) return;
@@ -7968,8 +8163,7 @@
             `);
         };
 
-        // --- Override saveEditTimetableSlot to store the correct day ---
-        const originalSaveEdit = window.saveEditTimetableSlot;
+        // --- Override saveEditTimetableSlot ---
         window.saveEditTimetableSlot = function(id) {
             const slot = data.timetable.find(t => t.id === id);
             if (!slot) return;
@@ -7989,8 +8183,9 @@
             }
         };
 
-        console.log('✅ Timetable Day Fix applied. Week starts on ' + ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][WEEK_START_DAY]);
-        console.log('📅 Today is ' + ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][new Date().getDay()] + ' (highlighted column ' + getDisplayIndex(new Date().getDay()) + ')');
+        console.log('✅ Timetable Day Fix applied! Using direct day comparison.');
+        console.log('📅 Today is ' + ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][new Date().getDay()]);
+        console.log('🔑 Week starts on ' + ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][WEEK_START_DAY]);
 
     })();
 </script>
